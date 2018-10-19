@@ -23,4 +23,18 @@ int alocarFornecedores(Strc_Fornecedores* forn);
  o usuario quer realizar o cadastro de um novo filme é valida.*/
 int verificarCategoria();
 
+//Funções para retornar os vetores dinamicos
+Strc_Clientes* return_Clientes();
+Strc_Filmes* return_Filmes();
+Strc_Categoria* return_Categorias();
+Strc_Funcionario* return_Funcionarios();
+Strc_Fornecedores* return_Fornecedores();
+
+//Funções para retornar os contadores
+int returnCont_Clientes();
+int returnCont_Filmes();
+int returnCont_Categorias();
+int returnCont_Funcionarios();
+int returnCont_Fornecedores();
+
 #endif /* ALOCACAO_H */

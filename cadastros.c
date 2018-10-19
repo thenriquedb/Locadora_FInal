@@ -42,11 +42,10 @@ void cadastrarClientes() {
             printf("\nSexo: \n"
                     "\t1. Masculino \n"
                     "\t2. Feminino \n"
-                    "\t3. Prefiro não informar \n"
                     "Digite a opção desejada:");
             scanf("%d", &Cliente.opc_sexo);
 
-        } while (Cliente.opc_sexo != 1 && Cliente.opc_sexo != 2 && Cliente.opc_sexo != 3);
+        } while (Cliente.opc_sexo != 1 && Cliente.opc_sexo != 2);
 
         do {
             printf("\nEstado civil: \n"
@@ -85,41 +84,6 @@ void cadastrarClientes() {
 
     } while (1);
 }
-
-/*
-int confirmarDados(Strc_Clientes Cliente) {
-    printf("=== | CONFIRMAÇÃO | === \n");
-
-    printf("Nome: %s \n", Cliente.nome);
-    printf("Codigo: %d \n", Cliente.codigo);
-    printf("Endereço completo: %s \n", Cliente.endereco);
-    printf("CPF: %s \n", Cliente.cpf);
-    printf("Telefone: %s \n", Cliente.telefone);
-    printf("Telefone: %s \n", Cliente.email);
-
-    printf("Sexo: ");
-    if (Cliente.opc_sexo == 1) {
-        printf("Mascukino \n");
-    } else if (Cliente.opc_sexo == 2) {
-        printf("Feminino \n");
-    } else {
-        printf("Não especificado. \n");
-    }
-
-    printf("Estado civil: ");
-    if (Cliente.estado_civi == 1) {
-        printf("Solteiro(a) \n");
-    } else if (Cliente.estado_civi == 2) {
-        printf("Casado(a) \n");
-    } else if (Cliente.estado_civi == 3) {
-        printf("Divorciado(a) \n");
-    } else if (Cliente.estado_civi == 4) {
-        printf("Viúvo(a) \n");
-    } else if (Cliente.estado_civi == 5) {
-        printf("Separado(a) \n");
-    }
-}
- */
 
 int gerarCodigoCliente() {
     int static codigo = 0;

@@ -5,6 +5,7 @@
 #include "Bibliotecas/menus.h"
 #include "Bibliotecas/cadastros.h"
 #include "Bibliotecas/veriificacaoDeDados.h"
+#include "Bibliotecas/relatorios.h"
 
 void menuCadastro() {
     printf("====== | CADASTROS | ======\n");
@@ -90,11 +91,22 @@ void subMenuRel_Clientes() {
             "\t2. Codigo \n"
             "\t3. Nome \n"
             "\t4. CPF \n"
-            "\t5. Sexo\n"
-            "\t6. Voltar ao menu anterior \n");
+            "\t5. Voltar ao menu anterior \n");
 
     switch (selecao()) {
-        case 6:
+        case 1:
+            filClientes_Todos();
+            break;
+
+        case 2:
+            filClientes_Codigo();
+            break;
+
+        case 3:
+            filClientes_Nome();
+            break;
+
+        case 5:
             menuRelatorios();
             break;
     }

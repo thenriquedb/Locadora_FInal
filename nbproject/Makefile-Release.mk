@@ -37,6 +37,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/alocacao.o \
 	${OBJECTDIR}/cadastros.o \
+	${OBJECTDIR}/filtrosRel_Clientes.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/menus.o \
 	${OBJECTDIR}/verificacaoDeDados.o
@@ -75,6 +76,11 @@ ${OBJECTDIR}/cadastros.o: cadastros.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/cadastros.o cadastros.c
+
+${OBJECTDIR}/filtrosRel_Clientes.o: filtrosRel_Clientes.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/filtrosRel_Clientes.o filtrosRel_Clientes.c
 
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}

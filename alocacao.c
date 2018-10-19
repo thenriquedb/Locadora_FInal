@@ -4,6 +4,7 @@
 #include "Bibliotecas/cadastros.h"
 #include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/alocacao.h"
+#include "Bibliotecas/structs.h"
 
 //Estruturas
 Strc_Clientes* Clientes = NULL;
@@ -119,7 +120,6 @@ int alocarFornecedores(Strc_Fornecedores* forn) {
 int verificarCategoria() {
     int i, cont, cat;
 
-
     do {
         printf("Digite o codigo da categoria: ");
         scanf("%d", &cat);
@@ -148,4 +148,47 @@ int verificarCategoria() {
 
         printf("Nenhuma categoria com este codigo encotrada. \n");
     } while (1);
+}
+//-----------------------| FUNÇÕES PARA RETORNO DOS VETORES |--------------------
+
+Strc_Clientes* return_Clientes() {
+    return Clientes;
+}
+
+Strc_Filmes* return_Filmes() {
+    return Filmes;
+}
+
+Strc_Categoria* return_Categoria() {
+    return Categorias;
+}
+
+Strc_Funcionario* return_Funcionarios() {
+    return Funcionarios;
+}
+
+Strc_Fornecedores* return_Fornecedores() {
+    return Fornecedores;
+}
+
+//-----------------------| FUNÇÕES PARA RETORNO DOS CONTADORES |----------------
+
+int returnCont_Clientes() {
+    return contClientesAlocados;
+}
+
+int returnCont_Filmes() {
+    return contFIlmesAlocados;
+}
+
+int returnCont_Categorias() {
+    return contCategoriasAlocados;
+}
+
+int returnCont_Funcionarios() {
+    return contFuncionariosAlocados;
+}
+
+int returnCont_Fornecedores() {
+    return contFornecedoresAlocados;
 }

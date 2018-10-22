@@ -5,6 +5,7 @@
 #include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/structs.h"
+#include <string.h>
 
 //Estruturas
 Strc_Clientes* Clientes = NULL;
@@ -39,6 +40,7 @@ int alocarClientes(Strc_Clientes* cl) {
 
     return 1;
 }
+//-------------------------------------------------------------------------------
 
 int alocarFilmes(Strc_Filmes* fil) {
     if (Filmes == NULL) {
@@ -58,6 +60,7 @@ int alocarFilmes(Strc_Filmes* fil) {
 
     return 1;
 }
+//-------------------------------------------------------------------------------
 
 int alocarCategoria(Strc_Categoria* cat) {
     if (Categorias == NULL) {
@@ -77,6 +80,7 @@ int alocarCategoria(Strc_Categoria* cat) {
 
     return 1;
 }
+//-------------------------------------------------------------------------------
 
 int alocarFuncionarios(Strc_Funcionario* func) {
     if (Categorias == NULL) {
@@ -96,6 +100,7 @@ int alocarFuncionarios(Strc_Funcionario* func) {
 
     return 1;
 }
+//-------------------------------------------------------------------------------
 
 int alocarFornecedores(Strc_Fornecedores* forn) {
     if (Fornecedores == NULL) {
@@ -117,38 +122,7 @@ int alocarFornecedores(Strc_Fornecedores* forn) {
 }
 //------------------------------------------------------------------------------
 
-int verificarCategoria() {
-    int i, cont, cat;
 
-    do {
-        printf("Digite o codigo da categoria: ");
-        scanf("%d", &cat);
-
-        if (contCategoriasAlocados == 0) {
-            system("clear");
-
-            printf("Nenhuma categoria cadastrada. Para continuar é necessario realizar"
-                    "o cadastro de pelo menos uma. \n");
-            cadastrarCategorias();
-
-            system("clear");
-            printf("=== | CADASTRO DE FILMES | ===\n");
-            printf("Continuação do cadastro do filme... \n\n");
-
-            return 1;
-            break;
-        }
-
-        for (i = 0; i < contCategoriasAlocados; i++) {
-            if (cat == Categorias[i].codigo) {
-                return 1;
-                break;
-            }
-        }
-
-        printf("Nenhuma categoria com este codigo encotrada. \n");
-    } while (1);
-}
 //-----------------------| FUNÇÕES PARA RETORNO DOS VETORES |--------------------
 
 Strc_Clientes* return_Clientes() {
@@ -159,7 +133,7 @@ Strc_Filmes* return_Filmes() {
     return Filmes;
 }
 
-Strc_Categoria* return_Categoria() {
+Strc_Categoria* return_Categorias() {
     return Categorias;
 }
 
@@ -191,4 +165,25 @@ int returnCont_Funcionarios() {
 
 int returnCont_Fornecedores() {
     return contFornecedoresAlocados;
+}
+
+//-----------------------| FUNÇÕES PARA ALTERAR DADOS ORIGINAIS |----------------
+void alterarClientes(Strc_Clientes *cl) {
+    Clientes = cl;
+}
+
+void alterarFilmes(Strc_Filmes *fil) {
+    Filmes = fil;
+}
+
+void alterarCategorias(Strc_Categoria *cat) {
+    Categorias = cat;
+}
+
+void alterarFuncionarios(Strc_Funcionario *fun) {
+    Funcionarios = fun;
+}
+
+void alterarFornecedoress(Strc_Fornecedores *forn) {
+    Fornecedores = forn;
 }

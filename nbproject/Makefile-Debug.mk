@@ -38,6 +38,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/alocacao.o \
 	${OBJECTDIR}/cadastros.o \
 	${OBJECTDIR}/filtrosRel_Clientes.o \
+	${OBJECTDIR}/filtrosRel_Filmes.o \
+	${OBJECTDIR}/gestaoCliente.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/menus.o \
 	${OBJECTDIR}/verificacaoDeDados.o
@@ -81,6 +83,16 @@ ${OBJECTDIR}/filtrosRel_Clientes.o: filtrosRel_Clientes.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/filtrosRel_Clientes.o filtrosRel_Clientes.c
+
+${OBJECTDIR}/filtrosRel_Filmes.o: filtrosRel_Filmes.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/filtrosRel_Filmes.o filtrosRel_Filmes.c
+
+${OBJECTDIR}/gestaoCliente.o: gestaoCliente.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/gestaoCliente.o gestaoCliente.c
 
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}

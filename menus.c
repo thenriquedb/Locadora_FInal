@@ -44,10 +44,11 @@ void menuCadastro() {
             printf("Opção inválida. \n");
     }
 }
+//-------------------------------------------------------------------------------
 
 void menuRelatorios() {
 
-    printf("====== | RELATORIO | ======\n"
+    printf("====== | RELATORIOS | ======\n"
             "\t1. Relatorio de clientes \n"
             "\t2. Relatorio de filmes \n"
             "\t3. Relatorio de categoria \n"
@@ -61,19 +62,19 @@ void menuRelatorios() {
             break;
 
         case 2:
-            // relatorioFilmes();
+            subMenuRel_Filmes();
             break;
 
         case 3:
-            // relatorioCategorias();
+            subMenuRel_Categorias();
             break;
 
         case 4:
-            //  relatorioFuncionarios();
+            subMenuRel_Funcionarios();
             break;
 
         case 5:
-            //relatorioFornecedores();
+            subMenuRel_Fornecedores();
             break;
 
         case 6:
@@ -84,18 +85,112 @@ void menuRelatorios() {
     }
 }
 
-void subMenuRel_Clientes() {
-    printf("====== | RELATÓRIO: CLIENTES | ======\n"
-            "Filtrar por: \n"
-            "\t1. Visualizar todos \n"
-            "\t2. Codigo \n"
-            "\t3. Nome \n"
-            "\t4. CPF \n"
-            "\t5. Voltar ao menu anterior \n");
+//------------------------------------------------------------------------------
+
+void menuGestao() {
+    int cod;
+
+    printf("====== | GESTÃO DE DADOS: EDIÇÃO | ======\n");
+    printf("Edições de dados so podem ser realizados por funcionarios já cadastrados no sistema. \n");
+    printf("Digite o seu codigo de cadastro: ");
+    scanf("%d", &cod);
+
+    system("clear");
+    if (verificarFuncionario(cod) == 1) {
+
+        printf("====== | GESTÃO DE DADOS | ======\n"
+                "\t1. Editar dados \n"
+                "\t2. Excluir dadas \n"
+                "\t3. Voltar para o menu principal \n");
+
+        switch (selecao()) {
+            case 1:
+                subMenuGestao_Editar();
+                break;
+
+            case 2:
+                break;
+
+            case 3:
+                break;
+
+            default:
+                printf("Opção inválida. \n");
+        }
+    } else {
+        printf("Código inválido. \n");
+    }
+}
+
+void subMenuGestao_Editar() {
+
+    printf("====== | GESTÃO DE DADOS: EDIÇÃO | ======\n"
+            "Deseja editar: \n"
+            "\t1. Cliente \n"
+            "\t2. Filme \n"
+            "\t3. Categoria \n"
+            "\t4. Funcionário \n"
+            "\t5. Fornecedor \n"
+            "\t6. Voltar para o menu principal \n");
 
     switch (selecao()) {
         case 1:
-            filClientes_Todos();
+            subMenu_edicaoClientes();
+            break;
+
+        case 2:
+            break;
+
+        case 3:
+            break;
+
+        case 4:
+            break;
+
+        case 5:
+            break;
+
+        case 6:
+            break;
+
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+//-------------------------------------------------------------------------------
+
+void subMenu_edicaoClientes() {
+    printf("====== | EDIÇÃO DE CLIENTES | ======\n"
+            "Você deseja: \n"
+            "\t1. VIsualizar clientes cadastrados \n"
+            "\t2. Buscar cliente pelo codigo \n");
+
+    switch (selecao()) {
+        case 1:
+            subMenuRel_Clientes();
+            break;
+
+        case 2:
+            edicaoCliente();
+            break;
+    }
+}
+//-------------------------------------------------------------------------------
+
+void subMenuRel_Clientes() {
+    printf("====== | RELATÓRIO: CLIENTES | ======\n"
+            "Filtrar por: \n"
+            "\t1. Nome \n"
+            "\t2. Codigo \n"
+            "\t3. CPF \n"
+            "\t4. Sexo \n"
+            "\t5. Visualizar todos \n"
+            "\t6. Faixa de códigos \n"
+            "\t7. Voltar ao menu anterior \n");
+
+    switch (selecao()) {
+        case 1:
+            filClientes_Nome();
             break;
 
         case 2:
@@ -103,12 +198,175 @@ void subMenuRel_Clientes() {
             break;
 
         case 3:
-            filClientes_Nome();
+            filClientes_CPF();
+            break;
+
+        case 4:
+            filClientes_Sexo();
+            break;
+
+        case 5:
+            filClientes_Todos();
+            break;
+
+        case 6:
+            filClientes_FaixaCodigo();
+            break;
+
+        case 7:
+            menuRelatorios();
+            break;
+
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+//-------------------------------------------------------------------------------
+
+void subMenuRel_Categorias() {
+    printf("====== | RELATÓRIO: CATEGORIA | ======\n"
+            "Filtrar por: \n"
+            "\t1. Nome \n"
+            "\t2. Codigo \n"
+            "\t3. Visualizar todos \n"
+            "\t4. Voltar ao menu anterior \n");
+
+    switch (selecao()) {
+        case 1:
+            break;
+
+        case 2:
+            break;
+
+        case 3:
+            break;
+
+        case 4:
             break;
 
         case 5:
             menuRelatorios();
             break;
-    }
 
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+//-------------------------------------------------------------------------------
+
+void subMenuRel_Filmes() {
+    printf("====== | RELATÓRIO: FILMES | ======\n"
+            "Filtrar por: \n"
+            "\t1. Nome \n"
+            "\t2. Codigo \n"
+            "\t3. Idioma \n"
+            "\t4. Exemplares \n"
+            "\t5. Visualizar todos \n"
+            "\t6. Faixa de códigos \n"
+            "\t7. Voltar ao menu anterior \n");
+
+    switch (selecao()) {
+        case 1:
+            filFilmes_Nome();
+            break;
+
+        case 2:
+            filFilmes_Codigo();
+            break;
+
+        case 3:
+            filFilmes_Idioma();
+            break;
+
+        case 4:
+            filFilmes_Exemplares();
+            break;
+
+        case 5:
+            filFilmes_Todos();
+            break;
+
+        case 6:
+            filFilmes_FaixaCodigo();
+            break;
+
+        case 7:
+            menuRelatorios();
+            break;
+
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+//-------------------------------------------------------------------------------
+
+void subMenuRel_Funcionarios() {
+    printf("====== | RELATÓRIO: FUNCIONÁRIOS | ======\n"
+            "Filtrar por: \n"
+            "\t1. Nome \n"
+            "\t2. Codigo \n"
+            "\t3. Cargo \n"
+            "\t4. Visualizar todos \n"
+            "\t5. Voltar ao menu anterior \n");
+
+    switch (selecao()) {
+        case 1:
+            break;
+
+        case 2:
+            break;
+
+        case 3:
+            break;
+
+        case 4:
+            break;
+
+        case 5:
+            menuRelatorios();
+            break;
+
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+//-------------------------------------------------------------------------------
+
+void subMenuRel_Fornecedores() {
+    printf("====== | RELATÓRIO: FORNECEDORES | ======\n"
+            "Filtrar por: \n"
+            "\t1. Razão social \n"
+            "\t2. Nome fantasia \n"
+            "\t3. Codigo \n"
+            "\t4. CNPJ \n"
+            "\t5. Inscrição social \n"
+            "\t6. Visualizar todos \n"
+            "\t7. Voltar ao menu anterior \n");
+
+    switch (selecao()) {
+        case 1:
+            break;
+
+        case 2:
+            break;
+
+        case 3:
+            break;
+
+        case 4:
+            break;
+
+        case 5:
+            break;
+
+        case 6:
+            break;
+
+        case 7:
+            menuRelatorios();
+            break;
+
+        default:
+            printf("Opção inválida. \n");
+    }
 }

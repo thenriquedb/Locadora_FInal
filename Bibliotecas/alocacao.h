@@ -4,6 +4,10 @@
 
 #include "structs.h"
 
+/*
+ * -----------------------| FUNÇÕES DE ALOCAÇÃO |----------------
+*/
+
 /* Função responsavel por fazer a aloção de memoria para armazenar os clientes*/
 int alocarClientes(Strc_Clientes* cl);
 
@@ -23,18 +27,53 @@ int alocarFornecedores(Strc_Fornecedores* forn);
  o usuario quer realizar o cadastro de um novo filme é valida.*/
 int verificarCategoria();
 
-//Funções para retornar os vetores dinamicos
+
+/*
+ * -----------------------| FUNÇÕES PARA RETORNAR OS VETORES |----------------
+*/
+
+/* Função que retorna o vetor de clientes */
 Strc_Clientes* return_Clientes();
+
+/* Função que retorna o vetor de filmes */
 Strc_Filmes* return_Filmes();
+
+/* Função que retorna o vetor de categoria */
 Strc_Categoria* return_Categorias();
+
+/* Função que retorna o vetor de funcionario */
 Strc_Funcionario* return_Funcionarios();
+
+/* Função que retorna o vetor de fornecedores */
 Strc_Fornecedores* return_Fornecedores();
 
-//Funções para retornar os contadores
+/*
+ * -----------------------| FUNÇÕES PARA RETORNAR CONTADORES |----------------
+*/
+
+/* Funções para retornar a quantidade de clientes alocados */
 int returnCont_Clientes();
+
+/* Funções para retornar a quantidade de  filmes alocados */
 int returnCont_Filmes();
+
+/* Funções para retornar a quantidade de  categorias alocados */
 int returnCont_Categorias();
+
+/* Funções para retornar a quantidade de funcionarios alocados */
 int returnCont_Funcionarios();
+
+/* Funções para retornar a quantidade de fornecedores alocados */
 int returnCont_Fornecedores();
+
+/*
+ * -----------------------| FUNÇÕES PARA ALTERAR DADOS ORIGINAIS |----------------
+*/
+void alterarClientes(Strc_Clientes *cl);
+void alterarFilmes(Strc_Filmes *fil);
+void alterarCategorias(Strc_Categoria *cat);
+void alterarFuncionarios(Strc_Funcionario *fun);
+
+void alterarFornecedores(Strc_Fornecedores *forn);
 
 #endif /* ALOCACAO_H */

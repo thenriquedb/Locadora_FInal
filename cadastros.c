@@ -67,8 +67,10 @@ void cadastrarClientes() {
                 Cliente.estado_civi != 5);
 
 
+        setbuf(stdin, NULL);
         printf("Data de nascimento (No formato dd/mm/aaaa): ");
-        scanf("%s", Cliente.data_nascimento);
+        scanf("%[^\n]s", Cliente.data_nascimento);
+        setbuf(stdin, NULL);
 
         system("clear");
 
@@ -115,14 +117,12 @@ void cadastrarFilmes() {
         printf("Exemplares: ");
         scanf("%d", &Filme.exemplares);
 
-        do {
-        } while (verificarCategoria() != 1);
-
+        Filme.codigoCategoria = verificarCategoria();         
 
         do {
-            printf("Idioma: \n"
-                    "1. Dublado \n"
-                    "2. Legendado \n"
+            printf("\nIdioma: \n"
+                    "\t1. Dublado \n"
+                    "\t2. Legendado \n"
                     "Digite a opção desejada: ");
             scanf("%d", &Filme.idioma);
         } while (Filme.idioma != 1 && Filme.idioma != 2);
@@ -154,33 +154,66 @@ void cadastrarCategorias() {
     int opcao;
 
     //do {
-        printf("=== | CADASTRO DE CATEGORIAS | ===\n");
+    printf("=== | CADASTRO DE CATEGORIAS | ===\n");
 
-        setbuf(stdin, NULL);
-        printf("Nome: ");
-        scanf("%[^\n]s", categoria.nome);
-        setbuf(stdin, NULL);
+    setbuf(stdin, NULL);
+    printf("Nome: ");
+    scanf("%[^\n]s", categoria.nome);
+    setbuf(stdin, NULL);
 
-        printf("Descrição: ");
-        scanf("%[^\n]s", categoria.descricao);
-        setbuf(stdin, NULL);
+    printf("Descrição: ");
+    scanf("%[^\n]s", categoria.descricao);
+    setbuf(stdin, NULL);
 
-        printf("Valor da multa de atraso: ");
-        scanf("%f", &categoria.valor);
+    printf("Valor da multa de atraso: ");
+    scanf("%f", &categoria.valor);
 
-        categoria.codigo = gerarCodigoCategoria();
-        alocarCategoria(&categoria);
-  
-/*
-        do {
-            opcao = parar_ou_ContinuarCadastro();
-        } while (opcao != 1 && opcao != 2);
+    categoria.codigo = gerarCodigoCategoria();
+    alocarCategoria(&categoria);
 
-        if (opcao == 2) {
+    /*
+            do {
+                opcao = parar_ou_ContinuarCadastro();
+            } while (opcao != 1 && opcao != 2);
+
+            if (opcao == 2) {
+                break;
+            }
+       } while (1);
+     */
+}
+
+int verificarCategoria() {
+    int i, cont, cat, contCategoriasAlocados = returnCont_Categorias();
+    Strc_Categoria* Categoria = return_Categorias();
+    do {
+        printf("Digite o codigo da categoria: ");
+        scanf("%d", &cat);
+
+        if (contCategoriasAlocados == 0) {
+            system("clear");
+
+            printf("Nenhuma categoria cadastrada. Para continuar é necessario realizar"
+                    "o cadastro de pelo menos uma. \n");
+            cadastrarCategorias();
+
+            system("clear");
+            printf("=== | CADASTRO DE FILMES | ===\n");
+            printf("Continuação do cadastro do filme... \n");
+
+            return 0;
             break;
         }
-   } while (1);
-*/
+
+        for (i = 0; i < contCategoriasAlocados; i++) {
+            if (cat == Categoria[i].codigo) {
+                return i;
+                break;
+            }
+        }
+
+        printf("Nenhuma categoria com este codigo encontrada. \n");
+    } while (1);
 }
 
 int gerarCodigoCategoria() {

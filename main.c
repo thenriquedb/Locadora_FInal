@@ -12,9 +12,10 @@ int main(int argc, char** argv) {
     do {
         printf("====== | MENU PRINCIPAL | ======\n"
                 "1. Cadastros \n"
-                "2. Relatórios \n"
-                "3. Importtação e exportação de dados \n"
-                "4. Sair \n");
+                "2. Gestão de dados \n"
+                "3. Relatórios \n"
+                "4. Importtação e exportação de dados \n"
+                "5. Sair \n");
 
         switch (selecao()) {
             case 1:
@@ -22,10 +23,14 @@ int main(int argc, char** argv) {
                 break;
 
             case 2:
+                menuGestao();
+                break;
+
+            case 3:
                 menuRelatorios();
                 break;
 
-            case 4:
+            case 5:
                 system("clear");
                 printf("Programa encerrado. \n");
                 exit(EXIT_SUCCESS);

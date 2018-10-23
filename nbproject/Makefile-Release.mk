@@ -37,9 +37,16 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/alocacao.o \
 	${OBJECTDIR}/cadastros.o \
+	${OBJECTDIR}/filtrosRel_Categorias.o \
 	${OBJECTDIR}/filtrosRel_Clientes.o \
 	${OBJECTDIR}/filtrosRel_Filmes.o \
+	${OBJECTDIR}/filtrosRel_Fornecedores.o \
+	${OBJECTDIR}/filtrosRel_Funcionarios.o \
+	${OBJECTDIR}/gestaoCategoria.o \
 	${OBJECTDIR}/gestaoCliente.o \
+	${OBJECTDIR}/gestaoFIlme.o \
+	${OBJECTDIR}/gestaoFornecedores.o \
+	${OBJECTDIR}/gestaoFuncionario.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/menus.o \
 	${OBJECTDIR}/verificacaoDeDados.o
@@ -79,6 +86,11 @@ ${OBJECTDIR}/cadastros.o: cadastros.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/cadastros.o cadastros.c
 
+${OBJECTDIR}/filtrosRel_Categorias.o: filtrosRel_Categorias.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/filtrosRel_Categorias.o filtrosRel_Categorias.c
+
 ${OBJECTDIR}/filtrosRel_Clientes.o: filtrosRel_Clientes.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -89,10 +101,40 @@ ${OBJECTDIR}/filtrosRel_Filmes.o: filtrosRel_Filmes.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/filtrosRel_Filmes.o filtrosRel_Filmes.c
 
+${OBJECTDIR}/filtrosRel_Fornecedores.o: filtrosRel_Fornecedores.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/filtrosRel_Fornecedores.o filtrosRel_Fornecedores.c
+
+${OBJECTDIR}/filtrosRel_Funcionarios.o: filtrosRel_Funcionarios.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/filtrosRel_Funcionarios.o filtrosRel_Funcionarios.c
+
+${OBJECTDIR}/gestaoCategoria.o: gestaoCategoria.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/gestaoCategoria.o gestaoCategoria.c
+
 ${OBJECTDIR}/gestaoCliente.o: gestaoCliente.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/gestaoCliente.o gestaoCliente.c
+
+${OBJECTDIR}/gestaoFIlme.o: gestaoFIlme.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/gestaoFIlme.o gestaoFIlme.c
+
+${OBJECTDIR}/gestaoFornecedores.o: gestaoFornecedores.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/gestaoFornecedores.o gestaoFornecedores.c
+
+${OBJECTDIR}/gestaoFuncionario.o: gestaoFuncionario.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/gestaoFuncionario.o gestaoFuncionario.c
 
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}

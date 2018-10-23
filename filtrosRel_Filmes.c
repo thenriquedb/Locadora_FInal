@@ -89,13 +89,9 @@ void filFilmes_FaixaCodigo() {
             printf("====== | FILTRAR POR FAIXA DE CODIGO | ======\n");
 
             for (i = codInicio; i < codFim; i++) {
-                printf("====== | %dº CLIENTE | ======\n", cont + 1);
+                printf("====== | %dº FILME | ======\n", cont + 1);
                 imprimeFilmes(i);
             }
-
-            printf("Nenhum resultado encontrado. \n");
-            cont = 0;
-
         } while (chamarMenu_Relatorio() != 1);
     } else {
         printf("Nenhum filme cadastrado. \n");
@@ -197,9 +193,7 @@ void filFilmes_Idioma() {
 void imprimeFilmes(int i) {
     Strc_Filmes* Filme = return_Filmes();
     Strc_Categoria* Categoria = return_Categorias();
-
-    int posCategoria = Filme[i].codigoCategoria;
-    posCategoria = posCategoria;
+    int posCategoria = Filme[i].codigoCategoria - 1;
 
     printf("\tTítulo: %s \n", Filme[i].nome);
     printf("\tDescrição: %s \n", Filme[i].descricao);
@@ -211,6 +205,8 @@ void imprimeFilmes(int i) {
         printf("Legendado \n");
     }
 
-    printf("\tCategoria: %s \n", Categoria[posCategoria].nome);
+    printf("\tCategoria: %s (%d) \n", Categoria[posCategoria].nome, Filme[i].codigoCategoria);
     printf("\tExemplares disponiveis: %d \n", Filme[i].exemplares);
 }
+//-------------------------------------------------------------------------------
+

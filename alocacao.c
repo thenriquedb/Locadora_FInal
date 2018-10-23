@@ -111,7 +111,7 @@ int alocarFornecedores(Strc_Fornecedores* forn) {
 
     *(Fornecedores + contFornecedoresAlocados) = *forn;
 
-    if (Funcionarios == NULL) {
+    if (Fornecedores == NULL) {
         printf("Ocorreu um erro durante a alocação, \n");
         exit(EXIT_FAILURE);
     }
@@ -184,6 +184,6 @@ void alterarFuncionarios(Strc_Funcionario *fun) {
     Funcionarios = fun;
 }
 
-void alterarFornecedoress(Strc_Fornecedores *forn) {
+void alterarFornecedores(Strc_Fornecedores *forn) {
     Fornecedores = forn;
 }

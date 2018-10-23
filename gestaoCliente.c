@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,16 +12,19 @@
 int edicaoCliente() {
     int cod, i;
 
-    printf("====== | EDIÇÃO DE CLIENTES | ======\n");
-    printf("DIgite o codigo do cliente que deseja editar: ");
+    printf("====== | ATUALIZAÇÃO DE DADOS: CLIENTES | ======\n");
+    printf("Digite o codigo do cliente que deseja editar: ");
     scanf("%d", &cod);
 
     if (verificarCod_Cliente(cod) >= 0) {
         i = verificarCod_Cliente(cod);
 
-        imprimeClientes(0);
+        system("clear");
+        printf("====== | ATUALIZAÇÃO DE DADOS: CLIENTES | ======\n");
+        printf("Código %d \n", i);
+        imprimeClientes(i);
 
-        printf("O que deseja editar: \n"
+        printf("\nO que deseja editar: \n"
                 "\t1. Nome \n"
                 "\t2. Data de nascimento \n"
                 "\t3. Endereço \n"
@@ -97,6 +99,8 @@ void edicaoCliente_nome(int i) {
 
             system("clear");
             printf("Dados alterados com sucesso! \n");
+        } else {
+            system("clear");
         }
     } while (opc != 1);
 }
@@ -123,6 +127,8 @@ void edicaoCliente_endereco(int i) {
 
             system("clear");
             printf("Dados alterados com sucesso! \n");
+        } else {
+            system("clear");
         }
     } while (opc != 1);
 }
@@ -149,6 +155,8 @@ void edicaoCliente_CPF(int i) {
 
             system("clear");
             printf("Dados alterados com sucesso! \n");
+        } else {
+            system("clear");
         }
     } while (opc != 1);
 }
@@ -175,6 +183,8 @@ void edicaoCliente_telefone(int i) {
 
             system("clear");
             printf("Dados alterados com sucesso! \n");
+        } else {
+            system("clear");
         }
     } while (opc != 1);
 }
@@ -201,6 +211,8 @@ void edicaoCliente_email(int i) {
 
             system("clear");
             printf("Dados alterados com sucesso! \n");
+        } else {
+            system("clear");
         }
     } while (opc != 1);
 }
@@ -227,6 +239,8 @@ void edicaoCliente_dataNascimento(int i) {
 
             system("clear");
             printf("Dados alterados com sucesso! \n");
+        } else {
+            system("clear");
         }
     } while (opc != 1);
 }
@@ -317,6 +331,8 @@ void edicaoCliente_tudo(int i) {
             alterarClientes(Cliente);
 
             printf("Dados alterados com sucesso! \n");
+        } else {
+            system("clear");
         }
     } while (opc != 1);
 }

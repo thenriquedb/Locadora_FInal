@@ -6,6 +6,10 @@
 #include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/alocacao.h"
 
+void cadastrarLocadora() {
+    
+}
+
 //---------------------------| INICIO CADASTRO CLIENTES |-----------------------
 
 void cadastrarClientes() {
@@ -153,7 +157,6 @@ void cadastrarCategorias() {
     Strc_Categoria categoria;
     int opcao;
 
-    //do {
     printf("=== | CADASTRO DE CATEGORIAS | ===\n");
 
     setbuf(stdin, NULL);
@@ -170,22 +173,12 @@ void cadastrarCategorias() {
 
     categoria.codigo = gerarCodigoCategoria();
     alocarCategoria(&categoria);
-
-    /*
-            do {
-                opcao = parar_ou_ContinuarCadastro();
-            } while (opcao != 1 && opcao != 2);
-
-            if (opcao == 2) {
-                break;
-            }
-       } while (1);
-     */
 }
 
 int verificarCategoria() {
     int i, cont, cat, contCategoriasAlocados = returnCont_Categorias();
     Strc_Categoria* Categoria = return_Categorias();
+    
     do {
         printf("Digite o codigo da categoria: ");
         scanf("%d", &cat);
@@ -196,12 +189,13 @@ int verificarCategoria() {
             printf("Nenhuma categoria cadastrada. Para continuar é necessario realizar"
                     "o cadastro de pelo menos uma. \n");
             cadastrarCategorias();
-
+            
+            return 1;
+            
             system("clear");
             printf("=== | CADASTRO DE FILMES | ===\n");
-            printf("Continuação do cadastro do filme... \n");
+            printf("Continuação do cadastro do filme... ");
 
-            return 0;
             break;
         }
 
@@ -212,6 +206,7 @@ int verificarCategoria() {
             }
         }
 
+        return -1;
         printf("Nenhuma categoria com este codigo encontrada. \n");
     } while (1);
 }

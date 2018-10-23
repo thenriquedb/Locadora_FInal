@@ -73,7 +73,6 @@ void alterarClientes(Strc_Clientes *cl);
 void alterarFilmes(Strc_Filmes *fil);
 void alterarCategorias(Strc_Categoria *cat);
 void alterarFuncionarios(Strc_Funcionario *fun);
-
 void alterarFornecedores(Strc_Fornecedores *forn);
 
 #endif /* ALOCACAO_H */

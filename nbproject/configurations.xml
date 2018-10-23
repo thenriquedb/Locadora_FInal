@@ -18,9 +18,16 @@
                    projectFiles="true">
       <itemPath>alocacao.c</itemPath>
       <itemPath>cadastros.c</itemPath>
+      <itemPath>filtrosRel_Categorias.c</itemPath>
       <itemPath>filtrosRel_Clientes.c</itemPath>
       <itemPath>filtrosRel_Filmes.c</itemPath>
+      <itemPath>filtrosRel_Fornecedores.c</itemPath>
+      <itemPath>filtrosRel_Funcionarios.c</itemPath>
+      <itemPath>gestaoCategoria.c</itemPath>
       <itemPath>gestaoCliente.c</itemPath>
+      <itemPath>gestaoFIlme.c</itemPath>
+      <itemPath>gestaoFornecedores.c</itemPath>
+      <itemPath>gestaoFuncionario.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>menus.c</itemPath>
       <itemPath>verificacaoDeDados.c</itemPath>
@@ -63,11 +70,25 @@
       </item>
       <item path="cadastros.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="filtrosRel_Categorias.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="filtrosRel_Clientes.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="filtrosRel_Filmes.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="filtrosRel_Fornecedores.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="filtrosRel_Funcionarios.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="gestaoCategoria.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="gestaoCliente.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="gestaoFIlme.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="gestaoFornecedores.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="gestaoFuncionario.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -116,11 +137,25 @@
       </item>
       <item path="cadastros.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="filtrosRel_Categorias.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="filtrosRel_Clientes.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="filtrosRel_Filmes.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="filtrosRel_Fornecedores.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="filtrosRel_Funcionarios.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="gestaoCategoria.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="gestaoCliente.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="gestaoFIlme.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="gestaoFornecedores.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="gestaoFuncionario.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>

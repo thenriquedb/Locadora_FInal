@@ -28,9 +28,8 @@ void menuCadastro();
 //Função para imprimir o menu de opções de gestão de dados
 void menuGestao();
 
-
 /*
- * --------------------------------------| SUBMENUS |---------------------------
+ * -----------------------------| SUBMENUS RELATORIOS |-------------------------
  */
 
 //Submenu de relatorio dos clientes
@@ -48,10 +47,25 @@ void subMenuRel_Funcionarios();
 //Submenu de relatorio dos fornecedores
 void subMenuRel_Fornecedores();
 
+/*
+ * -----------------------------| SUBMENUS GESTÃO |-------------------------
+ */
+void subMenuGestao_Editar();
+
 //Submenu para gestão: edição de dados dos clientes
 void subMenu_edicaoClientes();
 
-void subMenuGestao_Editar();
+//Submenu para gestão: edição de dados de filmes
+void subMenu_edicaoFilmes();
+
+//Submenu para gestão: edição de dados de categorias
+void subMenu_edicaoCategorias();
+
+//Submenu para gestão: edição de dados de funcionários
+void subMenu_edicaoFuncionarios();
+
+//Submenu para gestão: edição de dados de fornecedores
+void subMenu_edicaoFornecedores();
 
 #endif /* MENUS_H */
 

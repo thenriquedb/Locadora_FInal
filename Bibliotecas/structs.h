@@ -3,6 +3,23 @@
 #define STRUCTS_H
 
 //Struct CLientes
+
+typedef struct {
+    char nomeFanatasia[100];
+    char razaoSocial[100];
+    char InscricaoEstadual[12];
+    char cnpj[14];
+    char endereco[150];
+    char telefone[12];
+    char email[150];
+    char nomeResponsavel[100];
+    
+    float Caixa;
+    float valorMulta;
+} Strc_Locadora;
+
+//Struct CLientes
+
 typedef struct {
     char nome[100];
     char endereco[150];
@@ -17,6 +34,7 @@ typedef struct {
 } Strc_Clientes;
 
 //Struct Filmes
+
 typedef struct {
     char nome[100];
     char descricao[400];
@@ -28,6 +46,7 @@ typedef struct {
 } Strc_Filmes;
 
 //Struct Categorias
+
 typedef struct {
     char nome[100];
     char descricao[300];
@@ -37,6 +56,7 @@ typedef struct {
 } Strc_Categoria;
 
 //Struct Funcionarios
+
 typedef struct {
     char nome[100];
     char endereco[150];
@@ -48,6 +68,7 @@ typedef struct {
 } Strc_Funcionario;
 
 //Struct Fornecedores
+
 typedef struct {
     char nomeFantasia[100];
     char razaoScial[100];

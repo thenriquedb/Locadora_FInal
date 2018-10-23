@@ -2,6 +2,9 @@
 #ifndef CADASTROS_H
 #define CADASTROS_H
 
+//Funções de input de dados da locadora
+void cadastrarLocadora();
+
 //Funções de input de dados de clientes
 void cadastrarClientes();
 

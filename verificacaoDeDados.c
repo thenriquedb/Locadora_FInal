@@ -65,18 +65,18 @@ int chamarMenu_Relatorio() {
 
 //-------------------------------------------------------------------------------
 
-int verificarFuncionario(int cod) {
+int verificarCod_Funcionario(int cod) {
     Strc_Funcionario* Funcionario = return_Funcionarios();
     int cont = returnCont_Funcionarios();
 
     for (int i = 0; i < cont; i++) {
         if (Funcionario[i].codigo == cod) {
-            return 1;
+            return i;
             break;
         }
     }
 
-    return 0;
+    return -1;
 }
 
 //-------------------------------------------------------------------------------
@@ -92,5 +92,53 @@ int verificarCod_Cliente(int cod) {
         }
     }
     return -1;
+}
+//-------------------------------------------------------------------------------
+
+int verificarCod_Filme(int cod) {
+    Strc_Filmes* Filme = return_Filmes();
+    int cont = returnCont_Filmes();
+
+    for (int i = 0; i < cont; i++) {
+        if (Filme[i].codigo == cod) {
+            return i;
+            break;
+        }
+    }
+    return -1;
+}
+//-------------------------------------------------------------------------------
+
+int verificarCod_Fornecedores(int cod) {
+    Strc_Fornecedores* Fornecedor = return_Fornecedores();
+    int cont = returnCont_Fornecedores();
+
+    for (int i = 0; i < cont; i++) {
+        if (Fornecedor[i].codigo == cod) {
+            return i;
+            break;
+        }
+    }
+    return -1;
+}
+//-------------------------------------------------------------------------------
+
+int verificarCod_Categoria(int cod) {
+    Strc_Categoria* Categoria = return_Categorias();
+    int cont = returnCont_Categorias();
+    int verificar = 0;
+
+    for (int i = 0; i < cont; i++) {
+        if (Categoria[i].codigo == cod) {
+            return i;
+            verificar++;
+            break;
+        }
+    }
+    if (verificar == 0) {
+        system("clear");
+        printf("\tCategoria inválida! \n");
+        return -1;
+    }
 }
 

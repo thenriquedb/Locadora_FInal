@@ -2,8 +2,7 @@
 #ifndef STRUCTS_H
 #define STRUCTS_H
 
-//Struct CLientes
-
+//Struct locadora
 typedef struct {
     char nomeFanatasia[100];
     char razaoSocial[100];
@@ -13,13 +12,11 @@ typedef struct {
     char telefone[12];
     char email[150];
     char nomeResponsavel[100];
-    
-    float Caixa;
+
     float valorMulta;
 } Strc_Locadora;
 
-//Struct CLientes
-
+//Struct Clientes
 typedef struct {
     char nome[100];
     char endereco[150];
@@ -28,6 +25,7 @@ typedef struct {
     char cpf[11];
     char data_nascimento[10];
 
+    float devendo;
     int codigo;
     int opc_sexo;
     int estado_civi;
@@ -80,6 +78,14 @@ typedef struct {
 
     int codigo;
 } Strc_Fornecedores;
+
+
+//Struct para gerenciamento financeiro
+
+typedef struct {
+    float caixa;
+    float contasPagar;
+} Strc_Financeiro;
 
 #endif /* STRUCTS_H */
 

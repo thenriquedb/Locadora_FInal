@@ -6,7 +6,10 @@
 
 /*
  * -----------------------| FUNÇÕES DE ALOCAÇÃO |----------------
-*/
+ */
+
+/* Função responsavel por fazer a aloção de memoria para armazenar os clientes*/
+int armazenarLocadora(Strc_Locadora loc);
 
 /* Função responsavel por fazer a aloção de memoria para armazenar os clientes*/
 int alocarClientes(Strc_Clientes* cl);
@@ -30,7 +33,7 @@ int verificarCategoria();
 
 /*
  * -----------------------| FUNÇÕES PARA RETORNAR OS VETORES |----------------
-*/
+ */
 
 /* Função que retorna o vetor de clientes */
 Strc_Clientes* return_Clientes();
@@ -49,7 +52,7 @@ Strc_Fornecedores* return_Fornecedores();
 
 /*
  * -----------------------| FUNÇÕES PARA RETORNAR CONTADORES |----------------
-*/
+ */
 
 /* Funções para retornar a quantidade de clientes alocados */
 int returnCont_Clientes();
@@ -68,11 +71,18 @@ int returnCont_Fornecedores();
 
 /*
  * -----------------------| FUNÇÕES PARA ALTERAR DADOS ORIGINAIS |----------------
-*/
+ */
 void alterarClientes(Strc_Clientes *cl);
 void alterarFilmes(Strc_Filmes *fil);
 void alterarCategorias(Strc_Categoria *cat);
 void alterarFuncionarios(Strc_Funcionario *fun);
 void alterarFornecedores(Strc_Fornecedores *forn);
+
+
+void alterar_contClientes(int cont);
+void alterar_contFilmes(int cont);
+void alterar_contCategorias(int cont);
+void alterar_contFuncionarios(int cont);
+void alterar_contFornecedores(int cont);
 
 #endif /* ALOCACAO_H */

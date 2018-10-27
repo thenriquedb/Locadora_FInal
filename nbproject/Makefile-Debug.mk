@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/administracao.o \
 	${OBJECTDIR}/alocacao.o \
 	${OBJECTDIR}/cadastros.o \
 	${OBJECTDIR}/filtrosRel_Categorias.o \
@@ -75,6 +76,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/locadora: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/locadora ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/administracao.o: administracao.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/administracao.o administracao.c
 
 ${OBJECTDIR}/alocacao.o: alocacao.c
 	${MKDIR} -p ${OBJECTDIR}

@@ -284,3 +284,37 @@ void edicaoFilme_tudo(int i) {
         }
     } while (opc != 1);
 }
+//-------------------------------------------------------------------------------
+
+void excluirFilme() {
+    Strc_Filmes* Filme = return_Filmes();
+    int cod, verifica = 0, contFilmes = returnCont_Filmes();
+
+    printf("====== | EXCLUIR FILME CADASTRADO | ======\n");
+    printf("Digite o codigo do filme que deseja editar: ");
+    scanf("%d", &cod);
+
+    for (int i = 0; i < contFilmes; i++) {
+        if (cod == Filme[i].codigo) {
+            verifica++;
+            do {
+                Filme[i] = Filme[i + 1];
+                i++;
+            } while (i < contFilmes);
+            break;
+        }
+    }
+    if (verifica == 0) {
+        printf("Código inválido. \n");
+    } else {
+        printf("Filme excluído com sucesso. \n");
+        contFilmes -= contFilmes;
+        
+        if (contFilmes == 0) {
+            Filme = NULL;
+        }
+
+        alterarFilmes(Filme);
+        alterar_contFilmes(contFilmes);
+    }
+}

@@ -7,7 +7,58 @@
 #include "Bibliotecas/alocacao.h"
 
 void cadastrarLocadora() {
-    
+    Strc_Locadora Locadora;
+    int opc;
+
+    printf("=== | CADASTRO DA LOCADORA | ===\n");
+
+    do {
+        setbuf(stdin, NULL);
+        printf("\tRazão social: ");
+        scanf("%[^\n]s", Locadora.razaoSocial);
+        setbuf(stdin, NULL);
+
+        printf("\tNome fantasia: ");
+        scanf("%[^\n]s", Locadora.nomeFanatasia);
+        setbuf(stdin, NULL);
+
+        printf("\tNome do responsavel: ");
+        scanf("%[^\n]s", Locadora.nomeResponsavel);
+        setbuf(stdin, NULL);
+
+        printf("\tEndereço: ");
+        scanf("%[^\n]s", Locadora.endereco);
+        setbuf(stdin, NULL);
+
+        printf("\tEmail: ");
+        scanf("%[^\n]s", Locadora.email);
+        setbuf(stdin, NULL);
+
+        printf("\tTelefone: ");
+        scanf("%[^\n]s", Locadora.telefone);
+        setbuf(stdin, NULL);
+
+        printf("\tCNPJ: ");
+        scanf("%[^\n]s", Locadora.cnpj);
+        setbuf(stdin, NULL);
+
+        printf("\tInscrição estadual: ");
+        scanf("%[^\n]s", Locadora.InscricaoEstadual);
+        setbuf(stdin, NULL);
+
+        printf("\tValor da multa de atraso: ");
+        scanf("%f", &Locadora.valorMulta);
+
+
+        printf("Digite 1 para confirmar ou 2 para corrigir: ");
+        scanf("%d", &opc);
+        system("clear");
+
+        if (opc == 1) {
+            printf("Cadastro concluído com sucesso! \n");
+            armazenarLocadora(Locadora);
+        }
+    } while (opc != 1);
 }
 
 //---------------------------| INICIO CADASTRO CLIENTES |-----------------------
@@ -121,7 +172,7 @@ void cadastrarFilmes() {
         printf("Exemplares: ");
         scanf("%d", &Filme.exemplares);
 
-        Filme.codigoCategoria = verificarCategoria();         
+        Filme.codigoCategoria = verificarCategoria();
 
         do {
             printf("\nIdioma: \n"
@@ -178,7 +229,7 @@ void cadastrarCategorias() {
 int verificarCategoria() {
     int i, cont, cat, contCategoriasAlocados = returnCont_Categorias();
     Strc_Categoria* Categoria = return_Categorias();
-    
+
     do {
         printf("Digite o codigo da categoria: ");
         scanf("%d", &cat);
@@ -189,9 +240,9 @@ int verificarCategoria() {
             printf("Nenhuma categoria cadastrada. Para continuar é necessario realizar"
                     "o cadastro de pelo menos uma. \n");
             cadastrarCategorias();
-            
+
             return 1;
-            
+
             system("clear");
             printf("=== | CADASTRO DE FILMES | ===\n");
             printf("Continuação do cadastro do filme... ");

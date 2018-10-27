@@ -183,3 +183,32 @@ void edicaoCategoria_tudo(int i) {
         }
     } while (opc != 1);
 }
+//-------------------------------------------------------------------------------
+
+void excluirCategoria() {
+    Strc_Categoria* Categoria = return_Categorias();
+    int cod, verifica = 0, contCat = returnCont_Categorias();
+
+    printf("====== | EXCLUIR CATEGORIA CADASTRADA | ======\n");
+    printf("Digite o codigo da categoria que deseja editar: ");
+    scanf("%d", &cod);
+
+    for (int i = 0; i < contCat; i++) {
+        if (cod == Categoria[i].codigo) {
+            verifica++;
+            do {
+                Categoria[i] = Categoria[i + 1];
+                i++;
+            } while (i < contCat);
+            break;
+        }
+    }
+    if (verifica == 0) {
+        printf("Código inválido. \n");
+    } else {
+        printf("Categoria excluída com sucesso. \n");
+        contCat = contCat - 1;
+        alterarCategorias(Categoria);
+        alterar_contCategorias(contCat);
+    }
+}

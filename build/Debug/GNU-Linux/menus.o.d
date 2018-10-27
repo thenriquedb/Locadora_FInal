@@ -1,6 +1,7 @@
 build/Debug/GNU-Linux/menus.o: menus.c Bibliotecas/menus.h \
  Bibliotecas/cadastros.h Bibliotecas/veriificacaoDeDados.h \
- Bibliotecas/relatorios.h Bibliotecas/structs.h Bibliotecas/gestao.h
+ Bibliotecas/relatorios.h Bibliotecas/structs.h Bibliotecas/gestao.h \
+ Bibliotecas/administracao.h Bibliotecas/alocacao.h
 
 Bibliotecas/menus.h:
 
@@ -13,3 +14,7 @@ Bibliotecas/relatorios.h:
 Bibliotecas/structs.h:
 
 Bibliotecas/gestao.h:
+
+Bibliotecas/administracao.h:
+
+Bibliotecas/alocacao.h:

@@ -203,7 +203,7 @@ void edicaoFornecedor_endereco(int i) {
 //-------------------------------------------------------------------------------
 
 void edicaoFornecedor_telefone(int i) {
-Strc_Fornecedores* Fornecedor = return_Fornecedores();
+    Strc_Fornecedores* Fornecedor = return_Fornecedores();
     int opc;
     char telefone[12];
 
@@ -227,7 +227,7 @@ Strc_Fornecedores* Fornecedor = return_Fornecedores();
 //-------------------------------------------------------------------------------
 
 void edicaoFornecedor_cnpj(int i) {
-Strc_Fornecedores* Fornecedor = return_Fornecedores();
+    Strc_Fornecedores* Fornecedor = return_Fornecedores();
     int opc;
     char cnpj[14];
 
@@ -306,4 +306,39 @@ void edicaoFornecedor_tudo(int i) {
             system("clear");
         }
     } while (opc != 1);
+}
+//-------------------------------------------------------------------------------
+
+void excluirFornecedor() {
+    Strc_Fornecedores* Fornecedor = return_Fornecedores();
+    int cod, verifica = 0, contForn = returnCont_Fornecedores();
+
+    printf("====== | EXCLUIR FORNECEDOR CADASTRADO | ======\n");
+    printf("Digite o codigo do fornecedor que deseja editar: ");
+    scanf("%d", &cod);
+
+    for (int i = 0; i < contForn; i++) {
+        if (cod == Fornecedor[i].codigo) {
+            verifica++;
+            do {
+                Fornecedor[i] = Fornecedor[i + 1];
+                i++;
+            } while (i < contForn);
+            break;
+        }
+    }
+
+    if (verifica == 0) {
+        printf("Código inválido. \n");
+    } else {
+        printf("Fornecedor excluído com sucesso. \n");
+        contForn = contForn-1;
+        
+        if(contForn == 0) {
+            Fornecedor = NULL;
+        }
+        
+        alterarFornecedores(Fornecedor);
+        alterar_contFornecedores(contForn);
+    }
 }

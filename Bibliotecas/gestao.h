@@ -2,6 +2,15 @@
 #define GESTAO_H
 
 /*
+ * --------------------------| EXCLUSÃO DE DADOS |---------------------
+ */
+void excluirCliente();
+void excluirFilme();
+void excluirCategoria();
+void excluirFornecedor();
+void excluirFuncionario();
+
+/*
  * --------------------------| EDIÇÃO DE DADOS DOS CLIENTES |---------------------
  */
 int edicaoCliente();

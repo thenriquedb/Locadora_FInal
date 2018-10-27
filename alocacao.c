@@ -8,6 +8,7 @@
 #include <string.h>
 
 //Estruturas
+Strc_Locadora Locadora;
 Strc_Clientes* Clientes = NULL;
 Strc_Filmes* Filmes = NULL;
 Strc_Categoria* Categorias = NULL;
@@ -168,22 +169,47 @@ int returnCont_Fornecedores() {
 }
 
 //-----------------------| FUNÇÕES PARA ALTERAR DADOS ORIGINAIS |----------------
+
+int armazenarLocadora(Strc_Locadora loc) {
+    Locadora = loc;
+}
+
 void alterarClientes(Strc_Clientes *cl) {
     Clientes = cl;
 }
+void alterar_contClientes(int cont) {
+    contClientesAlocados = cont;
+}
+
 
 void alterarFilmes(Strc_Filmes *fil) {
     Filmes = fil;
 }
+void alterar_contFilmes(int cont) {
+    contFIlmesAlocados = cont;
+}
+
 
 void alterarCategorias(Strc_Categoria *cat) {
     Categorias = cat;
 }
+void alterar_contCategorias(int cont) {
+    contCategoriasAlocados = cont;
+}
+
 
 void alterarFuncionarios(Strc_Funcionario *fun) {
     Funcionarios = fun;
 }
+void alterar_contFuncionarios(int cont) {
+    contFuncionariosAlocados = cont;
+}
+
 
 void alterarFornecedores(Strc_Fornecedores *forn) {
     Fornecedores = forn;
 }
+void alterar_contFornecedores(int cont) {
+    contFornecedoresAlocados = cont;
+}
+

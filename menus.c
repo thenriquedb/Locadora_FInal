@@ -7,6 +7,8 @@
 #include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/relatorios.h"
 #include "Bibliotecas/gestao.h"
+#include "Bibliotecas/administracao.h"
+#include "Bibliotecas/alocacao.h"
 
 void menuCadastro() {
     printf("====== | CADASTROS | ======\n");
@@ -59,23 +61,43 @@ void menuRelatorios() {
 
     switch (selecao()) {
         case 1:
-            subMenuRel_Clientes();
+            if (return_Clientes() != NULL) {
+                subMenuRel_Clientes();
+            } else {
+                printf("Nenhum cliente cadastrado. \n");
+            }
             break;
 
         case 2:
-            subMenuRel_Filmes();
+            if (return_Filmes() != NULL) {
+                subMenuRel_Filmes();
+            } else {
+                printf("Nenhum filme cadastrado. \n");
+            }
             break;
 
         case 3:
-            subMenuRel_Categorias();
+            if (return_Categorias() != NULL) {
+                subMenuRel_Categorias();
+            } else {
+                printf("Nenhuma categoria cadastrado. \n");
+            }
             break;
 
         case 4:
-            subMenuRel_Funcionarios();
+            if (return_Funcionarios() != NULL) {
+                subMenuRel_Funcionarios();
+            } else {
+                printf("Nenhum funcionário cadastrado. \n");
+            }
             break;
 
         case 5:
-            subMenuRel_Fornecedores();
+            if (return_Fornecedores() != NULL) {
+                subMenuRel_Fornecedores();
+            } else {
+                printf("Nenhum fornecedor cadastrado. \n");
+            }
             break;
 
         case 6:
@@ -91,13 +113,13 @@ void menuRelatorios() {
 void menuGestao() {
     int cod;
     /*
-        printf("====== | GESTÃO DE DADOS: EDIÇÃO | ======\n");
-        printf("Edições de dados so podem ser realizados por funcionarios já cadastrados no sistema. \n");
+        printf("====== | GESTÃO DE DADOS | ======\n");
+        printf("Edições ou exclusões de dados so podem ser realizados por funcionarios já cadastrados no sistema. \n");
         printf("Digite o seu codigo de cadastro: ");
         scanf("%d", &cod);
 
         system("clear");
-        if (verificarFuncionario(cod) == 1) {
+        if (verificarCod_Funcionario(cod) == 1) {
      */
     printf("====== | GESTÃO DE DADOS | ======\n"
             "\t1. Editar dados \n"
@@ -110,6 +132,7 @@ void menuGestao() {
             break;
 
         case 2:
+            subMenuGestao_Excluir();
             break;
 
         case 3:
@@ -118,12 +141,31 @@ void menuGestao() {
         default:
             printf("Opção inválida. \n");
     }
-    /*   
-    } else {
-            printf("Código inválido. \n");
-        }
-     * */
+
+    /*  } else {
+          printf("Código inválido. \n");
+      } */
 }
+//------------------------------------------------------------------------------
+
+void menuAdministrativo() {
+    printf("====== | ADMINISTRATIVO | ======\n"
+            "\t1. Compra de novos filmes \n"
+            "\t2. Voltar para o menu principal \n");
+
+    switch (selecao()) {
+        case 1:
+            entradaFilmes();
+            break;
+
+        case 2:
+            break;
+
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+//------------------------------------------------------------------------------
 
 void subMenuGestao_Editar() {
 
@@ -137,24 +179,106 @@ void subMenuGestao_Editar() {
             "\t6. Voltar para o menu principal \n");
 
     switch (selecao()) {
+
         case 1:
-            subMenu_edicaoClientes();
+            if (return_Clientes() != NULL) {
+                subMenu_edicaoClientes();
+            } else {
+                printf("Nenhum cliente cadastrado. \n");
+            }
             break;
 
         case 2:
-            subMenu_edicaoFilmes();
+            if (return_Filmes() != NULL) {
+                subMenu_edicaoFilmes();
+            } else {
+                printf("Nenhum filme cadastrado. \n");
+            }
             break;
 
         case 3:
-            subMenu_edicaoCategorias();
+            if (return_Categorias() != NULL) {
+                subMenu_edicaoCategorias();
+            } else {
+                printf("Nenhuma cetgoria cadastrado. \n");
+            }
             break;
 
         case 4:
-            subMenu_edicaoFuncionarios();
+            if (return_Funcionarios() != NULL) {
+                subMenu_edicaoFuncionarios();
+            } else {
+                printf("Nenhum funcionário cadastrado. \n");
+            }
             break;
 
         case 5:
-            subMenu_edicaoFornecedores();
+            if (return_Fornecedores() != NULL) {
+                subMenu_edicaoFornecedores();
+            } else {
+                printf("Nenhum fornecedor cadastrado. \n");
+            }
+            break;
+
+        case 6:
+            break;
+
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+//------------------------------------------------------------------------------
+
+void subMenuGestao_Excluir() {
+
+    printf("====== | GESTÃO DE DADOS: EXCLUSÃO | ======\n"
+            "Deseja excluir: \n"
+            "\t1. Cliente \n"
+            "\t2. Filme \n"
+            "\t3. Categoria \n"
+            "\t4. Funcionário \n"
+            "\t5. Fornecedor \n"
+            "\t6. Voltar para o menu principal \n");
+
+    switch (selecao()) {
+        case 1:
+            if (return_Clientes() != NULL) {
+                excluirCliente();
+            } else {
+                printf("Nenhum cliente cadastrado. \n");
+            }
+            break;
+
+        case 2:
+            if (return_Filmes() != NULL) {
+                excluirFilme();
+            } else {
+                printf("Nenhum filme cadastrado. \n");
+            }
+            break;
+
+        case 3:
+            if (return_Categorias() != NULL) {
+                excluirCategoria();
+            } else {
+                printf("Nenhuma categoria cadastrado. \n");
+            }
+            break;
+
+        case 4:
+            if (return_Funcionarios() != NULL) {
+                excluirFuncionario();
+            } else {
+                printf("Nenhum funcionário cadastrado. \n");
+            }
+            break;
+
+        case 5:
+            if (return_Fornecedores() != NULL) {
+                excluirFornecedor();
+            } else {
+                printf("Nenhum forncedor cadastrado. \n");
+            }
             break;
 
         case 6:

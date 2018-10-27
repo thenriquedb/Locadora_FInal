@@ -9,6 +9,7 @@
 #include "Bibliotecas/relatorios.h"
 #include "Bibliotecas/gestao.h"
 
+
 int edicaoCliente() {
     int cod, i;
 
@@ -335,4 +336,37 @@ void edicaoCliente_tudo(int i) {
             system("clear");
         }
     } while (opc != 1);
+}
+//-------------------------------------------------------------------------------
+
+void excluirCliente() {
+    Strc_Clientes* Cliente = return_Clientes();
+    int cod, verifica = 0, contCliente = returnCont_Clientes();
+
+    printf("====== | EXCLUIR CLIENTE CADASTRADO | ======\n");
+    printf("Digite o codigo do cliente que deseja editar: ");
+    scanf("%d", &cod);
+
+    for (int i = 0; i < contCliente; i++) {
+        if (cod == Cliente[i].codigo) {
+            verifica++;
+            do {
+                Cliente[i] = Cliente[i + 1];
+                i++;
+            } while (i < contCliente);
+            break;
+         }
+    }
+    if (verifica == 0) {
+        printf("Código inválido. \n");
+    } else {
+        printf("Cliente excluído com sucesso. \n");
+        contCliente = contCliente -1;
+        
+        if(contCliente == 0) {
+            Cliente = NULL;
+        }        
+        alterarClientes(Cliente);
+        alterar_contClientes(contCliente);
+    }
 }

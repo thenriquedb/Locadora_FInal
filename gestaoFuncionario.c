@@ -18,7 +18,7 @@ int edicaoFuncionario() {
 
     if (verificarCod_Funcionario(cod) >= 0) {
         i = verificarCod_Funcionario(cod);
-        
+
         printf("Código %d \n", i);
         system("clear");
         printf("====== | ATUALIZAÇÃO DE DADOS: FUNCIONÁRIO | ======\n");
@@ -238,4 +238,38 @@ void edicaoFuncionario_tudo(int i) {
         }
     } while (opc != 1);
 }
+//-------------------------------------------------------------------------------
 
+void excluirFuncionario() {
+    Strc_Funcionario* Funcionario = return_Funcionarios();
+    int cod, verifica = 0, contFunc = returnCont_Fornecedores();
+
+    printf("====== | EXCLUIR FUNCIONÁRIO CADASTRADO | ======\n");
+    printf("Digite o codigo do funcionário que deseja editar: ");
+    scanf("%d", &cod);
+
+    for (int i = 0; i < contFunc; i++) {
+        if (cod == Funcionario[i].codigo) {
+            verifica++;
+            do {
+                Funcionario[i] = Funcionario[i + 1];
+                i++;
+            } while (i < contFunc);
+            break;
+        }
+    }
+
+    if (verifica == 0) {
+        printf("Código inválido. \n");
+    } else {
+        printf("Funcionário excluído com sucesso. \n");
+        contFunc = contFunc - 1;
+
+        if (contFunc == 0) {
+            Funcionario = NULL;
+        }
+
+        alterarFuncionarios(Funcionario);
+        alterar_contFuncionarios(contFunc);
+    }
+}

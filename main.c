@@ -6,16 +6,20 @@
 #include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/menus.h"
+#include "Bibliotecas/gestao.h"
 
 int main(int argc, char** argv) {
 
+   // cadastrarLocadora();
+    
     do {
         printf("====== | MENU PRINCIPAL | ======\n"
-                "1. Cadastros \n"
-                "2. Gestão de dados \n"
-                "3. Relatórios \n"
-                "4. Importtação e exportação de dados \n"
-                "5. Sair \n");
+                "\t1. Cadastros \n"
+                "\t2. Gestão de dados \n"
+                "\t3. Relatórios \n"
+                "\t4. Administrativo \n"
+                "\t5. Importtação e exportação de dados \n"
+                "\t6. Sair \n");
 
         switch (selecao()) {
             case 1:
@@ -29,8 +33,12 @@ int main(int argc, char** argv) {
             case 3:
                 menuRelatorios();
                 break;
+                
+            case 4:
+                menuAdministrativo();
+                break;
 
-            case 5:
+            case 6:
                 system("clear");
                 printf("Programa encerrado. \n");
                 exit(EXIT_SUCCESS);

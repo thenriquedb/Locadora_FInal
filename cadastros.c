@@ -5,6 +5,8 @@
 #include "Bibliotecas/structs.h"
 #include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/alocacao.h"
+#include "Bibliotecas/menus.h"
+#include "Bibliotecas/relatorios.h"
 
 void cadastrarLocadora() {
     Strc_Locadora Locadora;
@@ -56,7 +58,7 @@ void cadastrarLocadora() {
 
         if (opc == 1) {
             printf("Cadastro concluído com sucesso! \n");
-            armazenarLocadora(Locadora);
+            alterarLocadora(Locadora);
         }
     } while (opc != 1);
 }
@@ -153,12 +155,12 @@ int gerarCodigoCliente() {
 //---------------------------| INICIO CADASTRO FILMES |-------------------------
 
 void cadastrarFilmes() {
-    int opcao, cat;
+    int opcao, codForn, codCat, sair = 0;
     Strc_Filmes Filme;
 
     do {
         printf("=== | CADASTRO DE FILMES | ===\n");
-        Filme.codigo = gerarCodigoFilme();
+
 
         setbuf(stdin, NULL);
         printf("Titulo: ");
@@ -172,7 +174,18 @@ void cadastrarFilmes() {
         printf("Exemplares: ");
         scanf("%d", &Filme.exemplares);
 
-        Filme.codigoCategoria = verificarCategoria();
+        do {
+            printf("Código da categoria: ");
+            scanf("%d", &codForn);
+        } while (verificarCod_Categoria(codForn) < 0);
+        Filme.codigoFornecedor = codForn;
+
+        do {
+            printf("Código do fornecedor: ");
+            scanf("%d", &codCat);
+        } while (verificarCod_Fornecedores(codForn) < 0);
+        Filme.codigoCategoria = codCat;
+
 
         do {
             printf("\nIdioma: \n"
@@ -182,7 +195,14 @@ void cadastrarFilmes() {
             scanf("%d", &Filme.idioma);
         } while (Filme.idioma != 1 && Filme.idioma != 2);
 
+        // Filme.codigoCategoria = verificarCategoria();
+
+        Filme.codigo = gerarCodigoFilme();
         alocarFilmes(&Filme);
+
+        system("clear");
+        printf("DADOS CADASTRADOS \n");
+        imprimeFilmes(returnCont_Filmes() - 1);
 
         do {
             opcao = parar_ou_ContinuarCadastro();
@@ -207,59 +227,47 @@ int gerarCodigoFilme() {
 void cadastrarCategorias() {
     Strc_Categoria categoria;
     int opcao;
-
-    printf("=== | CADASTRO DE CATEGORIAS | ===\n");
-
-    setbuf(stdin, NULL);
-    printf("Nome: ");
-    scanf("%[^\n]s", categoria.nome);
-    setbuf(stdin, NULL);
-
-    printf("Descrição: ");
-    scanf("%[^\n]s", categoria.descricao);
-    setbuf(stdin, NULL);
-
-    printf("Valor da multa de atraso: ");
-    scanf("%f", &categoria.valor);
-
-    categoria.codigo = gerarCodigoCategoria();
-    alocarCategoria(&categoria);
-}
-
-int verificarCategoria() {
-    int i, cont, cat, contCategoriasAlocados = returnCont_Categorias();
-    Strc_Categoria* Categoria = return_Categorias();
-
     do {
-        printf("Digite o codigo da categoria: ");
-        scanf("%d", &cat);
+        printf("=== | CADASTRO DE CATEGORIAS | ===\n");
 
-        if (contCategoriasAlocados == 0) {
-            system("clear");
+        setbuf(stdin, NULL);
+        printf("Nome: ");
+        scanf("%[^\n]s", categoria.nome);
+        setbuf(stdin, NULL);
 
-            printf("Nenhuma categoria cadastrada. Para continuar é necessario realizar"
-                    "o cadastro de pelo menos uma. \n");
-            cadastrarCategorias();
+        printf("Descrição: ");
+        scanf("%[^\n]s", categoria.descricao);
+        setbuf(stdin, NULL);
 
-            return 1;
+        printf("Valor da multa de atraso: ");
+        scanf("%f", &categoria.valor);
 
-            system("clear");
-            printf("=== | CADASTRO DE FILMES | ===\n");
-            printf("Continuação do cadastro do filme... ");
+        categoria.codigo = gerarCodigoCategoria();
+        alocarCategoria(&categoria);
 
+        do {
+            opcao = parar_ou_ContinuarCadastro();
+        } while (opcao != 1 && opcao != 2);
+
+        if (opcao == 2) {
             break;
         }
-
-        for (i = 0; i < contCategoriasAlocados; i++) {
-            if (cat == Categoria[i].codigo) {
-                return i;
-                break;
-            }
-        }
-
-        return -1;
-        printf("Nenhuma categoria com este codigo encontrada. \n");
     } while (1);
+}
+
+int verificarCategoria(int cat) {
+    int i, contCategoriasAlocados = returnCont_Categorias();
+    Strc_Categoria* Categoria = return_Categorias();
+
+    for (i = 0; i < contCategoriasAlocados; i++) {
+        if (cat == Categoria[i].codigo) {
+            return i;
+            break;
+        }
+    }
+
+    return -1;
+    printf("Nenhuma categoria com este codigo encontrada. \n");
 }
 
 int gerarCodigoCategoria() {
@@ -324,7 +332,9 @@ int gerarCodigoFuncionario() {
 //---------------------------| INICIO CADASTRO FORNECEDORES |-------------------
 
 void cadastrarFornecedores() {
-    int opcao;
+    int opcao, cod;
+    int contCatalago = 0;
+
     Strc_Fornecedores Fornecedor;
 
     do {

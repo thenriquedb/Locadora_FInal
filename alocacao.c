@@ -6,6 +6,7 @@
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/structs.h"
 #include <string.h>
+#include <assert.h>
 
 //Estruturas
 Strc_Locadora Locadora;
@@ -17,10 +18,52 @@ Strc_Fornecedores* Fornecedores = NULL;
 
 //Contadores para controle da alocação
 int static contClientesAlocados = 0;
+int static contFilmes_comprados = 0;
 int static contFIlmesAlocados = 0;
 int static contCategoriasAlocados = 0;
 int static contFuncionariosAlocados = 0;
 int static contFornecedoresAlocados = 0;
+
+int alocarEstoque_Locadora(Strc_Locadora* loc) {
+
+    if (Locadora.filmesComprados == NULL) {
+        Locadora.filmesComprados = malloc(sizeof (int));
+    } else {
+        Locadora.filmesComprados = realloc(Locadora.filmesComprados, (contFilmes_comprados + 1) * sizeof (int));
+    }
+
+    Locadora.contFilmes_comprados = contFilmes_comprados;
+
+    if (Locadora.filmesComprados == NULL) {
+        printf("Ocorreu um erro durante a alocação, \n");
+        exit(EXIT_FAILURE);
+    }
+
+    contFilmes_comprados++;
+}
+//-------------------------------------------------------------------------------
+
+int alocarCatalago_Fornecedor(Strc_Fornecedores* forn) {
+
+    if (forn.catalogoFilmes == NULL) {
+        forn->catalogoFilmes = malloc(sizeof (int));
+        Fornecedores->contCatalago = 1;
+    } else {
+        Fornecedores->catalogoFilmes = realloc(Fornecedores->catalogoFilmes, (Fornecedores->contCatalago + 1) * sizeof (int));
+        Fornecedores->contCatalago++;
+    }
+
+    *(Fornecedores->catalogoFilmes + contFilmes_comprados) = *forn->catalogoFilmes;
+
+    if (Fornecedores->catalogoFilmes == NULL) {
+        printf("Ocorreu um erro durante a alocação, \n");
+        exit(EXIT_FAILURE);
+    }
+
+    Fornecedores->catalogoFilmes++;
+}
+
+//-------------------------------------------------------------------------------
 
 int alocarClientes(Strc_Clientes* cl) {
 
@@ -124,6 +167,7 @@ int alocarFornecedores(Strc_Fornecedores* forn) {
 //------------------------------------------------------------------------------
 
 
+
 //-----------------------| FUNÇÕES PARA RETORNO DOS VETORES |--------------------
 
 Strc_Clientes* return_Clientes() {
@@ -170,45 +214,46 @@ int returnCont_Fornecedores() {
 
 //-----------------------| FUNÇÕES PARA ALTERAR DADOS ORIGINAIS |----------------
 
-int armazenarLocadora(Strc_Locadora loc) {
+int alterarLocadora(Strc_Locadora loc) {
     Locadora = loc;
 }
 
 void alterarClientes(Strc_Clientes *cl) {
     Clientes = cl;
 }
+
 void alterar_contClientes(int cont) {
     contClientesAlocados = cont;
 }
 
-
 void alterarFilmes(Strc_Filmes *fil) {
     Filmes = fil;
 }
+
 void alterar_contFilmes(int cont) {
     contFIlmesAlocados = cont;
 }
 
-
 void alterarCategorias(Strc_Categoria *cat) {
     Categorias = cat;
 }
+
 void alterar_contCategorias(int cont) {
     contCategoriasAlocados = cont;
 }
 
-
 void alterarFuncionarios(Strc_Funcionario *fun) {
     Funcionarios = fun;
 }
+
 void alterar_contFuncionarios(int cont) {
     contFuncionariosAlocados = cont;
 }
 
-
 void alterarFornecedores(Strc_Fornecedores *forn) {
     Fornecedores = forn;
 }
+
 void alterar_contFornecedores(int cont) {
     contFornecedoresAlocados = cont;
 }

@@ -176,7 +176,7 @@ void filFilmes_Idioma() {
 
             for (i = 0; i < contF; i++) {
                 if (opc == Filme[i].idioma) {
-                    printf("====== | %dº CLIENTE | ======\n", cont + 1);
+                    printf("====== | %dº FILME | ======\n", cont + 1);
                     imprimeFilmes(i);
                     cont++;
                 }
@@ -192,12 +192,16 @@ void filFilmes_Idioma() {
 
 void imprimeFilmes(int i) {
     Strc_Filmes* Filme = return_Filmes();
+    Strc_Fornecedores* Fornecedor = return_Fornecedores();
     Strc_Categoria* Categoria = return_Categorias();
+
     int posCategoria = Filme[i].codigoCategoria - 1;
+    int posFornecedor = Filme[i].codigoFornecedor - 1;
 
     printf("\tTítulo: %s \n", Filme[i].nome);
     printf("\tDescrição: %s \n", Filme[i].descricao);
-
+    printf("\tCodígo uníco: %d \n", Filme[i].codigo);
+    printf("\tFornecedor: %s (%d)\n", Fornecedor[0].razaoScial, Filme[i].codigoFornecedor);
     printf("\tIdioma: ");
     if (Filme[i].idioma == 1) {
         printf("Dublado \n");

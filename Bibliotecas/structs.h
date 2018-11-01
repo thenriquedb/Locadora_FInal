@@ -13,6 +13,10 @@ typedef struct {
     char email[150];
     char nomeResponsavel[100];
 
+    //Administração
+    int *filmesComprados;
+    int contFilmes_comprados;
+    
     float valorMulta;
 } Strc_Locadora;
 
@@ -39,6 +43,7 @@ typedef struct {
 
     int codigo;
     int codigoCategoria;
+    int codigoFornecedor;
     int exemplares;
     int idioma;
 } Strc_Filmes;
@@ -76,6 +81,8 @@ typedef struct {
     char cnpj[14];
     char email[150];
 
+    int *catalogoFilmes;
+    int contCatalago;
     int codigo;
 } Strc_Fornecedores;
 

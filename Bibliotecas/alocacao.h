@@ -9,7 +9,7 @@
  */
 
 /* Função responsavel por fazer a aloção de memoria para armazenar os clientes*/
-int armazenarLocadora(Strc_Locadora loc);
+int alterarLocadora(Strc_Locadora loc);
 
 /* Função responsavel por fazer a aloção de memoria para armazenar os clientes*/
 int alocarClientes(Strc_Clientes* cl);

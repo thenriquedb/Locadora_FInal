@@ -17,7 +17,7 @@ void menuCadastro() {
             "\t3. Cadastrar categoria \n"
             "\t4. Cadastrar funcionarios \n"
             "\t5. Cadastrar fonecedores \n"
-            "\t6. Retornar ao menu principal");
+            "\t6. Retornar ao menu principal \n\n");
 
     switch (selecao()) {
         case 1:
@@ -25,7 +25,11 @@ void menuCadastro() {
             break;
 
         case 2:
+            if(return_Fornecedores() != NULL && return_Categorias() != NULL) {
             cadastrarFilmes();
+            }else {
+                printf("Antes de cadastrar algum filme é necessario cadastrar um fornecedor primeiro. \n ");
+            }
             break;
 
         case 3:

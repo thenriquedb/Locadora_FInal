@@ -22,9 +22,6 @@ void filClientes_Sexo();
 /* Função para filtrar pelo CPF os clientes cadastrados */
 void filClientes_CPF();
 
-/* Imprimir todos os dados de um cliente cadastrado */
-void imprimeClientes(int i);
-
 //-------------------------| RELATORIO FILMES |---------------------------------
 
 /* Imprimir todos os dados de um filmes cadastrado */
@@ -45,9 +42,6 @@ void filFilmes_Idioma();
 /* Função para filtrar pela quantidade de exemplares os filmes cadastrados */
 void filFilmes_Exemplares();
 
-/* Função para mostrar todos os filmes cadastrados */
-void imprimeFilmes(int i);
-
 //-------------------------| RELATORIO CATEGORIAS |---------------------------------
 
 /* Imprimir todos os dados de um categorias cadastrado */
@@ -61,9 +55,6 @@ void filCategorias_FaixaCodigo();
 
 /*Função para filtrar pelo nome os categorias cadastrados */
 void filCategoria_Nome();
-
-/* Função para mostrar todos os categorias cadastrados */
-void imprimeCategorias(int i);
 
 //-------------------------| RELATORIO FUNCIONARIOS |---------------------------------
 
@@ -81,9 +72,6 @@ void filFuncionarios_Nome();
 
 /*Função para filtrar pelo nome os funcionarios cadastrados */
 void filFuncionarios_Cargo();
-
-/* Função para mostrar todos os funcionarios cadastrados */
-void imprimeFuncionarios(int i);
 
 //-------------------------| RELATORIO FORNECEDORES |---------------------------------
 
@@ -107,9 +95,6 @@ void filFornecedores_CNPJ();
 
 /*Função para filtrar pela inscricao social os fornecedores cadastrados */
 void filFornecedores_InscricaoSocial();
-
-/* Função para mostrar todos os funcionarios cadastrados */
-void imprimeFornecedores(int i);
 
 //---------------------------------| OUTROS |-----------------------------------
 int chamarMenu_Relatorio();

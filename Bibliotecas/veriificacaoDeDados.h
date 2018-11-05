@@ -23,6 +23,8 @@ int verificarCod_Funcionario(int cod);
 /* Verificar se o codigo do fornecedor existe */
 int verificarCod_Fornecedores(int cod);
 
+int verificarExemplares_Filmes(int id, int quant);
+
 /*Retorna a opÃ§Ã£o digitada pelo usuario*/
 int selecao();
 

@@ -37,7 +37,7 @@ int selecao() {
 //-------------------------------------------------------------------------------
 
 int parar_ou_ContinuarCadastro() {
-    int opcao;
+ int opcao;
 
     do {
         printf("\nDigte 1 para continuar cadastrando ou 2 para voltar para o menu principal: ");
@@ -109,7 +109,6 @@ int verificarCod_Filme(int cod) {
 }
 //-------------------------------------------------------------------------------
 
-
 int verificarCod_Fornecedores(int cod) {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
     int cont = returnCont_Fornecedores();
@@ -138,8 +137,26 @@ int verificarCod_Categoria(int cod) {
     }
     if (verificar == 0) {
         system("clear");
-        printf("\tCategoria inválida! \n");
+        printf("Categoria inválida! \n");
         return -1;
     }
 }
 
+//------------------------------------------------------------------------------
+
+int verificarExemplares_Filmes(int id, int quant) {
+    Strc_Filmes* Filme = return_Filmes();
+    int cont = returnCont_Filmes();
+
+    if (Filme[id - 1].exemplares >= quant) {
+        return 1;
+    } else {
+        if (Filme[id - 1].exemplares == 0) {
+            printf("Esgotado. \n");
+            return 3;
+        } else {
+            printf("Estoque insuficiente. Ainda resta %d exemplares no estoque. \n", Filme[id - 1].exemplares);
+            return 0;
+        }
+    }
+}

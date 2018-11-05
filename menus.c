@@ -25,10 +25,10 @@ void menuCadastro() {
             break;
 
         case 2:
-            if(return_Fornecedores() != NULL && return_Categorias() != NULL) {
-            cadastrarFilmes();
-            }else {
-                printf("Antes de cadastrar algum filme é necessario cadastrar um fornecedor primeiro. \n ");
+            if (return_Fornecedores() != NULL && return_Categorias() != NULL) {
+                cadastrarFilmes();
+            } else {
+                / printf("Antes de cadastrar algum filme é necessario cadastrar um fornecedor primeiro. \n ");
             }
             break;
 
@@ -116,27 +116,51 @@ void menuRelatorios() {
 
 void menuGestao() {
     int cod;
-    /*
-        printf("====== | GESTÃO DE DADOS | ======\n");
-        printf("Edições ou exclusões de dados so podem ser realizados por funcionarios já cadastrados no sistema. \n");
-        printf("Digite o seu codigo de cadastro: ");
-        scanf("%d", &cod);
 
-        system("clear");
-        if (verificarCod_Funcionario(cod) == 1) {
-     */
-    printf("====== | GESTÃO DE DADOS | ======\n"
-            "\t1. Editar dados \n"
-            "\t2. Excluir dadas \n"
+    printf("====== | GESTÃO DE DADOS | ======\n");
+    printf("Edições ou exclusões de dados so podem ser realizados por funcionarios já cadastrados no sistema. \n");
+    printf("Digite o seu codigo de cadastro: ");
+    scanf("%d", &cod);
+
+    system("clear");
+    if (verificarCod_Funcionario(cod) == 1) {
+
+        printf("====== | GESTÃO DE DADOS | ======\n"
+                "\t1. Editar dados \n"
+                "\t2. Excluir dadas \n"
+                "\t3. Voltar para o menu principal \n");
+
+        switch (selecao()) {
+            case 1:
+                subMenuGestao_Editar();
+                break;
+
+            case 2:
+                subMenuGestao_Excluir();
+                break;
+
+            case 3:
+                break;
+
+            default:
+                printf("Opção inválida. \n");
+        }
+
+    } else {
+        printf("Código inválido. \n");
+    }
+}
+//------------------------------------------------------------------------------
+
+void menuLocacao() {
+    printf("====== | LOCAÇÃO | ======\n\n"
+            "\t1. Locação de filmes \n"
+            "\t2. Devolução de filmes \n"
             "\t3. Voltar para o menu principal \n");
 
     switch (selecao()) {
         case 1:
-            subMenuGestao_Editar();
-            break;
-
-        case 2:
-            subMenuGestao_Excluir();
+            locacaoFilmes();
             break;
 
         case 3:
@@ -145,24 +169,27 @@ void menuGestao() {
         default:
             printf("Opção inválida. \n");
     }
-
-    /*  } else {
-          printf("Código inválido. \n");
-      } */
 }
 //------------------------------------------------------------------------------
 
 void menuAdministrativo() {
-    printf("====== | ADMINISTRATIVO | ======\n"
-            "\t1. Compra de novos filmes \n"
-            "\t2. Voltar para o menu principal \n");
+    printf("====== | ADMINISTRATIVO | ======\n\n"
+            "\t1. Contas a receber \n"
+            "\t2. Cadastro de filmes \n"
+            "\t3. Entrada de filmes \n "
+            "\t4. Voltar para o menu principal \n");
 
     switch (selecao()) {
         case 1:
-            entradaFilmes();
+            locacaoFilmes();
             break;
 
         case 2:
+            cadastrarFilmes();
+            break;
+
+        case 3:
+            entradaFilmes();
             break;
 
         default:

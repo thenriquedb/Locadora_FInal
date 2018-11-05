@@ -1,11 +1,9 @@
-build/Debug/GNU-Linux/cadastros.o: cadastros.c Bibliotecas/cadastros.h \
- Bibliotecas/structs.h Bibliotecas/veriificacaoDeDados.h \
+build/Debug/GNU-Linux/edicaoDados.o: edicaoDados.c \
+ Bibliotecas/cadastros.h Bibliotecas/veriificacaoDeDados.h \
  Bibliotecas/alocacao.h Bibliotecas/structs.h Bibliotecas/menus.h \
- Bibliotecas/relatorios.h GUI.h
+ Bibliotecas/relatorios.h Bibliotecas/gestao.h
 
 Bibliotecas/cadastros.h:
-
-Bibliotecas/structs.h:
 
 Bibliotecas/veriificacaoDeDados.h:
 
@@ -17,4 +15,4 @@ Bibliotecas/menus.h:
 
 Bibliotecas/relatorios.h:
 
-GUI.h:
+Bibliotecas/gestao.h:

@@ -4,6 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Arquivos de Cabeçalho"
                    projectFiles="true">
+      <itemPath>GUI.h</itemPath>
       <itemPath>Bibliotecas/administracao.h</itemPath>
       <itemPath>alocacao.h</itemPath>
       <itemPath>cadastros.h</itemPath>
@@ -17,19 +18,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Arquivos de Código-Fonte"
                    projectFiles="true">
+      <itemPath>GUI.c</itemPath>
       <itemPath>administracao.c</itemPath>
       <itemPath>alocacao.c</itemPath>
       <itemPath>cadastros.c</itemPath>
-      <itemPath>filtrosRel_Categorias.c</itemPath>
-      <itemPath>filtrosRel_Clientes.c</itemPath>
-      <itemPath>filtrosRel_Filmes.c</itemPath>
-      <itemPath>filtrosRel_Fornecedores.c</itemPath>
-      <itemPath>filtrosRel_Funcionarios.c</itemPath>
-      <itemPath>gestaoCategoria.c</itemPath>
-      <itemPath>gestaoCliente.c</itemPath>
-      <itemPath>gestaoFIlme.c</itemPath>
-      <itemPath>gestaoFornecedores.c</itemPath>
-      <itemPath>gestaoFuncionario.c</itemPath>
+      <itemPath>edicaoDados.c</itemPath>
+      <itemPath>excluirDados.c</itemPath>
+      <itemPath>filtrosRelatorios.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>menus.c</itemPath>
       <itemPath>verificacaoDeDados.c</itemPath>
@@ -42,6 +37,12 @@
                    displayName="Arquivos de Teste"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
+      <logicalFolder name="f1"
+                     displayName="testeLocacao"
+                     projectFiles="true"
+                     kind="TEST">
+        <itemPath>tests/newsimpletest.c</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Arquivos Importantes"
@@ -66,6 +67,10 @@
       </item>
       <item path="Bibliotecas/interface.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="GUI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="GUI.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="administracao.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="alocacao.c" ex="false" tool="0" flavor2="0">
@@ -76,25 +81,26 @@
       </item>
       <item path="cadastros.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="filtrosRel_Categorias.c" ex="false" tool="0" flavor2="0">
+      <item path="edicaoDados.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="filtrosRel_Clientes.c" ex="false" tool="0" flavor2="0">
+      <item path="excluirDados.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="filtrosRel_Filmes.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="filtrosRel_Fornecedores.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="filtrosRel_Funcionarios.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="gestaoCategoria.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="gestaoCliente.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="gestaoFIlme.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="gestaoFornecedores.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="gestaoFuncionario.c" ex="false" tool="0" flavor2="0">
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
+      <item path="filtrosRelatorios.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -105,6 +111,8 @@
       <item path="relatorios.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/newsimpletest.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="verificacaoDeDados.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -137,6 +145,10 @@
       </item>
       <item path="Bibliotecas/interface.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="GUI.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="GUI.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="administracao.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="alocacao.c" ex="false" tool="0" flavor2="0">
@@ -147,25 +159,26 @@
       </item>
       <item path="cadastros.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="filtrosRel_Categorias.c" ex="false" tool="0" flavor2="0">
+      <item path="edicaoDados.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="filtrosRel_Clientes.c" ex="false" tool="0" flavor2="0">
+      <item path="excluirDados.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="filtrosRel_Filmes.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="filtrosRel_Fornecedores.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="filtrosRel_Funcionarios.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="gestaoCategoria.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="gestaoCliente.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="gestaoFIlme.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="gestaoFornecedores.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="gestaoFuncionario.c" ex="false" tool="0" flavor2="0">
+      <folder path="TestFiles/f1">
+        <cTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </cTool>
+        <ccTool>
+          <incDir>
+            <pElem>.</pElem>
+          </incDir>
+        </ccTool>
+        <linkerTool>
+          <output>${TESTDIR}/TestFiles/f1</output>
+        </linkerTool>
+      </folder>
+      <item path="filtrosRelatorios.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -176,6 +189,8 @@
       <item path="relatorios.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="structs.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="tests/newsimpletest.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="verificacaoDeDados.c" ex="false" tool="0" flavor2="0">
       </item>

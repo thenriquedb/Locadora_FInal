@@ -26,6 +26,12 @@ int alocarFuncionarios(Strc_Funcionario* func);
 /* Função responsavel por fazer a aloção de memoria para armazenar os funcionarios*/
 int alocarFornecedores(Strc_Fornecedores* forn);
 
+//
+int* alocar_CatalagoFornecedor(int* str, int cont);
+
+//
+int* alocar_FilmesComprados(int* str, int cont);
+
 /* Funçao usada durante o cadastro de filmes para verificar se a categoria no qual
  o usuario quer realizar o cadastro de um novo filme é valida.*/
 int verificarCategoria();
@@ -34,6 +40,7 @@ int verificarCategoria();
 /*
  * -----------------------| FUNÇÕES PARA RETORNAR OS VETORES |----------------
  */
+Strc_Locadora return_Locadora();
 
 /* Função que retorna o vetor de clientes */
 Strc_Clientes* return_Clientes();
@@ -77,7 +84,7 @@ void alterarFilmes(Strc_Filmes *fil);
 void alterarCategorias(Strc_Categoria *cat);
 void alterarFuncionarios(Strc_Funcionario *fun);
 void alterarFornecedores(Strc_Fornecedores *forn);
-
+int alterarLocadora(Strc_Locadora loc);
 
 void alterar_contClientes(int cont);
 void alterar_contFilmes(int cont);

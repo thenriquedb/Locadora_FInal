@@ -1,13 +1,54 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "Bibliotecas/structs.h"
-#include "Bibliotecas/relatorios.h"
-#include "Bibliotecas/cadastros.h"
 #include "Bibliotecas/alocacao.h"
-#include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/menus.h"
+
+void imprimeCategorias(int i) {
+    Strc_Categoria* Categoria = return_Categorias();
+
+    printf("\tNome: %s \n", Categoria[i].nome);
+    printf("\tDescrição: %s \n", Categoria[i].descricao);
+    printf("\tCódigo: %d \n", Categoria[i].codigo);
+    printf("\tValor da multa de atraso: R$ %.2f \n", Categoria[i].valor);
+}
+
+void imprimeClientes(int i) {
+    Strc_Clientes* Cliente = return_Clientes();
+
+    printf("\tNome: %s \n", Cliente[i].nome);
+    printf("\tData de nascimento: %s \n", Cliente[i].data_nascimento);
+    printf("\tCodigo: %d \n", Cliente[i].codigo);
+    printf("\tEndereço completo: %s \n", Cliente[i].endereco);
+    printf("\tCPF: %s \n", Cliente[i].cpf);
+    printf("\tTelefone: %s \n", Cliente[i].telefone);
+    printf("\tEmail: %s \n", Cliente[i].email);
+
+    printf("\tSexo: ");
+    if (Cliente[i].opc_sexo == 1) {
+        printf("Mascukino \n");
+    } else if (Cliente[i].opc_sexo == 2) {
+        printf("Feminino \n");
+    }
+
+    printf("\tEstado civil: ");
+    if (Cliente[i].estado_civi == 1) {
+        printf("Solteiro(a) \n\n");
+    } else if (Cliente[i].estado_civi == 2) {
+        printf("Casado(a) \n\n");
+    } else if (Cliente[i].estado_civi == 3) {
+        printf("Divorciado(a) \n\n");
+    } else if (Cliente[i].estado_civi == 4) {
+        printf("Viúvo(a) \n\n");
+    } else if (Cliente[i].estado_civi == 5) {
+        printf("Separado(a) \n\n");
+    }
+    printf("|-------------------------------------------------------------------|\n");
+}
+//-------------------------------------------------------------------------------
 
 void filFuncionarios_Todos() {
     Strc_Funcionario* Funcionario = return_Funcionarios();
@@ -104,7 +145,7 @@ void filFuncionarios_Codigo() {
 void filFuncionarios_Nome() {
     Strc_Funcionario* Funcionario = return_Funcionarios();
     int i, cont = 0, cod, contFun = returnCont_Funcionarios();
-   char nome[100];
+    char nome[100];
 
     if (Funcionario != NULL) {
         do {
@@ -136,7 +177,7 @@ void filFuncionarios_Nome() {
 void filFuncionarios_Cargo() {
     Strc_Funcionario* Funcionario = return_Funcionarios();
     int i, cont = 0, cod, contFun = returnCont_Funcionarios();
-   char cargo[100];
+    char cargo[100];
 
     if (Funcionario != NULL) {
         do {
@@ -174,4 +215,51 @@ void imprimeFuncionarios(int i) {
     printf("\tEmail: %s \n", Funcionario[i].email);
     printf("\tCargo: %s \n", Funcionario[i].cargo);
     printf("\tCódigo: %d \n", Funcionario[i].codigo);
+}
+//-------------------------------------------------------------------------------
+
+void imprimeFornecedores(int i) {
+    Strc_Fornecedores* Fornecedor = return_Fornecedores();
+    Strc_Filmes* Filme = return_Filmes();
+
+    printf("\tRazão Social: %s \n", Fornecedor[i].razaoScial);
+    printf("\tNome Fantasia: %s \n", Fornecedor[i].nomeFantasia);
+    printf("\tEndereço: %s \n", Fornecedor[i].endereco);
+    printf("\tTelefone: %s \n", Fornecedor[i].telefone);
+    printf("\tEmail: %s \n", Fornecedor[i].email);
+    printf("\tCNPJ: %s \n", Fornecedor[i].cnpj);
+    printf("\tInscrição social: %s \n\n", Fornecedor[i].inscricaooSocial);
+
+    printf("Filmes disponiveis: \n");
+    for (int j = 0; j < Fornecedor[i].contCatalago; j++) {
+        int posFil = Fornecedor[i].catalogoFilmes[j] - 1;
+        printf("\t %d. %s \n", Fornecedor[i].catalogoFilmes[j], Filme[posFil].nome);
+
+    }
+}
+//-------------------------------------------------------------------------------
+
+void imprimeFilmes(int i) {
+    Strc_Filmes* Filme = return_Filmes();
+    Strc_Fornecedores* Fornecedor = return_Fornecedores();
+    Strc_Categoria* Categoria = return_Categorias();
+
+    int posCategoria = Filme[i].codigoCategoria - 1;
+    int posFornecedor = Filme[i].codigoFornecedor - 1;
+
+    printf("\tTítulo: %s \n", Filme[i].nome);
+    printf("\tDescrição: %s \n", Filme[i].descricao);
+    printf("\tCodígo uníco: %d \n", Filme[i].codigo);
+    printf("\tFornecedor: %s (%d)\n", Fornecedor[i].razaoScial, Filme[i].codigoFornecedor);
+    printf("\tFornecedor: %d \n", Filme[i].codigoFornecedor);
+
+    printf("\tIdioma: ");
+    if (Filme[i].idioma == 1) {
+        printf("Dublado \n");
+    } else {
+        printf("Legendado \n");
+    }
+
+    printf("\tCategoria: %s (%d) \n", Categoria[posCategoria].nome, Filme[i].codigoCategoria);
+    printf("\tExemplares disponiveis: %d \n", Filme[i].exemplares);
 }

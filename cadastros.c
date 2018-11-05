@@ -7,6 +7,7 @@
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/menus.h"
 #include "Bibliotecas/relatorios.h"
+#include "GUI.h"
 
 void cadastrarLocadora() {
     Strc_Locadora Locadora;
@@ -155,12 +156,12 @@ int gerarCodigoCliente() {
 //---------------------------| INICIO CADASTRO FILMES |-------------------------
 
 void cadastrarFilmes() {
-    int opcao, codForn, codCat, sair = 0;
+    int opcao, codForn, codCat, sair = 0, posCatalago, PosForn;
     Strc_Filmes Filme;
+    Strc_Fornecedores* Fornecedor = return_Fornecedores();
 
     do {
         printf("=== | CADASTRO DE FILMES | ===\n");
-
 
         setbuf(stdin, NULL);
         printf("Titulo: ");
@@ -174,17 +175,22 @@ void cadastrarFilmes() {
         printf("Exemplares: ");
         scanf("%d", &Filme.exemplares);
 
+
         do {
             printf("Código da categoria: ");
-            scanf("%d", &codForn);
-        } while (verificarCod_Categoria(codForn) < 0);
-        Filme.codigoFornecedor = codForn;
+            scanf("%d", &codCat);
+        } while (verificarCod_Categoria(codCat) < 0);
+        Filme.codigoCategoria = codCat;
+
 
         do {
             printf("Código do fornecedor: ");
-            scanf("%d", &codCat);
+            scanf("%d", &codForn);
         } while (verificarCod_Fornecedores(codForn) < 0);
-        Filme.codigoCategoria = codCat;
+        Filme.codigoFornecedor = codForn;
+
+        PosForn = codForn - 1;
+        posCatalago = Fornecedor[PosForn].contCatalago;
 
 
         do {
@@ -195,9 +201,14 @@ void cadastrarFilmes() {
             scanf("%d", &Filme.idioma);
         } while (Filme.idioma != 1 && Filme.idioma != 2);
 
-        // Filme.codigoCategoria = verificarCategoria();
-
         Filme.codigo = gerarCodigoFilme();
+        Filme.codigoCategoria = codCat;
+
+        Fornecedor[PosForn].catalogoFilmes = alocar_CatalagoFornecedor(Fornecedor[PosForn].catalogoFilmes, Fornecedor[PosForn].contCatalago);
+        Fornecedor[PosForn].catalogoFilmes[posCatalago] = Filme.codigo;
+        Fornecedor[PosForn].contCatalago++;
+
+        alterarFornecedores(Fornecedor);
         alocarFilmes(&Filme);
 
         system("clear");
@@ -332,8 +343,7 @@ int gerarCodigoFuncionario() {
 //---------------------------| INICIO CADASTRO FORNECEDORES |-------------------
 
 void cadastrarFornecedores() {
-    int opcao, cod;
-    int contCatalago = 0;
+    int codFil, opcao, cod, contCatalago = 0;
 
     Strc_Fornecedores Fornecedor;
 
@@ -370,6 +380,8 @@ void cadastrarFornecedores() {
         setbuf(stdin, NULL);
 
         Fornecedor.codigo = gerarCodigoFornecedores();
+        Fornecedor.catalogoFilmes = NULL;
+        Fornecedor.contCatalago = 0;
 
         system("clear");
         alocarFornecedores(&Fornecedor);

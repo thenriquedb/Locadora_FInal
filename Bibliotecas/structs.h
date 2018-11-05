@@ -14,13 +14,16 @@ typedef struct {
     char nomeResponsavel[100];
 
     //Administração
+    float caixa;
+    float contas_receber;
     int *filmesComprados;
     int contFilmes_comprados;
-    
+
     float valorMulta;
 } Strc_Locadora;
 
 //Struct Clientes
+
 typedef struct {
     char nome[100];
     char endereco[150];
@@ -29,7 +32,10 @@ typedef struct {
     char cpf[11];
     char data_nascimento[10];
 
-    float devendo;
+    float vlr_devendo;
+    int quantParcela;
+    
+    int devendo;
     int codigo;
     int opc_sexo;
     int estado_civi;

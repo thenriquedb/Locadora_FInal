@@ -4,7 +4,6 @@
 #include "structs.h"
 
 void entradaFilmes();
-void comprarFilme(int i);
+void locacaoFilmes();
 
 #endif /* ADMINISTRACAO_H */
-

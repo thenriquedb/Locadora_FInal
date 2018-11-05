@@ -42,27 +42,25 @@ int alocarEstoque_Locadora(Strc_Locadora* loc) {
     contFilmes_comprados++;
 }
 //-------------------------------------------------------------------------------
-
-int alocarCatalago_Fornecedor(Strc_Fornecedores* forn) {
-
-    if (forn.catalogoFilmes == NULL) {
-        forn->catalogoFilmes = malloc(sizeof (int));
-        Fornecedores->contCatalago = 1;
+int* alocar_CatalagoFornecedor(int* str, int cont) {
+    if (str == NULL) {
+        str = malloc(sizeof (int));
     } else {
-        Fornecedores->catalogoFilmes = realloc(Fornecedores->catalogoFilmes, (Fornecedores->contCatalago + 1) * sizeof (int));
-        Fornecedores->contCatalago++;
+        str = realloc(str, sizeof (int)*(cont + 1));
     }
 
-    *(Fornecedores->catalogoFilmes + contFilmes_comprados) = *forn->catalogoFilmes;
-
-    if (Fornecedores->catalogoFilmes == NULL) {
-        printf("Ocorreu um erro durante a alocação, \n");
-        exit(EXIT_FAILURE);
-    }
-
-    Fornecedores->catalogoFilmes++;
+    return str;
 }
+//-------------------------------------------------------------------------------
+int* alocar_FilmesComprados(int* str, int cont) {
+    if (str == NULL) {
+        str = malloc(sizeof (int));
+    } else {
+        str = realloc(str, sizeof (int)*(cont + 1));
+    }
 
+    return str;
+}
 //-------------------------------------------------------------------------------
 
 int alocarClientes(Strc_Clientes* cl) {
@@ -169,6 +167,10 @@ int alocarFornecedores(Strc_Fornecedores* forn) {
 
 
 //-----------------------| FUNÇÕES PARA RETORNO DOS VETORES |--------------------
+
+Strc_Locadora return_Locadora() {
+    return Locadora;
+}
 
 Strc_Clientes* return_Clientes() {
     return Clientes;

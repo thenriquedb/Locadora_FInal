@@ -7,7 +7,6 @@
 /*
  * -----------------------| FUNÇÕES DE ALOCAÇÃO |----------------
  */
-
 /* Função responsavel por fazer a aloção de memoria para armazenar os clientes*/
 int alterarLocadora(Strc_Locadora loc);
 
@@ -26,11 +25,15 @@ int alocarFuncionarios(Strc_Funcionario* func);
 /* Função responsavel por fazer a aloção de memoria para armazenar os funcionarios*/
 int alocarFornecedores(Strc_Fornecedores* forn);
 
+int alocarNotasFiscais(Strc_notaFiscal* nota);
+
 //
 int* alocar_CatalagoFornecedor(int* str, int cont);
 
 //
 int* alocar_FilmesComprados(int* str, int cont);
+
+Strc_MinimalFilmes* alocar_MinimalFilmes(Strc_MinimalFilmes* str, int cont);
 
 /* Funçao usada durante o cadastro de filmes para verificar se a categoria no qual
  o usuario quer realizar o cadastro de um novo filme é valida.*/
@@ -57,6 +60,8 @@ Strc_Funcionario* return_Funcionarios();
 /* Função que retorna o vetor de fornecedores */
 Strc_Fornecedores* return_Fornecedores();
 
+Strc_notaFiscal* return_NotasFiscais();
+
 /*
  * -----------------------| FUNÇÕES PARA RETORNAR CONTADORES |----------------
  */
@@ -75,6 +80,8 @@ int returnCont_Funcionarios();
 
 /* Funções para retornar a quantidade de fornecedores alocados */
 int returnCont_Fornecedores();
+
+int returnCont_NotasFiscais();
 
 /*
  * -----------------------| FUNÇÕES PARA ALTERAR DADOS ORIGINAIS |----------------

@@ -10,42 +10,101 @@
 #include "Bibliotecas/alocacao.h"
 
 void entradaFilmes() {
-    int i, cod;
+    int i, opc, codFor, CodFil, PosForn, PosFil, contCompras = 0, quantCopias, totalCopias = 0;
+    float total = 0, somatorio = 0, totalFrete, totalImposto, freteUnidade, impostoUnidade;
 
-    printf("====== | COMPRAS DE NOVOS FILMES | ======\n"
-            "\t1. Visualizar fornecedores cadastrados \n"
-            "\t2. Cadastrar novo fornecedor \n"
-            "\t3. Escolher fornecedor através do codigo \n"
-            "\t4. Voltar ao menu principal \n");
+    Strc_Fornecedores* Fornecedor = return_Fornecedores();
+    Strc_Filmes* Filme = return_Filmes();
+    Strc_Locadora Locadora = return_Locadora();
+
+    Strc_notaFiscal Notas;
+    Notas.Itens = NULL;
+
+    printf("====== | ENTRADA DE FILMES |======\n");
     do {
-        switch (selecao()) {
-            case 1:
-                subMenuRel_Fornecedores();
-                break;
+        printf("Digite o código do fornecedor: ");
+        scanf("%d", &codFor);
+    } while (verificarCod_Fornecedores(codFor) < 0);
+    PosForn = codFor - 1;
+    system("clear");
 
-            case 2:
-                cadastrarFornecedores();
-                break;
+    do {
+        printf("====== | ENTRADA DE FILMES |======\n");
+        printf("%dº PRODUTO \n", contCompras + 1);
+        
+        do {
+            printf("Digite o código do filme desejado: ");
+            scanf("%d", &CodFil);
+        } while (verificarFilme_Fornecedor(PosForn, CodFil, Fornecedor[PosForn].contCatalago) != 1);
+        PosFil = CodFil - 1;
 
-            case 3:
-                printf("Digite o codigo do fornecedor que deseja comprar: ");
-                scanf("%d", &cod);
+        do {
+            printf("Total de cópias: ");
+            scanf("%d", &quantCopias);
+        } while (verificarNumeroPositivoINT(quantCopias) != 1);
 
-                if (verificarCod_Fornecedores(cod) >= 0) {
-                    i = verificarCod_Fornecedores(cod);
-                } else {
-                    printf("Codigo inválido. \n");
-                }
-                break;
+        printf("Opções: \n"
+                "\t1. Confirmar \n"
+                "\t2. Corrigir \n");
+        opc = selecao();
 
-            case 4:
-                break;
+        if (opc == 1) {
+            Notas.Itens = alocar_MinimalFilmes(Notas.Itens, contCompras);
+            Locadora.filmesComprados = alocar_FilmesComprados(Locadora.filmesComprados, Locadora.contFilmes_comprados);
 
-            default:
-                printf("Opção inválida. \n");
+            Locadora.filmesComprados[PosFil] = CodFil;
+            Filme[PosFil].exemplares += quantCopias;
+
+            total = Filme[PosFil].precoCompra*quantCopias; // Valor total da compra de cada produto
+            somatorio += total; //Soma de todas as compras
+            totalCopias += quantCopias;
+            
+            Notas.Itens[contCompras].codFilme = CodFil;
+            Notas.Itens[contCompras].preco = Filme[CodFil - 1].precoCompra;
+            Notas.Itens[contCompras].quant = quantCopias;
+            Notas.Itens[contCompras].total = total;
+
+            contCompras++;
+            Notas.contItens = contCompras;
+            Locadora.contFilmes_comprados++;
         }
-        break;
-    } while (1);
+        
+        printf("Oppções \n"
+                "\t1. Comprar mais filmes \n"
+                "\t2. Encerrar \n");
+        opc = selecao();
+
+    } while (opc != 2);
+
+    system("clear");
+    printf("Finalizando... \n");
+    
+    printf("\tFrete: ");
+    scanf("%f", &totalFrete);
+
+    printf("\tImposto: ");
+    scanf("%f", &totalImposto);
+
+    Notas.codForn = codFor;
+    Notas.freteUnidade = totalFrete / totalCopias;
+    Notas.impostoUnidade = totalImposto / totalCopias;
+    Notas.precoFrete = totalFrete;
+    Notas.precoImposto = totalImposto;
+    Notas.totalNF = somatorio + totalFrete + totalImposto;
+
+    alocarNotasFiscais(&Notas);
+    alterarLocadora(Locadora);
+    alterarFilmes(Filme);
+}
+
+void visualizarEstoque() {
+    Strc_Locadora Locadora = return_Locadora();
+
+    for (int i = 0; i < Locadora.contFilmes_comprados; i++) {
+        printf("%dº Filme \n", i + 1);
+        printf("\tTítulo:  \n");
+        printf("\tCódigo: %d \n", Locadora.filmesComprados[i]);
+    }
 }
 
 void locacaoFilmes() {
@@ -58,12 +117,10 @@ void locacaoFilmes() {
     Strc_Categoria* Categoria = return_Categorias();
     Strc_Locadora Locadora = return_Locadora();
 
-    /*
     do {
         printf("Digite o código do cliente para continuar: ");
         scanf("%d", &codCliente);
     } while (verificarCod_Cliente(codCliente) < 0);
-     */
     posCliente = codCliente - 1;
 
     do {
@@ -80,8 +137,6 @@ void locacaoFilmes() {
         do {
             printf("\tDigite o número de exemplares: ");
             scanf("%d", &quant);
-
-
         } while (verificarExemplares_Filmes(codFilme, quant) != 1 && verificarExemplares_Filmes(codFilme, quant) != 3);
 
         printf("\tDeseja selecionar mais filmes: \n"
@@ -128,16 +183,16 @@ void locacaoFilmes() {
             "\t1. A vista \n"
             "\t2, A prazo \n");
 
-
     if (selecao() == 1) {
         Clientes[posCliente].devendo = 0;
-        Locadora.caixa = totalPagamento;
+        Locadora.caixa += totalPagamento;
 
         alterarLocadora(Locadora);
     } else {
         printf("PAGAMENTO A PRAZO \n"
                 "\t1. Com entrada \n"
                 "\t2. Sem entrada \n");
+
         if (selecao() == 1) {
             printf("Digite o valor da entrada: ");
             scanf("%f", &entrada);
@@ -154,9 +209,6 @@ void locacaoFilmes() {
             printf("\nForma de pagamento escolhida foi %d parcelas de R$ %.2f cada. \n", quantParcela, Clientes[posCliente].vlr_devendo);
 
             alterarClientes(Clientes);
-
         }
     }
-
-
 }

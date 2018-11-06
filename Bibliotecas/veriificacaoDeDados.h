@@ -25,10 +25,14 @@ int verificarCod_Fornecedores(int cod);
 
 int verificarExemplares_Filmes(int id, int quant);
 
+int verificarFilme_Fornecedor(int posFor, int idFil, int cont);
+
 /*Retorna a opÃ§Ã£o digitada pelo usuario*/
 int selecao();
 
 // Função para finalizar o cadastro ou se deseja cadastrar mais
 int parar_ou_ContinuarCadastro();
+
+int chamarMenu_Relatorio();
 
 #endif /* VERIIFICACAODEDADOS_H */

@@ -16,6 +16,8 @@ Strc_Categoria* Categorias = NULL;
 Strc_Funcionario* Funcionarios = NULL;
 Strc_Fornecedores* Fornecedores = NULL;
 
+Strc_notaFiscal *NotasFiscais = NULL;
+
 //Contadores para controle da alocação
 int static contClientesAlocados = 0;
 int static contFilmes_comprados = 0;
@@ -23,6 +25,7 @@ int static contFIlmesAlocados = 0;
 int static contCategoriasAlocados = 0;
 int static contFuncionariosAlocados = 0;
 int static contFornecedoresAlocados = 0;
+int static contNotasFiscaisAlocados = 0;
 
 int alocarEstoque_Locadora(Strc_Locadora* loc) {
 
@@ -59,6 +62,22 @@ int* alocar_FilmesComprados(int* str, int cont) {
         str = realloc(str, sizeof (int)*(cont + 1));
     }
 
+    return str;
+}
+//-------------------------------------------------------------------------------
+
+Strc_MinimalFilmes* alocar_MinimalFilmes(Strc_MinimalFilmes* str, int cont) {
+    if (str == NULL) {
+        str = malloc(sizeof (Strc_MinimalFilmes));
+    } else {
+        str = realloc(str, sizeof (Strc_MinimalFilmes)*(cont + 1));
+    }
+
+     if (str == NULL) {
+        printf("Ocorreu um erro durante a alocação, \n");
+        exit(EXIT_FAILURE);
+    }
+    
     return str;
 }
 //-------------------------------------------------------------------------------
@@ -162,6 +181,25 @@ int alocarFornecedores(Strc_Fornecedores* forn) {
 
     return 1;
 }
+//-------------------------------------------------------------------------------
+int alocarNotasFiscais(Strc_notaFiscal* nota) {
+    if (NotasFiscais == NULL) {
+        NotasFiscais = malloc(sizeof (Strc_notaFiscal));
+    } else {
+        NotasFiscais = realloc(NotasFiscais, (contNotasFiscaisAlocados + 1) * sizeof (Strc_notaFiscal));
+    }
+
+    *(NotasFiscais + contNotasFiscaisAlocados) = *nota;
+
+    if (Fornecedores == NULL) {
+        printf("Ocorreu um erro durante a alocação, \n");
+        exit(EXIT_FAILURE);
+    }
+
+    contNotasFiscaisAlocados++;
+
+    return 1;
+}
 //------------------------------------------------------------------------------
 
 
@@ -192,6 +230,10 @@ Strc_Fornecedores* return_Fornecedores() {
     return Fornecedores;
 }
 
+Strc_notaFiscal* return_NotasFiscais() {
+    return NotasFiscais;
+}
+
 //-----------------------| FUNÇÕES PARA RETORNO DOS CONTADORES |----------------
 
 int returnCont_Clientes() {
@@ -212,6 +254,10 @@ int returnCont_Funcionarios() {
 
 int returnCont_Fornecedores() {
     return contFornecedoresAlocados;
+}
+
+int returnCont_NotasFiscais() {
+    return contNotasFiscaisAlocados;
 }
 
 //-----------------------| FUNÇÕES PARA ALTERAR DADOS ORIGINAIS |----------------
@@ -260,3 +306,10 @@ void alterar_contFornecedores(int cont) {
     contFornecedoresAlocados = cont;
 }
 
+void alterarNotasFiscais(Strc_notaFiscal *nota) {
+    NotasFiscais = nota;
+}
+
+void alterar_contNotasFiscais(int nota) {
+    contNotasFiscaisAlocados = nota;
+}

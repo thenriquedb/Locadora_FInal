@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 #include "Bibliotecas/alocacao.h"
-//#include "verificacaoDeDados.h"
 
 int verificarNumeroPositivoINT(int x) {
 
@@ -37,7 +36,7 @@ int selecao() {
 //-------------------------------------------------------------------------------
 
 int parar_ou_ContinuarCadastro() {
- int opcao;
+    int opcao;
 
     do {
         printf("\nDigte 1 para continuar cadastrando ou 2 para voltar para o menu principal: ");
@@ -158,5 +157,26 @@ int verificarExemplares_Filmes(int id, int quant) {
             printf("Estoque insuficiente. Ainda resta %d exemplares no estoque. \n", Filme[id - 1].exemplares);
             return 0;
         }
+    }
+}
+//------------------------------------------------------------------------------
+
+int verificarFilme_Fornecedor(int posFor, int idFil, int cont) {
+    Strc_Fornecedores* Fornecedor = return_Fornecedores();
+    int verificar = 0;
+    
+    for (int i = 0; i < cont; i++) {
+        if (Fornecedor[posFor].catalogoFilmes[i] == idFil) {
+            verificar++;
+
+        }
+    }
+    
+    if (verificar > 0) {
+        printf("Filme disponivel. \n");
+        return 1;
+    } else {
+        printf("Nenhum filme com este código encontrado. \n");
+        return 0;
     }
 }

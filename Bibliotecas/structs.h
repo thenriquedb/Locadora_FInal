@@ -3,6 +3,7 @@
 #define STRUCTS_H
 
 //Struct locadora
+
 typedef struct {
     char nomeFanatasia[100];
     char razaoSocial[100];
@@ -16,6 +17,7 @@ typedef struct {
     //Administração
     float caixa;
     float contas_receber;
+
     int *filmesComprados;
     int contFilmes_comprados;
 
@@ -34,18 +36,24 @@ typedef struct {
 
     float vlr_devendo;
     int quantParcela;
-    
+
     int devendo;
     int codigo;
     int opc_sexo;
     int estado_civi;
 } Strc_Clientes;
 
+typedef struct {
+} Strc_Catalago;
+
 //Struct Filmes
 
 typedef struct {
     char nome[100];
     char descricao[400];
+
+    float precoCompra;
+    float precoAluguel;
 
     int codigo;
     int codigoCategoria;
@@ -94,11 +102,30 @@ typedef struct {
 
 
 //Struct para gerenciamento financeiro
-
 typedef struct {
     float caixa;
     float contasPagar;
 } Strc_Financeiro;
+
+//Versao simples da struct de filmes contendo somente dados relevantes para nota fiscal
+typedef struct {
+    int codFilme;
+    int quant;
+    float preco;
+    float total;
+} Strc_MinimalFilmes;
+
+typedef struct {
+    int codForn;
+    float precoFrete;
+    float precoImposto;
+    
+    Strc_MinimalFilmes* Itens;
+    int contItens;
+    float freteUnidade;
+    float impostoUnidade;
+    float totalNF;
+} Strc_notaFiscal;
 
 #endif /* STRUCTS_H */
 

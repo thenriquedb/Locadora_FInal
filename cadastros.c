@@ -171,10 +171,12 @@ void cadastrarFilmes() {
         printf("Descrição: ");
         scanf("%[^\n]s", Filme.descricao);
         setbuf(stdin, NULL);
-
-        printf("Exemplares: ");
-        scanf("%d", &Filme.exemplares);
-
+   
+        printf("Preço da compra: ");
+        scanf("%f", &Filme.precoCompra);
+      
+        printf("Preço de aluguel: ");
+        scanf("%f", &Filme.precoAluguel);
 
         do {
             printf("Código da categoria: ");
@@ -203,7 +205,8 @@ void cadastrarFilmes() {
 
         Filme.codigo = gerarCodigoFilme();
         Filme.codigoCategoria = codCat;
-
+        Filme.exemplares = 0;
+        
         Fornecedor[PosForn].catalogoFilmes = alocar_CatalagoFornecedor(Fornecedor[PosForn].catalogoFilmes, Fornecedor[PosForn].contCatalago);
         Fornecedor[PosForn].catalogoFilmes[posCatalago] = Filme.codigo;
         Fornecedor[PosForn].contCatalago++;

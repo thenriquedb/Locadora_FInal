@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,6 +5,8 @@
 #include "Bibliotecas/structs.h"
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/menus.h"
+#include "Bibliotecas/veriificacaoDeDados.h"
+#include "GUI.h"
 
 void imprimeCategorias(int i) {
     Strc_Categoria* Categoria = return_Categorias();
@@ -262,4 +263,33 @@ void imprimeFilmes(int i) {
 
     printf("\tCategoria: %s (%d) \n", Categoria[posCategoria].nome, Filme[i].codigoCategoria);
     printf("\tExemplares disponiveis: %d \n", Filme[i].exemplares);
+}
+//------------------------------------------------------------------------------
+
+void visualizarNotasFiscais() {
+    int cod, contNF = returnCont_NotasFiscais();
+    Strc_notaFiscal* Nota = return_NotasFiscais();
+    Strc_Fornecedores* Fornecedor = return_Fornecedores();
+    Strc_Filmes* Filme = return_Filmes();
+
+    for (int i = 0; i < contNF; i++) {
+        printf("%dº NOTA FISCAL \n", i + 1);
+        printf("Fornecedor: %s \n", Fornecedor[Nota[i].codForn - 1].razaoScial);
+        printf("CNPJ: %s \n", Fornecedor[Nota[i].codForn - 1].cnpj);
+        printf("Frete: R$ %.2f \n", Nota[i].precoFrete);
+        printf("Imposto: R$ %.2f \n\n", Nota[i].precoImposto);
+        printf("Imposto (Por unidade): R$ %.2f \n", Nota[i].impostoUnidade);
+        printf("Frete (Por unidade): R$ %.2f \n", Nota[i].freteUnidade);
+
+        printf("PRODUTOS ");
+        for (int j = 0; j < Nota[i].contItens; j++) {
+            printf("\n\tTítulo: %s \n", Filme[Nota[i].Itens[j].codFilme - 1].nome);
+            printf("\tUnidades: %d unidades \n", Nota[i].Itens[j].quant);
+            printf("\tValor de custo: R$ %.2f \n", Nota[i].Itens[j].preco);
+            printf("\tTotal: R$ %.2f \n", (Nota[i].Itens[j].quant * Nota[i].Itens[j].preco) + Nota[i].impostoUnidade + Nota[i].freteUnidade);
+        }
+        printf("_________________________________________________________\n");
+        printf("TOTAL ARRENDONDADO: R$ %.2f \n", Nota[i].totalNF);
+        printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
+    }
 }

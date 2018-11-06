@@ -10,7 +10,7 @@
 
 int main(int argc, char** argv) {
 
-   // cadastrarLocadora();
+  // cadastrarLocadora();
     
     do {
         printf("====== | MENU PRINCIPAL | ======\n"

@@ -28,7 +28,7 @@ void menuCadastro() {
             if (return_Fornecedores() != NULL && return_Categorias() != NULL) {
                 cadastrarFilmes();
             } else {
-                / printf("Antes de cadastrar algum filme é necessario cadastrar um fornecedor primeiro. \n ");
+                printf("Antes de cadastrar algum filme é necessario cadastrar um fornecedor primeiro. \n ");
             }
             break;
 
@@ -114,6 +114,37 @@ void menuRelatorios() {
 
 //------------------------------------------------------------------------------
 
+void menu_EntradaFilmes() {
+     printf("====== | COMPRAS DE NOVOS FILMES | ======\n"
+            "\t1. Visualizar fornecedores cadastrados \n"
+            "\t2. Cadastrar novo fornecedor \n"
+            "\t3. Escolher fornecedor através do codigo \n"
+            "\t4. Voltar ao menu anterior \n");
+    do {
+        switch (selecao()) {
+            case 1:
+                subMenuRel_Fornecedores();
+                break;
+
+            case 2:
+                cadastrarFornecedores();
+                break;
+
+            case 3:
+                entradaFilmes();
+
+            case 4:
+                menuAdministrativo();
+                break;
+
+            default:
+                printf("Opção inválida. \n");
+        }
+        break;
+    } while (1);
+}
+//------------------------------------------------------------------------------
+
 void menuGestao() {
     int cod;
 
@@ -173,11 +204,13 @@ void menuLocacao() {
 //------------------------------------------------------------------------------
 
 void menuAdministrativo() {
-    printf("====== | ADMINISTRATIVO | ======\n\n"
+    printf("====== | ADMINISTRATIVO | ======\n"
             "\t1. Contas a receber \n"
             "\t2. Cadastro de filmes \n"
-            "\t3. Entrada de filmes \n "
-            "\t4. Voltar para o menu principal \n");
+            "\t3. Entrada de filmes \n"
+            "\t4. Visualizar notas fiscais \n"
+            "\t5. Visualizar estoque da locadora \n"
+            "\t6. Voltar para o menu principal \n");
 
     switch (selecao()) {
         case 1:
@@ -189,7 +222,15 @@ void menuAdministrativo() {
             break;
 
         case 3:
-            entradaFilmes();
+            menu_EntradaFilmes();
+            break;
+
+        case 4:
+            visualizarNotasFiscais();
+            break;
+
+        case 5:
+            visualizarEstoque();
             break;
 
         default:

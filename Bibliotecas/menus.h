@@ -34,6 +34,7 @@ void menuLocacao();
 //Função para imprimir o menu de opções de gestão de dados
 void menuAdministrativo();
 
+void menu_EntradaFilmes();
 /*
  * -----------------------------| SUBMENUS RELATORIOS |-------------------------
  */

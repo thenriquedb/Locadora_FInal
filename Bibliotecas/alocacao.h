@@ -27,11 +27,14 @@ int alocarFornecedores(Strc_Fornecedores* forn);
 
 int alocarNotasFiscais(Strc_notaFiscal* nota);
 
-//
+/**/
 int* alocar_CatalagoFornecedor(int* str, int cont);
 
-//
+/**/
 int* alocar_FilmesComprados(int* str, int cont);
+
+/**/
+Strc_Financeiro* alocar_Financeiro(Strc_Financeiro* str, int cont);
 
 Strc_MinimalFilmes* alocar_MinimalFilmes(Strc_MinimalFilmes* str, int cont);
 
@@ -60,6 +63,7 @@ Strc_Funcionario* return_Funcionarios();
 /* Função que retorna o vetor de fornecedores */
 Strc_Fornecedores* return_Fornecedores();
 
+/**/
 Strc_notaFiscal* return_NotasFiscais();
 
 /*
@@ -81,17 +85,23 @@ int returnCont_Funcionarios();
 /* Funções para retornar a quantidade de fornecedores alocados */
 int returnCont_Fornecedores();
 
+/**/
 int returnCont_NotasFiscais();
+
+/**/
+Strc_Financeiro return_Financeiro();
 
 /*
  * -----------------------| FUNÇÕES PARA ALTERAR DADOS ORIGINAIS |----------------
  */
+void alterarCategorias(Strc_Categoria *cat);
 void alterarClientes(Strc_Clientes *cl);
 void alterarFilmes(Strc_Filmes *fil);
-void alterarCategorias(Strc_Categoria *cat);
-void alterarFuncionarios(Strc_Funcionario *fun);
+int alterarFinanceiro(Strc_Financeiro fin);
 void alterarFornecedores(Strc_Fornecedores *forn);
+void alterarFuncionarios(Strc_Funcionario *fun);
 int alterarLocadora(Strc_Locadora loc);
+void alterarNotasFiscais(Strc_notaFiscal *nota);
 
 void alterar_contClientes(int cont);
 void alterar_contFilmes(int cont);

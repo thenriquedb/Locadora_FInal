@@ -96,6 +96,13 @@ void filFornecedores_CNPJ();
 /*Função para filtrar pela inscricao social os fornecedores cadastrados */
 void filFornecedores_InscricaoSocial();
 
+//-------------------------| RELATORIO NOTA FISCAL |---------------------------------
+
+void filNotasFiscais_Todas();
+void filNotasFiscais_Fornecedor();
+void filNotasFiscais_Pagas();
+void filNotasFiscais_NaoPagas();
+
 //---------------------------------| OUTROS |-----------------------------------
 int chamarMenu_Relatorio();
 

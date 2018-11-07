@@ -17,7 +17,7 @@ void menuCadastro() {
             "\t3. Cadastrar categoria \n"
             "\t4. Cadastrar funcionarios \n"
             "\t5. Cadastrar fonecedores \n"
-            "\t6. Retornar ao menu principal \n\n");
+            "\t6. Retornar ao menu principal \n");
 
     switch (selecao()) {
         case 1:
@@ -115,7 +115,7 @@ void menuRelatorios() {
 //------------------------------------------------------------------------------
 
 void menu_EntradaFilmes() {
-     printf("====== | COMPRAS DE NOVOS FILMES | ======\n"
+    printf("====== | COMPRAS DE NOVOS FILMES | ======\n"
             "\t1. Visualizar fornecedores cadastrados \n"
             "\t2. Cadastrar novo fornecedor \n"
             "\t3. Escolher fornecedor através do codigo \n"
@@ -203,35 +203,138 @@ void menuLocacao() {
 }
 //------------------------------------------------------------------------------
 
-void menuAdministrativo() {
-    printf("====== | ADMINISTRATIVO | ======\n"
+void menuFinanceiro() {
+    printf("====== | FINANCEIRO | ======\n"
             "\t1. Contas a receber \n"
-            "\t2. Cadastro de filmes \n"
-            "\t3. Entrada de filmes \n"
-            "\t4. Visualizar notas fiscais \n"
-            "\t5. Visualizar estoque da locadora \n"
-            "\t6. Voltar para o menu principal \n");
+            "\t2. Contas a pagar \n"
+            "\t3. Notas fiscais \n"
+            "\t4. Voltar para o menu principal \n");
 
     switch (selecao()) {
         case 1:
-            locacaoFilmes();
             break;
 
         case 2:
-            cadastrarFilmes();
+            //            menuContas_aPagar();
             break;
 
         case 3:
-            menu_EntradaFilmes();
+            menuNotasFiscais();
             break;
 
         case 4:
-            visualizarNotasFiscais();
+            break;
+
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+//------------------------------------------------------------------------------
+
+void menuAdministrativo() {
+    printf("====== | ADMINISTRATIVO | ======\n"
+            "\t1. Compra de filmes \n"
+            "\t2. Visualizar estoque da locadora \n"
+            "\t3. Voltar para o menu principal \n");
+
+    switch (selecao()) {
+        case 1:
+            menu_EntradaFilmes();
+            break;
+
+        case 2:
+            visualizarEstoque();
+            break;
+
+        case 3:
+            break;
+
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+//------------------------------------------------------------------------------
+
+void menuNotasFiscais() {
+    printf("====== | NOTAS FISCAIS | ======\n"
+            "\t1. Visualizar todas \n"
+            "\t2. Filtrar por fornecedor \n"
+            "\t3. Visualazir as que já pagas \n"
+            "\t4. Visualizar as que ainda não foram pagas \n"
+            "\t5. Voltar para o menu anterior \n");
+
+    switch (selecao()) {
+        case 1:
+            filNotasFiscais_Todas();
+            break;
+
+        case 2:
+            filNotasFiscais_Fornecedor();
+            break;
+
+        case 3:
+            filNotasFiscais_Pagas();
+            break;
+
+        case 4:
+            filNotasFiscais_NaoPagas();
             break;
 
         case 5:
-            visualizarEstoque();
+            menuAdministrativo();
+
+
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+//------------------------------------------------------------------------------
+
+void menuContas_aPagar() {
+    printf("====== | CONTAS A PAGAR | ======\n"
+            "\t1. Visualizar notas fiscais \n"
+            "\t2. Pagar nota fiscal \n"
+            "\t3. Voltar para o menu anterior \n");
+
+    switch (selecao()) {
+        case 1:
+            menuNotasFiscais();
             break;
+
+        case 2:
+            system("clear");
+            subMenuContas_aPagar();
+            break;
+
+        case 3:
+            menuAdministrativo();
+
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+
+void subMenuContas_aPagar() {
+    printf("====== | OPÇÕES DE PAGAMENTO | ======\n"
+            "\t1. Pagar uma uníca nota fiscal \n"
+            "\t2. Pagar todas notas  fiscal \n"
+            "\t3. Pagar todas notas de determinado fornecedor \n"
+            "\t4. Voltar para o menu anterior \n");
+
+    switch (selecao()) {
+        case 1:
+            contasPagar_Unica();
+            break;
+
+        case 2:
+            contasPagar_Todas();
+            break;
+
+        case 3:
+            break;
+
+        case 4:
+            menuAdministrativo();
 
         default:
             printf("Opção inválida. \n");

@@ -140,6 +140,22 @@ int verificarCod_Categoria(int cod) {
         return -1;
     }
 }
+//-------------------------------------------------------------------------------
+
+int verificarCod_NotaFiscal(int cod) {
+    Strc_notaFiscal* Nota = return_NotasFiscais();
+    int cont = returnCont_NotasFiscais();
+    int verificar = 0;
+
+    for (int i = 0; i < cont; i++) {
+        if (Nota[i].codigo == cod) {
+            return i;
+            break;
+        }
+    }
+
+    return -1;
+}
 
 //------------------------------------------------------------------------------
 
@@ -164,16 +180,15 @@ int verificarExemplares_Filmes(int id, int quant) {
 int verificarFilme_Fornecedor(int posFor, int idFil, int cont) {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
     int verificar = 0;
-    
+
     for (int i = 0; i < cont; i++) {
         if (Fornecedor[posFor].catalogoFilmes[i] == idFil) {
             verificar++;
 
         }
     }
-    
+
     if (verificar > 0) {
-        printf("Filme disponivel. \n");
         return 1;
     } else {
         printf("Nenhum filme com este código encontrado. \n");

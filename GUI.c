@@ -266,30 +266,34 @@ void imprimeFilmes(int i) {
 }
 //------------------------------------------------------------------------------
 
-void visualizarNotasFiscais() {
-    int cod, contNF = returnCont_NotasFiscais();
+void imprimeNotaFiscal(int codForn, int contItens) {
     Strc_notaFiscal* Nota = return_NotasFiscais();
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
     Strc_Filmes* Filme = return_Filmes();
 
-    for (int i = 0; i < contNF; i++) {
-        printf("%dº NOTA FISCAL \n", i + 1);
-        printf("Fornecedor: %s \n", Fornecedor[Nota[i].codForn - 1].razaoScial);
-        printf("CNPJ: %s \n", Fornecedor[Nota[i].codForn - 1].cnpj);
-        printf("Frete: R$ %.2f \n", Nota[i].precoFrete);
-        printf("Imposto: R$ %.2f \n\n", Nota[i].precoImposto);
-        printf("Imposto (Por unidade): R$ %.2f \n", Nota[i].impostoUnidade);
-        printf("Frete (Por unidade): R$ %.2f \n", Nota[i].freteUnidade);
+    printf("Fornecedor: %s \t\t", Fornecedor[codForn].razaoScial);
+    printf("CNPJ: %s \n", Fornecedor[codForn].cnpj);
+    printf("Frete: R$ %.2f \t\t", Nota[codForn].precoFrete);
+    printf("Frete (Por unidade): R$ %.2f \n", Nota[codForn].freteUnidade);
+    printf("Imposto: R$ %.2f \t", Nota[codForn].precoImposto);
+    printf("Imposto (Por unidade): R$ %.2f \n\n", Nota[codForn].impostoUnidade);
 
-        printf("PRODUTOS ");
-        for (int j = 0; j < Nota[i].contItens; j++) {
-            printf("\n\tTítulo: %s \n", Filme[Nota[i].Itens[j].codFilme - 1].nome);
-            printf("\tUnidades: %d unidades \n", Nota[i].Itens[j].quant);
-            printf("\tValor de custo: R$ %.2f \n", Nota[i].Itens[j].preco);
-            printf("\tTotal: R$ %.2f \n", (Nota[i].Itens[j].quant * Nota[i].Itens[j].preco) + Nota[i].impostoUnidade + Nota[i].freteUnidade);
-        }
-        printf("_________________________________________________________\n");
-        printf("TOTAL ARRENDONDADO: R$ %.2f \n", Nota[i].totalNF);
-        printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
+
+    printf("PRODUTOS ");
+    for (int j = 0; j < contItens; j++) {
+        printf("\n\tTítulo: %s \n", Filme[Nota[codForn].Itens[j].codFilme - 1].nome);
+        printf("\tUnidades: %d unidades \n", Nota[codForn].Itens[j].quant);
+        printf("\tValor de custo: R$ %.2f \n", Nota[codForn].Itens[j].preco);
+        printf("\tTotal: R$ %.2f \n", (Nota[codForn].Itens[j].quant * Nota[codForn].Itens[j].preco) + Nota[codForn].impostoUnidade + Nota[codForn].freteUnidade);
     }
+    printf("_________________________________________________________\n");
+    printf("TOTAL ARRENDONDADO: R$ %.2f \n", Nota[codForn].totalNF);
+    printf("SITUAÇÃO: ");
+    if (Nota[codForn].paga == 0) {
+        printf("Em aberto. \n");
+    } else {
+        printf("Paga. \n");
+    }
+    printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
 }
+

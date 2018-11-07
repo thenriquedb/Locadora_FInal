@@ -196,7 +196,7 @@ void cadastrarFilmes() {
 
 
         do {
-            printf("\nIdioma: \n"
+            printf("Idioma: \n"
                     "\t1. Dublado \n"
                     "\t2. Legendado \n"
                     "Digite a opção desejada: ");

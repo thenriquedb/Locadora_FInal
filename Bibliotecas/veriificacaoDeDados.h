@@ -29,7 +29,7 @@ int verificarFilme_Fornecedor(int posFor, int idFil, int cont);
 
 /*Retorna a opÃ§Ã£o digitada pelo usuario*/
 int selecao();
-
+int verificarCod_NotaFiscal();
 // Função para finalizar o cadastro ou se deseja cadastrar mais
 int parar_ou_ContinuarCadastro();
 

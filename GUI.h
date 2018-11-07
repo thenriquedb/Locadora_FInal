@@ -17,6 +17,8 @@ void imprimeFuncionarios(int i);
 /* Função para mostrar todos os funcionarios cadastrados */
 void imprimeFornecedores(int i);
 
+void imprimeNotaFiscal(int codForn, int contItens);
+
 void visualizarNotasFiscais();
 
 #endif /* GUI_H */

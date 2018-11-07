@@ -16,7 +16,6 @@ typedef struct {
 
     //Administração
     float caixa;
-    float contas_receber;
 
     int *filmesComprados;
     int contFilmes_comprados;
@@ -100,14 +99,35 @@ typedef struct {
     int codigo;
 } Strc_Fornecedores;
 
+typedef struct {
+    int codCl;
+    int devendo;
+    int quantParcelas;
+    float vlrParcela;
+} Strc_ContaReceber;
+
+typedef struct {
+    int codCl;
+    int devendo;
+    int quantParcelas;
+    float vlrParcela;
+} Strc_ContaPagar;
 
 //Struct para gerenciamento financeiro
+
 typedef struct {
     float caixa;
     float contasPagar;
+
+    Strc_ContaReceber* receber;
+    int contReceber;
+
+    Strc_ContaPagar* pagar;
+    int contPagar;
 } Strc_Financeiro;
 
 //Versao simples da struct de filmes contendo somente dados relevantes para nota fiscal
+
 typedef struct {
     int codFilme;
     int quant;
@@ -117,11 +137,14 @@ typedef struct {
 
 typedef struct {
     int codForn;
+    int codigo;
+    int contItens;
+    int paga;
+
+    Strc_MinimalFilmes* Itens;
+
     float precoFrete;
     float precoImposto;
-    
-    Strc_MinimalFilmes* Itens;
-    int contItens;
     float freteUnidade;
     float impostoUnidade;
     float totalNF;

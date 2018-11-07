@@ -10,6 +10,8 @@
 
 //Estruturas
 Strc_Locadora Locadora;
+Strc_Financeiro Financeiro;
+
 Strc_Clientes* Clientes = NULL;
 Strc_Filmes* Filmes = NULL;
 Strc_Categoria* Categorias = NULL;
@@ -45,6 +47,7 @@ int alocarEstoque_Locadora(Strc_Locadora* loc) {
     contFilmes_comprados++;
 }
 //-------------------------------------------------------------------------------
+
 int* alocar_CatalagoFornecedor(int* str, int cont) {
     if (str == NULL) {
         str = malloc(sizeof (int));
@@ -55,6 +58,7 @@ int* alocar_CatalagoFornecedor(int* str, int cont) {
     return str;
 }
 //-------------------------------------------------------------------------------
+
 int* alocar_FilmesComprados(int* str, int cont) {
     if (str == NULL) {
         str = malloc(sizeof (int));
@@ -66,6 +70,23 @@ int* alocar_FilmesComprados(int* str, int cont) {
 }
 //-------------------------------------------------------------------------------
 
+Strc_Financeiro* alocar_Financeiro(Strc_Financeiro* str, int cont) {
+    if (str == NULL) {
+        str = malloc(sizeof (Strc_Financeiro));
+    } else {
+        str = realloc(str, sizeof (Strc_Financeiro)*(cont + 1));
+    }
+
+    if (str == NULL) {
+        printf("Ocorreu um erro durante a alocação, \n");
+        exit(EXIT_FAILURE);
+    }
+
+    return str;
+    free(str);
+}
+//-------------------------------------------------------------------------------
+
 Strc_MinimalFilmes* alocar_MinimalFilmes(Strc_MinimalFilmes* str, int cont) {
     if (str == NULL) {
         str = malloc(sizeof (Strc_MinimalFilmes));
@@ -73,12 +94,13 @@ Strc_MinimalFilmes* alocar_MinimalFilmes(Strc_MinimalFilmes* str, int cont) {
         str = realloc(str, sizeof (Strc_MinimalFilmes)*(cont + 1));
     }
 
-     if (str == NULL) {
+    if (str == NULL) {
         printf("Ocorreu um erro durante a alocação, \n");
         exit(EXIT_FAILURE);
     }
-    
+
     return str;
+    free(str);
 }
 //-------------------------------------------------------------------------------
 
@@ -182,6 +204,7 @@ int alocarFornecedores(Strc_Fornecedores* forn) {
     return 1;
 }
 //-------------------------------------------------------------------------------
+
 int alocarNotasFiscais(Strc_notaFiscal* nota) {
     if (NotasFiscais == NULL) {
         NotasFiscais = malloc(sizeof (Strc_notaFiscal));
@@ -202,12 +225,14 @@ int alocarNotasFiscais(Strc_notaFiscal* nota) {
 }
 //------------------------------------------------------------------------------
 
-
-
 //-----------------------| FUNÇÕES PARA RETORNO DOS VETORES |--------------------
 
 Strc_Locadora return_Locadora() {
     return Locadora;
+}
+
+Strc_Financeiro return_Financeiro() {
+    return Financeiro;
 }
 
 Strc_Clientes* return_Clientes() {
@@ -264,6 +289,10 @@ int returnCont_NotasFiscais() {
 
 int alterarLocadora(Strc_Locadora loc) {
     Locadora = loc;
+}
+
+int alterarFinanceiro(Strc_Financeiro fin) {
+    Financeiro = fin;
 }
 
 void alterarClientes(Strc_Clientes *cl) {

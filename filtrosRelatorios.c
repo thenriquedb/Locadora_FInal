@@ -8,7 +8,7 @@
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/menus.h"
-
+#include "GUI.h"
 
 void filCategorias_Todos() {
     Strc_Categoria* Categoria = return_Categorias();
@@ -132,6 +132,7 @@ void filCategoria_Nome() {
     }
 }
 //-------------------------------------------------------------------------------
+
 void filClientes_Todos() {
     Strc_Clientes* Cliente = return_Clientes();
     int contC = returnCont_Clientes();
@@ -181,7 +182,7 @@ void filClientes_Codigo() {
 
             printf("Nenhum resultado encontrado. \n");
             cont = 0;
-            
+
         } while (chamarMenu_Relatorio() != 0);
 
     } else {
@@ -496,7 +497,7 @@ void filFornecedores_RazaoSocial() {
 //-------------------------------------------------------------------------------
 
 void filFornecedores_CNPJ() {
-Strc_Fornecedores* Fornecedor = return_Fornecedores();
+    Strc_Fornecedores* Fornecedor = return_Fornecedores();
     int i, cont = 0, contFor = returnCont_Fornecedores();
     char cnpj[14];
 
@@ -528,7 +529,7 @@ Strc_Fornecedores* Fornecedor = return_Fornecedores();
 //-------------------------------------------------------------------------------
 
 void filFornecedores_InscricaoSocial() {
-Strc_Fornecedores* Fornecedor = return_Fornecedores();
+    Strc_Fornecedores* Fornecedor = return_Fornecedores();
     int i, cont = 0, contFor = returnCont_Fornecedores();
     char inscricaoSocial[14];
 
@@ -736,5 +737,91 @@ void filFilmes_Idioma() {
         } while (chamarMenu_Relatorio() != 1);
     } else {
         printf("Nenhum filme cadastrado. \n");
+    }
+}
+//-------------------------------------------------------------------------------
+
+void filNotasFiscais_Todas() {
+    int i, cont = 0, contNF = returnCont_NotasFiscais();
+    Strc_notaFiscal* Nota = return_NotasFiscais();
+
+    if (Nota != NULL) {
+        printf("====== | TODAS NOTAS FISCAIS | ======\n");
+
+        for (i = 0; i < contNF; i++) {
+            printf("%dº NOTA \n", i + 1);
+            imprimeNotaFiscal(i, Nota[i].contItens);
+        }
+    } else {
+        printf("Nenhum nota fiscal gerada. \n");
+    }
+}
+//-------------------------------------------------------------------------------
+
+void filNotasFiscais_Pagas() {
+    int i, cont = 0, contNF = returnCont_NotasFiscais();
+    Strc_notaFiscal* Nota = return_NotasFiscais();
+
+    if (Nota != NULL) {
+        printf("====== | NOTAS FISCAIS: PAGAS | ======\n");
+
+        for (i = 0; i < contNF; i++) {
+            if (Nota[i].paga == 1) {
+                printf("%dº NOTA \n", i + 1);
+                imprimeNotaFiscal(i, Nota[i].contItens);
+            }
+        }
+    } else {
+        printf("Nenhum nota fiscal gerada. \n");
+    }
+}
+//-------------------------------------------------------------------------------
+
+void filNotasFiscais_NaoPagas() {
+    int i, cont = 0, contNF = returnCont_NotasFiscais();
+    Strc_notaFiscal* Nota = return_NotasFiscais();
+
+    if (Nota != NULL) {
+        printf("====== | NOTAS FISCAIS: EM ABERTO | ======\n");
+
+        for (i = 0; i < contNF; i++) {
+            if (Nota[i].paga == 0) {
+                printf("%dº NOTA \n", cont + 1);
+                imprimeNotaFiscal(i, Nota[i].contItens);
+                cont++;
+            }
+        }
+    } else {
+        printf("Nenhum nota fiscal gerada. \n");
+    }
+}
+//-------------------------------------------------------------------------------
+
+void filNotasFiscais_Fornecedor() {
+    int codForn, i, cont = 0, contNF = returnCont_NotasFiscais();
+    Strc_notaFiscal* Nota = return_NotasFiscais();
+
+    if (Nota != NULL) {
+        do {
+            printf("====== | NOTAS FISCAIS: FILTRAR POR FORNECEDOR | ======\n");
+            do {
+                printf("Digite o código do fornecedor: ");
+                scanf("%d", &codForn);
+            } while (verificarCod_Fornecedores(codForn));
+
+            for (i = 0; i < contNF; i++) {
+                if (Nota[i].codForn == codForn) {
+                    printf("%dº NOTA \n", cont + 1);
+                    imprimeNotaFiscal(i, Nota[i].contItens);
+                    cont++;
+                }
+            }
+
+            printf("\nTotal de resultados: %d \n\n", cont);
+            cont = 0;
+
+        } while (chamarMenu_Relatorio() != 1);
+    } else {
+        printf("Nenhum nota fiscal gerada. \n");
     }
 }

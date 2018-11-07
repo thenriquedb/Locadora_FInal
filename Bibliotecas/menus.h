@@ -31,6 +31,12 @@ void menuGestao();
 //
 void menuLocacao();
 
+//
+void menuFinanceiro();
+
+//
+void menuNotasFiscais();
+
 //Função para imprimir o menu de opções de gestão de dados
 void menuAdministrativo();
 

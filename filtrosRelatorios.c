@@ -746,6 +746,7 @@ void filNotasFiscais_Todas() {
     Strc_notaFiscal* Nota = return_NotasFiscais();
 
     if (Nota != NULL) {
+        system("clear");
         printf("====== | TODAS NOTAS FISCAIS | ======\n");
 
         for (i = 0; i < contNF; i++) {
@@ -763,14 +764,23 @@ void filNotasFiscais_Pagas() {
     Strc_notaFiscal* Nota = return_NotasFiscais();
 
     if (Nota != NULL) {
-        printf("====== | NOTAS FISCAIS: PAGAS | ======\n");
+        system("clear");
+        printf("====== | NOTAS FISCAIS PAGAS | ======\n");
 
         for (i = 0; i < contNF; i++) {
             if (Nota[i].paga == 1) {
                 printf("%dº NOTA \n", i + 1);
                 imprimeNotaFiscal(i, Nota[i].contItens);
+                cont++;
             }
         }
+
+        if (cont == 0) {
+            printf("Nenhuma nota foi paga. \n");
+        } else {
+            printf("Total de resultados: %d \n", cont);
+        }
+
     } else {
         printf("Nenhum nota fiscal gerada. \n");
     }
@@ -803,12 +813,15 @@ void filNotasFiscais_Fornecedor() {
 
     if (Nota != NULL) {
         do {
+            system("clear");
             printf("====== | NOTAS FISCAIS: FILTRAR POR FORNECEDOR | ======\n");
             do {
                 printf("Digite o código do fornecedor: ");
                 scanf("%d", &codForn);
             } while (verificarCod_Fornecedores(codForn));
 
+            system("clear");
+            printf("====== | NOTAS FISCAIS: FILTRAR POR FORNECEDOR | ======\n");
             for (i = 0; i < contNF; i++) {
                 if (Nota[i].codForn == codForn) {
                     printf("%dº NOTA \n", cont + 1);

@@ -276,8 +276,8 @@ void imprimeNotaFiscal(int codForn, int contItens) {
     printf("Frete: R$ %.2f \t\t", Nota[codForn].precoFrete);
     printf("Frete (Por unidade): R$ %.2f \n", Nota[codForn].freteUnidade);
     printf("Imposto: R$ %.2f \t", Nota[codForn].precoImposto);
-    printf("Imposto (Por unidade): R$ %.2f \n\n", Nota[codForn].impostoUnidade);
-
+    printf("Imposto (Por unidade): R$ %.2f \n", Nota[codForn].impostoUnidade);
+    printf("Código da nota: %d \n\n", Nota[codForn].codigo);
 
     printf("PRODUTOS ");
     for (int j = 0; j < contItens; j++) {
@@ -289,6 +289,7 @@ void imprimeNotaFiscal(int codForn, int contItens) {
     printf("_________________________________________________________\n");
     printf("TOTAL ARRENDONDADO: R$ %.2f \n", Nota[codForn].totalNF);
     printf("SITUAÇÃO: ");
+
     if (Nota[codForn].paga == 0) {
         printf("Em aberto. \n");
     } else {

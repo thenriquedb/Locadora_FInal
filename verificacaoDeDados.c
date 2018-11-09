@@ -166,13 +166,8 @@ int verificarExemplares_Filmes(int id, int quant) {
     if (Filme[id - 1].exemplares >= quant) {
         return 1;
     } else {
-        if (Filme[id - 1].exemplares == 0) {
-            printf("Esgotado. \n");
-            return 3;
-        } else {
-            printf("Estoque insuficiente. Ainda resta %d exemplares no estoque. \n", Filme[id - 1].exemplares);
-            return 0;
-        }
+        printf("Estoque insuficiente. Ainda resta %d exemplares no estoque. \n", Filme[id - 1].exemplares);
+        return 0;
     }
 }
 //------------------------------------------------------------------------------

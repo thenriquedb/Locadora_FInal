@@ -184,7 +184,7 @@ void menuGestao() {
 //------------------------------------------------------------------------------
 
 void menuLocacao() {
-    printf("====== | LOCAÇÃO | ======\n\n"
+    printf("====== | LOCAÇÃO | ======\n"
             "\t1. Locação de filmes \n"
             "\t2. Devolução de filmes \n"
             "\t3. Voltar para o menu principal \n");
@@ -215,11 +215,19 @@ void menuFinanceiro() {
             break;
 
         case 2:
-            //            menuContas_aPagar();
+            if (return_NotasFiscais() != NULL) {
+                menuContas_aPagar();
+            } else {
+                printf("Nenhuma nota fiscal foi cadastrada. \n");
+            }
             break;
 
         case 3:
-            menuNotasFiscais();
+            if (return_NotasFiscais() != NULL) {
+                menuNotasFiscais();
+            } else {
+                printf("Nenhuma nota fiscal foi cadastrada. \n");
+            }
             break;
 
         case 4:
@@ -236,14 +244,22 @@ void menuAdministrativo() {
             "\t1. Compra de filmes \n"
             "\t2. Visualizar estoque da locadora \n"
             "\t3. Voltar para o menu principal \n");
-
+    
+   Strc_Locadora Locadora = return_Locadora();
+    
     switch (selecao()) {
         case 1:
-            menu_EntradaFilmes();
+            if (return_Filmes() != NULL) {
+                menu_EntradaFilmes();
+            } else {
+                printf("Nenhum filme cadastrado. \n");
+            }
             break;
-
         case 2:
-            visualizarEstoque();
+            if (Locadora.filmesComprados != NULL) {
+                visualizarEstoque();
+            }
+            printf("Nenhum filme comprado. \n");
             break;
 
         case 3:

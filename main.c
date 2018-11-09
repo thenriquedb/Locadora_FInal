@@ -7,15 +7,20 @@
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/menus.h"
 #include "Bibliotecas/gestao.h"
+#include "teste.h"
 
 int main(int argc, char** argv) {
 
-  // cadastrarLocadora();
-    
+    // cadastrarLocadora();
+    prencherDados();
+
     do {
+        Strc_Financeiro Fin = return_Financeiro();
+        printf("CAIXA: R$ %.2f \n", Fin.caixa);
+
         printf("====== | MENU PRINCIPAL | ======\n"
                 "\t1. Cadastros \n" //Concluido
-                "\t2. Locação \n" //Concluido
+                "\t2. Locação \n" // Andamento
                 "\t3. Gestão de dados \n" //Cocnluido
                 "\t4. Relatórios \n" //Concluido
                 "\t5. Financeiro \n" //Não iniciado
@@ -26,6 +31,10 @@ int main(int argc, char** argv) {
         switch (selecao()) {
             case 1:
                 menuCadastro();
+                break;
+                
+            case 2:
+                menuLocacao();
                 break;
 
             case 3:
@@ -39,7 +48,7 @@ int main(int argc, char** argv) {
             case 5:
                 menuFinanceiro();
                 break;
-                
+
             case 6:
                 menuAdministrativo();
                 break;

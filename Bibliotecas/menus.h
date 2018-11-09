@@ -40,7 +40,11 @@ void menuNotasFiscais();
 //Função para imprimir o menu de opções de gestão de dados
 void menuAdministrativo();
 
+void menuContas_aPagar();
+
 void menu_EntradaFilmes();
+
+void subMenuContas_aPagar();
 /*
  * -----------------------------| SUBMENUS RELATORIOS |-------------------------
  */

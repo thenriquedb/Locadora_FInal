@@ -30,7 +30,6 @@ int static contFornecedoresAlocados = 0;
 int static contNotasFiscaisAlocados = 0;
 
 int alocarEstoque_Locadora(Strc_Locadora* loc) {
-
     if (Locadora.filmesComprados == NULL) {
         Locadora.filmesComprados = malloc(sizeof (int));
     } else {
@@ -56,6 +55,7 @@ int* alocar_CatalagoFornecedor(int* str, int cont) {
     }
 
     return str;
+    free(str);
 }
 //-------------------------------------------------------------------------------
 
@@ -67,6 +67,7 @@ int* alocar_FilmesComprados(int* str, int cont) {
     }
 
     return str;
+    free(str);
 }
 //-------------------------------------------------------------------------------
 

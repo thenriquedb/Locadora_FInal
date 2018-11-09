@@ -14,9 +14,6 @@ typedef struct {
     char email[150];
     char nomeResponsavel[100];
 
-    //Administração
-    float caixa;
-
     int *filmesComprados;
     int contFilmes_comprados;
 

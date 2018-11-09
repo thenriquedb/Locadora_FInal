@@ -5,5 +5,6 @@
 
 void entradaFilmes();
 void locacaoFilmes();
-
+void visualizarEstoque();
+int gerarCodigoNF();
 #endif /* ADMINISTRACAO_H */

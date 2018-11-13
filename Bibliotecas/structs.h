@@ -121,7 +121,7 @@ typedef struct {
 
     Strc_ContaPagar* pagar;
     int contPagar;
-} Strc_Financeiro;
+} Strc_Financas;
 
 //Versao simples da struct de filmes contendo somente dados relevantes para nota fiscal
 

@@ -10,7 +10,7 @@
 
 //Estruturas
 Strc_Locadora Locadora;
-Strc_Financeiro Financeiro;
+Strc_Financas Financeiro;
 
 Strc_Clientes* Clientes = NULL;
 Strc_Filmes* Filmes = NULL;
@@ -71,11 +71,11 @@ int* alocar_FilmesComprados(int* str, int cont) {
 }
 //-------------------------------------------------------------------------------
 
-Strc_Financeiro* alocar_Financeiro(Strc_Financeiro* str, int cont) {
+Strc_Financas* alocar_Financas(Strc_Financas* str, int cont) {
     if (str == NULL) {
-        str = malloc(sizeof (Strc_Financeiro));
+        str = malloc(sizeof (Strc_Financas));
     } else {
-        str = realloc(str, sizeof (Strc_Financeiro)*(cont + 1));
+        str = realloc(str, sizeof (Strc_Financas)*(cont + 1));
     }
 
     if (str == NULL) {
@@ -232,7 +232,7 @@ Strc_Locadora return_Locadora() {
     return Locadora;
 }
 
-Strc_Financeiro return_Financeiro() {
+Strc_Financas return_Financas() {
     return Financeiro;
 }
 
@@ -292,7 +292,7 @@ int alterarLocadora(Strc_Locadora loc) {
     Locadora = loc;
 }
 
-int alterarFinanceiro(Strc_Financeiro fin) {
+int alterarFinanceiro(Strc_Financas fin) {
     Financeiro = fin;
 }
 

@@ -8,7 +8,7 @@
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/menus.h"
-#include "GUI.h"
+#include "Bibliotecas/GUI.h"
 
 void filCategorias_Todos() {
     Strc_Categoria* Categoria = return_Categorias();

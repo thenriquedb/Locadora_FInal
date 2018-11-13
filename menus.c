@@ -203,7 +203,7 @@ void menuLocacao() {
 }
 //------------------------------------------------------------------------------
 
-void menuFinanceiro() {
+void menuFinancas() {
     printf("====== | FINANCEIRO | ======\n"
             "\t1. Contas a receber \n"
             "\t2. Contas a pagar \n"

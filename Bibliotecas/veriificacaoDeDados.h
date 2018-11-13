@@ -20,16 +20,22 @@ int verificarCod_Filme(int cod);
 /* Verificar se o codigo do funcionário existe */
 int verificarCod_Funcionario(int cod);
 
+/* Verificar se o codigo da nota fiscal existe */
+int verificarCod_NotaFiscal();
+
 /* Verificar se o codigo do fornecedor existe */
 int verificarCod_Fornecedores(int cod);
 
+/* Verificar se quantidade de filmes solicitada esta disponivel */
 int verificarExemplares_Filmes(int id, int quant);
 
+/* Verifica o fornecedor possui determinado filme 
+ * cont: utilizado para controlar o limite do for dentro da função */
 int verificarFilme_Fornecedor(int posFor, int idFil, int cont);
 
 /*Retorna a opÃ§Ã£o digitada pelo usuario*/
 int selecao();
-int verificarCod_NotaFiscal();
+
 // Função para finalizar o cadastro ou se deseja cadastrar mais
 int parar_ou_ContinuarCadastro();
 

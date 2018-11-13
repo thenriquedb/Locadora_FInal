@@ -1,50 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   menus.h
- * Author: thiago
- *
- * Created on 18 de Outubro de 2018, 22:36
- */
-
 #ifndef MENUS_H
 #define MENUS_H
-
 
 /*
  * --------------------------------------| MENUS |------------------------------
  */
 
-//Função para imprimir o menu de opções de relatorios
+/* Função para imprimir o menu de opções de relatorios */
 void menuRelatorios();
 
-//Função para imprimir o menu de opções de relatorios
+/* Função para imprimir o menu de opções de relatorios */
 void menuCadastro();
 
-//Função para imprimir o menu de opções de gestão de dados
+/* Função para imprimir o menu de opções de gestão de dados */
 void menuGestao();
 
-//
+/* Função para imprimir o menu de opções de locação de filmes */
 void menuLocacao();
 
-//
-void menuFinanceiro();
+/* Função para imprimir o menu de opções de finanças */
+void menuFinancas();
 
-//
+/* Função para imprimir o menu de opções de notas fiscais */
 void menuNotasFiscais();
 
-//Função para imprimir o menu de opções de gestão de dados
+/* Função para imprimir o menu de opções de administração */
 void menuAdministrativo();
 
+/* Função para imprimir o menu de opções de contas a pagar */
 void menuContas_aPagar();
 
+/* Função para imprimir o menu de opções de entrada de filmes */
 void menu_EntradaFilmes();
 
-void subMenuContas_aPagar();
 /*
  * -----------------------------| SUBMENUS RELATORIOS |-------------------------
  */
@@ -63,6 +50,9 @@ void subMenuRel_Funcionarios();
 
 //Submenu de relatorio dos fornecedores
 void subMenuRel_Fornecedores();
+
+//Submenu de contas a pagar
+void subMenuContas_aPagar();
 
 /*
  * -----------------------------| SUBMENUS GESTÃO: EDIÇÃO |-------------------------
@@ -86,7 +76,7 @@ void subMenu_edicaoFornecedores();
 
 /*
  * -----------------------------| SUBMENUS GESTÃO: EXCLUSÃO |-------------------------
-*/
+ */
 void subMenuGestao_Excluir();
 
 

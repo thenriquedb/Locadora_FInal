@@ -179,7 +179,6 @@ int verificarFilme_Fornecedor(int posFor, int idFil, int cont) {
     for (int i = 0; i < cont; i++) {
         if (Fornecedor[posFor].catalogoFilmes[i] == idFil) {
             verificar++;
-
         }
     }
 

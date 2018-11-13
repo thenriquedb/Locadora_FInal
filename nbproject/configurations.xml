@@ -4,7 +4,7 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Arquivos de Cabeçalho"
                    projectFiles="true">
-      <itemPath>GUI.h</itemPath>
+      <itemPath>Bibliotecas/GUI.h</itemPath>
       <itemPath>Bibliotecas/administracao.h</itemPath>
       <itemPath>alocacao.h</itemPath>
       <itemPath>cadastros.h</itemPath>
@@ -57,6 +57,8 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Bibliotecas/GUI.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Bibliotecas/administracao.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Bibliotecas/gestao.h" ex="false" tool="3" flavor2="0">
@@ -64,8 +66,6 @@
       <item path="Bibliotecas/interface.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="GUI.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="GUI.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="administracao.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -122,6 +122,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Bibliotecas/GUI.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Bibliotecas/administracao.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Bibliotecas/gestao.h" ex="false" tool="3" flavor2="0">
@@ -129,8 +131,6 @@
       <item path="Bibliotecas/interface.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="GUI.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="GUI.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="administracao.c" ex="false" tool="0" flavor2="0">
       </item>

@@ -8,17 +8,18 @@
 #include "Bibliotecas/cadastros.h"
 #include "Bibliotecas/menus.h"
 #include "Bibliotecas/alocacao.h"
-#include "GUI.h"
+#include "Bibliotecas/GUI.h"
 
 void entradaFilmes() {
     int i, opc, opc2, codFor, CodFil, PosForn, PosFil, contCompras = 0, quantCopias, totalCopias = 0;
-    float total = 0, somatorio = 0, totalFrete, totalImposto, freteUnidade, impostoUnidade, vlrEntrada;
+    float total = 0, somatorio = 0, totalFrete, totalImposto, vlrEntrada;
 
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
     Strc_Filmes* Filme = return_Filmes();
     Strc_Locadora Locadora = return_Locadora();
-    Strc_Financeiro Financeiro = return_Financeiro();
+    Strc_Financas Financeiro = return_Financas();
     Strc_notaFiscal Notas;
+    
     Notas.Itens = NULL;
 
     printf("====== | ENTRADA DE FILMES |======\n");
@@ -27,8 +28,8 @@ void entradaFilmes() {
         scanf("%d", &codFor);
     } while (verificarCod_Fornecedores(codFor) < 0);
     PosForn = codFor - 1;
+    
     system("clear");
-
     //Inicio bloco selecão dos titulos
     do {
         printf("====== | ENTRADA DE FILMES |======\n");
@@ -174,7 +175,7 @@ void locacaoFilmes() {
     Strc_Clientes* Clientes = return_Clientes();
     Strc_Categoria* Categoria = return_Categorias();
     Strc_Locadora Locadora = return_Locadora();
-    Strc_Financeiro Financeiro = return_Financeiro();
+    Strc_Financas Financeiro = return_Financas();
     Strc_MinimalFilmes* FilmesLocados = NULL;
 
     /*
@@ -289,7 +290,7 @@ void locacaoFilmes() {
 void contasPagar_Unica() {
     int codNF, i, contNF = returnCont_NotasFiscais();
     Strc_notaFiscal* Nota = return_NotasFiscais();
-    Strc_Financeiro Financeiro = return_Financeiro();
+    Strc_Financas Financeiro = return_Financas();
 
     printf("====== | PAGAR NF PELO SEU CÓDIGO | ======\n");
     do {
@@ -311,7 +312,7 @@ void contasPagar_Unica() {
             alterarFinanceiro(Financeiro);
             alterarNotasFiscais(Nota);
         } else {
-            menuFinanceiro();
+            menuFinancas();
         }
     } else {
         printf("A nota de código %d já esta paga. \n", codNF);
@@ -322,7 +323,7 @@ void contasPagar_Unica() {
 void contasPagar_Fornecedor() {
     int codFor, codNF, i, cont = 0, opc, contNF = returnCont_NotasFiscais();
     Strc_notaFiscal* Nota = return_NotasFiscais();
-    Strc_Financeiro Financeiro = return_Financeiro();
+    Strc_Financas Financeiro = return_Financas();
 
     printf("====== | PAGAR NF DE DETERMINADO FORNECEDOR | ======\n");
     do {
@@ -382,7 +383,7 @@ void contasPagar_Fornecedor() {
 void contasPagar_Todas() {
     int codFor, codNF, i, cont = 0, opc, contNF = returnCont_NotasFiscais();
     Strc_notaFiscal* Nota = return_NotasFiscais();
-    Strc_Financeiro Financeiro = return_Financeiro();
+    Strc_Financas Financeiro = return_Financas();
 
     printf("====== | PAGAR TODAS NOTAS FISCAIS | ======\n");
 
@@ -406,6 +407,6 @@ void contasPagar_Todas() {
             }
         }
     } else {
-        menuFinanceiro();
+        menuFinancas();
     }
 }

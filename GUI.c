@@ -6,7 +6,7 @@
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/menus.h"
 #include "Bibliotecas/veriificacaoDeDados.h"
-#include "GUI.h"
+#include "Bibliotecas/GUI.h"
 
 void imprimeCategorias(int i) {
     Strc_Categoria* Categoria = return_Categorias();

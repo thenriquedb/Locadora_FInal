@@ -15,17 +15,17 @@ int main(int argc, char** argv) {
     prencherDados();
 
     do {
-        Strc_Financeiro Fin = return_Financeiro();
+        Strc_Financas Fin = return_Financas();
         printf("CAIXA: R$ %.2f \n", Fin.caixa);
 
         printf("====== | MENU PRINCIPAL | ======\n"
-                "\t1. Cadastros \n" //Concluido
-                "\t2. Locação \n" // Andamento
-                "\t3. Gestão de dados \n" //Cocnluido
-                "\t4. Relatórios \n" //Concluido
-                "\t5. Financeiro \n" //Não iniciado
-                "\t6. Administrativo \n" //Em andamento
-                "\t7. Importtação e exportação de dados \n" //Nao iniciado
+                "\t1. Cadastros \n" 
+                "\t2. Locação \n" 
+                "\t3. Gestão de dados \n" 
+                "\t4. Relatórios \n" 
+                "\t5. Finanças \n" 
+                "\t6. Administrativo \n" 
+                "\t7. Importtação e exportação de dados \n" 
                 "\t8. Sair \n");
 
         switch (selecao()) {
@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
                 break;
 
             case 5:
-                menuFinanceiro();
+                menuFinancas();
                 break;
 
             case 6:

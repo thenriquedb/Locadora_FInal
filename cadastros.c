@@ -7,7 +7,7 @@
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/menus.h"
 #include "Bibliotecas/relatorios.h"
-#include "GUI.h"
+#include "Bibliotecas/GUI.h"
 
 void cadastrarLocadora() {
     Strc_Locadora Locadora;

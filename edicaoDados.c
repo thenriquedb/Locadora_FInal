@@ -8,7 +8,7 @@
 #include "Bibliotecas/menus.h"
 #include "Bibliotecas/relatorios.h"
 #include "Bibliotecas/gestao.h"
-#include "GUI.h"
+#include "Bibliotecas/GUI.h"
 int edicaoFuncionario() {
     int cod, i;
 

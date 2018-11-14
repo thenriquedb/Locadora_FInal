@@ -838,3 +838,101 @@ void filNotasFiscais_Fornecedor() {
         printf("Nenhum nota fiscal gerada. \n");
     }
 }
+//-------------------------------------------------------------------------------
+
+void filLocacoes_aVista() {
+    Strc_Locacoes* Locacoes = return_Locacoes();
+    int cont = 0;
+
+    printf("====== | LOCAÇÕES A VISTA | ======\n");
+    for (int i = 0; i < cont; i++) {
+        if (Locacoes[i].pagamento == 'V') {
+            imprimeLocacoes(i);
+            cont++;
+        }
+    }
+
+    if (cont == 0) {
+        printf("Nenhuma locação a vista foi realizada. \n");
+    }
+}
+//-------------------------------------------------------------------------------
+
+void filLocacoes_aPrazo() {
+    Strc_Locacoes* Locacoes = return_Locacoes();
+    int cont;
+
+    printf("====== | LOCAÇÕES A PRAZO | ======\n");
+    for (int i = 0; i < cont; i++) {
+        if (Locacoes[i].pagamento == 'P') {
+            imprimeLocacoes(i);
+            cont++;
+        }
+    }
+
+    if (cont == 0) {
+        printf("Nenhuma locação a vista foi realizada. \n");
+    }
+}
+//-------------------------------------------------------------------------------
+
+void filLocacoes_Func() {
+    Strc_Locacoes* Locacoes = return_Locacoes();
+    int cont, codF, contLocacoes = returnCont_Locacoes();
+
+    printf("====== | LOCAÇÕES POR FUNCIONÁRIO | ======\n");
+    do {
+        printf("Digite o codígo do funcionário: ");
+        scanf("%d", &codF);
+    } while (verificarCod_Funcionario(codF) < 0);
+
+    printf("\n");
+    for (int i = 0; i < contLocacoes; i++) {
+        if (Locacoes[i].codFunc == codF) {
+            imprimeLocacoes(i);
+            cont++;
+        }
+    }
+
+    if (cont == 0) {
+        printf("O funcionário de codígo %d ainda não realizou nenhuma venda. \n", codF);
+    }
+}
+//-------------------------------------------------------------------------------
+
+void filLocacoes_Data() {
+    Strc_Locacoes* Locacoes = return_Locacoes();
+    int diaInicial, diaFinal, mesInicial, mesFinal, contLocacoes = returnCont_Locacoes();
+
+    printf("====== | LOCAÇÕES POT DATA | ======\n");
+
+    printf("Digite o dia inicial: ");
+    scanf("%d", &diaInicial);
+    printf("Digite o mês inicial: ");
+    scanf("%d", &mesInicial);
+
+
+    printf("Digite o dia final: ");
+    scanf("%d", &diaFinal);
+    printf("Digite o mês final: ");
+    scanf("%d", &mesFinal);
+
+    /*
+    for (int i = 0; i < contLocacoes; i++) {
+        if (Locacoes[i].codFunc == codF) {
+            imprimeLocacoes(i);
+            cont++;
+        }
+    }
+     */
+}
+//-------------------------------------------------------------------------------
+
+void filLocacoes_todas() {
+    Strc_Locacoes* Locacoes = return_Locacoes();
+    int cont = returnCont_Locacoes();
+
+    for (int i = 0; i < cont; i++) {
+        imprimeLocacoes(i);
+    }
+}

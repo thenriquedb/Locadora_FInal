@@ -9,6 +9,7 @@
 #include "Bibliotecas/gestao.h"
 #include "Bibliotecas/administracao.h"
 #include "Bibliotecas/alocacao.h"
+#include "Bibliotecas/financas.h"
 
 void menuCadastro() {
     printf("====== | CADASTROS | ======\n");
@@ -187,14 +188,25 @@ void menuLocacao() {
     printf("====== | LOCAÇÃO | ======\n"
             "\t1. Locação de filmes \n"
             "\t2. Devolução de filmes \n"
-            "\t3. Voltar para o menu principal \n");
+            "\t3. Locações realizadas \n"
+            "\t4. Voltar para o menu principal \n");
 
     switch (selecao()) {
         case 1:
-            locacaoFilmes();
+            if (return_Funcionarios() != NULL && return_Clientes() != NULL) {
+                locacaoFilmes();
+            } else {
+                printf("Para efetuar uma locação é necessario ter pelo um cliente "
+                        "e um funcionário ja cadastrado no sistema. \n ");  
+            }
             break;
 
         case 3:
+            if (return_Locacoes() != NULL) {
+                menuLocacoes();
+            } else {
+                printf("Nenhuma locação realizada. \n");
+            }
             break;
 
         default:
@@ -244,9 +256,9 @@ void menuAdministrativo() {
             "\t1. Compra de filmes \n"
             "\t2. Visualizar estoque da locadora \n"
             "\t3. Voltar para o menu principal \n");
-    
-   Strc_Locadora Locadora = return_Locadora();
-    
+
+    Strc_Locadora Locadora = return_Locadora();
+
     switch (selecao()) {
         case 1:
             if (return_Filmes() != NULL) {
@@ -329,7 +341,51 @@ void menuContas_aPagar() {
             printf("Opção inválida. \n");
     }
 }
+//------------------------------------------------------------------------------
 
+void menuLocacoes() {
+    printf("====== | LOCAÇÕES | ======\n"
+            "\t1. Todas as locações \n"
+            "\t2. Locações a vista \n"
+            "\t3. Locações a prazo \n"
+            "\t4. Por funcionárior \n"
+            "\t5. Data \n"
+            "\t6. Voltar ao menu anterior \n");
+
+    switch (selecao()) {
+        case 1:
+            filLocacoes_todas();
+            break;
+
+        case 2:
+            system("clear");
+            filLocacoes_aVista();
+            break;
+
+        case 3:
+            filLocacoes_aPrazo();
+            break;
+
+        case 4:
+            filLocacoes_Func();
+            break;
+
+        case 5:
+            filLocacoes_Data();
+            break;
+
+        case 6:
+            menuLocacao();
+            break;
+
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+
+/*------------------------------------------------------------------------------ 
+ *
+ ------------------------------------------------------------------------------*/
 void subMenuContas_aPagar() {
     printf("====== | OPÇÕES DE PAGAMENTO | ======\n"
             "\t1. Pagar uma uníca nota fiscal \n"

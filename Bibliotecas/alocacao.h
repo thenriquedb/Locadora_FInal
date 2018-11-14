@@ -34,6 +34,9 @@ int* alocar_CatalagoFornecedor(int* str, int cont);
 /* Função responsavel por fazer a aloção de memoria dos filmes comprados para a locadora */
 int* alocar_FilmesComprados(int* str, int cont);
 
+/* Funçao para armazenar o historico de filmes locados */
+int alocarLocacoes(Strc_Locacoes* str);
+
 /* Função responsavel por fazer a aloção de memoria para finanças */
 Strc_Financas* alocar_Financas(Strc_Financas* str, int cont);
 
@@ -73,6 +76,9 @@ Strc_notaFiscal* return_NotasFiscais();
 /* Função que retorna a variavel Financas */
 Strc_Financas return_Financas();
 
+/**/
+Strc_Locacoes* return_Locacoes();
+
 /*
  * -----------------------| FUNÇÕES PARA RETORNAR CONTADORES |----------------
  */
@@ -95,6 +101,8 @@ int returnCont_Fornecedores();
 /* Funções para retornar a quantidade de notas fiscais alocados */
 int returnCont_NotasFiscais();
 
+/**/
+int returnCont_Locacoes();
 
 /*
  * -----------------------| FUNÇÕES PARA ALTERAR DADOS ORIGINAIS |----------------

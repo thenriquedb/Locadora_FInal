@@ -20,5 +20,8 @@ void imprimeFornecedores(int i);
 /* Função para  imprimir informações da nota fiscal */
 void imprimeNotaFiscal(int codForn, int contItens);
 
+/**/
+void imprimeLocacoes(int i);
+
 #endif /* GUI_H */
 

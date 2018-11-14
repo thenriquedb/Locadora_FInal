@@ -96,12 +96,7 @@ typedef struct {
     int codigo;
 } Strc_Fornecedores;
 
-typedef struct {
-    int codCl;
-    int devendo;
-    int quantParcelas;
-    float vlrParcela;
-} Strc_ContaReceber;
+
 
 typedef struct {
     int codCl;
@@ -115,11 +110,7 @@ typedef struct {
 typedef struct {
     float caixa;
     float contasPagar;
-
-    Strc_ContaReceber* receber;
     int contReceber;
-
-    Strc_ContaPagar* pagar;
     int contPagar;
 } Strc_Financas;
 
@@ -146,6 +137,19 @@ typedef struct {
     float impostoUnidade;
     float totalNF;
 } Strc_notaFiscal;
+
+typedef struct {
+    int codCliente;
+    int codFunc;
+    int contItens;
+    char pagamento;
+    int dia, mes;
+    
+    int quantParcelas;
+    float vlrParcela;
+    
+    Strc_MinimalFilmes* Itens;
+} Strc_Locacoes;
 
 #endif /* STRUCTS_H */
 

@@ -8,6 +8,7 @@
       <itemPath>Bibliotecas/administracao.h</itemPath>
       <itemPath>alocacao.h</itemPath>
       <itemPath>cadastros.h</itemPath>
+      <itemPath>Bibliotecas/financas.h</itemPath>
       <itemPath>Bibliotecas/gestao.h</itemPath>
       <itemPath>Bibliotecas/interface.h</itemPath>
       <itemPath>menus.h</itemPath>
@@ -26,6 +27,7 @@
       <itemPath>edicaoDados.c</itemPath>
       <itemPath>excluirDados.c</itemPath>
       <itemPath>filtrosRelatorios.c</itemPath>
+      <itemPath>financas.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>menus.c</itemPath>
       <itemPath>teste.c</itemPath>
@@ -61,6 +63,8 @@
       </item>
       <item path="Bibliotecas/administracao.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Bibliotecas/financas.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Bibliotecas/gestao.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Bibliotecas/interface.h" ex="false" tool="3" flavor2="0">
@@ -82,6 +86,8 @@
       <item path="excluirDados.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="filtrosRelatorios.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="financas.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -126,6 +132,8 @@
       </item>
       <item path="Bibliotecas/administracao.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Bibliotecas/financas.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Bibliotecas/gestao.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Bibliotecas/interface.h" ex="false" tool="3" flavor2="0">
@@ -147,6 +155,8 @@
       <item path="excluirDados.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="filtrosRelatorios.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="financas.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>

@@ -103,6 +103,13 @@ void filNotasFiscais_Fornecedor();
 void filNotasFiscais_Pagas();
 void filNotasFiscais_NaoPagas();
 
+//-------------------------| RELATORIO LOCACOES |---------------------------------
+void filLocacoes_aVista();
+void filLocacoes_aPrazo();
+void filLocacoes_Func();
+void filLocacoes_todas();
+void filLocacoes_Data();
+
 //---------------------------------| OUTROS |-----------------------------------
 int chamarMenu_Relatorio();
 

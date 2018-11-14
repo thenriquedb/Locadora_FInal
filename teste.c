@@ -5,6 +5,8 @@
 
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/structs.h"
+#include "Bibliotecas/alocacao.h"
+#include "Bibliotecas/cadastros.h"
 
 void prencherDados() {
     Strc_Clientes cl;
@@ -21,6 +23,14 @@ void prencherDados() {
 
         alocarClientes(&cl);
     }
+
+    Strc_Funcionario fun;
+    strcpy(fun.nome, "klebin");
+    strcpy(fun.cargo, "peao");
+    strcpy(fun.email, "arroba gimail ponto com");
+    strcpy(fun.telefone, "555555");
+    fun.codigo = gerarCodigoFuncionario();
+    alocarFuncionarios(&fun);
 
     Strc_Locadora loc;
     strcpy(loc.endereco, "teste14");

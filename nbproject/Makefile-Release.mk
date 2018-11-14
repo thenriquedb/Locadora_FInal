@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/edicaoDados.o \
 	${OBJECTDIR}/excluirDados.o \
 	${OBJECTDIR}/filtrosRelatorios.o \
+	${OBJECTDIR}/financas.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/menus.o \
 	${OBJECTDIR}/teste.o \
@@ -106,6 +107,11 @@ ${OBJECTDIR}/filtrosRelatorios.o: filtrosRelatorios.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/filtrosRelatorios.o filtrosRelatorios.c
+
+${OBJECTDIR}/financas.o: financas.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/financas.o financas.c
 
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}

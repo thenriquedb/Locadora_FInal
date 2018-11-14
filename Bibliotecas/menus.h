@@ -32,6 +32,9 @@ void menuContas_aPagar();
 /* Função para imprimir o menu de opções de entrada de filmes */
 void menu_EntradaFilmes();
 
+/**/
+void menuLocacoes();
+
 /*
  * -----------------------------| SUBMENUS RELATORIOS |-------------------------
  */

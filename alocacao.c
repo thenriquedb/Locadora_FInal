@@ -17,6 +17,7 @@ Strc_Filmes* Filmes = NULL;
 Strc_Categoria* Categorias = NULL;
 Strc_Funcionario* Funcionarios = NULL;
 Strc_Fornecedores* Fornecedores = NULL;
+Strc_Locacoes* Locacoes = NULL;
 
 Strc_notaFiscal *NotasFiscais = NULL;
 
@@ -28,6 +29,7 @@ int static contCategoriasAlocados = 0;
 int static contFuncionariosAlocados = 0;
 int static contFornecedoresAlocados = 0;
 int static contNotasFiscaisAlocados = 0;
+int static contLocacoesAlocados = 0;
 
 int alocarEstoque_Locadora(Strc_Locadora* loc) {
     if (Locadora.filmesComprados == NULL) {
@@ -224,6 +226,26 @@ int alocarNotasFiscais(Strc_notaFiscal* nota) {
 
     return 1;
 }
+//-------------------------------------------------------------------------------
+
+int alocarLocacoes(Strc_Locacoes* str) {
+    if (NotasFiscais == NULL) {
+        Locacoes = malloc(sizeof (Strc_Locacoes));
+    } else {
+        Locacoes = realloc(Locacoes, (contLocacoesAlocados + 1) * sizeof (Strc_Locacoes));
+    }
+
+    *(Locacoes + contLocacoesAlocados) = *str;
+
+    if (Locacoes == NULL) {
+        printf("Ocorreu um erro durante a alocação, \n");
+        exit(EXIT_FAILURE);
+    }
+
+    contLocacoesAlocados++;
+
+    return 1;
+}
 //------------------------------------------------------------------------------
 
 //-----------------------| FUNÇÕES PARA RETORNO DOS VETORES |--------------------
@@ -260,6 +282,10 @@ Strc_notaFiscal* return_NotasFiscais() {
     return NotasFiscais;
 }
 
+Strc_Locacoes* return_Locacoes() {
+    return Locacoes;
+}
+
 //-----------------------| FUNÇÕES PARA RETORNO DOS CONTADORES |----------------
 
 int returnCont_Clientes() {
@@ -284,6 +310,10 @@ int returnCont_Fornecedores() {
 
 int returnCont_NotasFiscais() {
     return contNotasFiscaisAlocados;
+}
+
+int returnCont_Locacoes() {
+    return contLocacoesAlocados;
 }
 
 //-----------------------| FUNÇÕES PARA ALTERAR DADOS ORIGINAIS |----------------
@@ -343,3 +373,12 @@ void alterarNotasFiscais(Strc_notaFiscal *nota) {
 void alterar_contNotasFiscais(int nota) {
     contNotasFiscaisAlocados = nota;
 }
+
+void alterarLocacoes(Strc_Locacoes *locacoes) {
+    Locacoes = locacoes;
+}
+
+void alterar_contLocacoes(int cont) {
+    contLocacoesAlocados = cont;
+}
+

@@ -1,14 +1,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "Bibliotecas/administracao.h"
+
 #include "Bibliotecas/structs.h"
+#include "Bibliotecas/administracao.h"
 #include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/relatorios.h"
-#include "Bibliotecas/cadastros.h"
-#include "Bibliotecas/menus.h"
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/GUI.h"
+#include "Bibliotecas/financas.h"
 
 void entradaFilmes() {
     int i, opc, opc2, codFor, CodFil, PosForn, PosFil, contCompras = 0, quantCopias, totalCopias = 0;
@@ -19,7 +19,7 @@ void entradaFilmes() {
     Strc_Locadora Locadora = return_Locadora();
     Strc_Financas Financeiro = return_Financas();
     Strc_notaFiscal Notas;
-    
+
     Notas.Itens = NULL;
 
     printf("====== | ENTRADA DE FILMES |======\n");
@@ -28,7 +28,7 @@ void entradaFilmes() {
         scanf("%d", &codFor);
     } while (verificarCod_Fornecedores(codFor) < 0);
     PosForn = codFor - 1;
-    
+
     system("clear");
     //Inicio bloco selecão dos titulos
     do {
@@ -168,23 +168,24 @@ void visualizarEstoque() {
 //-------------------------------------------------------------------------------
 
 void locacaoFilmes() {
-    int i, codFilme, codCliente, opc, opc2, quant, contAluguel = 0, posCat = 0, posFilme, posCliente;
-    float totalPagamento = 0;
+    int i, codFilme, codFunc, codCliente, opc, opc2, quant, quantParcela, contAluguel = 0, posCat = 0, posFilme, posCliente;
+    float totalPagamento = 0, entrada;
 
     Strc_Filmes* Filmes = return_Filmes();
     Strc_Clientes* Clientes = return_Clientes();
     Strc_Categoria* Categoria = return_Categorias();
-    Strc_Locadora Locadora = return_Locadora();
     Strc_Financas Financeiro = return_Financas();
     Strc_MinimalFilmes* FilmesLocados = NULL;
 
-    /*
+    do {
+        printf("Locações são realizadas apenas por funcionários. Digite seu código de registro: \n ");
+        scanf("%d", &codFunc);
+    } while (verificarCod_Funcionario(codFunc) < 0);
+
     do {
         printf("Digite o código do cliente para continuar: ");
         scanf("%d", &codCliente);
     } while (verificarCod_Cliente(codCliente) < 0);
-     */
-    
     posCliente = codCliente - 1;
 
     do {
@@ -202,7 +203,6 @@ void locacaoFilmes() {
             posCat = Filmes[posFilme].codigoCategoria - 1;
 
             if (Filmes[posFilme].exemplares != 0) {
-
                 do {
                     printf("\tDigite o número de exemplares: ");
                     scanf("%d", &quant);
@@ -221,13 +221,13 @@ void locacaoFilmes() {
         opc = selecao();
 
         contAluguel++;
+        totalPagamento += Categoria[posCat].valor * quant;
+        Filmes[posFilme].exemplares -= quant;
 
         if (opc == 1) {
             system("clear");
             printf("Filme adcionado com sucesso! \n");
 
-            Filmes[posFilme].exemplares -= quant;
-            totalPagamento += Categoria[posCat].valor * quant;
         } else {
             printf("Títulos selecionados: \n");
 
@@ -236,177 +236,16 @@ void locacaoFilmes() {
                 printf("\tQuantidade: %d \n\n", FilmesLocados[i].quant);
             }
 
-            printf("\nDigite 1 para confirmar ou 2 para selecionar novamente. \n");
+            printf("Opções: \n"
+                    "\t1; Confirmar \n "
+                    "\t2. Corrigir \n");
             opc2 = selecao();
-
             if (opc2 == 2) {
                 contAluguel = 0;
             }
+            system("clear");
         }
     } while (opc2 != 1);
 
-    system("clear");
-    printf("Total: R$ %.2f \n", totalPagamento);
-
-    int quantParcela;
-    float entrada;
-
-    printf("Forma de pagamento: \n"
-            "\t1. A vista \n"
-            "\t2, A prazo \n");
-
-    if (selecao() == 1) {
-        Clientes[posCliente].devendo = 0;
-        Financeiro.caixa = totalPagamento;
-
-        //     alterarLocadora(Locadora);
-        alterarFinanceiro(Financeiro);
-    } else {
-        printf("PAGAMENTO A PRAZO \n"
-                "\t1. Com entrada \n"
-                "\t2. Sem entrada \n");
-
-        if (selecao() == 1) {
-            printf("Digite o valor da entrada: ");
-            scanf("%f", &entrada);
-
-            do {
-                printf("Digite a quantidade de parcelas que deseja: ");
-                scanf("%d", &quantParcela);
-            } while (quantParcela < 1 && quantParcela > 3);
-
-            Clientes[posCliente].quantParcela = quantParcela;
-            Clientes[posCliente].devendo = 1;
-            Clientes[posCliente].vlr_devendo = (totalPagamento - entrada) / quantParcela;
-
-            printf("\nForma de pagamento escolhida foi %d parcelas de R$ %.2f cada. \n", quantParcela, Clientes[posCliente].vlr_devendo);
-        }
-        alterarClientes(Clientes);
-
-    }
-}
-//------------------------------------------------------------------------------
-
-void contasPagar_Unica() {
-    int codNF, i, contNF = returnCont_NotasFiscais();
-    Strc_notaFiscal* Nota = return_NotasFiscais();
-    Strc_Financas Financeiro = return_Financas();
-
-    printf("====== | PAGAR NF PELO SEU CÓDIGO | ======\n");
-    do {
-        printf("Digite o código da nota fisca que deseja pagar: ");
-        scanf("%d", &codNF);
-    } while (verificarCod_NotaFiscal(codNF) > 0);
-
-    if (Nota[codNF - 1].paga == 0) {
-        imprimeNotaFiscal(Nota[codNF - 1].codForn - 1, Nota[codNF - 1].contItens);
-
-        printf("Opções: \n"
-                "\t1. Pagar agora \n"
-                "\t2. Pagar em outro momento \n");
-
-        if (selecao() == 1) {
-            Financeiro.caixa -= Nota[codNF - 1].totalNF;
-            Nota[codNF - 1].paga = 1;
-
-            alterarFinanceiro(Financeiro);
-            alterarNotasFiscais(Nota);
-        } else {
-            menuFinancas();
-        }
-    } else {
-        printf("A nota de código %d já esta paga. \n", codNF);
-    }
-}
-//------------------------------------------------------------------------------
-
-void contasPagar_Fornecedor() {
-    int codFor, codNF, i, cont = 0, opc, contNF = returnCont_NotasFiscais();
-    Strc_notaFiscal* Nota = return_NotasFiscais();
-    Strc_Financas Financeiro = return_Financas();
-
-    printf("====== | PAGAR NF DE DETERMINADO FORNECEDOR | ======\n");
-    do {
-        printf("Digite o código da nota fiscal que deseja pagar: ");
-        scanf("%d", &codFor);
-    } while (verificarCod_Fornecedores(codFor) > 0);
-
-    for (i = 0; i < contNF; i++) {
-        if (Nota[i].codForn == codFor && Nota[i].paga == 0) {
-            imprimeNotaFiscal(Nota[i].codForn - 1, Nota[i].contItens);
-            cont++;
-        }
-    }
-    if (cont != 0) {
-        printf("Opções: \n"
-                "\t1. Pagar todas de uma vez \n"
-                "\t2. Pagar pelo código \n");
-
-        if (selecao() == 1) {
-            for (i = 0; i < contNF; i++) {
-                if (Nota[i].codForn == codFor && Nota[i].paga == 0) {
-                    Financeiro.caixa -= Nota[i].totalNF;
-                    Nota[i].paga = 1;
-                    cont++;
-                }
-            }
-            printf("Todas as notas deste fornecedor foram quitadas. \n");
-        } else {
-
-            do {
-                do {
-                    printf("Digite o código da nota: \n");
-                    scanf("%d", &codNF);
-                } while (verificarCod_NotaFiscal(codNF) < 0);
-
-                Nota[codFor - 1].paga = 1;
-                Financeiro.caixa -= Nota[codFor - 1].totalNF;
-                printf("Nota de código %d paga com sucesso. \n", codNF);
-
-                alterarFinanceiro(Financeiro);
-                alterarNotasFiscais(Nota);
-
-                system("clear");
-                printf("Opções: \n"
-                        "\t1. Pagar outra nota fiscal \n"
-                        "\t2. Sair \n");
-                opc = selecao();
-            } while (opc != 2);
-        }
-    } else {
-        printf("Todas as contas deste fornecedor já foram pagas. \n");
-    }
-}
-
-//------------------------------------------------------------------------------
-
-void contasPagar_Todas() {
-    int codFor, codNF, i, cont = 0, opc, contNF = returnCont_NotasFiscais();
-    Strc_notaFiscal* Nota = return_NotasFiscais();
-    Strc_Financas Financeiro = return_Financas();
-
-    printf("====== | PAGAR TODAS NOTAS FISCAIS | ======\n");
-
-    for (i = 0; i < contNF; i++) {
-        if (Nota[i].paga == 0) {
-            imprimeNotaFiscal(Nota[i].codForn - 1, Nota[i].contItens);
-            cont++;
-        }
-    }
-
-    printf("Opções: \n"
-            "\t1. Pagar todas de uma vez \n"
-            "\t2. Pagar em outro moemento \n");
-
-    if (selecao() == 1) {
-        for (i = 0; i < contNF; i++) {
-            if (Nota[i].paga == 0) {
-                Financeiro.caixa -= Nota[i].totalNF;
-                Nota[i].paga = 1;
-                cont++;
-            }
-        }
-    } else {
-        menuFinancas();
-    }
+    PagamentoLocacao(codCliente, codFunc, contAluguel, posCliente, totalPagamento, FilmesLocados);
 }

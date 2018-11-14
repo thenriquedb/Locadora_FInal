@@ -298,3 +298,28 @@ void imprimeNotaFiscal(int codForn, int contItens) {
     printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
 }
 
+//------------------------------------------------------------------------------
+
+void imprimeLocacoes(int i) {
+    Strc_Locacoes* Locacoes = return_Locacoes();
+    Strc_Clientes* Clientes = return_Clientes();
+    int contItens = Locacoes[i].contItens;
+
+    printf("Compra realizada pelo funcionário de codígo %d. \n", Locacoes[i].codFunc);
+    printf("Nome do clientes: %s \n", Clientes[Locacoes[i].codCliente - 1].nome);
+    printf("Codígo clientes: %d \n", Locacoes[i].codCliente);
+    printf("Forma de pagamento: ");
+    if (Locacoes[i].pagamento == 'V') {
+        printf("A vista \n\n");
+    } else if (Locacoes[i].pagamento == 'P') {
+        printf("A prazo \n\n");
+    }
+
+    printf("PRODUTOS \n");
+    for (int j = 0; j < Locacoes[i].contItens; j++) {
+        printf("\tCódigo do filme: %d \n", Locacoes[i].Itens[j].codFilme);
+        printf("\tExemplares: %d \n\n", Locacoes[i].Itens[j].quant);
+    }
+    printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
+}
+

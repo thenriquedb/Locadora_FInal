@@ -308,10 +308,11 @@ void imprimeLocacoes(int i) {
     printf("Compra realizada pelo funcionário de codígo %d. \n", Locacoes[i].codFunc);
     printf("Nome do clientes: %s \n", Clientes[Locacoes[i].codCliente - 1].nome);
     printf("Codígo clientes: %d \n", Locacoes[i].codCliente);
+
     printf("Forma de pagamento: ");
     if (Locacoes[i].pagamento == 'V') {
         printf("A vista \n\n");
-    } else if (Locacoes[i].pagamento == 'P') {
+    } else {
         printf("A prazo \n\n");
     }
 
@@ -319,6 +320,32 @@ void imprimeLocacoes(int i) {
     for (int j = 0; j < Locacoes[i].contItens; j++) {
         printf("\tCódigo do filme: %d \n", Locacoes[i].Itens[j].codFilme);
         printf("\tExemplares: %d \n\n", Locacoes[i].Itens[j].quant);
+    }
+    printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
+}
+//------------------------------------------------------------------------------
+
+void imprimeContaReceber(int i) {
+    Strc_ContasReceber* ContaReceber = return_contasReceber();
+    Strc_Clientes* Clientes = return_Clientes();
+
+    printf("Nome do clientes: %s \n", Clientes[ContaReceber[i].codCl - 1].nome);
+    printf("Codígo clientes: %d \n", ContaReceber[i].codCl);
+    printf("Total: R$ %.2f \n", ContaReceber[i].total);
+
+    if (ContaReceber[i].entrada == 'S') {
+        printf("Entrada: R$ %.2f \n", ContaReceber[i].valorEntrada);
+        printf("Restante: R$ %.2f \n",(ContaReceber[i].total - ContaReceber[i].valorEntrada));
+    }
+
+    printf("Número de parcelas: %d \n", ContaReceber[i].quantParcelas);
+    printf("Valor da parcela: R$ %.2f \n", ContaReceber[i].vlrParcela);
+
+    printf("Situação: ");
+    if (ContaReceber[i].situacao == 'D') {
+        printf("Em aberto. \n");
+    } else {
+        printf("Paga. \n");
     }
     printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
 }

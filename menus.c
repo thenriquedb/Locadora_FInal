@@ -197,7 +197,15 @@ void menuLocacao() {
                 locacaoFilmes();
             } else {
                 printf("Para efetuar uma locação é necessario ter pelo um cliente "
-                        "e um funcionário ja cadastrado no sistema. \n ");  
+                        "e um funcionário ja cadastrado no sistema. \n ");
+            }
+            break;
+
+        case 2:
+            if (return_Locacoes() != NULL) {
+                DevolucaoFilmes();
+            } else {
+                printf("Nenhuma locação realizada. \n ");
             }
             break;
 
@@ -224,6 +232,11 @@ void menuFinancas() {
 
     switch (selecao()) {
         case 1:
+            if (return_contasReceber() != NULL) {
+                menuContas_aReceber();
+            } else {
+                printf("Nenhuma conta a receber. \n");
+            }
             break;
 
         case 2:
@@ -287,9 +300,10 @@ void menuNotasFiscais() {
     printf("====== | NOTAS FISCAIS | ======\n"
             "\t1. Visualizar todas \n"
             "\t2. Filtrar por fornecedor \n"
-            "\t3. Visualazir as que já pagas \n"
-            "\t4. Visualizar as que ainda não foram pagas \n"
-            "\t5. Voltar para o menu anterior \n");
+            "\t3, Faixa de codígo dos fornecedores \n"
+            "\t4. Visualazir as que já pagas \n"
+            "\t5. Visualizar as que ainda não foram pagas \n"
+            "\t6. Voltar para o menu anterior \n");
 
     switch (selecao()) {
         case 1:
@@ -301,16 +315,19 @@ void menuNotasFiscais() {
             break;
 
         case 3:
-            filNotasFiscais_Pagas();
+            filNotasFiscais_codigoFornecedor();
             break;
 
         case 4:
-            filNotasFiscais_NaoPagas();
+            filNotasFiscais_Pagas();
             break;
 
         case 5:
-            menuAdministrativo();
+            filNotasFiscais_NaoPagas();
+            break;
 
+        case 6:
+            menuAdministrativo();
 
         default:
             printf("Opção inválida. \n");
@@ -335,7 +352,36 @@ void menuContas_aPagar() {
             break;
 
         case 3:
-            menuAdministrativo();
+            menuFinancas();
+
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+
+void menuContas_aReceber() {
+    printf("====== | CONTAS A RECEBER | ======\n"
+            "\t1. Receber pagamento cliente \n"
+            "\t2. Visualizar todas contas a receber \n"
+            "\t3. Pesquisar contas a receber por faixa de código \n"
+            "\t4. Voltar para o menu anterior \n");
+
+    switch (selecao()) {
+        case 1:
+            receber_ContasCl();
+            break;
+
+        case 2:
+            filContaReceber_todas();
+            break;
+
+        case 3:
+            filContaReceber_faixaCodigo();
+            break;
+
+        case 4:
+            menuFinancas();
+            break;
 
         default:
             printf("Opção inválida. \n");

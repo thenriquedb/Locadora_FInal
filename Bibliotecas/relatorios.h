@@ -102,6 +102,7 @@ void filNotasFiscais_Todas();
 void filNotasFiscais_Fornecedor();
 void filNotasFiscais_Pagas();
 void filNotasFiscais_NaoPagas();
+void filNotasFiscais_codigoFornecedor();
 
 //-------------------------| RELATORIO LOCACOES |---------------------------------
 void filLocacoes_aVista();
@@ -109,6 +110,10 @@ void filLocacoes_aPrazo();
 void filLocacoes_Func();
 void filLocacoes_todas();
 void filLocacoes_Data();
+
+//-------------------------| RELATORIO CONTAS A RECEBER |---------------------------------
+void filContaReceber_todas();
+void filContaReceber_faixaCodigo();
 
 //---------------------------------| OUTROS |-----------------------------------
 int chamarMenu_Relatorio();

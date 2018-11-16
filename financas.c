@@ -125,7 +125,6 @@ void contasPagar_Todas() {
     Strc_Financas Financeiro = return_Financas();
 
     printf("====== | PAGAR TODAS NOTAS FISCAIS | ======\n");
-
     for (i = 0; i < contNF; i++) {
         if (Nota[i].paga == 0) {
             imprimeNotaFiscal(Nota[i].codForn - 1, Nota[i].contItens);
@@ -154,9 +153,11 @@ void contasPagar_Todas() {
 void PagamentoLocacao(int codCl, int codFun, int contAluguel, int posCl, float totalPagamento, Strc_MinimalFilmes* FilmesLocados) {
     int i, codFilme, codCliente, opc, opc2, quant, quantParcela;
     float entrada;
+
     Strc_Clientes* Clientes = return_Clientes();
     Strc_Financas Financeiro = return_Financas();
     Strc_Locacoes Locacoes;
+    Strc_ContasReceber conta_aReceber;
 
     Locacoes.codFunc = codFun;
     Locacoes.Itens = FilmesLocados;
@@ -167,42 +168,101 @@ void PagamentoLocacao(int codCl, int codFun, int contAluguel, int posCl, float t
     printf("Forma de pagamento: \n"
             "\t1. A vista \n"
             "\t2, A prazo \n");
+    conta_aReceber.total = totalPagamento;
 
     if (selecao() == 1) {
         Financeiro.caixa += totalPagamento;
         Locacoes.pagamento = 'V';
     } else {
-        printf("PAGAMENTO A PRAZO \n"
+        printf("====== | FORMA DE PAGAMENTO: A PRAZO | ======\n");
+        do {
+            printf("Digite a quantidade de parcelas que deseja, uma, ou três parcelas: ");
+            scanf("%d", &quantParcela);
+        } while (quantParcela < 1 && quantParcela > 3);
+
+        conta_aReceber.codCl = codCl;
+        conta_aReceber.quantParcelas = quantParcela;
+        conta_aReceber.situacao = 'D';
+
+        printf("Deseja dar algum valor de entrada: \n"
                 "\t1. Com entrada \n"
                 "\t2. Sem entrada \n");
-
-        Locacoes.pagamento = 'P';
         if (selecao() == 1) {
-            printf("Digite o valor da entrada: ");
-            scanf("%f", &entrada);
-
             do {
-                printf("Digite a quantidade de parcelas que deseja, uma, ou três parcelas: ");
-                scanf("%d", &quantParcela);
-            } while (quantParcela < 1 && quantParcela > 3);
+                printf("Digite o valor da entrada: ");
+                scanf("%f", &entrada);
 
-            Clientes[posCl].quantParcela = quantParcela;
-            Clientes[posCl].devendo = 1;
-            Clientes[posCl].vlr_devendo = (totalPagamento - entrada) / quantParcela;
+                if (entrada >= conta_aReceber.total) {
+                    printf("Valor de entrada precisa ser menor que o valor total da comrpa. \n");
+                }
+
+                conta_aReceber.entrada = 'S';
+                conta_aReceber.valorEntrada = entrada;
+            } while (entrada >= conta_aReceber.total);
+
+            conta_aReceber.vlrParcela = (totalPagamento - entrada) / quantParcela;
             Financeiro.caixa += entrada;
-
-            printf("\nForma de pagamento escolhida foi %d parcelas de R$ %.2f cada. \n", quantParcela, Clientes[posCl].vlr_devendo);
+        } else {
+            conta_aReceber.entrada = 'N';
+            conta_aReceber.vlrParcela = totalPagamento / quantParcela;
         }
+        printf("\nForma de pagamento escolhida foi %d parcelas de R$ %.2f cada. \n",
+                quantParcela, conta_aReceber.vlrParcela);
     }
 
+    /*
     system("clear");
     printf("DATA \n");
     printf("\tDia: ");
-    scanf("%d",&Locacoes.dia);
+    scanf("%d", &Locacoes.dia);
     printf("\tMês: ");
-    scanf("%d",&Locacoes.mes);
+    scanf("%d", &Locacoes.mes);
+     */
+
+    alocarContas_aReceber(&conta_aReceber);
+    alocarLocacoes(&Locacoes);
 
     alterarClientes(Clientes);
-    alocarLocacoes(&Locacoes);
     alterarFinanceiro(Financeiro);
+}
+//------------------------------------------------------------------------------
+
+void receber_ContasCl() {
+    int codCl, verificar = 0;
+    int contContas = returnCont_contasReceber();
+    Strc_ContasReceber* Conta = return_contasReceber();
+    Strc_Financas Financas = return_Financas();
+
+    printf("====== | RECEBIMENTO DE CONTAS | ======\n");
+    do {
+        printf("Digite o código do cliente: ");
+        scanf("%d", &codCl);
+    } while (verificarCod_Cliente(codCl) < 0);
+
+    for (int i = 0; i < contContas; i++) {
+        if (Conta[i].codCl == codCl) {
+            if (Conta[i].situacao == 'D') {
+                Conta[i].quantParcelas--;
+                Financas.caixa += Conta[i].vlrParcela;
+
+                verificar++;
+                printf("Parcela paga com sucesso. Parcelas restantes: %d \n", Conta[i].quantParcelas);
+
+                if (Conta[i].quantParcelas == 0) {
+                    Conta[i].situacao = 'P';
+                    printf("Todas as parcelas foram pagas. \n");
+                }
+            } else {
+                printf("Este cliente não possui nenhuma conta em aberto. \n");
+                verificar++;
+            }
+        }
+    }
+
+    if (verificar > 0) {
+        alterarFinanceiro(Financas);
+        alterar_contasReceber(Conta);
+    } else {
+        printf("Nenhum cliente com este código encontrado. \n");
+    }
 }

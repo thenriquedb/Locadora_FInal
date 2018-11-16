@@ -18,7 +18,7 @@ Strc_Categoria* Categorias = NULL;
 Strc_Funcionario* Funcionarios = NULL;
 Strc_Fornecedores* Fornecedores = NULL;
 Strc_Locacoes* Locacoes = NULL;
-
+Strc_ContasReceber* Contas_aReceber = NULL;
 Strc_notaFiscal *NotasFiscais = NULL;
 
 //Contadores para controle da alocação
@@ -30,6 +30,7 @@ int static contFuncionariosAlocados = 0;
 int static contFornecedoresAlocados = 0;
 int static contNotasFiscaisAlocados = 0;
 int static contLocacoesAlocados = 0;
+int static contContas_aReceber = 0;
 
 int alocarEstoque_Locadora(Strc_Locadora* loc) {
     if (Locadora.filmesComprados == NULL) {
@@ -229,7 +230,7 @@ int alocarNotasFiscais(Strc_notaFiscal* nota) {
 //-------------------------------------------------------------------------------
 
 int alocarLocacoes(Strc_Locacoes* str) {
-    if (NotasFiscais == NULL) {
+    if (Locacoes == NULL) {
         Locacoes = malloc(sizeof (Strc_Locacoes));
     } else {
         Locacoes = realloc(Locacoes, (contLocacoesAlocados + 1) * sizeof (Strc_Locacoes));
@@ -243,6 +244,26 @@ int alocarLocacoes(Strc_Locacoes* str) {
     }
 
     contLocacoesAlocados++;
+
+    return 1;
+}
+//-------------------------------------------------------------------------------
+
+int alocarContas_aReceber(Strc_ContasReceber* str) {
+    if (Contas_aReceber == NULL) {
+        Contas_aReceber = malloc(sizeof (Strc_ContasReceber));
+    } else {
+        Contas_aReceber = realloc(Contas_aReceber, (contContas_aReceber + 1) * sizeof (Strc_ContasReceber));
+    }
+
+    *(Contas_aReceber + contContas_aReceber) = *str;
+
+    if (Contas_aReceber == NULL) {
+        printf("Ocorreu um erro durante a alocação, \n");
+        exit(EXIT_FAILURE);
+    }
+
+    contContas_aReceber++;
 
     return 1;
 }
@@ -286,6 +307,10 @@ Strc_Locacoes* return_Locacoes() {
     return Locacoes;
 }
 
+Strc_ContasReceber* return_contasReceber() {
+    return Contas_aReceber;
+}
+
 //-----------------------| FUNÇÕES PARA RETORNO DOS CONTADORES |----------------
 
 int returnCont_Clientes() {
@@ -314,6 +339,10 @@ int returnCont_NotasFiscais() {
 
 int returnCont_Locacoes() {
     return contLocacoesAlocados;
+}
+
+int returnCont_contasReceber() {
+    return contContas_aReceber;
 }
 
 //-----------------------| FUNÇÕES PARA ALTERAR DADOS ORIGINAIS |----------------
@@ -380,5 +409,13 @@ void alterarLocacoes(Strc_Locacoes *locacoes) {
 
 void alterar_contLocacoes(int cont) {
     contLocacoesAlocados = cont;
+}
+
+void alterar_contasReceber(Strc_ContasReceber *str) {
+    Contas_aReceber = str;
+}
+
+void alterar_contcontasReceber(int cont) {
+    contContas_aReceber = cont;
 }
 

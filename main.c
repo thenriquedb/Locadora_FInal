@@ -12,7 +12,7 @@
 int main(int argc, char** argv) {
 
     // cadastrarLocadora();
-    prencherDados();
+   prencherDados();
 
     do {
         Strc_Financas Fin = return_Financas();

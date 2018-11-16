@@ -34,6 +34,8 @@ void menu_EntradaFilmes();
 
 /**/
 void menuLocacoes();
+void menuContas_aReceber();
+
 
 /*
  * -----------------------------| SUBMENUS RELATORIOS |-------------------------

@@ -16,7 +16,7 @@ void filCategorias_Todos() {
 
     system("clear");
     if (Categoria != NULL) {
-        printf("====== | VISUALIZAR TODOS FILMES CADASTRADOS | ======");
+        printf("====== | VISUALIZAR TODAS AS CATEGORIAS CADASTRADAS | ======");
 
         for (i = 0; i < contCat; i++) {
             printf("\n====== | %dº CATEGORIA | ======\n", i + 1);
@@ -583,6 +583,7 @@ void filFilmes_Codigo() {
     Strc_Filmes* Filme = return_Filmes();
     int i, cod, cont = 0, contF = returnCont_Filmes();
 
+    system("clear");
     if (Filme != NULL) {
         do {
             printf("====== | FILTRAR POR CÓDIGO | ======\n");
@@ -686,6 +687,7 @@ void filFilmes_Exemplares() {
     Strc_Filmes* Filme = return_Filmes();
     int i, exemplares, cont = 0, contF = returnCont_Filmes();
 
+    system("clear");
     if (Filme != NULL) {
         do {
             printf("====== | FILTRAR POR EXEMPLARES | ======\n");
@@ -716,6 +718,7 @@ void filFilmes_Idioma() {
     Strc_Filmes* Filme = return_Filmes();
     int i, opc, cont = 0, contF = returnCont_Filmes();
 
+    system("clear");
     if (Filme != NULL) {
         do {
             printf("====== | FILTRAR POR IDIOMA | ======\n");
@@ -745,6 +748,7 @@ void filNotasFiscais_Todas() {
     int i, cont = 0, contNF = returnCont_NotasFiscais();
     Strc_notaFiscal* Nota = return_NotasFiscais();
 
+    system("clear");
     if (Nota != NULL) {
         system("clear");
         printf("====== | TODAS NOTAS FISCAIS | ======\n");
@@ -763,6 +767,7 @@ void filNotasFiscais_Pagas() {
     int i, cont = 0, contNF = returnCont_NotasFiscais();
     Strc_notaFiscal* Nota = return_NotasFiscais();
 
+    system("clear");
     if (Nota != NULL) {
         system("clear");
         printf("====== | NOTAS FISCAIS PAGAS | ======\n");
@@ -791,6 +796,7 @@ void filNotasFiscais_NaoPagas() {
     int i, cont = 0, contNF = returnCont_NotasFiscais();
     Strc_notaFiscal* Nota = return_NotasFiscais();
 
+    system("clear");
     if (Nota != NULL) {
         printf("====== | NOTAS FISCAIS: EM ABERTO | ======\n");
 
@@ -811,6 +817,7 @@ void filNotasFiscais_Fornecedor() {
     int codForn, i, cont = 0, contNF = returnCont_NotasFiscais();
     Strc_notaFiscal* Nota = return_NotasFiscais();
 
+    system("clear");
     if (Nota != NULL) {
         do {
             system("clear");
@@ -836,6 +843,40 @@ void filNotasFiscais_Fornecedor() {
         } while (chamarMenu_Relatorio() != 1);
     } else {
         printf("Nenhum nota fiscal gerada. \n");
+    }
+}
+//-------------------------------------------------------------------------------
+
+void filNotasFiscais_codigoFornecedor() {
+    int codInicio, codFinal, i, cont = 0, contNF = returnCont_NotasFiscais();
+    Strc_notaFiscal* Nota = return_NotasFiscais();
+
+    system("clear");
+    if (Nota != NULL) {
+        system("clear");
+        printf("====== | NOTAS FISCAIS: FILTRAR POR FORNECEDOR | ======\n");
+        printf("Digite o código de início: ");
+        scanf("%d", &codInicio);
+
+        printf("Digite o código do fim: ");
+        scanf("%d", &codFinal);
+
+        system("clear");
+        printf("====== | NOTAS FISCAIS: FILTRAR POR FORNECEDOR | ======\n");
+        for (i = codInicio; i < codFinal; i++) {
+            if (Nota[i].codForn == i) {
+                printf("%dº NOTA \n", cont + 1);
+                imprimeNotaFiscal(i, Nota[i].contItens);
+                cont++;
+            }
+        }
+
+        if (cont > 0) {
+            printf("\nTotal de resultados: %d \n\n", cont);
+
+        } else {
+            printf("\nNenhuma nota do forncedor de código %d foi encontrada. \n", cont);
+        }
     }
 }
 //-------------------------------------------------------------------------------
@@ -929,10 +970,48 @@ void filLocacoes_Data() {
 //-------------------------------------------------------------------------------
 
 void filLocacoes_todas() {
-    Strc_Locacoes* Locacoes = return_Locacoes();
     int cont = returnCont_Locacoes();
 
+    system("clear");
+    printf("====== | TODAS LOCAÇÕES REALIZADAS | ======\n");
     for (int i = 0; i < cont; i++) {
         imprimeLocacoes(i);
     }
 }
+//-------------------------------------------------------------------------------
+
+void filContaReceber_todas() {
+    int cont = returnCont_contasReceber();
+
+    system("clear");
+    printf("====== | TODAS AS CONTAS A RECEBER | ======\n");
+    for (int i = 0; i < cont; i++) {
+        imprimeContaReceber(i);
+    }
+}
+//-------------------------------------------------------------------------------
+
+void filContaReceber_faixaCodigo() {
+    int codInicio, codFinal, verificar = 0;
+    Strc_ContasReceber* Conta = return_contasReceber();
+
+    printf("Digite o código inicial: ");
+    scanf("%d", &codInicio);
+
+    printf("Digite o código final: ");
+    scanf("%d", &codFinal);
+
+    printf("====== | TODAS AS CONTAS A RECEBER | ======\n");
+    for (int i = codInicio; i < codFinal; i++) {
+        //Verificar se existe informação na posição i
+        if (Conta[i].codCl == i) {
+            imprimeContaReceber(i);
+            verificar++;
+        }
+    }
+
+    if (verificar == 0) {
+        printf("Não foi encontrado nenhuma conta a receber entre %d e %d, \n", codInicio, codFinal);
+    }
+}
+//-------------------------------------------------------------------------------

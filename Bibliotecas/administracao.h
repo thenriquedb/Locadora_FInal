@@ -9,6 +9,8 @@ void entradaFilmes();
 /* Função responsavel por realizar a locação de filmes para clientes */
 void locacaoFilmes();
 
+void DevolucaoFilmes();
+
 /* Imprime os tiulos comprados pela locadora. (Nome, código e quantidade de exemplares) */
 void visualizarEstoque();
 

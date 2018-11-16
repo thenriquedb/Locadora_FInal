@@ -14,5 +14,7 @@ void contasPagar_Fornecedor();
 void PagamentoLocacao(int codCl, int codFun, int contAluguel, int posCl, 
         float totalPagamento, Strc_MinimalFilmes* FilmesLocados);
 
+void receber_ContasCl();
+
 #endif /* FINANCAS_H */
 

@@ -14,9 +14,7 @@ void prencherDados() {
         strcpy(cl.nome, "Cliente");
         strcpy(cl.cpf, "111600");
         strcpy(cl.email, "email@email");
-        cl.devendo = 0;
         cl.opc_sexo = 1;
-        cl.vlr_devendo = 0;
         cl.estado_civi = 2;
         cl.codigo = gerarCodigoCliente();
         strcpy(cl.telefone, "5555555");
@@ -51,8 +49,9 @@ void prencherDados() {
     cat.valor = 10;
     alocarCategoria(&cat);
 
-    Strc_Fornecedores forn;
+
     for (int i = 0; i < 5; i++) {
+            Strc_Fornecedores forn;
         strcpy(forn.nomeFantasia, "fornecedor A");
         strcpy(forn.cnpj, "111111");
         strcpy(forn.inscricaooSocial, "111111");

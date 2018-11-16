@@ -23,5 +23,7 @@ void imprimeNotaFiscal(int codForn, int contItens);
 /**/
 void imprimeLocacoes(int i);
 
+void imprimeContaReceber();
+
 #endif /* GUI_H */
 

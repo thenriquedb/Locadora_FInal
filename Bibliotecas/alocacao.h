@@ -43,6 +43,8 @@ Strc_Financas* alocar_Financas(Strc_Financas* str, int cont);
 /* Função responsavel por fazer a aloção de memoria para a struct MinimalFilmes */
 Strc_MinimalFilmes* alocar_MinimalFilmes(Strc_MinimalFilmes* str, int cont);
 
+int alocarContas_aReceber(Strc_ContasReceber* str);
+
 /* Funçao usada durante o cadastro de filmes para verificar se a categoria no qual
  o usuario quer realizar o cadastro de um novo filme é valida.*/
 int verificarCategoria();
@@ -79,6 +81,8 @@ Strc_Financas return_Financas();
 /**/
 Strc_Locacoes* return_Locacoes();
 
+Strc_ContasReceber* return_contasReceber();
+
 /*
  * -----------------------| FUNÇÕES PARA RETORNAR CONTADORES |----------------
  */
@@ -104,6 +108,8 @@ int returnCont_NotasFiscais();
 /**/
 int returnCont_Locacoes();
 
+
+int returnCont_contasReceber();
 /*
  * -----------------------| FUNÇÕES PARA ALTERAR DADOS ORIGINAIS |----------------
  */
@@ -115,11 +121,14 @@ void alterarFornecedores(Strc_Fornecedores *forn);
 void alterarFuncionarios(Strc_Funcionario *fun);
 int alterarLocadora(Strc_Locadora loc);
 void alterarNotasFiscais(Strc_notaFiscal *nota);
+void alterar_contasReceber(Strc_ContasReceber *str);
+void alterarLocacoes(Strc_Locacoes *locacoes);
 
 void alterar_contClientes(int cont);
 void alterar_contFilmes(int cont);
 void alterar_contCategorias(int cont);
 void alterar_contFuncionarios(int cont);
 void alterar_contFornecedores(int cont);
+void alterar_contcontasReceber(int cont);
 
 #endif /* ALOCACAO_H */

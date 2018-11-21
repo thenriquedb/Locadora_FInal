@@ -4,6 +4,7 @@
 /*
  * --------------------------------------| MENUS |------------------------------
  */
+void menuInicial();
 
 /* Função para imprimir o menu de opções de relatorios */
 void menuRelatorios();
@@ -35,8 +36,9 @@ void menu_EntradaFilmes();
 /**/
 void menuLocacoes();
 void menuContas_aReceber();
+void menuImportacao();
 
-
+void menuLocacoes_FilmeSePagar();
 /*
  * -----------------------------| SUBMENUS RELATORIOS |-------------------------
  */

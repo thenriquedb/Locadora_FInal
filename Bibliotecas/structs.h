@@ -3,6 +3,7 @@
 #define STRUCTS_H
 
 //Struct locadora
+
 typedef struct {
     char nomeFanatasia[100];
     char razaoSocial[100];
@@ -20,6 +21,7 @@ typedef struct {
 } Strc_Locadora;
 
 //Struct Clientes
+
 typedef struct {
     char nome[100];
     char endereco[150];
@@ -46,6 +48,7 @@ typedef struct {
     float precoAluguel;
 
     int codigo;
+    int contAluguel;
     int codigoCategoria;
     int codigoFornecedor;
     int exemplares;
@@ -95,7 +98,7 @@ typedef struct {
     char situacao;
     char entrada;
     float valorEntrada;
-    
+
     int quantParcelas;
     float vlrParcela;
     float total;
@@ -140,7 +143,7 @@ typedef struct {
     int contItens;
     char pagamento;
     int dia, mes;
-    
+
     Strc_MinimalFilmes* Itens;
 } Strc_Locacoes;
 

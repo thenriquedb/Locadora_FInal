@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include "Bibliotecas/structs.h"
 #include "Bibliotecas/alocacao.h"
@@ -16,7 +17,7 @@ void imprimeCategorias(int i) {
     printf("\tCódigo: %d \n", Categoria[i].codigo);
     printf("\tValor da multa de atraso: R$ %.2f \n", Categoria[i].valor);
 }
-
+//------------------------------------------------------------------------------
 void imprimeClientes(int i) {
     Strc_Clientes* Cliente = return_Clientes();
 
@@ -47,171 +48,12 @@ void imprimeClientes(int i) {
     } else if (Cliente[i].estado_civi == 5) {
         printf("Separado(a) \n\n");
     }
-    printf("|-------------------------------------------------------------------|\n");
 }
 //-------------------------------------------------------------------------------
-
-void filFuncionarios_Todos() {
-    Strc_Funcionario* Funcionario = return_Funcionarios();
-    int i, contFun = returnCont_Funcionarios();
-
-    system("clear");
-    if (Funcionario != NULL) {
-        printf("====== | VISUALIZAR TODOS FUNCIONÁRIOS CADASTRADOS | ======");
-
-        for (i = 0; i < contFun; i++) {
-            printf("\n====== | %dº FUNCIONÁRIO | ======\n", i + 1);
-            imprimeFuncionarios(i);
-        }
-        printf("Total de resultados: %d \n\n", i);
-    } else {
-        printf("Nenhum funcionário cadastrado. \n");
-    }
-}
-//-------------------------------------------------------------------------------
-
-void filFuncionarios_FaixaCodigo() {
-    Strc_Funcionario* Funcionario = return_Funcionarios();
-    int i, cont = 0, codInicio, codFim, contFun = returnCont_Funcionarios();
-
-    if (Funcionario != NULL) {
-        do {
-            printf("====== | FILTRAR POR FAIXA DE CODIGO | ======\n");
-
-
-            printf("Digite o codigo inicial que deseja buscar: ");
-            do {
-                scanf("%d", &codInicio);
-            } while (verificarNumeroPositivoINT(codInicio) != 1);
-
-
-            printf("Digite o codigo final que deseja buscar: ");
-            do {
-                scanf("%d", &codFim);
-
-                if (codFim > contFun) {
-                    printf("Valor maior que o número de funcionários cadastrados. \n");
-                }
-            } while (codFim > contFun);
-            system("clear");
-
-            printf("====== | FILTRAR POR FAIXA DE CODIGO | ======\n");
-
-            for (i = codInicio; i < codFim; i++) {
-                printf("====== | %dº FUNCIONÁRIO | ======\n", cont + 1);
-                imprimeFuncionarios(i);
-            }
-
-            printf("Nenhum resultado encontrado. \n");
-
-        } while (chamarMenu_Relatorio() != 1);
-    } else {
-        printf("Nenhum funcionário cadastrado. \n");
-    }
-}
-//-------------------------------------------------------------------------------
-
-void filFuncionarios_Codigo() {
-    Strc_Funcionario* Funcionario = return_Funcionarios();
-    int i, cont = 0, cod, contFun = returnCont_Funcionarios();
-
-    if (Funcionario != NULL) {
-        do {
-            printf("====== | FILTRAR POR CÓDIGO | ======\n");
-            printf("Digite o código que deseja buscar: ");
-            scanf("%d", &cod);
-
-            system("clear");
-            printf("====== | FILTRAR POR CÓDIGO | ======\n");
-
-            for (i = 0; i < contFun; i++) {
-                if (cod == Funcionario[i].codigo) {
-                    printf("====== | %dº FUNCIONÁRIO | ======\n", cont + 1);
-                    imprimeFuncionarios(i);
-                    cont++;
-                }
-            }
-            if (cont == 0) {
-                printf("Nenhum resultado encontrado. \n");
-            }
-            cont = 0;
-
-        } while (chamarMenu_Relatorio() != 1);
-    } else {
-        printf("Nenhum funcionário cadastrado. \n");
-    }
-}
-//-------------------------------------------------------------------------------
-
-void filFuncionarios_Nome() {
-    Strc_Funcionario* Funcionario = return_Funcionarios();
-    int i, cont = 0, cod, contFun = returnCont_Funcionarios();
-    char nome[100];
-
-    if (Funcionario != NULL) {
-        do {
-            setbuf(stdin, NULL);
-            printf("====== | FILTRAR POR NOME | ======\n");
-            printf("Digite o titulo que deseja buscar: ");
-            scanf("%[^\n]s", nome);
-            setbuf(stdin, NULL);
-
-            system("clear");
-            printf("====== | FILTRAR POR NOME | ======\n");
-            for (i = 0; i < contFun; i++) {
-                if (strcmp(nome, Funcionario[i].nome) == 0) {
-                    printf("====== | %dº FUNCIONÁRIO | ======\n", cont + 1);
-                    imprimeFuncionarios(i);
-                    cont++;
-                }
-            }
-            printf("\nTotal de resultados: %d \n", cont);
-            cont = 0;
-
-        } while (chamarMenu_Relatorio() != 1);
-    } else {
-        printf("Nenhum funcionário cadastrado. \n");
-    }
-}
-//-------------------------------------------------------------------------------
-
-void filFuncionarios_Cargo() {
-    Strc_Funcionario* Funcionario = return_Funcionarios();
-    int i, cont = 0, cod, contFun = returnCont_Funcionarios();
-    char cargo[100];
-
-    if (Funcionario != NULL) {
-        do {
-            setbuf(stdin, NULL);
-            printf("====== | FILTRAR POR CARGO | ======\n");
-            printf("Digite o titulo que deseja buscar: ");
-            scanf("%[^\n]s", cargo);
-            setbuf(stdin, NULL);
-
-            system("clear");
-            printf("====== | FILTRAR POR NOME | ======\n");
-            for (i = 0; i < contFun; i++) {
-                if (strcmp(cargo, Funcionario[i].cargo) == 0) {
-                    printf("====== | %dº FUNCIONÁRIO | ======\n", cont + 1);
-                    imprimeFuncionarios(i);
-                    cont++;
-                }
-            }
-            printf("\nTotal de resultados: %d \n", cont);
-            cont = 0;
-
-        } while (chamarMenu_Relatorio() != 1);
-    } else {
-        printf("Nenhum funcionário cadastrado. \n");
-    }
-}
-//-------------------------------------------------------------------------------
-
 void imprimeFuncionarios(int i) {
     Strc_Funcionario* Funcionario = return_Funcionarios();
 
     printf("\tNome: %s \n", Funcionario[i].nome);
-    printf("\tEndereço: %s \n", Funcionario[i].endereco);
     printf("\tTelefone: %s \n", Funcionario[i].telefone);
     printf("\tEmail: %s \n", Funcionario[i].email);
     printf("\tCargo: %s \n", Funcionario[i].cargo);
@@ -251,9 +93,10 @@ void imprimeFilmes(int i) {
     printf("\tTítulo: %s \n", Filme[i].nome);
     printf("\tDescrição: %s \n", Filme[i].descricao);
     printf("\tCodígo uníco: %d \n", Filme[i].codigo);
-    printf("\tFornecedor: %s (%d)\n", Fornecedor[i].razaoScial, Filme[i].codigoFornecedor);
-    printf("\tFornecedor: %d \n", Filme[i].codigoFornecedor);
-
+   // printf("\tFornecedor: %s (%d)\n", Fornecedor[i].razaoScial, Filme[i].codigoFornecedor);
+    printf("\tCódigo do fornecedor: %d \n", Filme[i].codigoFornecedor);
+    printf("\tPreço de compra: R$ %.2f \n",Filme[i].precoCompra);
+    
     printf("\tIdioma: ");
     if (Filme[i].idioma == 1) {
         printf("Dublado \n");
@@ -335,7 +178,7 @@ void imprimeContaReceber(int i) {
 
     if (ContaReceber[i].entrada == 'S') {
         printf("Entrada: R$ %.2f \n", ContaReceber[i].valorEntrada);
-        printf("Restante: R$ %.2f \n",(ContaReceber[i].total - ContaReceber[i].valorEntrada));
+        printf("Restante: R$ %.2f \n", (ContaReceber[i].total - ContaReceber[i].valorEntrada));
     }
 
     printf("Número de parcelas: %d \n", ContaReceber[i].quantParcelas);
@@ -349,4 +192,21 @@ void imprimeContaReceber(int i) {
     }
     printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
 }
+//------------------------------------------------------------------------------
 
+void ImprimeContLocacoes_FilmesePaga(int i, float totalVenda) {
+    Strc_Filmes* Filmes = return_Filmes();
+
+    printf("Título: %s \n", Filmes[i].nome);
+    printf("\tPreço de compra: R$ %.2f \n", Filmes[i].precoCompra);
+    printf("\tPreço do aluguel: R$ %.2f \n", Filmes[i].precoAluguel);
+    printf("\tQuantidade de vezes que foi locado: %d \n", Filmes[i].contAluguel);
+    printf("\tSituação: ");
+
+    if (totalVenda >= Filmes[i].precoCompra) {
+        printf("Superávit. \n\n");
+    } else {
+        printf("Déficit \n");
+        printf("\tTotal de locações para que o filme se pague: %.0f.  \n\n", (round(Filmes[i].precoCompra / Filmes[i].precoAluguel)) - Filmes[i].contAluguel);
+    }
+}

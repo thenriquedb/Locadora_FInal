@@ -8,6 +8,7 @@
       <itemPath>Bibliotecas/administracao.h</itemPath>
       <itemPath>alocacao.h</itemPath>
       <itemPath>cadastros.h</itemPath>
+      <itemPath>fileTXT.h</itemPath>
       <itemPath>Bibliotecas/financas.h</itemPath>
       <itemPath>Bibliotecas/gestao.h</itemPath>
       <itemPath>Bibliotecas/interface.h</itemPath>
@@ -26,6 +27,8 @@
       <itemPath>cadastros.c</itemPath>
       <itemPath>edicaoDados.c</itemPath>
       <itemPath>excluirDados.c</itemPath>
+      <itemPath>fileExport.c</itemPath>
+      <itemPath>fileImport.c</itemPath>
       <itemPath>filtrosRelatorios.c</itemPath>
       <itemPath>financas.c</itemPath>
       <itemPath>main.c</itemPath>
@@ -58,6 +61,11 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibStdlibItem>Mathematics</linkerLibStdlibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="Bibliotecas/GUI.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -84,6 +92,12 @@
       <item path="edicaoDados.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="excluirDados.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="fileExport.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="fileImport.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="fileTXT.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="filtrosRelatorios.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -153,6 +167,12 @@
       <item path="edicaoDados.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="excluirDados.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="fileExport.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="fileImport.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="fileTXT.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="filtrosRelatorios.c" ex="false" tool="0" flavor2="0">
       </item>

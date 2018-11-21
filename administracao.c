@@ -139,6 +139,8 @@ void entradaFilmes() {
     alterarLocadora(Locadora);
     alterarFinanceiro(Financeiro);
     alocarNotasFiscais(&Notas);
+
+    digiteAlguma_teclaContinuar();
 }
 //------------------------------------------------------------------------------
 
@@ -164,11 +166,13 @@ void visualizarEstoque() {
     } else {
         printf("Nenhum filme comprado. \n");
     }
+
+    digiteAlguma_teclaContinuar();
 }
 //-------------------------------------------------------------------------------
 
 void locacaoFilmes() {
-    int i, codFilme, codFunc, codCliente, opc, opc2, quant, quantParcela, contAluguel = 0, posCat = 0, posFilme, posCliente;
+    int i, codFilme, codFunc, codCliente, opc, opc2, quantExemplares, quantParcela, contAluguel = 0, posCat = 0, posFilme, posCliente;
     float totalPagamento = 0, entrada;
 
     Strc_Filmes* Filmes = return_Filmes();
@@ -180,10 +184,12 @@ void locacaoFilmes() {
 
     printf("====== | LOCAÇÃO DE FILMES | ======\n");
     do {
-        printf("Locações são realizadas apenas por funcionários. Digite seu código de registro: \n ");
+        printf("Locações são realizadas apenas por funcionários. \nDigite seu código de registro:  ");
         scanf("%d", &codFunc);
     } while (verificarCod_Funcionario(codFunc) < 0);
 
+    system("clear");
+    printf("====== | LOCAÇÃO DE FILMES | ======\n");
     do {
         printf("Digite o código do cliente para continuar: ");
         scanf("%d", &codCliente);
@@ -208,11 +214,11 @@ void locacaoFilmes() {
             if (Filmes[posFilme].exemplares != 0) {
                 do {
                     printf("\tDigite o número de exemplares: ");
-                    scanf("%d", &quant);
-                } while (verificarExemplares_Filmes(codFilme, quant) != 1);
+                    scanf("%d", &quantExemplares);
+                } while (verificarExemplares_Filmes(codFilme, quantExemplares) != 1);
 
                 FilmesLocados[contAluguel].codFilme = codFilme;
-                FilmesLocados[contAluguel].quant = quant;
+                FilmesLocados[contAluguel].quant = quantExemplares;
             } else {
                 printf("Filme esgotado. Favor selecionar outro título. \n");
             }
@@ -224,8 +230,9 @@ void locacaoFilmes() {
         opc = selecao();
 
         contAluguel++;
-        totalPagamento += Categoria[posCat].valor * quant;
-        Filmes[posFilme].exemplares -= quant;
+        totalPagamento += Categoria[posCat].valor * quantExemplares;
+        Filmes[posFilme].exemplares -= quantExemplares;
+        Filmes[posFilme].contAluguel += quantExemplares;
 
         if (opc == 1) {
             system("clear");
@@ -245,11 +252,11 @@ void locacaoFilmes() {
             if (opc2 == 2) {
                 contAluguel = 0;
             }
-            system("clear");
+
         }
     } while (opc2 != 1);
 
-    //alterarFilmes(Filmes);
+    alterarFilmes(Filmes);
     PagamentoLocacao(codCliente, codFunc, contAluguel, posCliente, totalPagamento, FilmesLocados);
 }
 //-------------------------------------------------------------------------------
@@ -260,7 +267,7 @@ void DevolucaoFilmes() {
     Strc_Locadora Locadora = return_Locadora();
     Strc_Filmes* Filmes = return_Filmes();
     Strc_Financas Financas = return_Financas();
-    
+
     printf("====== | DEVOLUÇÃO DE FILMES | ======\n");
     do {
         printf("Digite o código do cliente: ");
@@ -294,4 +301,124 @@ void DevolucaoFilmes() {
 
     alterarLocacoes(Locacoes);
     alterarLocadora(Locadora);
+
+    digiteAlguma_teclaContinuar();
 }
+//-------------------------------------------------------------------------------
+
+void contLocacoes_FilmesePaga_Todos() {
+    Strc_Filmes* Filmes = return_Filmes();
+    int contF = returnCont_Filmes();
+    float totalVenda;
+
+    printf("====== | SALDO DE FILMES | ======\n");
+    for (int i = 0; i < contF; i++) {
+        totalVenda = Filmes[i].contAluguel * Filmes[i].precoAluguel;
+        ImprimeContLocacoes_FilmesePaga(i, totalVenda);
+    }
+
+    digiteAlguma_teclaContinuar();
+}
+//-------------------------------------------------------------------------------
+
+void contLocacoes_FilmesePaga_Pagos() {
+    Strc_Filmes* Filmes = return_Filmes();
+    int verificar = 0, contF = returnCont_Filmes();
+    float totalVenda;
+
+    printf("====== | SALDO DE FILMES: SUPERÁVIT | ======\n");
+    for (int i = 0; i < contF; i++) {
+        totalVenda = Filmes[i].contAluguel * Filmes[i].precoAluguel;
+
+        if (totalVenda >= Filmes[i].precoCompra) {
+            ImprimeContLocacoes_FilmesePaga(i, totalVenda);
+            verificar++;
+        }
+    }
+    if (verificar == 0) {
+        printf("Nenhum filme pago com locações. \n ");
+    }
+
+    digiteAlguma_teclaContinuar();
+}
+//-------------------------------------------------------------------------------
+
+void contLocacoes_FilmesePaga_Deficit() {
+    Strc_Filmes* Filmes = return_Filmes();
+    int verificar = 0, contF = returnCont_Filmes();
+    float totalVenda;
+
+    printf("====== | SALDO DE FILMES: DÉFICIT | ======\n");
+    for (int i = 0; i < contF; i++) {
+        totalVenda = Filmes[i].contAluguel * Filmes[i].precoAluguel;
+
+        if (totalVenda <= Filmes[i].precoCompra) {
+            ImprimeContLocacoes_FilmesePaga(i, totalVenda);
+            verificar++;
+        }
+    }
+    if (verificar == 0) {
+        printf("Nenhum filme em déficit. \n ");
+    }
+
+    digiteAlguma_teclaContinuar();
+}
+//-------------------------------------------------------------------------------
+
+void contLocacoes_FilmesePaga_codFilme() {
+    Strc_Filmes* Filmes = return_Filmes();
+    int codFil, contF = returnCont_Filmes();
+    float totalVenda;
+
+    printf("====== | SALDO DE FILMES: PESQUISA POR CÓDIGO DO FILME | ======\n");
+    do {
+        printf("Digite o código do filme: ");
+        scanf("%d", &codFil);
+    } while (verificarCod_Filme(codFil));
+
+    for (int i = 0; i < contF; i++) {
+        totalVenda = Filmes[i].contAluguel * Filmes[i].precoAluguel;
+
+        if (codFil == Filmes[i].codigo) {
+            ImprimeContLocacoes_FilmesePaga(i, totalVenda);
+        }
+    }
+
+
+    digiteAlguma_teclaContinuar();
+}
+//-------------------------------------------------------------------------------
+
+void contLocacoes_FilmesePaga_faixaCodigo() {
+    Strc_Filmes* Filmes = return_Filmes();
+    int verificar = 0, codInicio, codFinal, contFil = returnCont_Filmes();
+    float totalVenda;
+
+    printf("====== | SALDO DE FILMES: FAIXA DE CÓDIGO | ======\n");
+
+    do {
+        printf("Digite o código inicial: ");
+        scanf("%d", &codInicio);
+
+        if (codInicio <= 0 || codInicio > contFil) {
+            printf("Código inválido. \n");
+        }
+    } while (codInicio <= 0 || codInicio > contFil);
+
+    do {
+        printf("Digite o código final: ");
+        scanf("%d", &codFinal);
+
+        if (codFinal > 0 || codFinal > contFil) {
+            printf("Código inválido. \n");
+        }
+    } while (codFinal <= 0 || codFinal > contFil);
+
+    for (int i = codInicio; i < codFinal; i++) {
+        totalVenda = Filmes[i].contAluguel * Filmes[i].precoAluguel;
+        ImprimeContLocacoes_FilmesePaga(i, totalVenda);
+    }
+
+    digiteAlguma_teclaContinuar();
+}
+//-------------------------------------------------------------------------------

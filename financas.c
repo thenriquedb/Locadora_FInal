@@ -10,6 +10,7 @@
 #include "Bibliotecas/menus.h"
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/GUI.h"
+#include "Bibliotecas/fileTXT.h"
 
 //------------------------------------------------------------------------------
 
@@ -56,6 +57,8 @@ void contasPagar_Unica() {
                 "\t1. Pagar outra conta \n"
                 "\t2. Voltar para o menu anterior \n");
     } while (selecao() != 2);
+
+    digiteAlguma_teclaContinuar();
 }
 //------------------------------------------------------------------------------
 
@@ -115,6 +118,8 @@ void contasPagar_Fornecedor() {
     } else {
         printf("Todas as contas deste fornecedor já foram pagas. \n");
     }
+
+    digiteAlguma_teclaContinuar();
 }
 
 //------------------------------------------------------------------------------
@@ -147,6 +152,8 @@ void contasPagar_Todas() {
     } else {
         menuFinancas();
     }
+
+    digiteAlguma_teclaContinuar();
 }
 //------------------------------------------------------------------------------
 
@@ -180,6 +187,7 @@ void PagamentoLocacao(int codCl, int codFun, int contAluguel, int posCl, float t
             scanf("%d", &quantParcela);
         } while (quantParcela < 1 && quantParcela > 3);
 
+        Locacoes.pagamento = 'D';
         conta_aReceber.codCl = codCl;
         conta_aReceber.quantParcelas = quantParcela;
         conta_aReceber.situacao = 'D';
@@ -220,10 +228,13 @@ void PagamentoLocacao(int codCl, int codFun, int contAluguel, int posCl, float t
      */
 
     alocarContas_aReceber(&conta_aReceber);
+    exportLocacoes_txt(Locacoes);
     alocarLocacoes(&Locacoes);
 
     alterarClientes(Clientes);
     alterarFinanceiro(Financeiro);
+
+    digiteAlguma_teclaContinuar();
 }
 //------------------------------------------------------------------------------
 
@@ -265,4 +276,6 @@ void receber_ContasCl() {
     } else {
         printf("Nenhum cliente com este código encontrado. \n");
     }
+
+    digiteAlguma_teclaContinuar();
 }

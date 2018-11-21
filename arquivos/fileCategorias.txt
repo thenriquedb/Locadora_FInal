@@ -1,0 +1,23 @@
+#, categoria A,descricao categoria A,1,10.98
+#, categoria B,descricao categoria B,2,11.98
+#, categoria C,descricao categoria C,3,12.98
+
+
+
+
+
+
+
+
+
+
+#, categoria D,descricao categoria D,14,240.98#, categoria A,descricao categoria A,1,10.98 
+#, categoria A,descricao categoria A,1,10.98 
+#, categoria A,descricao categoria A,1,10.98 
+#, categoria A,descricao categoria A,1,10.98 
+#, categoria A,descricao categoria A,1,10.98 
+#, categoria A,descricao categoria A,1,10.98 
+#, categoria A,descricao categoria A,1,10.98 
+#, categoria A,descricao categoria A,1,10.98 
+#, categoria A,descricao categoria A,1,10.98 
+#, categoria A,descricao categoria A,1,10.98 

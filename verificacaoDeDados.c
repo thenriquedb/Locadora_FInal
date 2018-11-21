@@ -189,3 +189,13 @@ int verificarFilme_Fornecedor(int posFor, int idFil, int cont) {
         return 0;
     }
 }
+//------------------------------------------------------------------------------
+
+void digiteAlguma_teclaContinuar() {
+    char x;
+    setbuf(stdin, NULL);
+    printf("Digite qual tecla para continuar: ");
+    scanf("%c", &x);
+
+    system("clear");
+}

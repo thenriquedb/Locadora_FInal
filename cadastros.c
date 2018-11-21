@@ -158,6 +158,7 @@ int gerarCodigoCliente() {
 void cadastrarFilmes() {
     int opcao, codForn, codCat, sair = 0, posCatalago, PosForn;
     Strc_Filmes Filme;
+    Strc_Categoria* Categorias = return_Categorias();
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
 
     do {
@@ -171,19 +172,17 @@ void cadastrarFilmes() {
         printf("Descrição: ");
         scanf("%[^\n]s", Filme.descricao);
         setbuf(stdin, NULL);
-   
+
         printf("Preço da compra: ");
         scanf("%f", &Filme.precoCompra);
-      
-        printf("Preço de aluguel: ");
-        scanf("%f", &Filme.precoAluguel);
 
         do {
             printf("Código da categoria: ");
             scanf("%d", &codCat);
         } while (verificarCod_Categoria(codCat) < 0);
         Filme.codigoCategoria = codCat;
-
+        Filme.contAluguel = 0;
+        Filme.precoAluguel = Categorias[codCat - 1].valor;
 
         do {
             printf("Código do fornecedor: ");
@@ -206,7 +205,7 @@ void cadastrarFilmes() {
         Filme.codigo = gerarCodigoFilme();
         Filme.codigoCategoria = codCat;
         Filme.exemplares = 0;
-        
+
         Fornecedor[PosForn].catalogoFilmes = alocar_CatalagoFornecedor(Fornecedor[PosForn].catalogoFilmes, Fornecedor[PosForn].contCatalago);
         Fornecedor[PosForn].catalogoFilmes[posCatalago] = Filme.codigo;
         Fornecedor[PosForn].contCatalago++;

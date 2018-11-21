@@ -7,32 +7,33 @@
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/menus.h"
 #include "Bibliotecas/gestao.h"
+#include "Bibliotecas/fileTXT.h"
 #include "teste.h"
 
 int main(int argc, char** argv) {
-
-    // cadastrarLocadora();
-   prencherDados();
+   // prencherDados();
+    //menuInicial();
+    // importFuncionarios_txt();
 
     do {
         Strc_Financas Fin = return_Financas();
         printf("CAIXA: R$ %.2f \n", Fin.caixa);
 
         printf("====== | MENU PRINCIPAL | ======\n"
-                "\t1. Cadastros \n" 
-                "\t2. Locação \n" 
-                "\t3. Gestão de dados \n" 
-                "\t4. Relatórios \n" 
-                "\t5. Finanças \n" 
-                "\t6. Administrativo \n" 
-                "\t7. Importtação e exportação de dados \n" 
+                "\t1. Cadastros \n"
+                "\t2. Locação \n"
+                "\t3. Gestão de dados \n"
+                "\t4. Relatórios \n"
+                "\t5. Finanças \n"
+                "\t6. Administrativo \n"
+                "\t7. Importtação e exportação de dados \n"
                 "\t8. Sair \n");
 
         switch (selecao()) {
             case 1:
                 menuCadastro();
                 break;
-                
+
             case 2:
                 menuLocacao();
                 break;

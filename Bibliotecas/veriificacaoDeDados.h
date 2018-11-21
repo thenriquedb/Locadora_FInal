@@ -41,4 +41,6 @@ int parar_ou_ContinuarCadastro();
 
 int chamarMenu_Relatorio();
 
+void digiteAlguma_teclaContinuar();
+
 #endif /* VERIIFICACAODEDADOS_H */

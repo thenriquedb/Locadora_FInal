@@ -10,6 +10,66 @@
 #include "Bibliotecas/administracao.h"
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/financas.h"
+#include "Bibliotecas/fileTXT.h"
+
+void menuInicial() {
+
+    printf("====== | INICIALIZALIZAÇÃO DO SOFTWARE | ======\n"
+            "\t1. Iniciar do zero \n"
+            "\t2. Importar  informações anteriores \n");
+
+    switch (selecao()) {
+        case 1:
+            excluirArquivos_txt();
+            cadastrarLocadora();
+            break;
+
+        case 2:
+            menuImportacao();
+    }
+}
+//------------------------------------------------------------------------------
+
+void menuImportacao() {
+        printf("====== | IMPORTAÇÃO DE DADOS | ======\n");
+        printf("\t1. Clientes \n"
+                "\t2. Filmes \n"
+                "\t3. Categoria \n"
+                "\t4. Funciónarios \n"
+                "\t5. Fornecedores \n"
+                "\t6. Locações \n"
+                "\t7. Notas fiscais \n"
+                "\t8. Contas a pagar \n"
+                "\t9. Contas a receber \n"
+                "\t10. Voltar ao menu anterior \n");
+
+        switch (selecao()) {
+            case 1:
+                importCliente_txt();
+                break;
+
+            case 2:
+                importFilmes_txt();
+                break;
+
+            case 3:
+                importCategoria_txt();
+                break;
+
+            case 4:
+                importFuncionarios_txt();
+                break;
+
+            case 10:
+                menuInicial();
+                break;
+
+            default:
+                printf("Opção inválida");
+
+        }
+        system("clear");
+}
 
 void menuCadastro() {
     printf("====== | CADASTROS | ======\n");
@@ -68,6 +128,7 @@ void menuRelatorios() {
         case 1:
             if (return_Clientes() != NULL) {
                 subMenuRel_Clientes();
+                digiteAlguma_teclaContinuar();
             } else {
                 printf("Nenhum cliente cadastrado. \n");
             }
@@ -76,6 +137,7 @@ void menuRelatorios() {
         case 2:
             if (return_Filmes() != NULL) {
                 subMenuRel_Filmes();
+                digiteAlguma_teclaContinuar();
             } else {
                 printf("Nenhum filme cadastrado. \n");
             }
@@ -84,6 +146,7 @@ void menuRelatorios() {
         case 3:
             if (return_Categorias() != NULL) {
                 subMenuRel_Categorias();
+                digiteAlguma_teclaContinuar();
             } else {
                 printf("Nenhuma categoria cadastrado. \n");
             }
@@ -92,6 +155,7 @@ void menuRelatorios() {
         case 4:
             if (return_Funcionarios() != NULL) {
                 subMenuRel_Funcionarios();
+                digiteAlguma_teclaContinuar();
             } else {
                 printf("Nenhum funcionário cadastrado. \n");
             }
@@ -100,6 +164,7 @@ void menuRelatorios() {
         case 5:
             if (return_Fornecedores() != NULL) {
                 subMenuRel_Fornecedores();
+                digiteAlguma_teclaContinuar();
             } else {
                 printf("Nenhum fornecedor cadastrado. \n");
             }
@@ -267,8 +332,9 @@ void menuFinancas() {
 void menuAdministrativo() {
     printf("====== | ADMINISTRATIVO | ======\n"
             "\t1. Compra de filmes \n"
-            "\t2. Visualizar estoque da locadora \n"
-            "\t3. Voltar para o menu principal \n");
+            "\t2. Quantidade de locações para que um filme se pague \n"
+            "\t3. Visualizar estoque da locadora \n"
+            "\t4. Voltar para o menu principal \n");
 
     Strc_Locadora Locadora = return_Locadora();
 
@@ -280,14 +346,19 @@ void menuAdministrativo() {
                 printf("Nenhum filme cadastrado. \n");
             }
             break;
+
         case 2:
+            menuLocacoes_FilmeSePagar();
+            break;
+
+        case 3:
             if (Locadora.filmesComprados != NULL) {
                 visualizarEstoque();
             }
             printf("Nenhum filme comprado. \n");
             break;
 
-        case 3:
+        case 4:
             break;
 
         default:
@@ -324,6 +395,44 @@ void menuNotasFiscais() {
 
         case 5:
             filNotasFiscais_NaoPagas();
+            break;
+
+        case 6:
+            menuAdministrativo();
+
+        default:
+            printf("Opção inválida. \n");
+    }
+}
+
+void menuLocacoes_FilmeSePagar() {
+    printf("====== | LOCAÇÕES RESTANTE PARA QUE UM FILME SE PAGUE | ======\n"
+            "\t1. Situação de todos os filmes \n"
+            "\t2. Filmes pagos \n"
+            "\t3, Filmes com déficit \n"
+            "\t4. Código do filme \n"
+            "\t5. Faixa de códigos \n"
+            "\t6. Voltar para o menu anterior \n");
+
+    switch (selecao()) {
+        case 1:
+            contLocacoes_FilmesePaga_Todos();
+            break;
+
+        case 2:
+            contLocacoes_FilmesePaga_Pagos();
+            break;
+
+        case 3:
+            contLocacoes_FilmesePaga_Deficit();
+            break;
+
+        case 4:
+            contLocacoes_FilmesePaga_codFilme();
+            break;
+
+        case 5:
+            contLocacoes_FilmesePaga_faixaCodigo();
             break;
 
         case 6:
@@ -401,23 +510,28 @@ void menuLocacoes() {
     switch (selecao()) {
         case 1:
             filLocacoes_todas();
+            digiteAlguma_teclaContinuar();
             break;
 
         case 2:
             system("clear");
             filLocacoes_aVista();
+            digiteAlguma_teclaContinuar();
             break;
 
         case 3:
             filLocacoes_aPrazo();
+            digiteAlguma_teclaContinuar();
             break;
 
         case 4:
             filLocacoes_Func();
+            digiteAlguma_teclaContinuar();
             break;
 
         case 5:
             filLocacoes_Data();
+            digiteAlguma_teclaContinuar();
             break;
 
         case 6:

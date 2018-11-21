@@ -41,6 +41,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/cadastros.o \
 	${OBJECTDIR}/edicaoDados.o \
 	${OBJECTDIR}/excluirDados.o \
+	${OBJECTDIR}/fileExport.o \
+	${OBJECTDIR}/fileImport.o \
 	${OBJECTDIR}/filtrosRelatorios.o \
 	${OBJECTDIR}/financas.o \
 	${OBJECTDIR}/main.o \
@@ -102,6 +104,16 @@ ${OBJECTDIR}/excluirDados.o: excluirDados.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/excluirDados.o excluirDados.c
+
+${OBJECTDIR}/fileExport.o: fileExport.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fileExport.o fileExport.c
+
+${OBJECTDIR}/fileImport.o: fileImport.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fileImport.o fileImport.c
 
 ${OBJECTDIR}/filtrosRelatorios.o: filtrosRelatorios.c
 	${MKDIR} -p ${OBJECTDIR}

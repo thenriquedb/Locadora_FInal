@@ -197,7 +197,7 @@ void imprimeContaReceber(int i) {
     printf("Codígo clientes: %d \n", ContaReceber[i].codCl);
     printf("Total: R$ %.2f \n", ContaReceber[i].total);
 
-    if (ContaReceber[i].entrada == 'S') {
+    if (ContaReceber[i].entrada[0] == 'S') {
         printf("Entrada: R$ %.2f \n", ContaReceber[i].valorEntrada);
         printf("Restante: R$ %.2f \n", (ContaReceber[i].total - ContaReceber[i].valorEntrada));
     }
@@ -206,7 +206,7 @@ void imprimeContaReceber(int i) {
     printf("Valor da parcela: R$ %.2f \n", ContaReceber[i].vlrParcela);
 
     printf("Situação: ");
-    if (ContaReceber[i].situacao == 'D') {
+    if (ContaReceber[i].situacao[0] == 'D') {
         printf("Em aberto. \n");
     } else {
         printf("Paga. \n");

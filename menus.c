@@ -11,6 +11,7 @@
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/financas.h"
 #include "Bibliotecas/fileTXT.h"
+#include "Bibliotecas/GUI.h"
 
 void menuInicial() {
 

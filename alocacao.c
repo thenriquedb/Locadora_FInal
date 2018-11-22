@@ -10,7 +10,7 @@
 
 //Estruturas
 Strc_Locadora Locadora;
-Strc_Financas Financeiro;
+Strc_Caixa Caixa;
 
 Strc_Clientes* Clientes = NULL;
 Strc_Filmes* Filmes = NULL;
@@ -74,11 +74,11 @@ int* alocar_FilmesComprados(int* str, int cont) {
 }
 //-------------------------------------------------------------------------------
 
-Strc_Financas* alocar_Financas(Strc_Financas* str, int cont) {
+Strc_Caixa* alocar_Financas(Strc_Caixa* str, int cont) {
     if (str == NULL) {
-        str = malloc(sizeof (Strc_Financas));
+        str = malloc(sizeof (Strc_Caixa));
     } else {
-        str = realloc(str, sizeof (Strc_Financas)*(cont + 1));
+        str = realloc(str, sizeof (Strc_Caixa)*(cont + 1));
     }
 
     if (str == NULL) {
@@ -218,7 +218,7 @@ int alocarNotasFiscais(Strc_notaFiscal* nota) {
 
     *(NotasFiscais + contNotasFiscaisAlocados) = *nota;
 
-    if (Fornecedores == NULL) {
+    if (NotasFiscais == NULL) {
         printf("Ocorreu um erro durante a alocação, \n");
         exit(EXIT_FAILURE);
     }
@@ -275,8 +275,8 @@ Strc_Locadora return_Locadora() {
     return Locadora;
 }
 
-Strc_Financas return_Financas() {
-    return Financeiro;
+Strc_Caixa return_Financas() {
+    return Caixa;
 }
 
 Strc_Clientes* return_Clientes() {
@@ -351,8 +351,8 @@ int alterarLocadora(Strc_Locadora loc) {
     Locadora = loc;
 }
 
-int alterarFinanceiro(Strc_Financas fin) {
-    Financeiro = fin;
+int alterarFinanceiro(Strc_Caixa fin) {
+    Caixa = fin;
 }
 
 void alterarClientes(Strc_Clientes *cl) {

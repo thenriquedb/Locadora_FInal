@@ -42,6 +42,11 @@ void excluirArquivos_txt() {
 
 void exportLocadora_txt(Strc_Locadora Loc) {
     FILE * file = fopen("arquivos/fileLocadora.txt", "a");
+    if (file == NULL) {
+        printf("Não foi possível criar o arquivo para armazenamento dos dados da locadora."
+                "O programa será fechado. \n");
+        exit(EXIT_FAILURE);
+    }
 
     fprintf(file, "#, %s,", Loc.razaoSocial);
     fprintf(file, "%s,", Loc.nomeFanatasia);
@@ -64,7 +69,7 @@ void exportLocadora_txt(Strc_Locadora Loc) {
             Loc.filmesComprados = alocar_Int(Loc.filmesComprados, Loc.contFilmes_comprados);
             fprintf(file, "%d", Loc.filmesComprados[i]);
 
-            if (i < Loc.contFilmes_comprados-1)
+            if (i < Loc.contFilmes_comprados - 1)
                 fprintf(file, ",");
         }
         fprintf(file, "\n");
@@ -74,6 +79,11 @@ void exportLocadora_txt(Strc_Locadora Loc) {
 
 void exportCliente_txt(Strc_Clientes Cl) {
     FILE * file = fopen("arquivos/fileClientes.txt", "a");
+    if (file == NULL) {
+        printf("Não foi possível criar o arquivo para armazenamento dos dados dos clientes."
+                "O programa será fechado. \n");
+        exit(EXIT_FAILURE);
+    }
 
     fprintf(file, "#, %s,", Cl.nome);
     fprintf(file, "%s,", Cl.data_nascimento);
@@ -89,6 +99,11 @@ void exportCliente_txt(Strc_Clientes Cl) {
 
 void exportFunc_txt(Strc_Funcionario Func) {
     FILE * file = fopen("arquivos/fileFuncionarios.txt", "a");
+    if (file == NULL) {
+        printf("Não foi possível criar o arquivo para armazenamento dos dados dos funcionários."
+                "O programa será fechado. \n");
+        exit(EXIT_FAILURE);
+    }
 
     fprintf(file, "#, %s,", Func.nome);
     fprintf(file, "%d,", Func.codigo);
@@ -100,6 +115,11 @@ void exportFunc_txt(Strc_Funcionario Func) {
 
 void exportCategoria_txt(Strc_Categoria Cat) {
     FILE * file = fopen("arquivos/fileCategorias.txt", "a");
+    if (file == NULL) {
+        printf("Não foi possível criar o arquivo para armazenamento dos dados das categorias."
+                "O programa será fechado. \n");
+        exit(EXIT_FAILURE);
+    }
 
     fprintf(file, "#, %s,", Cat.nome);
     fprintf(file, "%s,", Cat.descricao);
@@ -110,6 +130,11 @@ void exportCategoria_txt(Strc_Categoria Cat) {
 
 void exportFornecedor_txt(Strc_Fornecedores Forn) {
     FILE * file = fopen("arquivos/fileFornecedores.txt", "a");
+    if (file == NULL) {
+        printf("Não foi possível criar o arquivo para armazenamento dos dados de fornecedores."
+                "O programa será fechado. \n");
+        exit(EXIT_FAILURE);
+    }
 
     fprintf(file, "#, %s,", Forn.razaoScial);
     fprintf(file, "%s,", Forn.nomeFantasia);
@@ -129,10 +154,9 @@ void exportFornecedor_txt(Strc_Fornecedores Forn) {
 
         int i = 0;
         for (i = 0; i < Forn.contCatalago; i++) {
-            Forn.catalogoFilmes = alocar_Int(Forn.catalogoFilmes, Forn.contCatalago);
             fprintf(file, "%d", Forn.catalogoFilmes[i]);
 
-            if (i < Forn.contCatalago-1)
+            if (i < Forn.contCatalago - 1)
                 fprintf(file, ",");
         }
         fprintf(file, "\n");
@@ -142,6 +166,11 @@ void exportFornecedor_txt(Strc_Fornecedores Forn) {
 
 void exportFilmes_txt(Strc_Filmes Fil) {
     FILE * file = fopen("arquivos/fileFilmes.txt", "a");
+    if (file == NULL) {
+        printf("Não foi possível criar o arquivo para armazenamento dos dados de filmes."
+                "O programa será fechado. \n");
+        exit(EXIT_FAILURE);
+    }
 
     fprintf(file, "#, %s,", Fil.nome);
     fprintf(file, "%s,", Fil.descricao);
@@ -156,16 +185,78 @@ void exportFilmes_txt(Strc_Filmes Fil) {
 
 void exportLocacoes_txt(Strc_Locacoes Loc) {
     FILE * file = fopen("arquivos/fileLocacoes.txt", "a");
+    if (file == NULL) {
+        printf("Não foi possível criar o arquivo para armazenamento dos dados dos filmes alugados."
+                "O programa será fechado. \n");
+        exit(EXIT_FAILURE);
+    }
 
-    fprintf(file, "# %d,", Loc.codFunc);
+    fprintf(file, "#,%d,", Loc.codFunc);
     fprintf(file, "%d,", Loc.codCliente);
     fprintf(file, "%c,", Loc.pagamento);
 
+    if (Loc.contItens == 0) {
+        fprintf(file, "0\n");
+    }/* leitura da struct filmes disponiveis pelo fornecedor */
+    else {
+        fprintf(file, "%d,", Loc.contItens);
 
-    fprintf(file, "(");
-    for (int i = 0; i < Loc.contItens; i++) {
-        fprintf(file, "%d-%d", Loc.Itens[i].codFilme, Loc.Itens[i].quant);
+        for (int i = 0; i < Loc.contItens; i++) {
+            fprintf(file, "$,");
+            fprintf(file, "%d,", Loc.Itens[i].codFilme);
+            fprintf(file, "%d,", Loc.Itens[i].quant);
+            fprintf(file, "%.2f,", Loc.Itens[i].preco);
+            fprintf(file, "%.2f\n", Loc.Itens[i].total);
+        }
     }
-    fprintf(file, ")\n");
 }
 //------------------------------------------------------------------------------
+
+void exportContasReceber_txt(Strc_ContasReceber contasReceber) {
+    FILE * file = fopen("arquivos/fileContasReceber.txt", "a");
+    if (file == NULL) {
+        printf("Não foi possível criar o arquivo para armazenamento dos dados da locadora."
+                "O programa será fechado. \n");
+        exit(EXIT_FAILURE);
+    }
+
+    fprintf(file, "#,%d,", contasReceber.codCl);
+    fprintf(file, "%.2f,", contasReceber.total);
+    fprintf(file, "%c,", contasReceber.situacao[0]);
+    fprintf(file, "%c,", contasReceber.entrada[0]);
+
+    if (contasReceber.entrada[0] == 'S') {
+        fprintf(file, "%.2f,", contasReceber.valorEntrada);
+    }
+
+    fprintf(file, "%d,", contasReceber.quantParcelas);
+    fprintf(file, "%.2f\n", contasReceber.vlrParcela);
+}
+//------------------------------------------------------------------------------
+
+void exportNotasFiscais_txt(Strc_notaFiscal notaFiscal) {
+    FILE * file = fopen("arquivos/fileNotasFiscais.txt", "a");
+    if (file == NULL) {
+        printf("Não foi possível criar o arquivo para armazenamento dos dados das notas fiscais."
+                "O programa será fechado. \n");
+        exit(EXIT_FAILURE);
+    }
+
+    fprintf(file, "#,%d,", notaFiscal.codForn);
+    fprintf(file, "%d,", notaFiscal.codigo);
+    fprintf(file, "%d,", notaFiscal.paga);
+    fprintf(file, "%.2f,", notaFiscal.precoFrete);
+    fprintf(file, "%.2f,", notaFiscal.precoImposto);
+    fprintf(file, "%.2f,", notaFiscal.freteUnidade);
+    fprintf(file, "%.2f,", notaFiscal.impostoUnidade);
+    fprintf(file, "%.2f,", notaFiscal.totalNF);
+    fprintf(file, "%d\n", notaFiscal.contItens);
+
+    for (int i = 0; i < notaFiscal.contItens; i++) {
+        fprintf(file, "$,");
+        fprintf(file, "%d,", notaFiscal.Itens[i].codFilme);
+        fprintf(file, "%d,", notaFiscal.Itens[i].quant);
+        fprintf(file, "%.2f,", notaFiscal.Itens[i].preco);
+        fprintf(file, "%.2f\n", notaFiscal.Itens[i].total);
+    }
+}

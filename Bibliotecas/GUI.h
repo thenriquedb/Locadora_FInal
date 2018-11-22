@@ -25,6 +25,8 @@ void imprimeLocacoes(int i);
 
 void imprimeContaReceber();
 
+
+void imprimeLocadora();
 void ImprimeContLocacoes_FilmesePaga(int i, float totalVenda) ;
 
 #endif /* GUI_H */

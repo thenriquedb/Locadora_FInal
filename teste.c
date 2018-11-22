@@ -55,7 +55,7 @@ void prencherDados() {
         loc.filmesComprados[i] = i + 1;
     }
 
-     exportLocadora_txt(loc);
+    exportLocadora_txt(loc);
     alterarLocadora(loc);
 
     Strc_Categoria cat;
@@ -85,7 +85,7 @@ void prencherDados() {
         for (int j = 0; j < forn.contCatalago; j++) {
             forn.catalogoFilmes = alocar_Int(forn.catalogoFilmes, forn.contCatalago);
             forn.catalogoFilmes[j] = j + 1;
-          //printf("%d j: %d\n", forn.catalogoFilmes[j],j);
+            //printf("%d j: %d\n", forn.catalogoFilmes[j],j);
         }
 
         exportFornecedor_txt(forn);
@@ -107,5 +107,65 @@ void prencherDados() {
 
         exportFilmes_txt(fil);
         alocarFilmes(&fil);
+    }
+/*
+    Strc_Locacoes locacoes;
+    for (int i = 0; i < 1; i++) {
+        locacoes.codCliente = i + 1;
+        locacoes.codFunc = 1;
+        locacoes.pagamento = 'V';
+        locacoes.contItens = 2;
+        locacoes.Itens = NULL;
+
+        if (locacoes.contItens != 0) {
+            for (int j = 0; j < locacoes.contItens; j++) {
+                locacoes.Itens = alocar_MinimalFilmes(locacoes.Itens, locacoes.contItens);
+                locacoes.Itens[j].codFilme = j + 1;
+                locacoes.Itens[j].quant = (j + 1)*100;
+                locacoes.Itens[j].preco = 10;
+                locacoes.Itens[j].total = locacoes.Itens[j].quant * locacoes.Itens[j].preco;
+
+                exportLocacoes_txt(locacoes);
+                alocarLocacoes(&locacoes);
+            }
+        }
+    }
+*/
+    Strc_ContasReceber contasReceber;
+    for (int i = 0; i < 3; i++) {
+        contasReceber.codCl = i + 1;
+        contasReceber.situacao[0] = 'P';
+        contasReceber.quantParcelas = 2;
+        contasReceber.entrada[0] = 'S';
+        contasReceber.valorEntrada = 177;
+        contasReceber.vlrParcela = 50;
+
+        exportContasReceber_txt(contasReceber);
+        alocarContas_aReceber(&contasReceber);
+    }
+
+
+    Strc_notaFiscal nf;
+    for (int i = 0; i < 3; i++) {
+        nf.Itens = NULL;
+        nf.codForn = 3*(i+ 2);
+        nf.codigo = i + 1;
+        nf.contItens = 3;
+        nf.paga = 1;
+        nf.precoImposto = 300;
+        nf.freteUnidade = 150;
+        nf.impostoUnidade = 300;
+        nf.totalNF = 5555;
+
+        for (int j = 0; j < 3; j++) {
+            nf.Itens = alocar_MinimalFilmes(nf.Itens, nf.contItens );
+            nf.Itens[j].codFilme = j + 1;
+            nf.Itens[j].quant = (j + 1)*100;
+            nf.Itens[j].preco = 10;
+            nf.Itens[j].total = 9999;
+        }
+
+        exportNotasFiscais_txt(nf);
+        alocarNotasFiscais(&nf);
     }
 }

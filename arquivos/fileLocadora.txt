@@ -1,2 +1,75 @@
 #, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
+$,1,2,3
+#, razao social,Nome Fantasia,Nome Responsavel,Endereco,email,telefone,CNPJ,Inscricao estadual,10.00,3
 $,1,2,3

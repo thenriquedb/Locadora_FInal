@@ -35,9 +35,6 @@ typedef struct {
     int estado_civi;
 } Strc_Clientes;
 
-typedef struct {
-} Strc_Catalago;
-
 //Struct Filmes
 
 typedef struct {
@@ -95,8 +92,8 @@ typedef struct {
 
 typedef struct {
     int codCl;
-    char situacao;
-    char entrada;
+    char situacao[1];
+    char entrada[1];
     float valorEntrada;
 
     int quantParcelas;
@@ -104,14 +101,18 @@ typedef struct {
     float total;
 } Strc_ContasReceber;
 
+typedef struct{
+    char tipo;
+    float valor;
+}Strc_Transacoes;
 //Struct para gerenciamento financeiro
 
 typedef struct {
     float caixa;
-    float contasPagar;
+    float contasTransacoes;
     int contReceber;
     int contPagar;
-} Strc_Financas;
+} Strc_Caixa;
 
 //Versao simples da struct de filmes contendo somente dados relevantes para nota fiscal
 
@@ -130,7 +131,7 @@ typedef struct {
 
     Strc_MinimalFilmes* Itens;
 
-    float precoFrete;
+    float precoFrete; 
     float precoImposto;
     float freteUnidade;
     float impostoUnidade;

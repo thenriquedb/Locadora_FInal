@@ -47,7 +47,11 @@ void importFuncionarios_txt();
 void exportLocadora_txt(Strc_Locadora Loc);
 void importFilmes_txt();
 void importFornecedores_txt();
+void exportContasReceber_txt(Strc_ContasReceber contasReceber);
 void exportFilmes_txt(Strc_Filmes Fil);
+void exportNotasFiscais_txt(Strc_notaFiscal notaFiscal);
 void importLocadora_txt();
+void importLocacoes_txt();
+void importNotasFiscais_txt();
 #endif /* FILETXT_H */
 

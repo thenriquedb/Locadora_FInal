@@ -38,7 +38,7 @@ int* alocar_FilmesComprados(int* str, int cont);
 int alocarLocacoes(Strc_Locacoes* str);
 
 /* Função responsavel por fazer a aloção de memoria para finanças */
-Strc_Financas* alocar_Financas(Strc_Financas* str, int cont);
+Strc_Caixa* alocar_Financas(Strc_Caixa* str, int cont);
 
 /* Função responsavel por fazer a aloção de memoria para a struct MinimalFilmes */
 Strc_MinimalFilmes* alocar_MinimalFilmes(Strc_MinimalFilmes* str, int cont);
@@ -76,7 +76,7 @@ Strc_Fornecedores* return_Fornecedores();
 Strc_notaFiscal* return_NotasFiscais();
 
 /* Função que retorna a variavel Financas */
-Strc_Financas return_Financas();
+Strc_Caixa return_Financas();
 
 /**/
 Strc_Locacoes* return_Locacoes();
@@ -116,7 +116,7 @@ int returnCont_contasReceber();
 void alterarCategorias(Strc_Categoria *cat);
 void alterarClientes(Strc_Clientes *cl);
 void alterarFilmes(Strc_Filmes *fil);
-int alterarFinanceiro(Strc_Financas fin);
+int alterarFinanceiro(Strc_Caixa fin);
 void alterarFornecedores(Strc_Fornecedores *forn);
 void alterarFuncionarios(Strc_Funcionario *fun);
 int alterarLocadora(Strc_Locadora loc);

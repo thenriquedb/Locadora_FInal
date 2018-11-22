@@ -17,7 +17,7 @@
 void contasPagar_Unica() {
     int codNF, i, opc, contNF = returnCont_NotasFiscais();
     Strc_notaFiscal* Nota = return_NotasFiscais();
-    Strc_Financas Financeiro = return_Financas();
+    Strc_Caixa Financeiro = return_Financas();
 
     do {
         system("clear");
@@ -65,7 +65,7 @@ void contasPagar_Unica() {
 void contasPagar_Fornecedor() {
     int codFor, codNF, i, cont = 0, opc, contNF = returnCont_NotasFiscais();
     Strc_notaFiscal* Nota = return_NotasFiscais();
-    Strc_Financas Financeiro = return_Financas();
+    Strc_Caixa Financeiro = return_Financas();
 
     printf("====== | PAGAR NF DE DETERMINADO FORNECEDOR | ======\n");
     do {
@@ -127,7 +127,7 @@ void contasPagar_Fornecedor() {
 void contasPagar_Todas() {
     int codFor, codNF, i, cont = 0, opc, contNF = returnCont_NotasFiscais();
     Strc_notaFiscal* Nota = return_NotasFiscais();
-    Strc_Financas Financeiro = return_Financas();
+    Strc_Caixa Financeiro = return_Financas();
 
     printf("====== | PAGAR TODAS NOTAS FISCAIS | ======\n");
     for (i = 0; i < contNF; i++) {
@@ -162,7 +162,7 @@ void PagamentoLocacao(int codCl, int codFun, int contAluguel, int posCl, float t
     float entrada;
 
     Strc_Clientes* Clientes = return_Clientes();
-    Strc_Financas Financeiro = return_Financas();
+    Strc_Caixa Financeiro = return_Financas();
     Strc_Locacoes Locacoes;
     Strc_ContasReceber conta_aReceber;
 
@@ -190,7 +190,7 @@ void PagamentoLocacao(int codCl, int codFun, int contAluguel, int posCl, float t
         Locacoes.pagamento = 'D';
         conta_aReceber.codCl = codCl;
         conta_aReceber.quantParcelas = quantParcela;
-        conta_aReceber.situacao = 'D';
+        conta_aReceber.situacao[0] = 'D';
 
         printf("Deseja dar algum valor de entrada: \n"
                 "\t1. Com entrada \n"
@@ -204,28 +204,19 @@ void PagamentoLocacao(int codCl, int codFun, int contAluguel, int posCl, float t
                     printf("Valor de entrada precisa ser menor que o valor total da comrpa. \n");
                 }
 
-                conta_aReceber.entrada = 'S';
+                conta_aReceber.entrada[0] = 'S';
                 conta_aReceber.valorEntrada = entrada;
             } while (entrada >= conta_aReceber.total);
 
             conta_aReceber.vlrParcela = (totalPagamento - entrada) / quantParcela;
             Financeiro.caixa += entrada;
         } else {
-            conta_aReceber.entrada = 'N';
+            conta_aReceber.entrada[0] = 'N';
             conta_aReceber.vlrParcela = totalPagamento / quantParcela;
         }
         printf("\nForma de pagamento escolhida foi %d parcelas de R$ %.2f cada. \n",
                 quantParcela, conta_aReceber.vlrParcela);
     }
-
-    /*
-    system("clear");
-    printf("DATA \n");
-    printf("\tDia: ");
-    scanf("%d", &Locacoes.dia);
-    printf("\tMês: ");
-    scanf("%d", &Locacoes.mes);
-     */
 
     alocarContas_aReceber(&conta_aReceber);
     exportLocacoes_txt(Locacoes);
@@ -242,7 +233,7 @@ void receber_ContasCl() {
     int codCl, verificar = 0;
     int contContas = returnCont_contasReceber();
     Strc_ContasReceber* Conta = return_contasReceber();
-    Strc_Financas Financas = return_Financas();
+    Strc_Caixa Financas = return_Financas();
 
     printf("====== | RECEBIMENTO DE CONTAS | ======\n");
     do {
@@ -252,7 +243,7 @@ void receber_ContasCl() {
 
     for (int i = 0; i < contContas; i++) {
         if (Conta[i].codCl == codCl) {
-            if (Conta[i].situacao == 'D') {
+            if (Conta[i].situacao[0] == 'D') {
                 Conta[i].quantParcelas--;
                 Financas.caixa += Conta[i].vlrParcela;
 
@@ -260,7 +251,7 @@ void receber_ContasCl() {
                 printf("Parcela paga com sucesso. Parcelas restantes: %d \n", Conta[i].quantParcelas);
 
                 if (Conta[i].quantParcelas == 0) {
-                    Conta[i].situacao = 'P';
+                    Conta[i].situacao[0] = 'P';
                     printf("Todas as parcelas foram pagas. \n");
                 }
             } else {

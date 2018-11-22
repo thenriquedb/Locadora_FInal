@@ -24,9 +24,10 @@
 void importLocadora_txt() {
     FILE * file = fopen("arquivos/fileLocadora.txt", "r");
     if (file == NULL) {
-        printf("Impossivel ler o arquivo. \n");
+        printf("Impossivel ler o arquivo \"fileLocadora.txt\". \n");
         menuInicial();
     }
+    
     char line[256];
     char* token;
     Strc_Locadora Loc;
@@ -106,7 +107,7 @@ void importLocadora_txt() {
 void importCategoria_txt() {
     FILE * file = fopen("arquivos/fileCategorias.txt", "r");
     if (file == NULL) {
-        printf("Impossivel ler o arquivo. \n");
+        printf("Impossivel ler o arquivo \"fileCategorias.txt\". \n");
         menuInicial();
     }
 
@@ -152,7 +153,7 @@ void importCategoria_txt() {
 void importCliente_txt() {
     FILE * file = fopen("arquivos/fileClientes.txt", "r");
     if (file == NULL) {
-        printf("Impossivel ler o arquivo. \n");
+        printf("Impossivel ler o arquivo \"fileClientes.txt\". \n");
         menuInicial();
     }
 
@@ -209,7 +210,7 @@ void importCliente_txt() {
 void importFuncionarios_txt() {
     FILE * file = fopen("arquivos/fileFuncionarios.txt", "r");
     if (file == NULL) {
-        printf("Impossivel ler o arquivo. \n");
+        printf("Impossivel ler o arquivo \"fileFuncionarios.txt\". \n");
         menuInicial();
     }
 
@@ -255,7 +256,7 @@ void importFuncionarios_txt() {
 void importFilmes_txt() {
     FILE * file = fopen("arquivos/fileFilmes.txt", "r");
     if (file == NULL) {
-        printf("Impossivel ler o arquivo. \n");
+        printf("Impossivel ler o arquivo \"fileFilmes.txt\". \n");
         menuInicial();
     }
 
@@ -309,7 +310,7 @@ void importFilmes_txt() {
 void importFornecedores_txt() {
     FILE * file = fopen("arquivos/fileFornecedores.txt", "r");
     if (file == NULL) {
-        printf("Impossivel ler o arquivo. \n");
+        printf("Impossivel ler o arquivo \"fileFornecedores.txt\". \n");
         menuInicial();
     }
 
@@ -380,6 +381,217 @@ void importFornecedores_txt() {
     }
 
     alocarFornecedores(&Forn);
+    fclose(file);
+    free(file);
+}
+//------------------------------------------------------------------------------
+
+void importLocacoes_txt() {
+    FILE * file = fopen("arquivos/fileLocacoes.txt", "r");
+    if (file == NULL) {
+        printf("Impossivel ler o arquivo \"fileLocacoes.txt\". \n");
+        menuInicial();
+    }
+
+    char line[256];
+    char* token;
+
+    int i = 0;
+    Strc_Locacoes Locacoes;
+    Locacoes.Itens = NULL;
+
+    while (!feof(file)) {
+        line[0] = '\0';
+        fgets(line, 256, file);
+
+        if (line[0] == '#') {
+            token = strtok(line, ",");
+
+            while (token != NULL) {
+                token = strtok(NULL, ",");
+                Locacoes.codFunc = atoi(token);
+
+                token = strtok(NULL, ",");
+                Locacoes.codCliente = atoi(token);
+
+                token = strtok(NULL, ",");
+                Locacoes.pagamento = 'V'; //token;
+
+                token = strtok(NULL, ",");
+                Locacoes.contItens = atoi(token);
+
+                token = strtok(NULL, ",");
+            }
+        }
+
+        /*
+         *Leitura do vetor dinâmico dos dadados das filmes locados
+         */
+        if (line[0] == '$') {
+            token = strtok(line, ",");
+            token = strtok(NULL, ",");
+
+            while (token != NULL) {
+                Locacoes.Itens = alocar_MinimalFilmes(Locacoes.Itens, i);
+
+                Locacoes.Itens[i].codFilme = atoi(token);
+                token = strtok(NULL, ",");
+
+                Locacoes.Itens[i].quant = atoi(token);
+                token = strtok(NULL, ",");
+
+                Locacoes.Itens[i].preco = atof(token);
+                token = strtok(NULL, ",");
+
+                Locacoes.Itens[i].total = atof(token);
+                token = strtok(NULL, ",");
+
+                i++;
+            }
+        }
+    }
+
+    alocarLocacoes(&Locacoes);
+    fclose(file);
+    free(file);
+}
+//------------------------------------------------------------------------------
+
+void importContasReceber_txt() {
+    FILE * file = fopen("arquivos/fileContasReceber.txt", "r");
+    if (file == NULL) {
+        printf("Impossivel ler o arquivo \"fileContasReceber.txt\". \n");
+        menuInicial();
+    }
+
+
+    char line[256];
+    char* token;
+    Strc_ContasReceber contasReceber;
+
+    while (!feof(file)) {
+        line[0] = '\0';
+        fgets(line, 256, file);
+
+        if (line[0] == '#') {
+            token = strtok(line, ",");
+
+            while (token != NULL) {
+                token = strtok(NULL, ",");
+                contasReceber.codCl = atoi(token);
+
+                token = strtok(NULL, ",");
+                contasReceber.total = atof(token);
+
+                token = strtok(NULL, ",");
+                strcpy(contasReceber.situacao, token);
+
+                token = strtok(NULL, ",");
+                strcpy(contasReceber.entrada, token);
+
+                if (strcmp(token, "S") == 0) {
+
+                    contasReceber.vlrParcela = atof(token);
+                }
+
+                token = strtok(NULL, ",");
+                contasReceber.quantParcelas = atoi(token);
+
+                token = strtok(NULL, ",");
+                contasReceber.vlrParcela = atof(token);
+
+                token = strtok(NULL, ",");
+            }
+        }
+        alocarContas_aReceber(&contasReceber);
+    }
+
+    fclose(file);
+    free(file);
+}
+//------------------------------------------------------------------------------
+
+void importNotasFiscais_txt() {
+    FILE * file = fopen("arquivos/fileNotasFiscais.txt", "r");
+    if (file == NULL) {
+        printf("Impossivel ler o arquivo \"fileNotasFiscais.txt\". \n");
+        menuInicial();
+    }
+
+    char line[256];
+    char* token;
+    int i;
+
+    Strc_notaFiscal notaFiscal;
+    notaFiscal.Itens = NULL;
+
+    while (!feof(file)) {
+        line[0] = '\0';
+        fgets(line, 256, file);
+
+        if (line[0] == '#') {
+            token = strtok(line, ",");
+
+            while (token != NULL) {
+                token = strtok(NULL, ",");
+                notaFiscal.codForn = atoi(token);
+
+                token = strtok(NULL, ",");
+                notaFiscal.codigo = atoi(token);
+
+                token = strtok(NULL, ",");
+                notaFiscal.paga = atoi(token);
+
+                token = strtok(NULL, ",");
+                notaFiscal.precoFrete = atof(token);
+
+                token = strtok(NULL, ",");
+                notaFiscal.precoImposto = atof(token);
+
+                token = strtok(NULL, ",");
+                notaFiscal.freteUnidade = atof(token);
+
+                token = strtok(NULL, ",");
+                notaFiscal.impostoUnidade = atof(token);
+
+                token = strtok(NULL, ",");
+                notaFiscal.totalNF = atof(token);
+
+                token = strtok(NULL, ",");
+                notaFiscal.contItens = atoi(token);
+
+                token = strtok(NULL, ",");
+            }
+        }
+
+        /*
+         *Leitura do vetor dinâmico dos dadados dos filmes comprados
+         */
+        if (line[0] == '$') {
+            token = strtok(line, ",");
+            token = strtok(NULL, ",");
+
+            while (token != NULL) {
+                notaFiscal.Itens = alocar_MinimalFilmes(notaFiscal.Itens, i);
+
+                notaFiscal.Itens[i].codFilme = atoi(token);
+                token = strtok(NULL, ",");
+
+                notaFiscal.Itens[i].quant = atoi(token);
+                token = strtok(NULL, ",");
+
+                notaFiscal.Itens[i].preco = atof(token);
+                token = strtok(NULL, ",");
+
+                notaFiscal.Itens[i].total = atof(token);
+                token = strtok(NULL, ",");
+
+                i++;
+            }
+        }
+    }
+    
+    alocarNotasFiscais(&notaFiscal);
     fclose(file);
     free(file);
 }

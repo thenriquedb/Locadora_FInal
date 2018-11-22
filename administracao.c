@@ -17,7 +17,7 @@ void entradaFilmes() {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
     Strc_Filmes* Filme = return_Filmes();
     Strc_Locadora Locadora = return_Locadora();
-    Strc_Financas Financeiro = return_Financas();
+    Strc_Caixa Financeiro = return_Financas();
     Strc_notaFiscal Notas;
 
     Notas.Itens = NULL;
@@ -266,7 +266,7 @@ void DevolucaoFilmes() {
     Strc_Locacoes* Locacoes = return_Locacoes();
     Strc_Locadora Locadora = return_Locadora();
     Strc_Filmes* Filmes = return_Filmes();
-    Strc_Financas Financas = return_Financas();
+    Strc_Caixa Financas = return_Financas();
 
     printf("====== | DEVOLUÇÃO DE FILMES | ======\n");
     do {

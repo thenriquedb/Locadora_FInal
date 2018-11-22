@@ -31,44 +31,48 @@ void menuInicial() {
 //------------------------------------------------------------------------------
 
 void menuImportacao() {
-        printf("====== | IMPORTAÇÃO DE DADOS | ======\n");
-        printf("\t1. Clientes \n"
-                "\t2. Filmes \n"
-                "\t3. Categoria \n"
-                "\t4. Funciónarios \n"
-                "\t5. Fornecedores \n"
-                "\t6. Locações \n"
-                "\t7. Notas fiscais \n"
-                "\t8. Contas a pagar \n"
-                "\t9. Contas a receber \n"
-                "\t10. Voltar ao menu anterior \n");
+    printf("====== | IMPORTAÇÃO DE DADOS | ======\n");
+    printf("\t1. Clientes \n"
+            "\t2. Filmes \n"
+            "\t3. Categoria \n"
+            "\t4. Funciónarios \n"
+            "\t5. Fornecedores \n"
+            "\t6. Locações \n"
+            "\t7. Notas fiscais \n"
+            "\t8. Contas a pagar \n"
+            "\t9. Contas a receber \n"
+            "\t10. Voltar ao menu anterior \n");
 
-        switch (selecao()) {
-            case 1:
-                importCliente_txt();
-                break;
+    switch (selecao()) {
+        case 1:
+            importCliente_txt();
+            break;
 
-            case 2:
-                importFilmes_txt();
-                break;
+        case 2:
+            importFilmes_txt();
+            break;
 
-            case 3:
-                importCategoria_txt();
-                break;
+        case 3:
+            importCategoria_txt();
+            break;
 
-            case 4:
-                importFuncionarios_txt();
-                break;
+        case 4:
+            importFuncionarios_txt();
+            break;
 
-            case 10:
-                menuInicial();
-                break;
+        case 5:
+            importFornecedores_txt();
+            break;
 
-            default:
-                printf("Opção inválida");
+        case 10:
+            menuInicial();
+            break;
 
-        }
-        system("clear");
+        default:
+            printf("Opção inválida");
+
+    }
+    system("clear");
 }
 
 void menuCadastro() {
@@ -331,15 +335,21 @@ void menuFinancas() {
 
 void menuAdministrativo() {
     printf("====== | ADMINISTRATIVO | ======\n"
-            "\t1. Compra de filmes \n"
-            "\t2. Quantidade de locações para que um filme se pague \n"
-            "\t3. Visualizar estoque da locadora \n"
-            "\t4. Voltar para o menu principal \n");
+            "\t1. Dados do estabelecimento \n"
+            "\t2. Compra de filmes \n"
+            "\t3. Quantidade de locações para que um filme se pague \n"
+            "\t4. Visualizar estoque da locadora \n"
+            "\t5. Voltar para o menu principal \n");
 
     Strc_Locadora Locadora = return_Locadora();
 
     switch (selecao()) {
         case 1:
+            imprimeLocadora();
+            digiteAlguma_teclaContinuar();
+            break;
+
+        case 2:
             if (return_Filmes() != NULL) {
                 menu_EntradaFilmes();
             } else {
@@ -347,18 +357,18 @@ void menuAdministrativo() {
             }
             break;
 
-        case 2:
+        case 3:
             menuLocacoes_FilmeSePagar();
             break;
 
-        case 3:
+        case 4:
             if (Locadora.filmesComprados != NULL) {
                 visualizarEstoque();
             }
             printf("Nenhum filme comprado. \n");
             break;
 
-        case 4:
+        case 5:
             break;
 
         default:

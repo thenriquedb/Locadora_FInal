@@ -29,7 +29,7 @@ int alocarFornecedores(Strc_Fornecedores* forn);
 int alocarNotasFiscais(Strc_notaFiscal* nota);
 
 /* Função responsavel por fazer a aloção de memoria dos filmes fornecidos por cada fornecedor */
-int* alocar_CatalagoFornecedor(int* str, int cont);
+int* alocar_Int(int* str, int cont);
 
 /* Função responsavel por fazer a aloção de memoria dos filmes comprados para a locadora */
 int* alocar_FilmesComprados(int* str, int cont);

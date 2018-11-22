@@ -1,5 +1,4 @@
-# razao social,fornecedor A,rua aaaaaaaaa,33513351,email@gmail.com,111111,2222222,0
-# razao social,fornecedor A,rua aaaaaaaaa,33513351,email@gmail.com,111111,2222222,0
-# razao social,fornecedor A,rua aaaaaaaaa,33513351,email@gmail.com,111111,2222222,0
-# razao social,fornecedor A,rua aaaaaaaaa,33513351,email@gmail.com,111111,2222222,0
-# razao social,fornecedor A,rua aaaaaaaaa,33513351,email@gmail.com,111111,2222222,0
+#, razao social,fornecedor A,2,rua aaaaaaaaa,33513351,email@gmail.com,CNPJ,INSCRICAO SOCIAL,10
+$,1,2,3,4,5,6,7,8,9,10
+#, razao social,fornecedor A,1,rua aaaaaaaaa,33513351,email@gmail.com,CNPJ,INSCRICAO SOCIAL,10
+$,1,2,3,4,5,6,7,8,9,10

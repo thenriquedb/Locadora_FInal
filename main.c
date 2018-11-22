@@ -9,12 +9,19 @@
 #include "Bibliotecas/gestao.h"
 #include "Bibliotecas/fileTXT.h"
 #include "teste.h"
+#include "Bibliotecas/GUI.h"
 
 int main(int argc, char** argv) {
-   // prencherDados();
+    //prencherDados();
     //menuInicial();
-    // importFuncionarios_txt();
 
+    importFornecedores_txt();
+    importFilmes_txt();
+    importLocadora_txt();
+    importCliente_txt();
+    importCategoria_txt();
+    importFuncionarios_txt();
+    
     do {
         Strc_Financas Fin = return_Financas();
         printf("CAIXA: R$ %.2f \n", Fin.caixa);

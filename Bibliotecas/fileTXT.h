@@ -44,9 +44,10 @@ void importCliente_txt();
 
 void excluirArquivos_txt();
 void importFuncionarios_txt();
-
+void exportLocadora_txt(Strc_Locadora Loc);
 void importFilmes_txt();
+void importFornecedores_txt();
 void exportFilmes_txt(Strc_Filmes Fil);
-
+void importLocadora_txt();
 #endif /* FILETXT_H */
 

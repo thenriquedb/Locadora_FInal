@@ -206,7 +206,7 @@ void cadastrarFilmes() {
         Filme.codigoCategoria = codCat;
         Filme.exemplares = 0;
 
-        Fornecedor[PosForn].catalogoFilmes = alocar_CatalagoFornecedor(Fornecedor[PosForn].catalogoFilmes, Fornecedor[PosForn].contCatalago);
+        Fornecedor[PosForn].catalogoFilmes = alocar_Int(Fornecedor[PosForn].catalogoFilmes, Fornecedor[PosForn].contCatalago);
         Fornecedor[PosForn].catalogoFilmes[posCatalago] = Filme.codigo;
         Fornecedor[PosForn].contCatalago++;
 

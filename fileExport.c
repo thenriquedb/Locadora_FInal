@@ -40,6 +40,38 @@ void excluirArquivos_txt() {
 }
 //------------------------------------------------------------------------------
 
+void exportLocadora_txt(Strc_Locadora Loc) {
+    FILE * file = fopen("arquivos/fileLocadora.txt", "a");
+
+    fprintf(file, "#, %s,", Loc.razaoSocial);
+    fprintf(file, "%s,", Loc.nomeFanatasia);
+    fprintf(file, "%s,", Loc.nomeResponsavel);
+    fprintf(file, "%s,", Loc.endereco);
+    fprintf(file, "%s,", Loc.email);
+    fprintf(file, "%s,", Loc.telefone);
+    fprintf(file, "%s,", Loc.cnpj);
+    fprintf(file, "%s,", Loc.InscricaoEstadual);
+    fprintf(file, "%.2f,", Loc.valorMulta);
+
+    /* leitura da struct filmes disponiveis pelo fornecedor */
+    if (Loc.contFilmes_comprados == 0) {
+        fprintf(file, "0\n");
+    } else {
+        fprintf(file, "%d\n", Loc.contFilmes_comprados);
+        fprintf(file, "$,");
+
+        for (int i = 0; i < Loc.contFilmes_comprados; i++) {
+            Loc.filmesComprados = alocar_Int(Loc.filmesComprados, Loc.contFilmes_comprados);
+            fprintf(file, "%d", Loc.filmesComprados[i]);
+
+            if (i < Loc.contFilmes_comprados-1)
+                fprintf(file, ",");
+        }
+        fprintf(file, "\n");
+    }
+}
+//------------------------------------------------------------------------------
+
 void exportCliente_txt(Strc_Clientes Cl) {
     FILE * file = fopen("arquivos/fileClientes.txt", "a");
 
@@ -53,6 +85,7 @@ void exportCliente_txt(Strc_Clientes Cl) {
     fprintf(file, "%d,", Cl.opc_sexo);
     fprintf(file, "%d\n", Cl.estado_civi);
 }
+//------------------------------------------------------------------------------
 
 void exportFunc_txt(Strc_Funcionario Func) {
     FILE * file = fopen("arquivos/fileFuncionarios.txt", "a");
@@ -78,27 +111,32 @@ void exportCategoria_txt(Strc_Categoria Cat) {
 void exportFornecedor_txt(Strc_Fornecedores Forn) {
     FILE * file = fopen("arquivos/fileFornecedores.txt", "a");
 
-    fprintf(file, "# %s,", Forn.razaoScial);
+    fprintf(file, "#, %s,", Forn.razaoScial);
     fprintf(file, "%s,", Forn.nomeFantasia);
-    fprintf(file, "%d", Forn.codigo);
+    fprintf(file, "%d,", Forn.codigo);
     fprintf(file, "%s,", Forn.endereco);
     fprintf(file, "%s,", Forn.telefone);
     fprintf(file, "%s,", Forn.email);
     fprintf(file, "%s,", Forn.cnpj);
     fprintf(file, "%s,", Forn.inscricaooSocial);
 
-    /* Struct filmes disponiveis pelo fornecedor */
+    /* leitura da struct filmes disponiveis pelo fornecedor */
     if (Forn.contCatalago == 0) {
         fprintf(file, "0\n");
     } else {
-        fprintf(file, "%d,", Forn.contCatalago);
-        fprintf(file, "(");
-        for (int i = 0; i < Forn.contCatalago; i++) {
-            fprintf(file, "%d;", Forn.catalogoFilmes[i]);
-        }
-        fprintf(file, ")\n");
-    }
+        fprintf(file, "%d\n", Forn.contCatalago);
+        fprintf(file, "$,");
 
+        int i = 0;
+        for (i = 0; i < Forn.contCatalago; i++) {
+            Forn.catalogoFilmes = alocar_Int(Forn.catalogoFilmes, Forn.contCatalago);
+            fprintf(file, "%d", Forn.catalogoFilmes[i]);
+
+            if (i < Forn.contCatalago-1)
+                fprintf(file, ",");
+        }
+        fprintf(file, "\n");
+    }
 }
 //------------------------------------------------------------------------------
 
@@ -130,3 +168,4 @@ void exportLocacoes_txt(Strc_Locacoes Loc) {
     }
     fprintf(file, ")\n");
 }
+//------------------------------------------------------------------------------

@@ -9,6 +9,24 @@
 #include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/GUI.h"
 
+void imprimeLocadora() {
+    Strc_Locadora Locadora = return_Locadora();
+
+    printf("\tRazão social: %s \n", Locadora.razaoSocial);
+    printf("\tNome fantasia: %s \n", Locadora.nomeFanatasia);
+    printf("\tNome responsável: %s \n", Locadora.nomeResponsavel);
+    printf("\tEndereço: %s \n", Locadora.endereco);
+    printf("\tEmail: %s \n", Locadora.email);
+    printf("\tTelefone: %s \n", Locadora.telefone);
+    printf("\tCNPJ: %s \n", Locadora.cnpj);
+    printf("\tInscrição estadual: %s \n", Locadora.InscricaoEstadual);
+
+    for (int i = 0; i < Locadora.contFilmes_comprados; i++) {
+        printf("%d \n",Locadora.filmesComprados[i]);
+    }
+}
+//------------------------------------------------------------------------------
+
 void imprimeCategorias(int i) {
     Strc_Categoria* Categoria = return_Categorias();
 
@@ -18,6 +36,7 @@ void imprimeCategorias(int i) {
     printf("\tValor da multa de atraso: R$ %.2f \n", Categoria[i].valor);
 }
 //------------------------------------------------------------------------------
+
 void imprimeClientes(int i) {
     Strc_Clientes* Cliente = return_Clientes();
 
@@ -50,6 +69,7 @@ void imprimeClientes(int i) {
     }
 }
 //-------------------------------------------------------------------------------
+
 void imprimeFuncionarios(int i) {
     Strc_Funcionario* Funcionario = return_Funcionarios();
 
@@ -76,7 +96,8 @@ void imprimeFornecedores(int i) {
     printf("Filmes disponiveis: \n");
     for (int j = 0; j < Fornecedor[i].contCatalago; j++) {
         int posFil = Fornecedor[i].catalogoFilmes[j] - 1;
-        printf("\t %d. %s \n", Fornecedor[i].catalogoFilmes[j], Filme[posFil].nome);
+        //  printf("\t %d. %s \n", Fornecedor[i].catalogoFilmes[j], Filme[posFil].nome);
+        printf("\t filme forn: %d \n", j);
 
     }
 }
@@ -93,10 +114,10 @@ void imprimeFilmes(int i) {
     printf("\tTítulo: %s \n", Filme[i].nome);
     printf("\tDescrição: %s \n", Filme[i].descricao);
     printf("\tCodígo uníco: %d \n", Filme[i].codigo);
-   // printf("\tFornecedor: %s (%d)\n", Fornecedor[i].razaoScial, Filme[i].codigoFornecedor);
+    // printf("\tFornecedor: %s (%d)\n", Fornecedor[i].razaoScial, Filme[i].codigoFornecedor);
     printf("\tCódigo do fornecedor: %d \n", Filme[i].codigoFornecedor);
-    printf("\tPreço de compra: R$ %.2f \n",Filme[i].precoCompra);
-    
+    printf("\tPreço de compra: R$ %.2f \n", Filme[i].precoCompra);
+
     printf("\tIdioma: ");
     if (Filme[i].idioma == 1) {
         printf("Dublado \n");

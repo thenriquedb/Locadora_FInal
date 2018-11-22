@@ -7,8 +7,8 @@
 typedef struct {
     char nomeFanatasia[100];
     char razaoSocial[100];
-    char InscricaoEstadual[12];
-    char cnpj[14];
+    char InscricaoEstadual[120];
+    char cnpj[140];
     char endereco[150];
     char telefone[12];
     char email[150];
@@ -84,8 +84,8 @@ typedef struct {
     char razaoScial[100];
     char endereco[150];
     char telefone[12];
-    char inscricaooSocial[16];
-    char cnpj[14];
+    char inscricaooSocial[160];
+    char cnpj[140];
     char email[150];
 
     int *catalogoFilmes;

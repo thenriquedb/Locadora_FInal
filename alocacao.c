@@ -50,7 +50,7 @@ int alocarEstoque_Locadora(Strc_Locadora* loc) {
 }
 //-------------------------------------------------------------------------------
 
-int* alocar_CatalagoFornecedor(int* str, int cont) {
+int* alocar_Int(int* str, int cont) {
     if (str == NULL) {
         str = malloc(sizeof (int));
     } else {

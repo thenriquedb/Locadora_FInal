@@ -32,20 +32,30 @@ void prencherDados() {
     strcpy(fun.email, "email@gmail.com");
     strcpy(fun.telefone, "555555");
     fun.codigo = gerarCodigoFuncionario();
-    
+
     exportFunc_txt(fun);
     alocarFuncionarios(&fun);
 
     Strc_Locadora loc;
-    strcpy(loc.endereco, "teste14");
-    strcpy(loc.razaoSocial, "teste14");
-    strcpy(loc.nomeFanatasia, "teste14");
-    strcpy(loc.nomeResponsavel, "teste14");
-    strcpy(loc.telefone, "teste14");
-    strcpy(loc.razaoSocial, "teste14");
-    strcpy(loc.cnpj, "teste14");
-    strcpy(loc.email, "teste14");
+    strcpy(loc.endereco, "Endereco");
+    strcpy(loc.razaoSocial, "razao social");
+    strcpy(loc.nomeFanatasia, "Nome Fantasia");
+    strcpy(loc.nomeResponsavel, "Nome Responsavel");
+    strcpy(loc.InscricaoEstadual, "Inscricao estadual");
+    strcpy(loc.cnpj, "CNPJ");
+    strcpy(loc.telefone, "telefone");
+    strcpy(loc.razaoSocial, "razao social");
+    strcpy(loc.email, "email");
+    loc.filmesComprados = NULL;
     loc.valorMulta = 10;
+    loc.contFilmes_comprados = 3;
+
+    for (int i = 0; i < loc.contFilmes_comprados; i++) {
+        loc.filmesComprados = alocar_Int(loc.filmesComprados, i);
+        loc.filmesComprados[i] = i + 1;
+    }
+
+     exportLocadora_txt(loc);
     alterarLocadora(loc);
 
     Strc_Categoria cat;
@@ -58,21 +68,30 @@ void prencherDados() {
     alocarCategoria(&cat);
 
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 2; i++) {
+
         Strc_Fornecedores forn;
         strcpy(forn.nomeFantasia, "fornecedor A");
-        strcpy(forn.cnpj, "111111");
-        strcpy(forn.inscricaooSocial, "2222222");
+        strcpy(forn.cnpj, "CNPJ");
+        strcpy(forn.inscricaooSocial, "INSCRICAO SOCIAL");
         strcpy(forn.email, "email@gmail.com");
         strcpy(forn.telefone, "33513351");
         strcpy(forn.endereco, "rua aaaaaaaaa");
         strcpy(forn.razaoScial, "razao social");
+
         forn.codigo = gerarCodigoFornecedores();
-        forn.contCatalago = 0;
-        
-      exportFornecedor_txt(forn);
+        forn.contCatalago = 10;
+
+        for (int j = 0; j < forn.contCatalago; j++) {
+            forn.catalogoFilmes = alocar_Int(forn.catalogoFilmes, forn.contCatalago);
+            forn.catalogoFilmes[j] = j + 1;
+          //printf("%d j: %d\n", forn.catalogoFilmes[j],j);
+        }
+
+        exportFornecedor_txt(forn);
         alocarFornecedores(&forn);
     }
+
 
     Strc_Filmes fil;
     for (int i = 0; i < 5; i++) {
@@ -85,7 +104,7 @@ void prencherDados() {
         fil.precoCompra = 1000;
         fil.exemplares = 1000;
         fil.codigoFornecedor = 1;
-        
+
         exportFilmes_txt(fil);
         alocarFilmes(&fil);
     }

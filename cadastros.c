@@ -53,13 +53,17 @@ void cadastrarLocadora() {
         scanf("%f", &Locadora.valorMulta);
 
 
-        printf("Digite 1 para confirmar ou 2 para corrigir: ");
+        printf("Digite: \n"
+                "\t1. Confirmar"
+                "\t2. Corrigir: ");
         scanf("%d", &opc);
-        system("clear");
 
         if (opc == 1) {
             printf("Cadastro concluído com sucesso! \n");
             alterarLocadora(Locadora);
+        } else {
+            system("clear");
+            printf("=== | CADASTRO DA LOCADORA | ===\n");
         }
     } while (opc != 1);
 }

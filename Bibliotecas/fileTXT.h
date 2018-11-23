@@ -4,54 +4,56 @@
 
 #include "./../Bibliotecas/structs.h"
 
+/* Exclui todos os arquivos do programa salvos no computador*/
+void excluirArquivos_txt();
+
+
+
 /*
- *Armazena as informações dos clientes cadastrados em um arquivo TXT 
+ * -----------------| FUNÇÕES DE EXPORTAÇÃO PARA ARQUIVOS TXT |-----------------
+ * Funções que leem informações e os armazenam em mémoria. Os parámetros recebidos
+ * é a struct a ser lida.
  */
+void exportLocadora_txt(Strc_Locadora Loc);
+
+void exportContasReceber_txt(Strc_ContasReceber contasReceber);
+
+void exportFilmes_txt(Strc_Filmes Fil);
+
 void exportCliente_txt(Strc_Clientes Cl);
 
-/*
- *Armazena as informações dos funcionários cadastrados em um arquivo TXT 
- */
 void exportFunc_txt(Strc_Funcionario Func);
 
-/*
- *Armazena as informações das categorias cadastrados em um arquivo TXT 
- */
 void exportCategoria_txt(Strc_Categoria Cat);
 
-/*
- *Armazena as informações dos fornecedores cadastrados em um arquivo TXT 
- */
 void exportFornecedor_txt(Strc_Fornecedores Forn);
 
-/*
- *Armazena as informações das locações realizadas um arquivo TXT 
- */
 void exportLocacoes_txt(Strc_Locacoes Loc);
 
-//------------------------------------------------------------------------------
+void exportNotasFiscais_txt();
+
+
+
 /*
- *Realiza a leitura de um arquivo em formato texto onde estão armazendo os dados 
- * das categorias e os armazena em mémoria 
+ * --------| FUNÇÕES DE IMPORTAÇÃO DE DADOS DE ARQUIVO TXT PARA MÉMORIA --------
+ * Funções que leem um arquivo TXT e os salva em mémoriados
  */
 void importCategoria_txt();
 
-/*
- *Realiza a leitura de um arquivo em formato texto onde estão armazendo os dados 
- * dados e os armazena em mémoria 
- */
 void importCliente_txt();
 
-void excluirArquivos_txt();
 void importFuncionarios_txt();
-void exportLocadora_txt(Strc_Locadora Loc);
+
 void importFilmes_txt();
+
 void importFornecedores_txt();
-void exportContasReceber_txt(Strc_ContasReceber contasReceber);
-void exportFilmes_txt(Strc_Filmes Fil);
-void exportNotasFiscais_txt(Strc_notaFiscal notaFiscal);
+
 void importLocadora_txt();
+
 void importLocacoes_txt();
+
+void importContasReceber_txt();
+
 void importNotasFiscais_txt();
 #endif /* FILETXT_H */
 

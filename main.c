@@ -12,20 +12,10 @@
 #include "Bibliotecas/GUI.h"
 
 int main(int argc, char** argv) {
- // prencherDados();
-    //menuInicial();
+    // prencherDados();
+    menuInicial();
 
- importFornecedores_txt();
- importFilmes_txt();
-  importLocadora_txt();
-   importCliente_txt();
-  importCategoria_txt();
-  importFuncionarios_txt();
-  //   importLocacoes_txt();
-   // importContasReceber_txt();
-    
-    importNotasFiscais_txt();
-    
+
     do {
         Strc_Caixa Fin = return_Financas();
         printf("CAIXA: R$ %.2f \n", Fin.caixa);

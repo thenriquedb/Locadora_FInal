@@ -21,6 +21,10 @@
 #include "Bibliotecas/structs.h"
 #include "Bibliotecas/menus.h"
 
+
+
+
+
 void importLocadora_txt() {
     FILE * file = fopen("arquivos/fileLocadora.txt", "r");
     if (file == NULL) {
@@ -78,11 +82,7 @@ void importLocadora_txt() {
         }
 
 
-        /*
-         *Leitura do vetor dinâmico dos filmes disponiveis pelo fornecedor
-        line[0] = '\0';
-        fgets(line, 256, file);
-         */
+        /* Leitura do vetor dinâmico dos filmes disponiveis pelo fornecedor */
         if (line[0] == '$') {
             token = strtok(line, ",");
             token = strtok(NULL, ",");
@@ -102,7 +102,11 @@ void importLocadora_txt() {
     fclose(file);
     free(file);
 }
-//------------------------------------------------------------------------------
+
+
+
+
+
 
 void importCategoria_txt() {
     FILE * file = fopen("arquivos/fileCategorias.txt", "r");
@@ -148,7 +152,11 @@ void importCategoria_txt() {
     free(file);
 }
 
-//------------------------------------------------------------------------------
+
+
+
+
+
 
 void importCliente_txt() {
     FILE * file = fopen("arquivos/fileClientes.txt", "r");
@@ -205,7 +213,11 @@ void importCliente_txt() {
     fclose(file);
     free(file);
 }
-//------------------------------------------------------------------------------
+
+
+
+
+
 
 void importFuncionarios_txt() {
     FILE * file = fopen("arquivos/fileFuncionarios.txt", "r");
@@ -251,7 +263,11 @@ void importFuncionarios_txt() {
     free(file);
 }
 
-//------------------------------------------------------------------------------
+
+
+
+
+
 
 void importFilmes_txt() {
     FILE * file = fopen("arquivos/fileFilmes.txt", "r");
@@ -305,7 +321,11 @@ void importFilmes_txt() {
     fclose(file);
     free(file);
 }
-//------------------------------------------------------------------------------
+
+
+
+
+
 
 void importFornecedores_txt() {
     FILE * file = fopen("arquivos/fileFornecedores.txt", "r");
@@ -358,9 +378,7 @@ void importFornecedores_txt() {
             }
         }
 
-        /*
-         *Leitura do vetor dinâmico dos filmes disponiveis pelo fornecedor
-         */
+        /* Leitura do vetor dinâmico dos filmes disponiveis pelo fornecedor */
         int i = 0;
         line[0] = '\0';
         fgets(line, 256, file);
@@ -384,7 +402,11 @@ void importFornecedores_txt() {
     fclose(file);
     free(file);
 }
-//------------------------------------------------------------------------------
+
+
+
+
+
 
 void importLocacoes_txt() {
     FILE * file = fopen("arquivos/fileLocacoes.txt", "r");
@@ -424,9 +446,7 @@ void importLocacoes_txt() {
             }
         }
 
-        /*
-         *Leitura do vetor dinâmico dos dadados das filmes locados
-         */
+        /* Leitura do vetor dinâmico dos dadados das filmes locados */
         if (line[0] == '$') {
             token = strtok(line, ",");
             token = strtok(NULL, ",");
@@ -455,7 +475,11 @@ void importLocacoes_txt() {
     fclose(file);
     free(file);
 }
-//------------------------------------------------------------------------------
+
+
+
+
+
 
 void importContasReceber_txt() {
     FILE * file = fopen("arquivos/fileContasReceber.txt", "r");
@@ -509,7 +533,11 @@ void importContasReceber_txt() {
     fclose(file);
     free(file);
 }
-//------------------------------------------------------------------------------
+
+
+
+
+
 
 void importNotasFiscais_txt() {
     FILE * file = fopen("arquivos/fileNotasFiscais.txt", "r");
@@ -564,9 +592,7 @@ void importNotasFiscais_txt() {
             }
         }
 
-        /*
-         *Leitura do vetor dinâmico dos dadados dos filmes comprados
-         */
+        /* Leitura do vetor dinâmico dos dadados das notas fiscais armazenadas */
         if (line[0] == '$') {
             token = strtok(line, ",");
             token = strtok(NULL, ",");

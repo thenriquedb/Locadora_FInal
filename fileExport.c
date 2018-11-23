@@ -22,21 +22,12 @@
 #include "Bibliotecas/menus.h"
 
 void excluirArquivos_txt() {
-
-    printf("Deseja apagar todos os dados salvos anteriormente? Lembrando que esta "
-            "ação não poderá ser desfeita depois. \n"
-            "\t1. Sim \n"
-            "\t2. Não \n");
-    if (selecao() == 1) {
-        remove("arquivos/fileClientes.txt");
-        remove("arquivos/fileCategorias.txt");
-        remove("arquivos/fileCategorias.txt");
-        remove("arquivos/fileFornecedores.txt");
-        remove("arquivos/fileFuncionarios.txt");
-        remove("arquivos/fileLocacoes.txt");
-    } else {
-        menuInicial();
-    }
+    remove("arquivos/fileClientes.txt");
+    remove("arquivos/fileCategorias.txt");
+    remove("arquivos/fileCategorias.txt");
+    remove("arquivos/fileFornecedores.txt");
+    remove("arquivos/fileFuncionarios.txt");
+    remove("arquivos/fileLocacoes.txt");
 }
 //------------------------------------------------------------------------------
 
@@ -234,13 +225,15 @@ void exportContasReceber_txt(Strc_ContasReceber contasReceber) {
 }
 //------------------------------------------------------------------------------
 
-void exportNotasFiscais_txt(Strc_notaFiscal notaFiscal) {
+void exportNotasFiscais_txt() {
     FILE * file = fopen("arquivos/fileNotasFiscais.txt", "a");
     if (file == NULL) {
         printf("Não foi possível criar o arquivo para armazenamento dos dados das notas fiscais."
                 "O programa será fechado. \n");
         exit(EXIT_FAILURE);
     }
+
+    Strc_notaFiscal notaFiscal;
 
     fprintf(file, "#,%d,", notaFiscal.codForn);
     fprintf(file, "%d,", notaFiscal.codigo);

@@ -10,6 +10,9 @@
 #include "Bibliotecas/menus.h"
 #include "Bibliotecas/GUI.h"
 
+
+
+
 void filCategorias_Todos() {
     Strc_Categoria* Categoria = return_Categorias();
     int i, contCat = returnCont_Categorias();
@@ -27,7 +30,11 @@ void filCategorias_Todos() {
         printf("Nenhuma categoria cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filCategorias_FaixaCodigo() {
     Strc_Categoria* Categoria = return_Categorias();
@@ -67,7 +74,11 @@ void filCategorias_FaixaCodigo() {
         printf("Nenhuma categoria cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filCategorias_Codigo() {
     Strc_Categoria* Categoria = return_Categorias();
@@ -99,7 +110,11 @@ void filCategorias_Codigo() {
         printf("Nenhuma categoria cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filCategoria_Nome() {
     Strc_Categoria* Categoria = return_Categorias();
@@ -131,7 +146,11 @@ void filCategoria_Nome() {
         printf("Nenhuma categoria cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filClientes_Todos() {
     Strc_Clientes* Cliente = return_Clientes();
@@ -154,7 +173,11 @@ void filClientes_Todos() {
 
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filClientes_Codigo() {
     Strc_Clientes* Cliente = return_Clientes();
@@ -190,7 +213,11 @@ void filClientes_Codigo() {
 
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filClientes_FaixaCodigo() {
     Strc_Clientes* Cliente = return_Clientes();
@@ -229,7 +256,10 @@ void filClientes_FaixaCodigo() {
         }
     } while (chamarMenu_Relatorio() != 1);
 }
-//-------------------------------------------------------------------------------
+
+
+
+
 
 void filClientes_Nome() {
     Strc_Clientes* Cliente = return_Clientes();
@@ -265,7 +295,11 @@ void filClientes_Nome() {
     }
 }
 
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filClientes_CPF() {
     Strc_Clientes* Cliente = return_Clientes();
@@ -299,7 +333,11 @@ void filClientes_CPF() {
         printf("Nenhum cliente cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filClientes_Sexo() {
     Strc_Clientes* Cliente = return_Clientes();
@@ -335,7 +373,11 @@ void filClientes_Sexo() {
         printf("Nenhum cliente cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFornecedores_Todos() {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
@@ -355,7 +397,11 @@ void filFornecedores_Todos() {
     }
 }
 
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFornecedores_Codigo() {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
@@ -389,7 +435,11 @@ void filFornecedores_Codigo() {
     }
 }
 
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFornecedores_FaixaCodigo() {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
@@ -428,7 +478,11 @@ void filFornecedores_FaixaCodigo() {
         printf("Nenhum fornecedor cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFornecedores_NomeFantasia() {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
@@ -462,7 +516,11 @@ void filFornecedores_NomeFantasia() {
 }
 
 
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFornecedores_RazaoSocial() {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
@@ -494,7 +552,11 @@ void filFornecedores_RazaoSocial() {
         printf("Nenhum fornecedor cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFornecedores_CNPJ() {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
@@ -526,7 +588,11 @@ void filFornecedores_CNPJ() {
         printf("Nenhum fornecedor cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFornecedores_InscricaoSocial() {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
@@ -558,7 +624,11 @@ void filFornecedores_InscricaoSocial() {
         printf("Nenhum fornecedor cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFilmes_Todos() {
     Strc_Filmes* Filme = return_Filmes();
@@ -610,7 +680,11 @@ void filFilmes_Codigo() {
         printf("Nenhum filme cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFilmes_FaixaCodigo() {
     Strc_Filmes* Filme = return_Filmes();
@@ -649,7 +723,11 @@ void filFilmes_FaixaCodigo() {
         printf("Nenhum filme cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFilmes_Nome() {
     Strc_Filmes* Filme = return_Filmes();
@@ -681,7 +759,11 @@ void filFilmes_Nome() {
         printf("Nenhum filme cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFilmes_Exemplares() {
     Strc_Filmes* Filme = return_Filmes();
@@ -712,7 +794,11 @@ void filFilmes_Exemplares() {
         printf("Nenhum filme cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFilmes_Idioma() {
     Strc_Filmes* Filme = return_Filmes();
@@ -742,7 +828,11 @@ void filFilmes_Idioma() {
         printf("Nenhum filme cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 void filFuncionarios_Todos() {
     Strc_Funcionario* Funcionario = return_Funcionarios();
     int i, contFun = returnCont_Funcionarios();
@@ -760,7 +850,11 @@ void filFuncionarios_Todos() {
         printf("Nenhum funcionário cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFuncionarios_FaixaCodigo() {
     Strc_Funcionario* Funcionario = return_Funcionarios();
@@ -801,7 +895,11 @@ void filFuncionarios_FaixaCodigo() {
         printf("Nenhum funcionário cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFuncionarios_Codigo() {
     Strc_Funcionario* Funcionario = return_Funcionarios();
@@ -833,7 +931,11 @@ void filFuncionarios_Codigo() {
         printf("Nenhum funcionário cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFuncionarios_Nome() {
     Strc_Funcionario* Funcionario = return_Funcionarios();
@@ -865,7 +967,11 @@ void filFuncionarios_Nome() {
         printf("Nenhum funcionário cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filFuncionarios_Cargo() {
     Strc_Funcionario* Funcionario = return_Funcionarios();
@@ -897,7 +1003,11 @@ void filFuncionarios_Cargo() {
         printf("Nenhum funcionário cadastrado. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filNotasFiscais_Todas() {
     int i, cont = 0, contNF = returnCont_NotasFiscais();
@@ -916,7 +1026,11 @@ void filNotasFiscais_Todas() {
         printf("Nenhum nota fiscal gerada. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filNotasFiscais_Pagas() {
     int i, cont = 0, contNF = returnCont_NotasFiscais();
@@ -945,7 +1059,11 @@ void filNotasFiscais_Pagas() {
         printf("Nenhum nota fiscal gerada. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filNotasFiscais_NaoPagas() {
     int i, cont = 0, contNF = returnCont_NotasFiscais();
@@ -1000,7 +1118,11 @@ void filNotasFiscais_Fornecedor() {
         printf("Nenhum nota fiscal gerada. \n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filNotasFiscais_codigoFornecedor() {
     int codInicio, codFinal, i, cont = 0, contNF = returnCont_NotasFiscais();
@@ -1034,9 +1156,13 @@ void filNotasFiscais_codigoFornecedor() {
         }
     }
 }
-//-------------------------------------------------------------------------------
 
-void filLocacoes_aVista() {
+
+
+
+
+
+void filFilmesAlugados_aVista() {
     Strc_Locacoes* Locacoes = return_Locacoes();
     int cont = 0;
 
@@ -1052,9 +1178,13 @@ void filLocacoes_aVista() {
         printf("Nenhuma locação a vista foi realizada. \n");
     }
 }
-//-------------------------------------------------------------------------------
 
-void filLocacoes_aPrazo() {
+
+
+
+
+
+void filFilmesAlugados_aPrazo() {
     Strc_Locacoes* Locacoes = return_Locacoes();
     int cont;
 
@@ -1070,9 +1200,13 @@ void filLocacoes_aPrazo() {
         printf("Nenhuma locação a vista foi realizada. \n");
     }
 }
-//-------------------------------------------------------------------------------
 
-void filLocacoes_Func() {
+
+
+
+
+
+void filFilmesAlugados_Func() {
     Strc_Locacoes* Locacoes = return_Locacoes();
     int cont, codF, contLocacoes = returnCont_Locacoes();
 
@@ -1094,7 +1228,11 @@ void filLocacoes_Func() {
         printf("O funcionário de codígo %d ainda não realizou nenhuma venda. \n", codF);
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filLocacoes_Data() {
     Strc_Locacoes* Locacoes = return_Locacoes();
@@ -1122,9 +1260,13 @@ void filLocacoes_Data() {
     }
      */
 }
-//-------------------------------------------------------------------------------
 
-void filLocacoes_todas() {
+
+
+
+
+
+void filFilmesAlugados_todos() {
     int cont = returnCont_Locacoes();
 
     system("clear");
@@ -1133,7 +1275,11 @@ void filLocacoes_todas() {
         imprimeLocacoes(i);
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filContaReceber_todas() {
     int cont = returnCont_contasReceber();
@@ -1144,7 +1290,11 @@ void filContaReceber_todas() {
         imprimeContaReceber(i);
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void filContaReceber_faixaCodigo() {
     int codInicio, codFinal, verificar = 0;

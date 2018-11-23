@@ -10,6 +10,9 @@
 #include "Bibliotecas/GUI.h"
 #include "Bibliotecas/financas.h"
 
+
+
+
 void entradaFilmes() {
     int i, opc, opc2, codFor, CodFil, PosForn, PosFil, contCompras = 0, quantCopias, totalCopias = 0;
     float total = 0, somatorio = 0, totalFrete, totalImposto, vlrEntrada;
@@ -142,7 +145,10 @@ void entradaFilmes() {
 
     digiteAlguma_teclaContinuar();
 }
-//------------------------------------------------------------------------------
+
+
+
+
 
 int gerarCodigoNF() {
     int static codigo = 0;
@@ -150,7 +156,10 @@ int gerarCodigoNF() {
     codigo++;
     return codigo;
 }
-//------------------------------------------------------------------------------
+
+
+
+
 
 void visualizarEstoque() {
     Strc_Locadora Locadora = return_Locadora();
@@ -169,7 +178,10 @@ void visualizarEstoque() {
 
     digiteAlguma_teclaContinuar();
 }
-//-------------------------------------------------------------------------------
+
+
+
+
 
 void locacaoFilmes() {
     int i, codFilme, codFunc, codCliente, opc, opc2, quantExemplares, quantParcela, contAluguel = 0, posCat = 0, posFilme, posCliente;
@@ -259,7 +271,10 @@ void locacaoFilmes() {
     alterarFilmes(Filmes);
     PagamentoLocacao(codCliente, codFunc, contAluguel, posCliente, totalPagamento, FilmesLocados);
 }
-//-------------------------------------------------------------------------------
+
+
+
+
 
 void DevolucaoFilmes() {
     int codCl, diaAtraso, contFil = returnCont_Filmes(), contLoc = returnCont_Locacoes();
@@ -304,7 +319,10 @@ void DevolucaoFilmes() {
 
     digiteAlguma_teclaContinuar();
 }
-//-------------------------------------------------------------------------------
+
+
+
+
 
 void contLocacoes_FilmesePaga_Todos() {
     Strc_Filmes* Filmes = return_Filmes();
@@ -319,7 +337,10 @@ void contLocacoes_FilmesePaga_Todos() {
 
     digiteAlguma_teclaContinuar();
 }
-//-------------------------------------------------------------------------------
+
+
+
+
 
 void contLocacoes_FilmesePaga_Pagos() {
     Strc_Filmes* Filmes = return_Filmes();
@@ -341,7 +362,10 @@ void contLocacoes_FilmesePaga_Pagos() {
 
     digiteAlguma_teclaContinuar();
 }
-//-------------------------------------------------------------------------------
+
+
+
+
 
 void contLocacoes_FilmesePaga_Deficit() {
     Strc_Filmes* Filmes = return_Filmes();
@@ -363,7 +387,10 @@ void contLocacoes_FilmesePaga_Deficit() {
 
     digiteAlguma_teclaContinuar();
 }
-//-------------------------------------------------------------------------------
+
+
+
+
 
 void contLocacoes_FilmesePaga_codFilme() {
     Strc_Filmes* Filmes = return_Filmes();
@@ -387,7 +414,10 @@ void contLocacoes_FilmesePaga_codFilme() {
 
     digiteAlguma_teclaContinuar();
 }
-//-------------------------------------------------------------------------------
+
+
+
+
 
 void contLocacoes_FilmesePaga_faixaCodigo() {
     Strc_Filmes* Filmes = return_Filmes();
@@ -421,4 +451,4 @@ void contLocacoes_FilmesePaga_faixaCodigo() {
 
     digiteAlguma_teclaContinuar();
 }
-//-------------------------------------------------------------------------------
+

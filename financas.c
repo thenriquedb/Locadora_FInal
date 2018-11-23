@@ -12,7 +12,7 @@
 #include "Bibliotecas/GUI.h"
 #include "Bibliotecas/fileTXT.h"
 
-//------------------------------------------------------------------------------
+
 
 void contasPagar_Unica() {
     int codNF, i, opc, contNF = returnCont_NotasFiscais();
@@ -60,7 +60,10 @@ void contasPagar_Unica() {
 
     digiteAlguma_teclaContinuar();
 }
-//------------------------------------------------------------------------------
+
+
+
+
 
 void contasPagar_Fornecedor() {
     int codFor, codNF, i, cont = 0, opc, contNF = returnCont_NotasFiscais();
@@ -122,7 +125,9 @@ void contasPagar_Fornecedor() {
     digiteAlguma_teclaContinuar();
 }
 
-//------------------------------------------------------------------------------
+
+
+
 
 void contasPagar_Todas() {
     int codFor, codNF, i, cont = 0, opc, contNF = returnCont_NotasFiscais();
@@ -155,7 +160,11 @@ void contasPagar_Todas() {
 
     digiteAlguma_teclaContinuar();
 }
-//------------------------------------------------------------------------------
+
+
+
+
+
 
 void PagamentoLocacao(int codCl, int codFun, int contAluguel, int posCl, float totalPagamento, Strc_MinimalFilmes* FilmesLocados) {
     int i, codFilme, codCliente, opc, opc2, quant, quantParcela;
@@ -227,7 +236,11 @@ void PagamentoLocacao(int codCl, int codFun, int contAluguel, int posCl, float t
 
     digiteAlguma_teclaContinuar();
 }
-//------------------------------------------------------------------------------
+
+
+
+
+
 
 void receber_ContasCl() {
     int codCl, verificar = 0;

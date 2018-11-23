@@ -17,13 +17,14 @@ void visualizarEstoque();
 /* Função para gerar um código uníco para cada nota fiscal emitida */
 int gerarCodigoNF();
 
+/*
+ * --------| FILTROS DE FEEDBACK DE QUANTAS LOCAÇÕES RESTANTES PARA QUE | ------
+ * -----------------------| DETERMINADO FILME SE PAGUE |------------------------
+ */
 void contLocacoes_FilmesePaga_Todos();
-
 void contLocacoes_FilmesePaga_Pagos();
-
 void contLocacoes_FilmesePaga_Deficit();
-
 void contLocacoes_FilmesePaga_codFilme();
-
 void contLocacoes_FilmesePaga_faixaCodigo();
+
 #endif /* ADMINISTRACAO_H */

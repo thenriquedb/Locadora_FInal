@@ -31,6 +31,7 @@ int static contFornecedoresAlocados = 0;
 int static contNotasFiscaisAlocados = 0;
 int static contLocacoesAlocados = 0;
 int static contContas_aReceber = 0;
+int static verificaoLocadora = 0;
 
 int alocarEstoque_Locadora(Strc_Locadora* loc) {
     if (Locadora.filmesComprados == NULL) {
@@ -345,10 +346,15 @@ int returnCont_contasReceber() {
     return contContas_aReceber;
 }
 
+int returnverificaoLocadora() {
+    return verificaoLocadora;
+}
+
 //-----------------------| FUNÇÕES PARA ALTERAR DADOS ORIGINAIS |----------------
 
 int alterarLocadora(Strc_Locadora loc) {
     Locadora = loc;
+    verificaoLocadora = 1;
 }
 
 int alterarFinanceiro(Strc_Caixa fin) {

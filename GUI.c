@@ -9,6 +9,8 @@
 #include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/GUI.h"
 
+
+
 void imprimeLocadora() {
     Strc_Locadora Locadora = return_Locadora();
 
@@ -25,7 +27,9 @@ void imprimeLocadora() {
         printf("%d \n",Locadora.filmesComprados[i]);
     }
 }
-//------------------------------------------------------------------------------
+
+
+
 
 void imprimeCategorias(int i) {
     Strc_Categoria* Categoria = return_Categorias();
@@ -35,7 +39,9 @@ void imprimeCategorias(int i) {
     printf("\tCódigo: %d \n", Categoria[i].codigo);
     printf("\tValor da multa de atraso: R$ %.2f \n", Categoria[i].valor);
 }
-//------------------------------------------------------------------------------
+
+
+
 
 void imprimeClientes(int i) {
     Strc_Clientes* Cliente = return_Clientes();
@@ -68,7 +74,9 @@ void imprimeClientes(int i) {
         printf("Separado(a) \n\n");
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
 
 void imprimeFuncionarios(int i) {
     Strc_Funcionario* Funcionario = return_Funcionarios();
@@ -79,7 +87,10 @@ void imprimeFuncionarios(int i) {
     printf("\tCargo: %s \n", Funcionario[i].cargo);
     printf("\tCódigo: %d \n", Funcionario[i].codigo);
 }
-//-------------------------------------------------------------------------------
+
+
+
+
 
 void imprimeFornecedores(int i) {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
@@ -101,7 +112,9 @@ void imprimeFornecedores(int i) {
 
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
 
 void imprimeFilmes(int i) {
     Strc_Filmes* Filme = return_Filmes();
@@ -128,7 +141,10 @@ void imprimeFilmes(int i) {
     printf("\tCategoria: %s (%d) \n", Categoria[posCategoria].nome, Filme[i].codigoCategoria);
     printf("\tExemplares disponiveis: %d \n", Filme[i].exemplares);
 }
-//------------------------------------------------------------------------------
+
+
+
+
 
 void imprimeNotaFiscal(int codForn, int contItens) {
     Strc_notaFiscal* Nota = return_NotasFiscais();
@@ -162,7 +178,8 @@ void imprimeNotaFiscal(int codForn, int contItens) {
     printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
 }
 
-//------------------------------------------------------------------------------
+
+
 
 void imprimeLocacoes(int i) {
     Strc_Locacoes* Locacoes = return_Locacoes();
@@ -187,7 +204,10 @@ void imprimeLocacoes(int i) {
     }
     printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
 }
-//------------------------------------------------------------------------------
+
+
+
+
 
 void imprimeContaReceber(int i) {
     Strc_ContasReceber* ContaReceber = return_contasReceber();
@@ -213,7 +233,9 @@ void imprimeContaReceber(int i) {
     }
     printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
 }
-//------------------------------------------------------------------------------
+
+
+
 
 void ImprimeContLocacoes_FilmesePaga(int i, float totalVenda) {
     Strc_Filmes* Filmes = return_Filmes();

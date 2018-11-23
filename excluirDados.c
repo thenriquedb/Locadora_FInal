@@ -40,7 +40,11 @@ void excluirCliente() {
         alterar_contClientes(contCliente);
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void excluirFuncionario() {
     Strc_Funcionario* Funcionario = return_Funcionarios();
@@ -75,7 +79,11 @@ void excluirFuncionario() {
         alterar_contFuncionarios(contFunc);
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void excluirCategoria() {
     Strc_Categoria* Categoria = return_Categorias();
@@ -104,7 +112,11 @@ void excluirCategoria() {
         alterar_contCategorias(contCat);
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void excluirFilme() {
     Strc_Filmes* Filme = return_Filmes();
@@ -138,7 +150,11 @@ void excluirFilme() {
         alterar_contFilmes(contFilmes);
     }
 }
-//-------------------------------------------------------------------------------
+
+
+
+
+
 
 void excluirFornecedor() {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();

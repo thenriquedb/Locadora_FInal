@@ -13,42 +13,66 @@
 #include "Bibliotecas/financas.h"
 #include "Bibliotecas/fileTXT.h"
 #include "Bibliotecas/GUI.h"
+#include "Bibliotecas/fileXML.h"
+#include "Bibliotecas/fileBIN.h"
 
-void menuInicial() {
+void inicializacao() {
     int opc;
+    static int OPC_ARMAZENAMENTO;
 
     do {
         printf("====== | INICIALIZALIZAÇÃO DO SOFTWARE | ======\n"
-                "\t1. Apagar todos os dados salvos \n"
-                "\t2. Importar informações anteriores \n"
-                "\t3. Continuar \n");
+                "\t1. Apagar arquivos texto salvos \n"
+                "\t2. Excluir arquivos binários salvos \n"
+                "\t3. Importar informações anteriores \n"
+                "\t4. Continuar \n");
 
         switch (opc = selecao()) {
             case 1:
                 excluirArquivos_txt();
-
                 break;
 
             case 2:
+                break;
+
+            case 3:
                 menuImportacao();
                 break;
         }
     } while (opc != 3);
-
+    
     printf("Para continuar é necessario realizar o cadastro do estabelecimento. \n");
     cadastrarLocadora();
 }
 
-
-
-
-
-
 void menuImportacao() {
-    int opc, verificar[9];
+    int opc;
 
+    printf("====== | IMPORTAÇÃO DE DADOS | ======\n");
+    printf("\t1. Importar de arquivo texto \n"
+            "\t2. Importar de arquivo binário \n"
+            "\t3. Voltar ao menu anterior \n");
+
+    switch (opc = selecao()) {
+        case 1:
+            menuImportacaoTXT();
+            break;
+
+        case 2:
+            menuImportacaoBIN();
+            break;
+
+        case 3:
+            break;
+            system("clear");
+    }
+}
+
+void menuImportacaoTXT() {
+    int opc;
+    static int verificar[9];
     do {
-        printf("====== | IMPORTAÇÃO DE DADOS | ======\n");
+        printf("====== | IMPORTAÇÃO DE DADOS: ARQUIVO DE TEXTO| ======\n");
         printf("\t1. Clientes \n"
                 "\t2. Filmes \n"
                 "\t3. Categoria \n"
@@ -132,7 +156,6 @@ void menuImportacao() {
 
 
             case 9:
-                menuInicial();
                 break;
 
             default:
@@ -144,10 +167,233 @@ void menuImportacao() {
     system("clear");
 }
 
+void menuexportXML() {
+    int opc;
+
+    do {
+        printf("====== | EXPORTAÇÃO DE DADOS: XML | ======\n");
+        printf("\t1. Locadora \n"
+                "\t2. Clientes \n"
+                "\t3. Filmes \n"
+                "\t4. Categoria \n"
+                "\t5. Funciónarios \n"
+                "\t6. Fornecedores \n"
+                "\t7. Locações \n"
+                "\t8. Notas fiscais \n"
+                "\t9. Contas a receber \n"
+                "\t10. Todos \n"
+                "\t11. Voltar ao menu anterior \n");
+
+        switch (opc = selecao()) {
+            case 1:
+                exportLocadora_XML();
+                printf("Dados do estabelecimento exportados com sucesso para um arquivo XML. \n");
+                break;
+
+            case 2:
+                if (return_Clientes() != NULL) {
+                    exportCliente_XML();
+                    printf("Dados dos clientes exportados com sucesso para um arquivo XML. \n");
+                } else {
+                    printf("Nenhum cliente foi cadastrado. \n");
+                }
+                break;
+
+            case 3:
+                if (return_Filmes() != NULL) {
+                    exportFilmes_XML();
+                    printf("Dados dos filmes exportados com sucesso para um arquivo XML. \n");
+                } else {
+                    printf("Nenhum filme foi cadastrado. \n");
+                }
+                break;
+
+            case 4:
+                if (return_Categorias() != NULL) {
+                    exportCategoria_XML();
+                    printf("Dados das categorias exportados com sucesso para um arquivo XML. \n");
+                } else {
+                    printf("Nenhuma categoria foi cadastrado. \n");
+                }
+                break;
+
+            case 5:
+                if (return_Funcionarios() != NULL) {
+                    exportFunc_XML();
+                    printf("Dados dos funcionários exportados com sucesso para um arquivo XML. \n");
+                } else {
+                    printf("Nenhum funcionário foi cadastrado. \n");
+                }
+                break;
+
+            case 6:
+                if (return_Fornecedores() != NULL) {
+                    exportFornecedores_XML();
+                    printf("Dados dos fornecedores exportados com sucesso para um arquivo XML. \n");
+                } else {
+                    printf("Nenhum fornecedor foi cadastrado. \n");
+                }
+                break;
+
+            case 7:
+                if (return_Locacoes() != NULL) {
+                    exportLocacoes_XML();
+                    printf("Dados dos filmes alugados exportados com sucesso para um arquivo XML. \n");
+                } else {
+                    printf("Nenhum filme foi alugado. \n");
+                }
+
+                break;
+
+            case 8:
+                if (return_NotasFiscais() != NULL) {
+                    exportNotaFiscal_XML();
+                    printf("Dados das notas fiscais exportados com sucesso para um arquivo XML. \n");
+                } else {
+                    printf("Nenhuma nota fiscal foi cadastrada. \n");
+                }
+                break;
+
+            case 9:
+                if (return_contasReceber() != NULL) {
+                    exportContasReceber_XML();
+                    printf("Dados das contas a receber exportados com sucesso para um arquivo XML. ");
+                } else {
+                    printf("Nenhuma conta a receber foi cadastrada. \n");
+                }
+                break;
+
+            case 10:
+                if (return_Clientes() != NULL && return_Categorias() != NULL &&
+                        return_Funcionarios() != NULL && return_Locacoes() != NULL
+                        && return_Filmes() != NULL && return_Fornecedores() != NULL
+                        && return_NotasFiscais() != NULL) {
 
 
+                    exportLocadora_XML();
+                    exportCliente_XML();
+                    exportFilmes_XML();
+                    exportCategoria_XML();
+                    exportFunc_XML();
+                    exportFornecedores_XML();
+                    exportLocacoes_XML();
+                    printf("Todos os dados foram exportados com sucesso para o formato XML. \n");
+                } else {
+                    printf("Nem todos os dados foram cadastrados. \n");
+                }
+                break;
+
+            case 11:
+                break;
+
+            default:
+                printf("Opção inválida");
+
+        }
+    } while (opc != 11);
+
+    system("clear");
+}
+
+void menuImportacaoBIN() {
+    int opc, verificar[9];
+
+    do {
+        printf("====== | IMPORTAÇÃO DE DADOS: ARQUIVO DE BINARIO | ======\n");
+        printf("\t1. Clientes \n"
+                "\t2. Filmes \n"
+                "\t3. Categoria \n"
+                "\t4. Funciónarios \n"
+                "\t5. Fornecedores \n"
+                "\t6. Locações \n"
+                "\t7. Notas fiscais \n"
+                "\t8. Contas a receber \n"
+                "\t9. Voltar ao menu anterior \n");
+
+        switch (opc = selecao()) {
+            case 1:
+                if (verificar[0] != 1) {
+                    importCliente_bin();
+                    verificar[0] = 1;
+                } else {
+                    printf("Dados dos clientes já foram importados. \n");
+                }
+                break;
+
+            case 2:
+                if (verificar[1] != 1) {
+                      importFilmes_bin();
+                    verificar[1] = 1;
+                } else {
+                    printf("Dados das categorias já foram importados. \n");
+                }
+                break;
+
+            case 3:
+                if (verificar[2] != 1) {
+                        importCategoria_bin();
+                } else {
+                    printf("Dados dos funciónarios já foram importados. \n");
+                }
+                break;
+
+            case 4:
+                if (verificar[3] != 1) {
+                        importFuncionarios_bin();
+                } else {
+                    printf("Dados dos fornecedores já foram importados. \n");
+                }
+                break;
+
+            case 5:
+                if (verificar[4] != 1) {
+                        importFornecedores_bin();
+                    verificar[4] = 1;
+                } else {
+                    printf("Dados dos fornecedores já foram importados. \n");
+                }
+                break;
+
+            case 6:
+                if (verificar[5] != 1) {
+                        importLocacoes_bin();
+                    verificar[5] = 1;
+                } else {
+                    printf("Dados dos filmes alugados já foram importados. \n");
+                }
+                break;
+
+            case 7:
+                if (verificar[6] != 1) {
+                        importLocacoes_bin();
+                    verificar[6] = 1;
+                } else {
+                    printf("Dados das notas fiscais já foram importados. \n");
+                }
+                break;
+
+            case 8:
+                if (verificar[7] != 1) {
+                    importContasReceber_bin();
+                    verificar[7] = 1;
+                } else {
+                    printf("Dados de contas a receber já foram importados. \n");
+                }
+                break;
 
 
+            case 9:
+                inicializacao();
+                break;
+
+            default:
+                printf("Opção inválida");
+
+        }
+    } while (opc != 9);
+
+    system("clear");
+}
 
 void menuCadastro() {
     printf("====== | CADASTROS | ======\n");
@@ -190,11 +436,6 @@ void menuCadastro() {
             printf("Opção inválida. \n");
     }
 }
-
-
-
-
-
 
 void menuRelatorios() {
 
@@ -260,11 +501,6 @@ void menuRelatorios() {
     }
 }
 
-
-
-
-
-
 int edicaoFuncionario() {
     int cod, i;
 
@@ -327,11 +563,6 @@ int edicaoFuncionario() {
     }
 }
 
-
-
-
-
-
 void edicaoFuncionario_nome(int i) {
     Strc_Funcionario* Funcionario = return_Funcionarios();
     char nome[100];
@@ -354,10 +585,6 @@ void edicaoFuncionario_nome(int i) {
         }
     } while (opc != 1);
 }
-
-
-
-
 
 void edicaoFuncionario_cargo(int i) {
     Strc_Funcionario* Funcionario = return_Funcionarios();
@@ -382,11 +609,6 @@ void edicaoFuncionario_cargo(int i) {
     } while (opc != 1);
 }
 
-
-
-
-
-
 void edicaoFuncionario_email(int i) {
     Strc_Funcionario* Funcionario = return_Funcionarios();
     char email[150];
@@ -409,10 +631,6 @@ void edicaoFuncionario_email(int i) {
         }
     } while (opc != 1);
 }
-
-
-
-
 
 void edicaoFuncionario_endereco(int i) {
     Strc_Funcionario* Funcionario = return_Funcionarios();
@@ -437,11 +655,6 @@ void edicaoFuncionario_endereco(int i) {
     } while (opc != 1);
 }
 
-
-
-
-
-
 void edicaoFuncionario_telefone(int i) {
     Strc_Funcionario* Funcionario = return_Funcionarios();
     char telefone[12];
@@ -464,11 +677,6 @@ void edicaoFuncionario_telefone(int i) {
         }
     } while (opc != 1);
 }
-
-
-
-
-
 
 void edicaoFuncionario_tudo(int i) {
     Strc_Funcionario* Funcionario = return_Funcionarios();
@@ -516,10 +724,6 @@ void edicaoFuncionario_tudo(int i) {
         }
     } while (opc != 1);
 }
-
-
-
-
 
 int edicaoCliente() {
     int cod, i;
@@ -589,10 +793,6 @@ int edicaoCliente() {
     }
 }
 
-
-
-
-
 void edicaoCliente_nome(int i) {
     Strc_Clientes* Cliente = return_Clientes();
     char nome[100];
@@ -619,11 +819,6 @@ void edicaoCliente_nome(int i) {
         }
     } while (opc != 1);
 }
-
-
-
-
-
 
 void edicaoCliente_endereco(int i) {
     Strc_Clientes* Cliente = return_Clientes();
@@ -652,11 +847,6 @@ void edicaoCliente_endereco(int i) {
     } while (opc != 1);
 }
 
-
-
-
-
-
 void edicaoCliente_CPF(int i) {
     Strc_Clientes* Cliente = return_Clientes();
     char cpf[11];
@@ -683,11 +873,6 @@ void edicaoCliente_CPF(int i) {
         }
     } while (opc != 1);
 }
-
-
-
-
-
 
 void edicaoCliente_telefone(int i) {
     Strc_Clientes* Cliente = return_Clientes();
@@ -716,11 +901,6 @@ void edicaoCliente_telefone(int i) {
     } while (opc != 1);
 }
 
-
-
-
-
-
 void edicaoCliente_email(int i) {
     Strc_Clientes* Cliente = return_Clientes();
     char email[150];
@@ -748,11 +928,6 @@ void edicaoCliente_email(int i) {
     } while (opc != 1);
 }
 
-
-
-
-
-
 void edicaoCliente_dataNascimento(int i) {
     Strc_Clientes* Cliente = return_Clientes();
     char dataNascimento[10];
@@ -779,13 +954,6 @@ void edicaoCliente_dataNascimento(int i) {
         }
     } while (opc != 1);
 }
-
-
-
-
-
-
-
 
 void edicaoCliente_tudo(int i) {
     char nome[100], endereco[150], telefone[12], email[150], cpf[11], data_nascimento[10];
@@ -877,11 +1045,6 @@ void edicaoCliente_tudo(int i) {
     } while (opc != 1);
 }
 
-
-
-
-
-
 int edicaoCategoria() {
     int cod, i;
 
@@ -934,11 +1097,6 @@ int edicaoCategoria() {
     }
 }
 
-
-
-
-
-
 void edicaoCategoria_nome(int i) {
     Strc_Categoria* Categoria = return_Categorias();
     char nome[100];
@@ -966,11 +1124,6 @@ void edicaoCategoria_nome(int i) {
     } while (opc != 1);
 }
 
-
-
-
-
-
 void edicaoCategoria_descricao(int i) {
     Strc_Categoria* Categoria = return_Categorias();
     char descricao[400];
@@ -997,11 +1150,6 @@ void edicaoCategoria_descricao(int i) {
         }
     } while (opc != 1);
 }
-
-
-
-
-
 
 void edicaoCategoria_valor(int i) {
     Strc_Categoria* Categoria = return_Categorias();
@@ -1031,11 +1179,6 @@ void edicaoCategoria_valor(int i) {
         }
     } while (opc != 1);
 }
-
-
-
-
-
 
 void edicaoCategoria_tudo(int i) {
     Strc_Categoria* Categoria = return_Categorias();
@@ -1072,11 +1215,6 @@ void edicaoCategoria_tudo(int i) {
         }
     } while (opc != 1);
 }
-
-
-
-
-
 
 int edicaoFornecedor() {
     int cod, i;
@@ -1150,11 +1288,6 @@ int edicaoFornecedor() {
     }
 }
 
-
-
-
-
-
 void menu_EntradaFilmes() {
     printf("====== | COMPRAS DE NOVOS FILMES | ======\n"
             "\t1. Visualizar fornecedores cadastrados \n"
@@ -1185,12 +1318,6 @@ void menu_EntradaFilmes() {
     } while (1);
 }
 
-
-
-
-
-
-
 void menuGestao() {
     int cod;
 
@@ -1200,7 +1327,7 @@ void menuGestao() {
     scanf("%d", &cod);
 
     system("clear");
-    if (verificarCod_Funcionario(cod) == 1) {
+    if (verificarCod_Funcionario(cod) >= 0) {
 
         printf("====== | GESTÃO DE DADOS | ======\n"
                 "\t1. Editar dados \n"
@@ -1228,11 +1355,6 @@ void menuGestao() {
     }
 }
 
-
-
-
-
-
 void menuLocacao() {
     printf("====== | LOCAÇÃO | ======\n"
             "\t1. Locação de filmes \n"
@@ -1242,7 +1364,8 @@ void menuLocacao() {
 
     switch (selecao()) {
         case 1:
-            if (return_Funcionarios() != NULL && return_Clientes() != NULL) {
+            if (return_Funcionarios() != NULL && return_Clientes() != NULL && 
+                    return_Filmes() != NULL) {
                 locacaoFilmes();
             } else {
                 printf("Para efetuar uma locação é necessario ter pelo um cliente "
@@ -1270,11 +1393,6 @@ void menuLocacao() {
             printf("Opção inválida. \n");
     }
 }
-
-
-
-
-
 
 void menuFinancas() {
     printf("====== | FINANCEIRO | ======\n"
@@ -1315,12 +1433,6 @@ void menuFinancas() {
             printf("Opção inválida. \n");
     }
 }
-
-
-
-
-
-
 
 void menuAdministrativo() {
     printf("====== | ADMINISTRATIVO | ======\n"
@@ -1365,12 +1477,6 @@ void menuAdministrativo() {
     }
 }
 
-
-
-
-
-
-
 void menuNotasFiscais() {
     printf("====== | NOTAS FISCAIS | ======\n"
             "\t1. Visualizar todas \n"
@@ -1408,11 +1514,6 @@ void menuNotasFiscais() {
             printf("Opção inválida. \n");
     }
 }
-
-
-
-
-
 
 void menuLocacoes_FilmeSePagar() {
     printf("====== | LOCAÇÕES RESTANTE PARA QUE UM FILME SE PAGUE | ======\n"
@@ -1452,12 +1553,6 @@ void menuLocacoes_FilmeSePagar() {
     }
 }
 
-
-
-
-
-
-
 void menuContas_aPagar() {
     printf("====== | CONTAS A PAGAR | ======\n"
             "\t1. Visualizar notas fiscais \n"
@@ -1481,11 +1576,6 @@ void menuContas_aPagar() {
             printf("Opção inválida. \n");
     }
 }
-
-
-
-
-
 
 void menuContas_aReceber() {
     printf("====== | CONTAS A RECEBER | ======\n"
@@ -1516,19 +1606,13 @@ void menuContas_aReceber() {
     }
 }
 
-
-
-
-
-
 void menu_filmesAlugados() {
     printf("====== | LOCAÇÕES | ======\n"
             "\t1. Todas as locações \n"
             "\t2. Locações a vista \n"
             "\t3. Locações a prazo \n"
             "\t4. Por funcionárior \n"
-            "\t5. Data \n"
-            "\t6. Voltar ao menu anterior \n");
+            "\t5. Voltar ao menu anterior \n");
 
     switch (selecao()) {
         case 1:
@@ -1552,11 +1636,6 @@ void menu_filmesAlugados() {
             digiteAlguma_teclaContinuar();
             break;
 
-        case 5:
-            filLocacoes_Data();
-            digiteAlguma_teclaContinuar();
-            break;
-
         case 6:
             menuLocacao();
             break;
@@ -1565,11 +1644,6 @@ void menu_filmesAlugados() {
             printf("Opção inválida. \n");
     }
 }
-
-
-
-
-
 
 void subMenuContas_aPagar() {
     printf("====== | OPÇÕES DE PAGAMENTO | ======\n"
@@ -1597,11 +1671,6 @@ void subMenuContas_aPagar() {
             printf("Opção inválida. \n");
     }
 }
-
-
-
-
-
 
 void subMenuGestao_Editar() {
 
@@ -1664,11 +1733,6 @@ void subMenuGestao_Editar() {
     }
 }
 
-
-
-
-
-
 void subMenuGestao_Excluir() {
 
     printf("====== | GESTÃO DE DADOS: EXCLUSÃO | ======\n"
@@ -1729,12 +1793,6 @@ void subMenuGestao_Excluir() {
     }
 }
 
-
-
-
-
-
-
 void subMenu_edicaoClientes() {
     printf("====== | EDIÇÃO DE CLIENTES | ======\n"
             "Você deseja: \n"
@@ -1751,12 +1809,6 @@ void subMenu_edicaoClientes() {
             break;
     }
 }
-
-
-
-
-
-
 
 void subMenu_edicaoFilmes() {
     printf("====== | EDIÇÃO DE FILMES | ======\n"
@@ -1775,11 +1827,6 @@ void subMenu_edicaoFilmes() {
     }
 }
 
-
-
-
-
-
 void subMenu_edicaoCategorias() {
     printf("====== | EDIÇÃO DE CATEGORIAS | ======\n"
             "Você deseja: \n"
@@ -1796,11 +1843,6 @@ void subMenu_edicaoCategorias() {
             break;
     }
 }
-
-
-
-
-
 
 void subMenu_edicaoFuncionarios() {
     printf("====== | EDIÇÃO DE FUNCIONÁRIOS | ======\n"
@@ -1819,12 +1861,6 @@ void subMenu_edicaoFuncionarios() {
     }
 }
 
-
-
-
-
-
-
 void subMenu_edicaoFornecedores() {
     printf("====== | EDIÇÃO DE FORNECEDORES | ======\n"
             "Você deseja: \n"
@@ -1841,11 +1877,6 @@ void subMenu_edicaoFornecedores() {
             break;
     }
 }
-
-
-
-
-
 
 void subMenuRel_Clientes() {
     printf("====== | RELATÓRIO: CLIENTES | ======\n"
@@ -1892,11 +1923,6 @@ void subMenuRel_Clientes() {
     }
 }
 
-
-
-
-
-
 void subMenuRel_Filmes() {
     printf("====== | RELATÓRIO: FILMES | ======\n"
             "Filtrar por: \n"
@@ -1942,10 +1968,6 @@ void subMenuRel_Filmes() {
     }
 }
 
-
-
-
-
 void subMenuRel_Categorias() {
     printf("====== | RELATÓRIO: CATEGORIAS | ======\n"
             "Filtrar por: \n"
@@ -1981,11 +2003,6 @@ void subMenuRel_Categorias() {
     }
 }
 
-
-
-
-
-
 void subMenuRel_Funcionarios() {
     printf("====== | RELATÓRIO: FUNCIONÁRIOS | ======\n"
             "Filtrar por: \n"
@@ -2020,11 +2037,6 @@ void subMenuRel_Funcionarios() {
             printf("Opção inválida. \n");
     }
 }
-
-
-
-
-
 
 void subMenuRel_Fornecedores() {
     printf("====== | RELATÓRIO: FORNECEDORES | ======\n"

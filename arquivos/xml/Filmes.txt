@@ -1,0 +1,21 @@
+<dados> 
+	<tabela = filmes> 
+		<registro> 
+			<titulo> titulo filme <\titulo> 
+			<descricao> descricao filme <\descricao> 
+			<codigo_unico> 1 <\codigo_unico> 
+			<fornecedor> 1 <\fornecedor> 
+			<preco_compra> 1000.00 <\preco_compra> 
+			<idioma> 1 <\idioma> 
+			<categoria> 1 <\categoria> 
+			<exemplares> 1000 <\exemplares> 
+		<registro> 
+			<titulo> titulo filme <\titulo> 
+			<descricao> descricao filme <\descricao> 
+			<codigo_unico> 2 <\codigo_unico> 
+			<fornecedor> 1 <\fornecedor> 
+			<preco_compra> 1000.00 <\preco_compra> 
+			<idioma> 1 <\idioma> 
+			<categoria> 1 <\categoria> 
+			<exemplares> 1000 <\exemplares> 
+	<\tabela> 

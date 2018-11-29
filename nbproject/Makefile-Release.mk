@@ -41,8 +41,11 @@ OBJECTFILES= \
 	${OBJECTDIR}/cadastros.o \
 	${OBJECTDIR}/edicaoDados.o \
 	${OBJECTDIR}/excluirDados.o \
-	${OBJECTDIR}/fileExport.o \
-	${OBJECTDIR}/fileImport.o \
+	${OBJECTDIR}/fileExportBIN.o \
+	${OBJECTDIR}/fileExportTXT.o \
+	${OBJECTDIR}/fileImportBIN.o \
+	${OBJECTDIR}/fileImportTXT.o \
+	${OBJECTDIR}/fileXML.o \
 	${OBJECTDIR}/filtrosRelatorios.o \
 	${OBJECTDIR}/financas.o \
 	${OBJECTDIR}/main.o \
@@ -105,15 +108,30 @@ ${OBJECTDIR}/excluirDados.o: excluirDados.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/excluirDados.o excluirDados.c
 
-${OBJECTDIR}/fileExport.o: fileExport.c
+${OBJECTDIR}/fileExportBIN.o: fileExportBIN.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fileExport.o fileExport.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fileExportBIN.o fileExportBIN.c
 
-${OBJECTDIR}/fileImport.o: fileImport.c
+${OBJECTDIR}/fileExportTXT.o: fileExportTXT.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fileImport.o fileImport.c
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fileExportTXT.o fileExportTXT.c
+
+${OBJECTDIR}/fileImportBIN.o: fileImportBIN.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fileImportBIN.o fileImportBIN.c
+
+${OBJECTDIR}/fileImportTXT.o: fileImportTXT.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fileImportTXT.o fileImportTXT.c
+
+${OBJECTDIR}/fileXML.o: fileXML.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/fileXML.o fileXML.c
 
 ${OBJECTDIR}/filtrosRelatorios.o: filtrosRelatorios.c
 	${MKDIR} -p ${OBJECTDIR}

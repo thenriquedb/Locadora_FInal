@@ -9,8 +9,18 @@
 #include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/GUI.h"
 
+/*******************************************************************************
+ *Imprime o logo do estabelecimento
+ *******************************************************************************/
+void imprimeLogo() {
+    printf("| |     / _ \\   / __|   /_\\   |   \\   / _ \\  | _ \\   /_\\  \n");
+    printf("| |__  | (_) | | (__   / _ \\  | |) | | (_) | |   /  / _ \\  \n");
+    printf("|____|  \\___/   \\___| /_/ \\_\\ |___/   \\___/  |_|_\\ /_/ \\_\\ \n");
+}
 
-
+/********************************************************************************
+ *Imprime os dados do estabelecimento
+ ********************************************************************************/
 void imprimeLocadora() {
     Strc_Locadora Locadora = return_Locadora();
 
@@ -22,15 +32,15 @@ void imprimeLocadora() {
     printf("\tTelefone: %s \n", Locadora.telefone);
     printf("\tCNPJ: %s \n", Locadora.cnpj);
     printf("\tInscrição estadual: %s \n", Locadora.InscricaoEstadual);
-
-    for (int i = 0; i < Locadora.contFilmes_comprados; i++) {
-        printf("%d \n",Locadora.filmesComprados[i]);
-    }
+    
+        for (int i = 0; i < Locadora.contFilmes_comprados; i++) {
+            printf("%d \n",Locadora.filmesComprados[i]);
+        }
 }
 
-
-
-
+/********************************************************************************
+ *Imprime os dados das categorias de filmes
+ ********************************************************************************/
 void imprimeCategorias(int i) {
     Strc_Categoria* Categoria = return_Categorias();
 
@@ -38,11 +48,13 @@ void imprimeCategorias(int i) {
     printf("\tDescrição: %s \n", Categoria[i].descricao);
     printf("\tCódigo: %d \n", Categoria[i].codigo);
     printf("\tValor da multa de atraso: R$ %.2f \n", Categoria[i].valor);
+    
+    free(Categoria);
 }
 
-
-
-
+/********************************************************************************
+ *Imprime os dados dos clientes cadastrados
+ ********************************************************************************/
 void imprimeClientes(int i) {
     Strc_Clientes* Cliente = return_Clientes();
 
@@ -73,11 +85,13 @@ void imprimeClientes(int i) {
     } else if (Cliente[i].estado_civi == 5) {
         printf("Separado(a) \n\n");
     }
+    
+    free(Cliente);
 }
 
-
-
-
+/********************************************************************************
+ *Imprime os dados dos funcionários cadastrados
+ ********************************************************************************/
 void imprimeFuncionarios(int i) {
     Strc_Funcionario* Funcionario = return_Funcionarios();
 
@@ -86,12 +100,13 @@ void imprimeFuncionarios(int i) {
     printf("\tEmail: %s \n", Funcionario[i].email);
     printf("\tCargo: %s \n", Funcionario[i].cargo);
     printf("\tCódigo: %d \n", Funcionario[i].codigo);
+    
+    free(Funcionario);
 }
 
-
-
-
-
+/********************************************************************************
+ *Imprime os dados dos fornecedores cadastrados
+ ********************************************************************************/
 void imprimeFornecedores(int i) {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
     Strc_Filmes* Filme = return_Filmes();
@@ -109,13 +124,15 @@ void imprimeFornecedores(int i) {
         int posFil = Fornecedor[i].catalogoFilmes[j] - 1;
         //  printf("\t %d. %s \n", Fornecedor[i].catalogoFilmes[j], Filme[posFil].nome);
         printf("\t filme forn: %d \n", j);
-
     }
+    
+    free(Fornecedor);
+    free(Filme);
 }
 
-
-
-
+/********************************************************************************
+ *Imprime os dados dos filmes cadastrados
+ ********************************************************************************/
 void imprimeFilmes(int i) {
     Strc_Filmes* Filme = return_Filmes();
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
@@ -127,7 +144,7 @@ void imprimeFilmes(int i) {
     printf("\tTítulo: %s \n", Filme[i].nome);
     printf("\tDescrição: %s \n", Filme[i].descricao);
     printf("\tCodígo uníco: %d \n", Filme[i].codigo);
-    // printf("\tFornecedor: %s (%d)\n", Fornecedor[i].razaoScial, Filme[i].codigoFornecedor);
+    printf("\tFornecedor: %s (%d)\n", Fornecedor[i].razaoScial, Filme[i].codigoFornecedor);
     printf("\tCódigo do fornecedor: %d \n", Filme[i].codigoFornecedor);
     printf("\tPreço de compra: R$ %.2f \n", Filme[i].precoCompra);
 
@@ -140,12 +157,14 @@ void imprimeFilmes(int i) {
 
     printf("\tCategoria: %s (%d) \n", Categoria[posCategoria].nome, Filme[i].codigoCategoria);
     printf("\tExemplares disponiveis: %d \n", Filme[i].exemplares);
+    
+    free(Categoria);
+    free(Filme);
+    free(Fornecedor);
 }
-
-
-
-
-
+/********************************************************************************
+ *Imprime os dados das notas fiscais geradas
+ ********************************************************************************/
 void imprimeNotaFiscal(int codForn, int contItens) {
     Strc_notaFiscal* Nota = return_NotasFiscais();
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
@@ -176,11 +195,15 @@ void imprimeNotaFiscal(int codForn, int contItens) {
         printf("Paga. \n");
     }
     printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
+    
+    free(Fornecedor);
+    free(Nota);
+    free(Filme);
 }
 
-
-
-
+/********************************************************************************
+ *Imprime os dados dos filmes alugados
+ ********************************************************************************/
 void imprimeLocacoes(int i) {
     Strc_Locacoes* Locacoes = return_Locacoes();
     Strc_Clientes* Clientes = return_Clientes();
@@ -205,10 +228,9 @@ void imprimeLocacoes(int i) {
     printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
 }
 
-
-
-
-
+/********************************************************************************
+ *Imprime os dados sobre as contas a receber dos clientes
+ ********************************************************************************/
 void imprimeContaReceber(int i) {
     Strc_ContasReceber* ContaReceber = return_contasReceber();
     Strc_Clientes* Clientes = return_Clientes();
@@ -232,11 +254,15 @@ void imprimeContaReceber(int i) {
         printf("Paga. \n");
     }
     printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
+    
+    free(ContaReceber);
+    free(Clientes);
 }
 
-
-
-
+/********************************************************************************
+ *Imprime os dados sobre a quantidade de locações restantes para que determinado
+ * filme se pague
+ ********************************************************************************/
 void ImprimeContLocacoes_FilmesePaga(int i, float totalVenda) {
     Strc_Filmes* Filmes = return_Filmes();
 
@@ -252,4 +278,11 @@ void ImprimeContLocacoes_FilmesePaga(int i, float totalVenda) {
         printf("Déficit \n");
         printf("\tTotal de locações para que o filme se pague: %.0f.  \n\n", (round(Filmes[i].precoCompra / Filmes[i].precoAluguel)) - Filmes[i].contAluguel);
     }
+}
+
+/********************************************************************************
+ 8Imprime mensagem caso a importação for realiza com sucesso
+ ********************************************************************************/
+void imprimeMsgm_importSucesso() {
+    printf("Importaçção concluida conclída com sucesso! \n");
 }

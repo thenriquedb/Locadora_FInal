@@ -1,34 +1,44 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
+/*
+ * File:   main.c
+ * Author: Thiago Henrique Domingues Botelho
+ */
 #include <stdio.h>
 #include <stdlib.h>
 
+/* ####################### BIBLIOTECAS PROPRIAS #######################*/
 #include "Bibliotecas/cadastros.h"
-#include "Bibliotecas/veriificacaoDeDados.h"
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/menus.h"
-#include "Bibliotecas/gestao.h"
-#include "Bibliotecas/fileTXT.h"
 #include "teste.h"
 #include "Bibliotecas/GUI.h"
+#include "Bibliotecas/veriificacaoDeDados.h"
+
 
 int main(int argc, char** argv) {
-    // prencherDados();
-    menuInicial();
-
-
+     prencherDados();
+    //  inicializacao();
+      
     do {
-        Strc_Caixa Fin = return_Financas();
-        printf("CAIXA: R$ %.2f \n", Fin.caixa);
-
-        printf("====== | MENU PRINCIPAL | ======\n"
-                "\t1. Cadastros \n"
-                "\t2. Locação \n"
-                "\t3. Gestão de dados \n"
-                "\t4. Relatórios \n"
-                "\t5. Finanças \n"
-                "\t6. Administrativo \n"
-                "\t7. Importtação e exportação de dados \n"
-                "\t8. Sair \n");
+        Strc_Caixa Fin = return_Caixa();
+        printf("\n");
+        imprimeLogo();  
+        printf("\nCaixa: R$ %.2f \n",Fin.caixa);
+        
+        printf("============= | MENU PRINCIPAL | =============\n"
+                "\t\t1. Cadastros \n"
+                "\t\t2. Locação \n"
+                "\t\t3. Gestão de dados \n"
+                "\t\t4. Relatórios \n"
+                "\t\t5. Finanças \n"
+                "\t\t6. Administrativo \n"
+                "\t\t7. Exportar dados no formato XML \n"
+                "\t\t8. Sair \n");
 
         switch (selecao()) {
             case 1:
@@ -55,10 +65,16 @@ int main(int argc, char** argv) {
                 menuAdministrativo();
                 break;
 
+            case 7:
+                menuexportXML();
+                break;
+                
             case 8:
                 system("clear");
                 printf("Programa encerrado. \n");
                 exit(EXIT_SUCCESS);
         }
     } while (1);
+    
+
 }

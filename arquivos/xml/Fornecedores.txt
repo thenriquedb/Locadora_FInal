@@ -1,0 +1,30 @@
+<dados> 
+	<tabela = fornecedores> 
+		<registro> 
+			<razao_social> razao social <\razao_social> 
+			<nome_fantasia> fornecedor A <\nome_fantasia> 
+			<endereco> rua aaaaaaaaa <\endereco> 
+			<telefone> 33513351 <\telefone> 
+			<email> email@gmail.com <\email> 
+			<cnpj> CNPJ <\cnpj> 
+			<inscricao_social> INSCRICAO SOCIAL <\inscricao_social> 
+			<filme_disponiveis>				<filme_disponiveis> 1 <\filme_disponiveis> 
+				<filme_disponiveis> 2 <\filme_disponiveis> 
+				<filme_disponiveis> 3 <\filme_disponiveis> 
+			<\filme_disponiveis> 
+		<\registro> 
+	<\tabela> 
+		<registro> 
+			<razao_social> razao social <\razao_social> 
+			<nome_fantasia> fornecedor A <\nome_fantasia> 
+			<endereco> rua aaaaaaaaa <\endereco> 
+			<telefone> 33513351 <\telefone> 
+			<email> email@gmail.com <\email> 
+			<cnpj> CNPJ <\cnpj> 
+			<inscricao_social> INSCRICAO SOCIAL <\inscricao_social> 
+			<filme_disponiveis>				<filme_disponiveis> 1 <\filme_disponiveis> 
+				<filme_disponiveis> 2 <\filme_disponiveis> 
+				<filme_disponiveis> 3 <\filme_disponiveis> 
+			<\filme_disponiveis> 
+		<\registro> 
+	<\tabela> 

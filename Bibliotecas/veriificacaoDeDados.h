@@ -59,4 +59,8 @@ int chamarMenu_Relatorio();
 /* Limpa a tela apos uma entrada do usuario*/
 void digiteAlguma_teclaContinuar();
 
+int returnModoArmazenamento();
+
+void modoArmazenamento() ;
+
 #endif /* VERIIFICACAODEDADOS_H */

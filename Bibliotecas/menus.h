@@ -5,7 +5,7 @@
  * --------------------------------------| MENUS |------------------------------
  */
 
-void menuInicial();
+void inicializacao();
 
 void menuRelatorios();
 
@@ -31,9 +31,13 @@ void menuContas_aReceber();
 
 void menuImportacao();
 
+void menuImportacaoTXT();
+
+void menuImportacaoBIN();
+
 void menuLocacoes_FilmeSePagar();
 
-
+void menuexportXML();
 
 
 /*

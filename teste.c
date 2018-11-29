@@ -7,7 +7,7 @@
 #include "Bibliotecas/structs.h"
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/cadastros.h"
-#include "Bibliotecas/fileTXT.h"
+#include "Bibliotecas/fileBIN.h"
 
 void prencherDados() {
     Strc_Clientes cl;
@@ -22,9 +22,10 @@ void prencherDados() {
         cl.codigo = gerarCodigoCliente();
         strcpy(cl.telefone, "5555555");
 
-        exportCliente_txt(cl);
         alocarClientes(&cl);
     }
+
+     exportCliente_bin();
 
     Strc_Funcionario fun;
     strcpy(fun.nome, "klebin");
@@ -33,8 +34,10 @@ void prencherDados() {
     strcpy(fun.telefone, "555555");
     fun.codigo = gerarCodigoFuncionario();
 
-    exportFunc_txt(fun);
+    // exportFunc_bin(fun);
     alocarFuncionarios(&fun);
+    
+    
 
     Strc_Locadora loc;
     strcpy(loc.endereco, "Endereco");
@@ -55,7 +58,7 @@ void prencherDados() {
         loc.filmesComprados[i] = i + 1;
     }
 
-    exportLocadora_txt(loc);
+    exportLocadora_bin(loc);
     alterarLocadora(loc);
 
     Strc_Categoria cat;
@@ -64,13 +67,14 @@ void prencherDados() {
     cat.codigo = gerarCodigoCategoria();
     cat.valor = 10.98;
 
-    exportCategoria_txt(cat);
     alocarCategoria(&cat);
+    exportCategoria_bin(cat);
 
 
+    Strc_Fornecedores forn;
     for (int i = 0; i < 2; i++) {
+        forn.catalogoFilmes = NULL;
 
-        Strc_Fornecedores forn;
         strcpy(forn.nomeFantasia, "fornecedor A");
         strcpy(forn.cnpj, "CNPJ");
         strcpy(forn.inscricaooSocial, "INSCRICAO SOCIAL");
@@ -80,19 +84,21 @@ void prencherDados() {
         strcpy(forn.razaoScial, "razao social");
 
         forn.codigo = gerarCodigoFornecedores();
-        forn.contCatalago = 10;
+        forn.contCatalago = 3;
 
         for (int j = 0; j < forn.contCatalago; j++) {
             forn.catalogoFilmes = alocar_Int(forn.catalogoFilmes, forn.contCatalago);
             forn.catalogoFilmes[j] = j + 1;
-            //printf("%d j: %d\n", forn.catalogoFilmes[j],j);
+            //printf("%d j: %d\n", forn.catalogoFilmes[j], j);
         }
 
-        exportFornecedor_txt(forn);
         alocarFornecedores(&forn);
     }
+    
+    exportFornecedor_bin(forn);
 
 
+    
     Strc_Filmes fil;
     for (int i = 0; i < 5; i++) {
         fil.codigo = gerarCodigoFilme();
@@ -105,32 +111,37 @@ void prencherDados() {
         fil.exemplares = 1000;
         fil.codigoFornecedor = 1;
 
-        exportFilmes_txt(fil);
         alocarFilmes(&fil);
     }
-/*
-    Strc_Locacoes locacoes;
-    for (int i = 0; i < 1; i++) {
-        locacoes.codCliente = i + 1;
-        locacoes.codFunc = 1;
-        locacoes.pagamento = 'V';
-        locacoes.contItens = 2;
-        locacoes.Itens = NULL;
+    
+    exportFilmes_bin(fil);
 
-        if (locacoes.contItens != 0) {
-            for (int j = 0; j < locacoes.contItens; j++) {
-                locacoes.Itens = alocar_MinimalFilmes(locacoes.Itens, locacoes.contItens);
-                locacoes.Itens[j].codFilme = j + 1;
-                locacoes.Itens[j].quant = (j + 1)*100;
-                locacoes.Itens[j].preco = 10;
-                locacoes.Itens[j].total = locacoes.Itens[j].quant * locacoes.Itens[j].preco;
 
-                exportLocacoes_txt(locacoes);
-                alocarLocacoes(&locacoes);
+    /*
+        Strc_Locacoes locacoes;
+        for (int i = 0; i < 1; i++) {
+            locacoes.codCliente = i + 1;
+            locacoes.codFunc = 1;
+            locacoes.pagamento = 'V';
+            locacoes.contItens = 2;
+            locacoes.Itens = NULL;
+
+            if (locacoes.contItens != 0) {
+                for (int j = 0; j < locacoes.contItens; j++) {
+                    locacoes.Itens = alocar_MinimalFilmes(locacoes.Itens, locacoes.contItens);
+                    locacoes.Itens[j].codFilme = j + 1;
+                    locacoes.Itens[j].quant = (j + 1)*100;
+                    locacoes.Itens[j].preco = 10;
+                    locacoes.Itens[j].total = locacoes.Itens[j].quant * locacoes.Itens[j].preco;
+
+                    exportLocacoes_bin(locacoes);
+                    alocarLocacoes(&locacoes);
+                }
             }
         }
-    }
-*/
+     */
+    
+    /*
     Strc_ContasReceber contasReceber;
     for (int i = 0; i < 3; i++) {
         contasReceber.codCl = i + 1;
@@ -140,15 +151,15 @@ void prencherDados() {
         contasReceber.valorEntrada = 177;
         contasReceber.vlrParcela = 50;
 
-        exportContasReceber_txt(contasReceber);
         alocarContas_aReceber(&contasReceber);
     }
+        exportContasReceber_bin(contasReceber);
 
 
     Strc_notaFiscal nf;
     for (int i = 0; i < 3; i++) {
         nf.Itens = NULL;
-        nf.codForn = 3*(i+ 2);
+        nf.codForn = 3 * (i + 2);
         nf.codigo = i + 1;
         nf.contItens = 3;
         nf.paga = 1;
@@ -158,14 +169,15 @@ void prencherDados() {
         nf.totalNF = 5555;
 
         for (int j = 0; j < 3; j++) {
-            nf.Itens = alocar_MinimalFilmes(nf.Itens, nf.contItens );
+            nf.Itens = alocar_MinimalFilmes(nf.Itens, nf.contItens);
             nf.Itens[j].codFilme = j + 1;
             nf.Itens[j].quant = (j + 1)*100;
             nf.Itens[j].preco = 10;
             nf.Itens[j].total = 9999;
         }
 
-        exportNotasFiscais_txt(nf);
         alocarNotasFiscais(&nf);
     }
+            exportNotasFiscais_bin(nf);
+*/
 }

@@ -8,13 +8,13 @@
 #include "Bibliotecas/menus.h"
 #include "Bibliotecas/relatorios.h"
 #include "Bibliotecas/GUI.h"
+#include "Bibliotecas/fileTXT.h"
 
 void cadastrarLocadora() {
     Strc_Locadora Locadora;
     int opc;
 
     printf("=== | CADASTRO DA LOCADORA | ===\n");
-
     do {
         setbuf(stdin, NULL);
         printf("\tRazão social: ");
@@ -54,21 +54,32 @@ void cadastrarLocadora() {
 
 
         printf("Digite: \n"
-                "\t1. Confirmar"
-                "\t2. Corrigir: ");
-        scanf("%d", &opc);
-
+                "\t1. Confirmar \n"
+                "\t2. Corrigir \n");
+        opc = selecao();
+        
         if (opc == 1) {
             printf("Cadastro concluído com sucesso! \n");
-            alterarLocadora(Locadora);
+
+            /*  
+             * Exportação de dados de acordo com a opção selecionada no inicio do
+             * programa. Lembrando que: 
+             * returnModoArmazenamento ==  1; Dados serao exportados em arquivo texto            
+             * returnModoArmazenamento ==  2; Dados serao exportados em arquivo binario            
+             */
+            if (returnModoArmazenamento() == 1) {
+                alterarLocadora(Locadora);
+                exportLocadora_txt(Locadora);
+            } else {
+
+            }
         } else {
             system("clear");
+            setbuf(stdin, NULL);
             printf("=== | CADASTRO DA LOCADORA | ===\n");
         }
     } while (opc != 1);
 }
-
-//---------------------------| INICIO CADASTRO CLIENTES |-----------------------
 
 void cadastrarClientes() {
     int opcao;
@@ -136,6 +147,17 @@ void cadastrarClientes() {
 
         system("clear");
 
+        /*  
+         * Exportação de dados de acordo com a opção selecionada no inicio do
+         * programa. Lembrando que: 
+         * returnModoArmazenamento ==  1; Dados serao exportados em arquivo texto            
+         * returnModoArmazenamento ==  2; Dados serao exportados em arquivo binario            
+         */
+        if (returnModoArmazenamento() == 1) {
+            exportCliente_txt(Cliente);
+        } else {
+
+        }
         alocarClientes(&Cliente);
 
         do {
@@ -155,9 +177,6 @@ int gerarCodigoCliente() {
     codigo++;
     return codigo;
 }
-//---------------------------| FIM CADASTRO CLIENTES |--------------------------
-
-//---------------------------| INICIO CADASTRO FILMES |-------------------------
 
 void cadastrarFilmes() {
     int opcao, codForn, codCat, sair = 0, posCatalago, PosForn;
@@ -215,6 +234,18 @@ void cadastrarFilmes() {
         Fornecedor[PosForn].contCatalago++;
 
         alterarFornecedores(Fornecedor);
+
+        /*  
+         * Exportação de dados de acordo com a opção selecionada no inicio do
+         * programa. Lembrando que: 
+         * returnModoArmazenamento ==  1; Dados serao exportados em arquivo texto            
+         * returnModoArmazenamento ==  2; Dados serao exportados em arquivo binario            
+         */
+        if (returnModoArmazenamento() == 1) {
+            exportFilmes_txt(Filme);
+        } else {
+
+        }
         alocarFilmes(&Filme);
 
         system("clear");
@@ -237,9 +268,6 @@ int gerarCodigoFilme() {
     codigo++;
     return codigo;
 }
-//---------------------------| FIM CADASTRO FILMES |----------------------------
-
-//---------------------------| INICIO CADASTRO CATEGORIAS |---------------------
 
 void cadastrarCategorias() {
     Strc_Categoria categoria;
@@ -260,7 +288,21 @@ void cadastrarCategorias() {
         scanf("%f", &categoria.valor);
 
         categoria.codigo = gerarCodigoCategoria();
+
+
+        /*  
+         * Exportação de dados de acordo com a opção selecionada no inicio do
+         * programa. Lembrando que: 
+         * returnModoArmazenamento ==  1; Dados serao exportados em arquivo texto            
+         * returnModoArmazenamento ==  2; Dados serao exportados em arquivo binario            
+         */
+        if (returnModoArmazenamento() == 1) {
+            exportCategoria_txt(categoria);
+        } else {
+
+        }
         alocarCategoria(&categoria);
+
 
         do {
             opcao = parar_ou_ContinuarCadastro();
@@ -292,9 +334,6 @@ int gerarCodigoCategoria() {
     codigo++;
     return codigo;
 }
-//--------------------------- FIM CADASTRO CATEGORIA ---------------------------
-
-//--------------------------- INICIO CADASTRO FUNCIONARIOS ---------------------
 
 void cadastrarFuncionarios() {
     int opcao;
@@ -326,7 +365,22 @@ void cadastrarFuncionarios() {
         Funcionario.codigo = gerarCodigoFuncionario();
 
         system("clear");
+
+
+        /*  
+         * Exportação de dados de acordo com a opção selecionada no inicio do
+         * programa. Lembrando que: 
+         * returnModoArmazenamento ==  1; Dados serao exportados em arquivo texto            
+         * returnModoArmazenamento ==  2; Dados serao exportados em arquivo binario            
+         */
+        if (returnModoArmazenamento() == 1) {
+            exportFunc_txt(Funcionario);
+        } else {
+
+        }
         alocarFuncionarios(&Funcionario);
+
+
 
         do {
             opcao = parar_ou_ContinuarCadastro();
@@ -344,9 +398,6 @@ int gerarCodigoFuncionario() {
     codigo++;
     return codigo;
 }
-//---------------------------| FIM CADASTRO FUNCIONARIOS |----------------------
-
-//---------------------------| INICIO CADASTRO FORNECEDORES |-------------------
 
 void cadastrarFornecedores() {
     int codFil, opcao, cod, contCatalago = 0;
@@ -390,7 +441,22 @@ void cadastrarFornecedores() {
         Fornecedor.contCatalago = 0;
 
         system("clear");
+
+
+        /*  
+         * Exportação de dados de acordo com a opção selecionada no inicio do
+         * programa. Lembrando que: 
+         * returnModoArmazenamento ==  1; Dados serao exportados em arquivo texto            
+         * returnModoArmazenamento ==  2; Dados serao exportados em arquivo binario            
+         */
+        if (returnModoArmazenamento() == 1) {
+            exportFornecedor_txt(Fornecedor);
+        } else {
+
+        }
         alocarFornecedores(&Fornecedor);
+
+
 
         do {
             opcao = parar_ou_ContinuarCadastro();

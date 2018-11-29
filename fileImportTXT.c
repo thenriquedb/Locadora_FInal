@@ -20,7 +20,8 @@
 #include "Bibliotecas/fileTXT.h"
 #include "Bibliotecas/structs.h"
 #include "Bibliotecas/menus.h"
-
+#include "Bibliotecas/veriificacaoDeDados.h"
+#include "Bibliotecas/GUI.h"
 
 
 
@@ -29,7 +30,7 @@ void importLocadora_txt() {
     FILE * file = fopen("arquivos/fileLocadora.txt", "r");
     if (file == NULL) {
         printf("Impossivel ler o arquivo \"fileLocadora.txt\". \n");
-        menuInicial();
+        inicializacao();
     }
     
     char line[256];
@@ -101,6 +102,7 @@ void importLocadora_txt() {
     alterarLocadora(Loc);
     fclose(file);
     free(file);
+    imprimeMsgm_importSucesso(); 
 }
 
 
@@ -112,7 +114,7 @@ void importCategoria_txt() {
     FILE * file = fopen("arquivos/fileCategorias.txt", "r");
     if (file == NULL) {
         printf("Impossivel ler o arquivo \"fileCategorias.txt\". \n");
-        menuInicial();
+        inicializacao();
     }
 
     char line[256];
@@ -150,6 +152,7 @@ void importCategoria_txt() {
 
     fclose(file);
     free(file);
+    imprimeMsgm_importSucesso(); 
 }
 
 
@@ -162,7 +165,7 @@ void importCliente_txt() {
     FILE * file = fopen("arquivos/fileClientes.txt", "r");
     if (file == NULL) {
         printf("Impossivel ler o arquivo \"fileClientes.txt\". \n");
-        menuInicial();
+        inicializacao();
     }
 
     char line[256];
@@ -212,6 +215,7 @@ void importCliente_txt() {
 
     fclose(file);
     free(file);
+    imprimeMsgm_importSucesso(); 
 }
 
 
@@ -223,7 +227,7 @@ void importFuncionarios_txt() {
     FILE * file = fopen("arquivos/fileFuncionarios.txt", "r");
     if (file == NULL) {
         printf("Impossivel ler o arquivo \"fileFuncionarios.txt\". \n");
-        menuInicial();
+        inicializacao();
     }
 
     char line[256];
@@ -261,6 +265,7 @@ void importFuncionarios_txt() {
 
     fclose(file);
     free(file);
+    imprimeMsgm_importSucesso(); 
 }
 
 
@@ -273,7 +278,7 @@ void importFilmes_txt() {
     FILE * file = fopen("arquivos/fileFilmes.txt", "r");
     if (file == NULL) {
         printf("Impossivel ler o arquivo \"fileFilmes.txt\". \n");
-        menuInicial();
+        inicializacao();
     }
 
     char line[256];
@@ -320,6 +325,7 @@ void importFilmes_txt() {
 
     fclose(file);
     free(file);
+    imprimeMsgm_importSucesso();    
 }
 
 
@@ -331,7 +337,7 @@ void importFornecedores_txt() {
     FILE * file = fopen("arquivos/fileFornecedores.txt", "r");
     if (file == NULL) {
         printf("Impossivel ler o arquivo \"fileFornecedores.txt\". \n");
-        menuInicial();
+        inicializacao();
     }
 
     char line[256];
@@ -401,6 +407,8 @@ void importFornecedores_txt() {
     alocarFornecedores(&Forn);
     fclose(file);
     free(file);
+    
+    imprimeMsgm_importSucesso(); 
 }
 
 
@@ -412,7 +420,7 @@ void importLocacoes_txt() {
     FILE * file = fopen("arquivos/fileLocacoes.txt", "r");
     if (file == NULL) {
         printf("Impossivel ler o arquivo \"fileLocacoes.txt\". \n");
-        menuInicial();
+        inicializacao();
     }
 
     char line[256];
@@ -474,6 +482,8 @@ void importLocacoes_txt() {
     alocarLocacoes(&Locacoes);
     fclose(file);
     free(file);
+    
+    imprimeMsgm_importSucesso(); 
 }
 
 
@@ -485,7 +495,7 @@ void importContasReceber_txt() {
     FILE * file = fopen("arquivos/fileContasReceber.txt", "r");
     if (file == NULL) {
         printf("Impossivel ler o arquivo \"fileContasReceber.txt\". \n");
-        menuInicial();
+        inicializacao();
     }
 
 
@@ -532,6 +542,8 @@ void importContasReceber_txt() {
 
     fclose(file);
     free(file);
+    
+    imprimeMsgm_importSucesso(); 
 }
 
 
@@ -543,7 +555,7 @@ void importNotasFiscais_txt() {
     FILE * file = fopen("arquivos/fileNotasFiscais.txt", "r");
     if (file == NULL) {
         printf("Impossivel ler o arquivo \"fileNotasFiscais.txt\". \n");
-        menuInicial();
+        inicializacao();
     }
 
     char line[256];
@@ -620,4 +632,6 @@ void importNotasFiscais_txt() {
     alocarNotasFiscais(&notaFiscal);
     fclose(file);
     free(file);
+    
+    imprimeMsgm_importSucesso(); 
 }

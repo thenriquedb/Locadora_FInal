@@ -20,7 +20,7 @@ void entradaFilmes() {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
     Strc_Filmes* Filme = return_Filmes();
     Strc_Locadora Locadora = return_Locadora();
-    Strc_Caixa Financeiro = return_Financas();
+    Strc_Caixa Financeiro = return_Caixa();
     Strc_notaFiscal Notas;
 
     Notas.Itens = NULL;
@@ -140,7 +140,7 @@ void entradaFilmes() {
     Notas.precoImposto = totalImposto;
 
     alterarLocadora(Locadora);
-    alterarFinanceiro(Financeiro);
+    alterarCaixa(Financeiro);
     alocarNotasFiscais(&Notas);
 
     digiteAlguma_teclaContinuar();
@@ -281,7 +281,7 @@ void DevolucaoFilmes() {
     Strc_Locacoes* Locacoes = return_Locacoes();
     Strc_Locadora Locadora = return_Locadora();
     Strc_Filmes* Filmes = return_Filmes();
-    Strc_Caixa Financas = return_Financas();
+    Strc_Caixa Financas = return_Caixa();
 
     printf("====== | DEVOLUÇÃO DE FILMES | ======\n");
     do {
@@ -298,7 +298,7 @@ void DevolucaoFilmes() {
 
         printf("Total da multa: R$ %.2f \n", Locadora.valorMulta * diaAtraso);
         Financas.caixa += Locadora.valorMulta * diaAtraso;
-        alterarFinanceiro(Financas);
+        alterarCaixa(Financas);
     }
 
     for (int i = 0; i < contLoc; i++) {

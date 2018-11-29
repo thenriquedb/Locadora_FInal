@@ -2,6 +2,33 @@
 #include <stdlib.h>
 
 #include "Bibliotecas/alocacao.h"
+#include "Bibliotecas/veriificacaoDeDados.h"
+
+static int MODO_ARMAZENAMENTO = 0;
+
+void modoArmazenamento() {
+    int opc;
+
+    do {
+        printf("====== | MODO DE ARMAZENAMENTO | ======\n");
+        printf("Como deseja armazenar seus dados: \n"
+                "\t1. Arquivo texto \n"
+                "\t2. Arquivo binário \n");
+
+        if (opc = selecao() == 1) {
+            MODO_ARMAZENAMENTO = 1;
+        } else {
+            MODO_ARMAZENAMENTO = 2;
+        }
+
+    } while (opc != 1 && opc != 2);
+}
+
+int returnModoArmazenamento() {
+    return MODO_ARMAZENAMENTO;
+}
+
+
 
 int verificarNumeroPositivoINT(int x) {
 
@@ -12,7 +39,6 @@ int verificarNumeroPositivoINT(int x) {
         return 0;
     }
 }
-//-------------------------------------------------------------------------------
 
 int verificarNumeroPositivoFLOAT(float x) {
 
@@ -23,7 +49,6 @@ int verificarNumeroPositivoFLOAT(float x) {
         return 0;
     }
 }
-//-------------------------------------------------------------------------------
 
 int selecao() {
     int opc;
@@ -33,7 +58,6 @@ int selecao() {
     system("clear");
     return opc;
 }
-//-------------------------------------------------------------------------------
 
 int parar_ou_ContinuarCadastro() {
     int opcao;
@@ -51,7 +75,6 @@ int parar_ou_ContinuarCadastro() {
 
     return opcao;
 }
-//-------------------------------------------------------------------------------
 
 int chamarMenu_Relatorio() {
     printf("\nDigite 1 para retornar ao menu principal ou qualquer tecla para buscar por novos resultados.");
@@ -61,8 +84,6 @@ int chamarMenu_Relatorio() {
         return 1;
     }
 }
-
-//-------------------------------------------------------------------------------
 
 int verificarCod_Funcionario(int cod) {
     Strc_Funcionario* Funcionario = return_Funcionarios();
@@ -78,8 +99,6 @@ int verificarCod_Funcionario(int cod) {
     return -1;
 }
 
-//-------------------------------------------------------------------------------
-
 int verificarCod_Cliente(int cod) {
     Strc_Clientes* Cliente = return_Clientes();
     int cont = returnCont_Clientes();
@@ -92,7 +111,6 @@ int verificarCod_Cliente(int cod) {
     }
     return -1;
 }
-//-------------------------------------------------------------------------------
 
 int verificarCod_Filme(int cod) {
     Strc_Filmes* Filme = return_Filmes();
@@ -106,7 +124,6 @@ int verificarCod_Filme(int cod) {
     }
     return -1;
 }
-//-------------------------------------------------------------------------------
 
 int verificarCod_Fornecedores(int cod) {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
@@ -120,7 +137,6 @@ int verificarCod_Fornecedores(int cod) {
     }
     return -1;
 }
-//-------------------------------------------------------------------------------
 
 int verificarCod_Categoria(int cod) {
     Strc_Categoria* Categoria = return_Categorias();
@@ -140,7 +156,6 @@ int verificarCod_Categoria(int cod) {
         return -1;
     }
 }
-//-------------------------------------------------------------------------------
 
 int verificarCod_NotaFiscal(int cod) {
     Strc_notaFiscal* Nota = return_NotasFiscais();
@@ -157,8 +172,6 @@ int verificarCod_NotaFiscal(int cod) {
     return -1;
 }
 
-//------------------------------------------------------------------------------
-
 int verificarExemplares_Filmes(int id, int quant) {
     Strc_Filmes* Filme = return_Filmes();
     int cont = returnCont_Filmes();
@@ -170,7 +183,6 @@ int verificarExemplares_Filmes(int id, int quant) {
         return 0;
     }
 }
-//------------------------------------------------------------------------------
 
 int verificarFilme_Fornecedor(int posFor, int idFil, int cont) {
     Strc_Fornecedores* Fornecedor = return_Fornecedores();
@@ -189,7 +201,6 @@ int verificarFilme_Fornecedor(int posFor, int idFil, int cont) {
         return 0;
     }
 }
-//------------------------------------------------------------------------------
 
 void digiteAlguma_teclaContinuar() {
     char x;

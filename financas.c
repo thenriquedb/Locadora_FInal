@@ -17,7 +17,7 @@
 void contasPagar_Unica() {
     int codNF, i, opc, contNF = returnCont_NotasFiscais();
     Strc_notaFiscal* Nota = return_NotasFiscais();
-    Strc_Caixa Financeiro = return_Financas();
+    Strc_Caixa Financeiro = return_Caixa();
 
     do {
         system("clear");
@@ -39,7 +39,7 @@ void contasPagar_Unica() {
                 Financeiro.caixa -= Nota[codNF - 1].totalNF;
                 Nota[codNF - 1].paga = 1;
 
-                alterarFinanceiro(Financeiro);
+                alterarCaixa(Financeiro);
                 alterarNotasFiscais(Nota);
 
                 system("clear");
@@ -68,7 +68,7 @@ void contasPagar_Unica() {
 void contasPagar_Fornecedor() {
     int codFor, codNF, i, cont = 0, opc, contNF = returnCont_NotasFiscais();
     Strc_notaFiscal* Nota = return_NotasFiscais();
-    Strc_Caixa Financeiro = return_Financas();
+    Strc_Caixa Financeiro = return_Caixa();
 
     printf("====== | PAGAR NF DE DETERMINADO FORNECEDOR | ======\n");
     do {
@@ -108,7 +108,7 @@ void contasPagar_Fornecedor() {
                 Financeiro.caixa -= Nota[codFor - 1].totalNF;
                 printf("Nota de código %d paga com sucesso. \n", codNF);
 
-                alterarFinanceiro(Financeiro);
+                alterarCaixa(Financeiro);
                 alterarNotasFiscais(Nota);
 
                 system("clear");
@@ -132,7 +132,7 @@ void contasPagar_Fornecedor() {
 void contasPagar_Todas() {
     int codFor, codNF, i, cont = 0, opc, contNF = returnCont_NotasFiscais();
     Strc_notaFiscal* Nota = return_NotasFiscais();
-    Strc_Caixa Financeiro = return_Financas();
+    Strc_Caixa Financeiro = return_Caixa();
 
     printf("====== | PAGAR TODAS NOTAS FISCAIS | ======\n");
     for (i = 0; i < contNF; i++) {
@@ -171,7 +171,7 @@ void PagamentoLocacao(int codCl, int codFun, int contAluguel, int posCl, float t
     float entrada;
 
     Strc_Clientes* Clientes = return_Clientes();
-    Strc_Caixa Financeiro = return_Financas();
+    Strc_Caixa Financeiro = return_Caixa();
     Strc_Locacoes Locacoes;
     Strc_ContasReceber conta_aReceber;
 
@@ -232,7 +232,7 @@ void PagamentoLocacao(int codCl, int codFun, int contAluguel, int posCl, float t
     alocarLocacoes(&Locacoes);
 
     alterarClientes(Clientes);
-    alterarFinanceiro(Financeiro);
+    alterarCaixa(Financeiro);
 
     digiteAlguma_teclaContinuar();
 }
@@ -246,7 +246,7 @@ void receber_ContasCl() {
     int codCl, verificar = 0;
     int contContas = returnCont_contasReceber();
     Strc_ContasReceber* Conta = return_contasReceber();
-    Strc_Caixa Financas = return_Financas();
+    Strc_Caixa Financas = return_Caixa();
 
     printf("====== | RECEBIMENTO DE CONTAS | ======\n");
     do {
@@ -275,7 +275,7 @@ void receber_ContasCl() {
     }
 
     if (verificar > 0) {
-        alterarFinanceiro(Financas);
+        alterarCaixa(Financas);
         alterar_contasReceber(Conta);
     } else {
         printf("Nenhum cliente com este código encontrado. \n");

@@ -4,16 +4,18 @@
 
 #include "./../Bibliotecas/structs.h"
 
-/* Exclui todos os arquivos do programa salvos no computador*/
+/*********************************************************************************
+ *  Exclui todos os arquivos do programa salvos no computador
+ *********************************************************************************/
 void excluirArquivos_txt();
 
 
 
-/*
+/*********************************************************************************
  * -----------------| FUNÇÕES DE EXPORTAÇÃO PARA ARQUIVOS TXT |-----------------
  * Funções que leem informações e os armazenam em mémoria. Os parámetros recebidos
  * é a struct a ser lida.
- */
+ *********************************************************************************/
 void exportLocadora_txt(Strc_Locadora Loc);
 
 void exportContasReceber_txt(Strc_ContasReceber contasReceber);
@@ -34,10 +36,10 @@ void exportNotasFiscais_txt();
 
 
 
-/*
+/*********************************************************************************
  * --------| FUNÇÕES DE IMPORTAÇÃO DE DADOS DE ARQUIVO TXT PARA MÉMORIA --------
  * Funções que leem um arquivo TXT e os salva em mémoriados
- */
+ *********************************************************************************/
 void importCategoria_txt();
 
 void importCliente_txt();

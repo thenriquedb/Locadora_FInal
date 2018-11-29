@@ -1,13 +1,11 @@
 #include "structs.h"
 #ifndef RELATORIOS_H
 #define RELATORIOS_H
-/*
- * --------------------------| EDIÇÃO DE DADOS |---------------------
+
+/*********************************************************************************
  * Funções que realizam a filtragem dos dados cadastradps no qual cada tipo posssui
  * seus filtros proprios.
- */
-
-
+ ********************************************************************************/
 
 
 //------------------------| RELATORIO CLIENTES |--------------------------------

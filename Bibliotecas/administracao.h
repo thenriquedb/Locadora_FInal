@@ -3,24 +3,35 @@
 #define ADMINISTRACAO_H
 #include "structs.h"
 
-/* Funçao para efetuar a compra de novos filmes para o estoque */
+/*********************************************************************************
+ *  Funçao para efetuar a compra de novos filmes para o estoque 
+ *********************************************************************************/
 void entradaFilmes();
 
-/* Função responsavel por realizar a locação de filmes para clientes */
+/* ********************************************************************************
+ * Função responsavel por realizar a locação de filmes para clientes 
+ *********************************************************************************/
 void locacaoFilmes();
 
+/*********************************************************************************
+ *FUnçao para realizar a devolução de filmes pelo cliente
+ *********************************************************************************/
 void DevolucaoFilmes();
 
-/* Imprime os tiulos comprados pela locadora. (Nome, código e quantidade de exemplares) */
+/*********************************************************************************
+ *  Imprime os tiulos comprados pela locadora. (Nome, código e quantidade de exemplares) 
+ */
 void visualizarEstoque();
 
-/* Função para gerar um código uníco para cada nota fiscal emitida */
+/*********************************************************************************
+ *  Função para gerar um código uníco para cada nota fiscal emitida 
+ *********************************************************************************/
 int gerarCodigoNF();
 
-/*
+/*********************************************************************************
  * --------| FILTROS DE FEEDBACK DE QUANTAS LOCAÇÕES RESTANTES PARA QUE | ------
  * -----------------------| DETERMINADO FILME SE PAGUE |------------------------
- */
+ *********************************************************************************/
 void contLocacoes_FilmesePaga_Todos();
 void contLocacoes_FilmesePaga_Pagos();
 void contLocacoes_FilmesePaga_Deficit();

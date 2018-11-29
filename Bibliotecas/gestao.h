@@ -1,11 +1,10 @@
 #ifndef GESTAO_H
 #define GESTAO_H
 
-/*
+/*********************************************************************************
  * --------------------------| EXCLUSÃO DE DADOS |---------------------
  * Função que realizam a exclusão de uma determinada posição nos vetores
- */
-
+ *********************************************************************************/
 void excluirCliente();
 
 void excluirFilme();
@@ -18,16 +17,18 @@ void excluirFuncionario();
 
 
 
-/*
+/*********************************************************************************
  * --------------------------| EDIÇÃO DE DADOS |---------------------
  * Funções que realizam edição de dados cadastrados. A edição pode ser de determinado
  * campo ou de todos as informações de uma unica vez. Lembrando que a edição é 
  * realizada em um a um.
  * @param-> i: posição do vetor que deseja editar 
- */
+******************************************************************************** */
 
 
-/* ------------------------| EDIÇÃO DE DADOS DOS CLIENTES |-------------------*/
+/*********************************************************************************
+ *  ------------------------| EDIÇÃO DE DADOS DOS CLIENTES |-------------------
+ *********************************************************************************/
 int edicaoCliente();
 
 void edicaoCliente_nome(int i);
@@ -48,7 +49,9 @@ void edicaoCliente_estadoCivil(int i);
 
 
 
-/*--------------------------| EDIÇÃO DE DADOS DOS FILMES |-------------------*/
+/*********************************************************************************
+ * --------------------------| EDIÇÃO DE DADOS DOS FILMES |-------------------
+ *********************************************************************************/
 int edicaoFilme();
 
 void edicaoFilme_nome(int i);
@@ -65,7 +68,9 @@ void edicaoFilme_tudo(int i);
 
 
 
-/* --------------------------| EDIÇÃO DE DADOS DAS CATEGORIAS |---------------*/
+/*********************************************************************************
+ * --------------------------| EDIÇÃO DE DADOS DAS CATEGORIAS |---------------
+ *********************************************************************************/
 int edicaoCategoria();
 
 void edicaoCategoria_nome(int i);
@@ -78,7 +83,9 @@ void edicaoCategoria_tudo(int i);
 
 
 
-/* --------------------------| EDIÇÃO DE DADOS DOS FUNCIONARIOS |-------------*/
+/*********************************************************************************
+ *--------------------------| EDIÇÃO DE DADOS DOS FUNCIONARIOS |-------------
+ *********************************************************************************/
 int edicaoFuncionario();
 
 void edicaoFuncionario_nome(int i);
@@ -95,7 +102,9 @@ void edicaoFuncionario_tudo(int i);
 
 
 
-/*--------------------------| EDIÇÃO DE DADOS DOS FORNECEDORES |--------------*/
+/*********************************************************************************
+ * --------------------------| EDIÇÃO DE DADOS DOS FORNECEDORES |--------------
+ *********************************************************************************/
 int edicaoFornecedor();
 
 void edicaoFornecedor_nomeFantasia(int i);

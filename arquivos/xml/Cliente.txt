@@ -1,0 +1,290 @@
+<dados> 
+	<tabela = cliente> 
+		<registro> 
+			<codigo> 1 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 2 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 3 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 4 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 5 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+	<\tabela> 
+<dados> 
+	<tabela = cliente> 
+		<registro> 
+			<codigo> 1 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 2 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 3 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 4 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 5 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+	<\tabela> 
+<dados> 
+	<tabela = cliente> 
+		<registro> 
+			<codigo> 1 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 2 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 3 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 4 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 5 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+	<\tabela> 
+<dados> 
+	<tabela = cliente> 
+		<registro> 
+			<codigo> 1 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 2 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 3 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 4 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 5 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+	<\tabela> 
+<dados> 
+	<tabela = cliente> 
+		<registro> 
+			<codigo> 1 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 2 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 3 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 4 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+		<registro> 
+			<codigo> 5 <\codigo> 
+			<nome> Fulaninho <\nome> 
+			<endereço> endereco <\endereço> 
+			<cpf> 111600 <\cpf> 
+			<telefone> 5555555 <\telefone> 
+			<email> 111600 <\email> 
+			<sexo> 1 <\sexo> 
+			<est_civil> 2 <\est_civil> 
+			<data_nascimento> 10/10/1999 <\data_nascimento> 
+		<\registro> 
+	<\tabela> 

@@ -433,12 +433,7 @@ int returnCont_contasReceber() {
     return contContas_aReceber;
 }
 
-/********************************************************************************
- * Retornar a se a locadora foi ou nao cadastrados 
- * ******************************************************************************/
-int returnverificaoLocadora() {
-    return verificaoLocadora;
-}
+
 
 /********************************************************************************
  * Altera o dado da locadora ja cadastrado 

@@ -4,31 +4,6 @@
 #include "Bibliotecas/alocacao.h"
 #include "Bibliotecas/veriificacaoDeDados.h"
 
-static int MODO_ARMAZENAMENTO = 0;
-
-void modoArmazenamento() {
-    int opc;
-
-    do {
-        printf("====== | MODO DE ARMAZENAMENTO | ======\n");
-        printf("Como deseja armazenar seus dados: \n"
-                "\t1. Arquivo texto \n"
-                "\t2. Arquivo binário \n");
-
-        if (opc = selecao() == 1) {
-            MODO_ARMAZENAMENTO = 1;
-        } else {
-            MODO_ARMAZENAMENTO = 2;
-        }
-
-    } while (opc != 1 && opc != 2);
-}
-
-int returnModoArmazenamento() {
-    return MODO_ARMAZENAMENTO;
-}
-
-
 
 int verificarNumeroPositivoINT(int x) {
 
@@ -205,7 +180,7 @@ int verificarFilme_Fornecedor(int posFor, int idFil, int cont) {
 void digiteAlguma_teclaContinuar() {
     char x;
     setbuf(stdin, NULL);
-    printf("Digite qual tecla para continuar: ");
+    printf("Digite qualquer tecla para continuar... ");
     scanf("%c", &x);
 
     system("clear");

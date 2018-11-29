@@ -60,6 +60,7 @@ void cadastrarLocadora() {
         
         if (opc == 1) {
             printf("Cadastro concluído com sucesso! \n");
+                alterarLocadora(Locadora);
 
             /*  
              * Exportação de dados de acordo com a opção selecionada no inicio do
@@ -68,7 +69,6 @@ void cadastrarLocadora() {
              * returnModoArmazenamento ==  2; Dados serao exportados em arquivo binario            
              */
             if (returnModoArmazenamento() == 1) {
-                alterarLocadora(Locadora);
                 exportLocadora_txt(Locadora);
             } else {
 
@@ -218,7 +218,7 @@ void cadastrarFilmes() {
 
 
         do {
-            printf("Idioma: \n"
+            printf("\nIdioma: \n"
                     "\t1. Dublado \n"
                     "\t2. Legendado \n"
                     "Digite a opção desejada: ");
@@ -284,7 +284,7 @@ void cadastrarCategorias() {
         scanf("%[^\n]s", categoria.descricao);
         setbuf(stdin, NULL);
 
-        printf("Valor da multa de atraso: ");
+        printf("Valor do aluguel: ");
         scanf("%f", &categoria.valor);
 
         categoria.codigo = gerarCodigoCategoria();

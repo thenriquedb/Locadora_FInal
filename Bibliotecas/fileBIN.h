@@ -32,7 +32,7 @@ void exportLocacoes_bin();
 
 void exportNotasFiscais_bin();
 
-
+void exportTudo_bin();
 
 /*********************************************************************************
  * Funções que leem um arquivo bin e os salva em mémoriados

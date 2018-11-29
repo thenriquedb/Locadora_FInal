@@ -28,7 +28,16 @@ void excluirArquivos_txt() {
     remove("arquivos/fileFornecedores.txt");
     remove("arquivos/fileFuncionarios.txt");
     remove("arquivos/fileLocacoes.txt");
+    remove("arquivos/fileLocadora.txt");
+   // remove("arquivos/bin/fileContasReceber.txt");
+  //  remove("arquivos/bin/fileFilmes.txt");
+   // remove("arquivos/bin/fileLocadora.txt");
+   // remove("arquivos/bin/fileNotasFiscais.txt");
+
+    printf("Arquivos de texto excluidos com sucesso! \n");
 }
+
+
 //------------------------------------------------------------------------------
 
 void exportLocadora_txt(Strc_Locadora Loc) {

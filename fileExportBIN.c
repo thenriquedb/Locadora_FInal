@@ -24,10 +24,28 @@
 #include "Bibliotecas/fileXML.h"
 #include "Bibliotecas/fileBIN.h"
 
-/*
+/*******************************************************************************
+ *Exclui todos os arquivos binarios armazenados anteriormente
+ *******************************************************************************/
+void excluirArquivos_bin() {
+    remove("arquivos/bin/fileClientes.bin");
+    remove("arquivos/bin/fileCategorias.bin");
+    remove("arquivos/binfileCategorias.bin");
+    remove("arquivos/bin/fileFornecedores.bin");
+    remove("arquivos/bin/fileFuncionarios.bin");
+    remove("arquivos/bin/fileLocacoes.bin");
+    remove("arquivos/bin/fileContasReceber.bin");
+    remove("arquivos/bin/fileFilmes.bin");
+    remove("arquivos/bin/fileLocadora.bin");
+    remove("arquivos/bin/fileNotasFiscais.bin");
+
+    printf("Arquivos binários excluidos com sucesso! \n");
+}
+
+/*******************************************************************************
  *Exporta as informaçoes da locadora em formato de arquivo binário
  * O arquivo exportado esta no seguinte diretorio: arquivos/bin/fileLocadora.bin
- */
+ *******************************************************************************/
 void exportLocadora_bin(Strc_Locadora Loc) {
     FILE * file = fopen("arquivos/bin/fileLocadora.bin", "wb");
     if (file == NULL) {
@@ -42,10 +60,10 @@ void exportLocadora_bin(Strc_Locadora Loc) {
     free(file);
 }
 
-/*
+/********************************************************************************
  *Exporta todas as contas de clientes a receber cadastrados em formato de arquivo binário
  * O arquivo exportado esta no seguinte diretorio: arquivos/bin/fileContasReceber.bin
- */
+ *******************************************************************************/
 void exportContasReceber_bin() {
     FILE * file = fopen("arquivos/bin/fileContasReceber.bin", "wb");
     if (file == NULL) {
@@ -61,10 +79,10 @@ void exportContasReceber_bin() {
     free(file);
 }
 
-/*
+/********************************************************************************
  *Exporta todos os filmes cadastrados em formato de arquivo binário
  * O arquivo exportado esta no seguinte diretorio: arquivos/bin/fileFilmes.bin
- */
+ *******************************************************************************/
 void exportFilmes_bin() {
     FILE * file = fopen("arquivos/bin/fileFilmes.bin", "wb");
     if (file == NULL) {
@@ -80,10 +98,10 @@ void exportFilmes_bin() {
     free(file);
 }
 
-/*
+/********************************************************************************
  *Exporta todos os clientes cadastrados em formato de arquivo binário
  * O arquivo exportado esta no seguinte diretorio: arquivos/bin/fileClientes    .bin
- */
+ *******************************************************************************/
 void exportCliente_bin() {
     FILE * file = fopen("arquivos/bin/fileClientes.bin", "wb");
     if (file == NULL) {
@@ -101,10 +119,10 @@ void exportCliente_bin() {
     free(file);
 }
 
-/*
+/********************************************************************************
  *Exporta todos os funcionários cadastrados formato de arquivo binário
  * O arquivo exportado esta no seguinte diretorio: arquivos/bin/fileFuncionario.bin
- */
+ *******************************************************************************/
 void exportFunc_bin() {
     FILE * file = fopen("arquivos/bin/fileFuncionario.bin", "wb");
     if (file == NULL) {
@@ -122,10 +140,10 @@ void exportFunc_bin() {
     free(file);
 }
 
-/*
+/*******************************************************************************
  *Exporta todas as categorias cadastradas em formato de arquivo binário
  * O arquivo exportado esta no seguinte diretorio: arquivos/bin/fileCategoria.bin
- */
+ *******************************************************************************/
 void exportCategoria_bin() {
     FILE * file = fopen("arquivos/bin/fileCategoria.bin", "wb");
     if (file == NULL) {
@@ -143,10 +161,10 @@ void exportCategoria_bin() {
     free(file);
 }
 
-/*
+/********************************************************************************
  *Exporta todas os fornecedores cadastrados em formato de arquivo binário
  * O arquivo exportado esta no seguinte diretorio: arquivos/bin/fileFornecedor.bin
- */
+ ********************************************************************************/
 void exportFornecedor_bin() {
     FILE * file = fopen("arquivos/bin/fileFornecedor.bin", "wb");
     if (file == NULL) {
@@ -164,10 +182,10 @@ void exportFornecedor_bin() {
     free(file);
 }
 
-/*
+/********************************************************************************
  *Exporta todas as locações realizadas  em formato de arquivo binário
  * O arquivo exportado esta no seguinte diretorio: arquivos/bin/fileNotasFiscais.bin
- */
+ ********************************************************************************/
 void exportLocacoes_bin() {
     FILE * file = fopen("arquivos/bin/fileLocacoes.bin", "wb");
     if (file == NULL) {
@@ -189,10 +207,10 @@ void exportLocacoes_bin() {
 
 }
 
-/*
+/********************************************************************************
  *Exporta todas as notas fiscais cadastradas em formato de arquivo binário
  * O arquivo exportado esta no seguinte diretorio: arquivos/bin/fileNotasFiscais.bin
- */
+ ********************************************************************************/
 void exportNotasFiscais_bin() {
     FILE * file = fopen("arquivos/bin/fileNotasFiscais.bin", "wb");
     if (file == NULL) {
@@ -210,15 +228,42 @@ void exportNotasFiscais_bin() {
     free(file);
 }
 
-/*  Exporta todas as informações para arquivos binarios separadamente 
+/********************************************************************************
+ * Exporta todas as informações para arquivos binarios separadamente 
  * os arquivos podem ser encontrados no seguinte diretorio: arquivos/bin
- */
+ ********************************************************************************/
 void exportTudo_bin() {
-    if (returnverificaoLocadora() == 2) {
+
+    if (return_NotasFiscais() != NULL) {
         exportNotasFiscais_bin();
+    }
+
+    if (return_Locacoes() != NULL) {
         exportLocacoes_bin();
+    }
+
+    if (return_Fornecedores() != NULL) {
         exportFornecedor_bin();
+    }
+
+    if (return_Filmes() != NULL) {
         exportFilmes_bin();
+    }
+
+    if (return_Categorias() != NULL) {
+        exportCategoria_bin();
+    }
+
+
+    if (return_contasReceber() != NULL) {
+        exportContasReceber_bin();
+    }
+
+
+
+    if (return_Clientes() != NULL) {
         exportCliente_bin();
     }
+
+
 }

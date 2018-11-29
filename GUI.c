@@ -225,7 +225,9 @@ void imprimeLocacoes(int i) {
         printf("\tCódigo do filme: %d \n", Locacoes[i].Itens[j].codFilme);
         printf("\tExemplares: %d \n\n", Locacoes[i].Itens[j].quant);
     }
-    printf("¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨¨\n");
+    
+    free(Locacoes);
+    free(Clientes);
 }
 
 /********************************************************************************
@@ -278,6 +280,8 @@ void ImprimeContLocacoes_FilmesePaga(int i, float totalVenda) {
         printf("Déficit \n");
         printf("\tTotal de locações para que o filme se pague: %.0f.  \n\n", (round(Filmes[i].precoCompra / Filmes[i].precoAluguel)) - Filmes[i].contAluguel);
     }
+    
+    free(Filmes);
 }
 
 /********************************************************************************

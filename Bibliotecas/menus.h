@@ -23,6 +23,8 @@ void menuAdministrativo();
 
 void menuContas_aPagar();
 
+void menuImportacaoTXT();
+
 void menu_EntradaFilmes();
 
 void menu_filmesAlugados();
@@ -31,7 +33,7 @@ void menuContas_aReceber();
 
 void menuImportacao();
 
-void menuImportacaoTXT();
+void menuImportacao();
 
 void menuImportacaoBIN();
 

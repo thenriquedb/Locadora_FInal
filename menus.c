@@ -16,14 +16,35 @@
 #include "Bibliotecas/fileXML.h"
 #include "Bibliotecas/fileBIN.h"
 
+static int OPC_ARMAZENAMENTO;
+
 void inicializacao() {
     int opc;
-    static int OPC_ARMAZENAMENTO;
+
+    do {
+        printf("====== | INICIALIZALIZAÇÃO DO SOFTWARE | ======\n");
+        printf("Qual forma de armazenamento deseja utilizar durante a aplicação: \n"
+                "\t1. Arquivo texto \n"
+                "\t2. Arquivo binário \n"
+                "Digite a opção desejada: ");
+        scanf("%d", &OPC_ARMAZENAMENTO);
+
+        if (OPC_ARMAZENAMENTO == 1) {
+            system("clear");
+            printf("Arquivo binário escolhido com sucesso! \n");
+        }
+        
+        if (OPC_ARMAZENAMENTO == 2) {
+            system("clear");
+            printf("Arquivo binário escolhido com sucesso! \n");
+        }
+
+    } while (OPC_ARMAZENAMENTO != 1 && OPC_ARMAZENAMENTO != 2);
 
     do {
         printf("====== | INICIALIZALIZAÇÃO DO SOFTWARE | ======\n"
                 "\t1. Apagar arquivos texto salvos \n"
-                "\t2. Excluir arquivos binários salvos \n"
+                "\t2. Apagar arquivos binários salvos \n"
                 "\t3. Importar informações anteriores \n"
                 "\t4. Continuar \n");
 
@@ -33,16 +54,21 @@ void inicializacao() {
                 break;
 
             case 2:
+                excluirArquivos_bin();
                 break;
 
             case 3:
                 menuImportacao();
                 break;
         }
-    } while (opc != 3);
-    
+    } while (opc != 4);
+
     printf("Para continuar é necessario realizar o cadastro do estabelecimento. \n");
     cadastrarLocadora();
+}
+
+int returnModoArmazenamento() {
+    return OPC_ARMAZENAMENTO;
 }
 
 void menuImportacao() {
@@ -322,7 +348,7 @@ void menuImportacaoBIN() {
 
             case 2:
                 if (verificar[1] != 1) {
-                      importFilmes_bin();
+                    importFilmes_bin();
                     verificar[1] = 1;
                 } else {
                     printf("Dados das categorias já foram importados. \n");
@@ -331,7 +357,7 @@ void menuImportacaoBIN() {
 
             case 3:
                 if (verificar[2] != 1) {
-                        importCategoria_bin();
+                    importCategoria_bin();
                 } else {
                     printf("Dados dos funciónarios já foram importados. \n");
                 }
@@ -339,7 +365,7 @@ void menuImportacaoBIN() {
 
             case 4:
                 if (verificar[3] != 1) {
-                        importFuncionarios_bin();
+                    importFuncionarios_bin();
                 } else {
                     printf("Dados dos fornecedores já foram importados. \n");
                 }
@@ -347,7 +373,7 @@ void menuImportacaoBIN() {
 
             case 5:
                 if (verificar[4] != 1) {
-                        importFornecedores_bin();
+                    importFornecedores_bin();
                     verificar[4] = 1;
                 } else {
                     printf("Dados dos fornecedores já foram importados. \n");
@@ -356,7 +382,7 @@ void menuImportacaoBIN() {
 
             case 6:
                 if (verificar[5] != 1) {
-                        importLocacoes_bin();
+                    importLocacoes_bin();
                     verificar[5] = 1;
                 } else {
                     printf("Dados dos filmes alugados já foram importados. \n");
@@ -365,7 +391,7 @@ void menuImportacaoBIN() {
 
             case 7:
                 if (verificar[6] != 1) {
-                        importLocacoes_bin();
+                    importLocacoes_bin();
                     verificar[6] = 1;
                 } else {
                     printf("Dados das notas fiscais já foram importados. \n");
@@ -1364,7 +1390,7 @@ void menuLocacao() {
 
     switch (selecao()) {
         case 1:
-            if (return_Funcionarios() != NULL && return_Clientes() != NULL && 
+            if (return_Funcionarios() != NULL && return_Clientes() != NULL &&
                     return_Filmes() != NULL) {
                 locacaoFilmes();
             } else {
